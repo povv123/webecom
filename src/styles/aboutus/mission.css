@@ -1,0 +1,79 @@
+/* --- CLASSIC MISSION STYLES --- */
+.mission-page {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  padding: 80px 24px;
+}
+
+/* --- HERO SECTION --- */
+.mission-hero {
+  max-width: 900px;
+  margin: 0 auto 120px auto;
+  text-align: center;
+}
+
+.mission-hero .eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+  color: #1d1d1f;
+}
+
+.mission-hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.mission-hero h1 span {
+  color: #86868b; /* Subtle gray for contrast on the "seamless technology" part */
+}
+
+/* --- VALUES GRID --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.value-card {
+  padding: 20px 0;
+  border-top: 1px solid #e5e5e7; /* Clean divider line */
+}
+
+.value-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.value-card p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #424245; /* Slightly softer black for readability */
+  max-width: 320px;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .mission-page {
+    padding: 60px 20px;
+  }
+  
+  .mission-hero {
+    margin-bottom: 60px;
+    text-align: left; /* Better for mobile reading */
+  }
+
+  .values-grid {
+    gap: 40px;
+  }
+}

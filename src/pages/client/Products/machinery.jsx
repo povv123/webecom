@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // 1. Updated to import machineryProducts
 import { machineryProducts } from '../../../data/Products/machineryData'; 
-import '../../../styles/machinetools.css'; 
+import '../../../styles/products/machinetools.css'; 
 
 const MachineryPage = () => {
   const [filter, setFilter] = useState('All');

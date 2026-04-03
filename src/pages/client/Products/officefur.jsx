@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // 1. Update the import to your furniture data file
 import { furnitureItems } from '../../../data/Products/officefurnitureData'; 
-import '../../../styles/accessories.css'; 
+import '../../../styles/products/accessories.css'; 
 
 const OfficeFurniturePage = () => {
   const [filter, setFilter] = useState('All');

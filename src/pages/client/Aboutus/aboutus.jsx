@@ -1,92 +1,85 @@
-import React from 'react';
-import "../../../styles/aboutus.css";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../../../styles/aboutus/aboutus.css";
 
 const AboutUs = () => {
-  const history = [
-    { year: '2018', title: 'The Spark.', desc: 'Started with a team of three and a single vision to simplify the complex.' },
-    { year: '2022', title: 'Going Global.', desc: 'Expanded to 12 countries, bringing our signature design to millions.' },
-    { year: '2026', title: 'Net Zero.', desc: 'Achieved full carbon neutrality across our entire product lineup.' },
-  ];
-
-  const leaders = [
-    { name: 'Sarah Chen', role: 'Apple Specialist', img: '👤' },
-    { name: 'Marcus Vane', role: 'Hardware Engineering', img: '👤' },
-    { name: 'Elena Rossi', role: 'Head of Design', img: '👤' },
-    { name: 'Julian Kwok', role: 'Operations', img: '👤' },
-  ];
-
   return (
-    <div className="apple-about-page antialiased font-sans">
-      
-      {/* --- MISSION HERO --- */}
-      <section className="mission-hero bg-white">
-        <div className="container-center reveal-on-scroll">
-          <h2 className="mission-label">Our Mission</h2>
-          <h1 className="apple-text-gradient">
-            To create tools that <br /> 
-            <span className="text-gray-400 italic">empower humanity.</span>
-          </h1>
-          <p className="mission-subtext">
-            We believe technology is at its best when it's invisible. We build for privacy, for the planet, and for you.
+    <div className="about-container">
+
+
+      {/* TOP NAV (APPLE STYLE) */}
+      <div className="about-nav">
+
+            <NavLink to="/about" className="nav-link" >
+          Hello wwIII
+        </NavLink>
+
+        <NavLink to="/about/mission" className="nav-link">
+          Mission
+        </NavLink>
+        <NavLink to="/about/history" className="nav-link">
+          History
+        </NavLink>
+        <NavLink to="/about/leadership" className="nav-link">
+          Leadership
+        </NavLink>
+      </div>
+
+      {/* HERO */}
+      <section className="hero-image">
+        <img src="/images/apple-park.jpg" alt="hero" />
+        <h1>Our Values</h1>
+      </section>
+
+      {/* QUOTE */}
+      <section className="quote-section">
+        <p className="quote">
+          “We believe that business, at its best, serves the public good,
+          empowers people around the world, and binds us together as never before.”
+        </p>
+        <span className="author">— CEO</span>
+      </section>
+
+      {/* DESCRIPTION */}
+      <section className="description">
+        <p>
+          We are committed to demonstrating that business can and should be a
+          force for good. Achieving that takes innovation, collaboration, and a
+          focus on serving others. It also means leading with our values in the
+          technology we make, the way we make it, and how we treat people and the planet.
+        </p>
+      </section>
+
+      {/* DISCLOSURE */}
+      <section className="disclosure">
+        <div className="left">
+          <img src="/images/report.jpg" alt="report" />
+        </div>
+        <div className="right">
+          <p>
+            We have a wide range of reports and websites that outline key
+            progress across each of our values and other topics.
           </p>
+          <a href="#">View our Disclosure Index →</a>
+        </div>
+      </section>
+​
+
+      <section className="disclosure">
+        <div className="left">
+          <img src="/images/report.jpg" alt="report" />
+        </div>
+        <div className="right">
+          <p>
+            We have a wide range of reports and websites that outline key
+            progress across each of our values and other topics.
+          </p>
+          <a href="#">View our Disclosure Index →</a>
         </div>
       </section>
 
-      {/* --- SPATIAL HISTORY --- */}
-      <section className="history-section">
-        <div className="container-wide">
-          <h2 className="section-title text-center">Our History</h2>
-          <div className="grid-container">
-            {history.map((item, i) => (
-              <div key={i} className="spatial-card">
-                <div className="year-display">{item.year}</div>
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- RETAIL LEADERSHIP CAROUSEL --- */}
-      <section className="leadership-retail bg-white">
-        <div className="container-wide overflow-visible">
-          <header className="mb-12 text-left px-6 md:px-0">
-            <h2 className="section-title text-left">
-              Help is here. <span className="text-gray-400">Whenever and however you need it.</span>
-            </h2>
-          </header>
-
-          <div className="retail-carousel hide-scrollbar px-6 md:px-0">
-            {leaders.map((person, i) => (
-              <div key={i} className="retail-card group">
-                <div className="retail-text">
-                  <p className="retail-role">{person.role}</p>
-                  <h3 className="retail-name">{person.name}</h3>
-                </div>
-                <div className="retail-portrait">
-                  <div className="portrait-icon">{person.img}</div>
-                </div>
-              </div>
-            ))}
-            <div className="carousel-spacer" />
-          </div>
-        </div>
-      </section>
-
-      {/* --- JOIN CTA --- */}
-      <section className="cta-section bg-white border-t border-gray-100">
-        <div className="container-center">
-          <h2 className="cta-title">
-            Want to join us? <br />
-            <span className="text-black">Work at Eter.</span>
-          </h2>
-          <button className="apple-pill-button">
-            View Openings
-          </button>
-        </div>
-      </section>
-
+     
+     
     </div>
   );
 };

@@ -1,100 +1,109 @@
 import React from 'react';
-import '../../../styles/services.css';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-// --- Import Sub-Category Components ---
-// Consulting
-import BusinessStrategy from './BusinessStrategy';
-import ITConsulting from './ITConsulting';
-import FinancialAnalysis from './FinancialAnalysis';
-import Taxes from './Taxes';
-import LogisticsServices from './LogisticsServices';
-
-// Maintenance
-import EquipmentServicing from './EquipmentServicing';
-import FacilityManagement from './FacilityManagement';
-import SpareParts from './SpareParts';
-import InternetProvider from './InternetProvider';
-
-// Training
-import TechnicalTraining from './TechnicalTraining';
-import CustomerServiceTraining from './CustomerServiceTraining';
 
 const Services = () => {
+  const serviceCategories = [
+    {
+      id: "",
+      title: "Consulting",
+      subtitle: "Strategic guidance for a digital-first enterprise.",
+      icon: "💡",
+      items: [
+        { name: "Business Strategy", path: "/services/consulting/strategy" },
+        { name: "IT Consulting", path: "/services/consulting/it" },
+        { name: "Financial Analysis", path: "/services/consulting/financial" },
+        { name: "Taxes", path: "/services/consulting/taxes" },
+        { name: "Logistics Services", path: "/services/consulting/logistics" },
+      ]
+    },
+    {
+      id: "",
+      title: "Maintenance",
+      subtitle: "Reliability and support, engineered to last.",
+      icon: "🛠️",
+      items: [
+        { name: "Equipment Servicing", path: "/services/maintenance/equipment" },
+        { name: "Facility Management", path: "/services/maintenance/facility" },
+        { name: "Spare Parts & Repair", path: "/services/maintenance/repair" },
+        { name: "Internet Provider", path: "/services/maintenance/isp" },
+      ]
+    },
+    {
+      id: "",
+      title: "Training",
+      subtitle: "Upskill your workforce with industrial expertise.",
+      icon: "🎓",
+      items: [
+        { name: "Technical Training", path: "/services/training/technical" },
+        { name: "Customer Service Training", path: "/services/training/customer-service" },
+      ]
+    }
+  ];
+
   return (
-    <div className="services-page">
-      <header className="services-hero">
-        <p className="eyebrow">Services Overview</p>
-        <h1>Expertise in every <span>detail.</span></h1>
-      </header>
-
-      {/* --- Category 1: Consulting --- */}
-      <section className="category-group">
-        <div className="category-header">
-          <span className="alphabet-id">a.</span>
-          <h2>Category 1 – Consulting</h2>
-        </div>
+    <div className="services-root">
+      
+      {/* SECTION 1: DARK ENTERTAINMENT HERO */}
+      <section className="hero-dark">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="hero-container"
+        >
         
-        <div className="component-line">
-          <div className="roman-id">i.</div> <BusinessStrategy />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">ii.</div> <ITConsulting />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">iii.</div> <FinancialAnalysis />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">iv.</div> <Taxes />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">v.</div> <LogisticsServices />
-        </div>
+
+          <h1 className="hero-title">
+            Meet the A-list of <br />
+            <span className="hero-title-accent">industrial services.</span>
+          </h1>
+          
+          <p className="hero-desc">
+            Award-winning strategy. Binge-worthy efficiency. Your favorite operations 
+            mastered in Spatial Data. The best solutions live here — only on Eter.
+          </p>
+        </motion.div>
       </section>
 
-      <hr className="divider" />
+  
 
-      {/* --- Category 2: Maintenance --- */}
-      <section className="category-group">
-        <div className="category-header">
-          <span className="alphabet-id">b.</span>
-          <h2>Category 2 – Maintenance</h2>
-        </div>
-        
-        <div className="component-line">
-          <div className="roman-id">i.</div> <EquipmentServicing />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">ii.</div> <FacilityManagement />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">iii.</div> <SpareParts />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">iv.</div> <InternetProvider />
-        </div>
-      </section>
+      {/* SECTION 3: STORE STYLE GRID */}
+      <main className="grid-section">
+        <div className="services-grid">
+          {serviceCategories.map((cat) => (
+            <motion.div 
+              key={cat.id}
+              whileHover={{ y: -5 }}
+              className="service-card"
+            >
+              <div className="card-header">
+                <div className="card-icon-box">{cat.icon}</div>
+              
+                <h2 className="card-title">{cat.title}</h2>
+                <p className="card-subtitle">{cat.subtitle}</p>
+              </div>
 
-      <hr className="divider" />
+              <div className="card-list">
+                {cat.items.map((item, i) => (
+                  <Link to={item.path} key={item.path} className="list-item-link group">
+                    <div className="list-item-content">
+                      
+                      <span className="list-name">{item.name}</span>
+                    </div>
+                    <span className="list-chevron">
+                      <svg width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M1.5 1.5L6.5 6.5L1.5 11.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </main>
 
-      {/* --- Category 3: Training --- */}
-      <section className="category-group">
-        <div className="category-header">
-          <span className="alphabet-id">c.</span>
-          <h2>Category 3 – Training</h2>
-        </div>
-        
-        <div className="component-line">
-          <div className="roman-id">i.</div> <TechnicalTraining />
-        </div>
-        <div className="component-line">
-          <div className="roman-id">ii.</div> <CustomerServiceTraining />
-        </div>
-      </section>
-
-      <footer className="services-footer">
-        <h3>Ready to get started?</h3>
-        <button className="apple-btn-blue">Contact an Advisor</button>
-      </footer>
+   
     </div>
   );
 };

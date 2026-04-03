@@ -1,0 +1,136 @@
+/* --- THE CLASSIC THEME (Black & White) --- */
+:root {
+  --classic-bg: #ffffff;
+  --classic-text: #000000;
+  --classic-sub: #86868b;
+  --classic-border: #e5e5e5;
+  --classic-accent: #0066cc; /* Subtle blue for interactive links only */
+}
+
+.solutions-detail {
+  background-color: var(--classic-bg);
+  color: var(--classic-text);
+  padding-top: 80px; /* Offset for Navbar */
+}
+
+/* --- Hero Section --- */
+.solutions-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  color: var(--classic-text);
+}
+
+.solutions-hero h1 {
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.solutions-hero h1 span {
+  color: var(--classic-sub);
+}
+
+.hero-sub {
+  font-size: 21px;
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--classic-sub);
+}
+
+/* --- Feature Grid (Bento Style) --- */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+
+.solution-card {
+  padding: 48px;
+  background: var(--classic-bg);
+  border: 1px solid var(--classic-border);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.solution-card:hover {
+  background: var(--classic-text); /* Flips to Black on hover */
+  color: var(--classic-bg);      /* Text flips to White */
+  border-color: var(--classic-text);
+  transform: translateY(-8px);
+}
+
+.solution-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.solution-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* --- Case Study Banner --- */
+.case-study-banner {
+  background: var(--classic-text); /* Black Background */
+  color: var(--classic-bg);      /* White Text */
+  margin: 0 24px 80px;
+  padding: 80px 40px;
+  border-radius: 32px;
+  text-align: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.case-study-banner h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.apple-link {
+  background: none;
+  border: 1px solid var(--classic-bg);
+  color: var(--classic-bg);
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apple-link:hover {
+  background: var(--classic-bg);
+  color: var(--classic-text);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .solutions-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .solution-card {
+    padding: 32px;
+  }
+}

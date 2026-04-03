@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { machineTools } from '../../../data/Products/machineToolData'; 
-import '../../../styles/machinetools.css'; 
+import '../../../styles/products/machinetools.css'; 
 
 const Machintools = () => {
   const [filter, setFilter] = useState('All');

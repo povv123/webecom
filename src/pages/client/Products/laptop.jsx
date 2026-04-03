@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { laptops } from '../../../data/Products/laptopData'; 
-import '../../../styles/laptop.css'; 
+import '../../../styles/products/laptop.css'; 
 
 const LaptopPage = () => {
   const [filter, setFilter] = useState('All');

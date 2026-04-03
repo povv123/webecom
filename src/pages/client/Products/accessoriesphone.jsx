@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { accessories } from '../../../data/Products/electronicaccessoriesData'; 
-import '../../../styles/accessories.css'; 
+import '../../../styles/products/accessories.css'; 
 
 const AccessoriesPage = () => {
   const [filter, setFilter] = useState('All');

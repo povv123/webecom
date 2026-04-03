@@ -4,7 +4,7 @@ import { mobiles } from '../../../data/Products/mobilephoneData';
 import { laptops } from '../../../data/Products/laptopData';
 import { machineryProducts } from '../../../data/Products/machineryData';
 import { homeFurniture } from '../../../data/Products/homefurdata';
-import '../../../styles/Productsss.css'; 
+import '../../../styles/products/Productsss.css'; 
 
 
 const Products = () => {

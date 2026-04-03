@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { mobiles } from '../../../data/Products/mobilephoneData'; 
-import '../../../styles/Phone.css'; 
+import '../../../styles/products/Phone.css'; 
 
 const MobilePhonePage = () => {
   const [filter, setFilter] = useState('All');
 
-  // Filter based on the 'mobile' subCategory and brand selection
   const filteredMobiles = mobiles ? mobiles.filter(p => 
     p.subCategory === 'mobile' && (filter === 'All' || p.brand === filter)
   ) : [];
 
-  const brands = ['All', 'Apple', 'Samsung', 'Google', 'OnePlus'];
+  const brands = ['All Models', 'Apple', 'Samsung', 'Google', 'OnePlus'];
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -19,74 +18,63 @@ const MobilePhonePage = () => {
 
   return (
     <div className="store-container">
-      {/* 1. Global Nav Placeholder (Top links like Mac, iPad, iPhone) */}
-      <nav className="apple-global-nav">
-        {/* You can map through your categories here */}
-      </nav>
-
-      {/* 2. Page Header */}
-      <header className="shop-header">
-        <div className="header-content">
-         <h1 className="shop-title">
-      {filter === 'All' ? 'Shop SmartPhone' : `Shop ${filter === 'Apple' ? 'Mac' : filter}`}
-    </h1>
-
-        </div>
-      </header>
-
-      {/* 3. Secondary Local Nav (Sub-categories) */}
+      {/* Secondary Local Nav */}
       <nav className="local-sub-nav">
         <div className="sub-nav-wrapper">
           {brands.map(b => (
             <button 
               key={b} 
-              className={filter === b ? 'nav-item active' : 'nav-item'} 
-              onClick={() => setFilter(b)}
+              className={filter === (b === 'All Models' ? 'All' : b) ? 'nav-item active' : 'nav-item'} 
+              onClick={() => setFilter(b === 'All Models' ? 'All' : b)}
             >
-              {b === 'All' ? 'All Models' : b}
+              {b}
             </button>
           ))}
-          
         </div>
       </nav>
 
-      {/* 4. Product Selection Section */}
-      <section className="product-selection">
-        <div className="selection-intro">
-          <h2><strong>All models.</strong> Take your pick.</h2>
+      <header className="shop-header">
+        <div className="header-content text-center">
+          <h1 className="shop-title">
+            {filter === 'All' ? 'All models.' : filter} <span className="text-secondary">Take your pick.</span>
+          </h1>
         </div>
+      </header>
 
-        <div className="horizontal-scroll-grid">
+      <section className="product-selection">
+        <div className="product-grid">
           {filteredMobiles.map((item) => (
-            <div key={item.id} className="apple-card">
-              {item.isNew && <span className="new-label">NEW</span>}
-              
-              <div className="card-top">
-                <h3 className="card-product-name">{item.name}</h3>
-              </div>
-
+            <div key={item.id} className="product-card-neo">
+              {/* Product Image */}
               <div className="card-image-wrapper">
                 <img src={item.image} alt={item.name} />
               </div>
 
-              {/* Color dots placeholder */}
-         
-<div className="card-bottom">
-  <div className="price-container">
-    <p className="price-tag">
-      From ${item.price} or ${Math.round(item.price / 24)}/mo. for 24 mo.
-    </p>
-  </div>
-  
-  <Link 
-    to={`/buy/mobile`} 
-    state={{ selectedId: item.id }} 
-    className="buy-button"
-  >
-    Buy
-  </Link>
-</div>
-             
+              {/* Text Content */}
+              <div className="card-body-neo">
+                {item.isNew && <span className="new-label">New</span>}
+                <h3 className="card-product-name">{item.name}</h3>
+                <p className="card-tagline">The power of {item.brand} in your pocket.</p>
+                
+                <div className="price-info">
+                  <p className="price-main">From ${item.price} or ${Math.round(item.price / 12)}/mo.</p>
+                  <p className="price-sub text-xs">for 12 mo.*</p>
+                </div>
+              </div>
+
+              {/* Footer Actions: Pill Button + Buy Link */}
+              <div className="card-footer-neo">
+                <Link to={`/products/item/${item.id}`} className="learn-more-btn">
+                  Learn more
+                </Link>
+                <Link 
+                  to={`/buy/mobile`} 
+                  state={{ selectedId: item.id }} 
+                  className="buy-link-blue"
+                >
+                  Buy {'>'}
+                </Link>
+              </div>
             </div>
           ))}
         </div>

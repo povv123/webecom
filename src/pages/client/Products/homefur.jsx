@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // 1. Ensure your data file is renamed or updated accordingly
 import { homeFurniture } from '../../../data/Products/homefurdata'; 
-import '../../../styles/homefur.css'; 
+import '../../../styles/products/homefur.css'; 
 
 const HomeFurniturePage = () => {
   const [filter, setFilter] = useState('All');

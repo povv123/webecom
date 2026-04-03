@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../../styles/careers.css';
+import '../../../styles/careers/careers.css';
 
 const Opening = () => {
   const [search, setSearch] = useState("");

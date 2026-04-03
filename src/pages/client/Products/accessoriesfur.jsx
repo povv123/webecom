@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // 1. Update the import to your new accessories-focused data file
 import { furnitureAccessories } from '../../../data/Products/furnitureAccessoriesData'; 
-import '../../../styles/furnitureAccessories.css'; 
+import '../../../styles/products/furnitureAccessories.css'; 
 
 const FurnitureAccessoriesPage = () => {
   const [filter, setFilter] = useState('All');

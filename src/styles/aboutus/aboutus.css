@@ -1,0 +1,220 @@
+/* ROOT */
+.about-container {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1d1d1f;
+  background: #fff;
+}
+
+/* ================= NAV ================= */
+.about-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f8f5f5;
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #6e6e73;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+/* ACTIVE LINK */
+.nav-link.active {
+  color: #000;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+/* ================= HERO ================= */
+.hero-image {
+  position: relative;
+  height: 320px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+/* ================= QUOTE ================= */
+.quote-section {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.quote {
+  font-size: 22px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.5;
+}
+
+.author {
+  display: block;
+  margin-top: 10px;
+  color: #6e6e73;
+}
+
+/* ================= DESCRIPTION ================= */
+.description {
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  color: #6e6e73;
+  line-height: 1.6;
+}
+
+/* ================= DISCLOSURE ================= */
+.disclosure {
+  display: flex;
+  gap: 40px;
+  padding: 60px;
+  align-items: center;
+}
+
+.disclosure .left img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.disclosure .right {
+  max-width: 500px;
+}
+
+.disclosure .right a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0071e3;
+  text-decoration: none;
+}
+
+/* ================= VALUES ================= */
+.values {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.values h3 {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+}
+
+.value-card img {
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.value-card img:hover {
+  transform: scale(1.05);
+}
+
+.value-card h4 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.value-card span {
+  color: #0071e3;
+  font-size: 14px;
+}
+
+/* ================= REPORTS ================= */
+.reports {
+  padding: 60px 40px;
+}
+
+.report-group {
+  margin-bottom: 25px;
+}
+
+.report-group h4 {
+  margin-bottom: 10px;
+}
+
+.report-group p {
+  color: #0071e3;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .disclosure {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image h1 {
+    font-size: 32px;
+    left: 20px;
+  }
+
+  .about-nav {
+    gap: 20px;
+    font-size: 12px;
+  }
+}
+
+/* LEADERS */
+.leaders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.leader-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.leader-card h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.leader-card p {
+  color: #6e6e73;
+  font-size: 14px;
+}
