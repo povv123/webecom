@@ -1,0 +1,129 @@
+/* --- Root & Global --- */
+:root {
+  --apple-black: #1d1d1f;
+  --apple-grey: #86868b;
+  --apple-bg: #f5f5f7;
+  --apple-blue: #0066cc;
+}
+
+.apple-careers-page {
+  background-color: #fff;
+  color: var(--apple-black);
+  letter-spacing: -0.022em;
+}
+
+/* --- Typography --- */
+.hero-title {
+  font-size: 80px;
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 48px; }
+}
+
+.section-headline {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* --- Layout Containers --- */
+.content-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* --- Hero Section --- */
+.careers-hero {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.label-eyebrow {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* --- Job Board List (The Apple Look) --- */
+.job-list-container {
+  margin-top: 60px;
+}
+
+.job-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 1px solid #d2d2d7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.job-item:hover {
+  opacity: 0.7;
+}
+
+.job-info h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.job-meta {
+  color: var(--apple-grey);
+  font-size: 17px;
+  margin-top: 4px;
+}
+
+.arrow-icon {
+  font-size: 24px;
+  color: var(--apple-blue);
+}
+
+/* --- Sticky Filter Bar --- */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  border-bottom: 1px solid #d2d2d7;
+  padding: 15px 0;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  margin-right: 25px;
+  color: var(--apple-black);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.filter-btn.active {
+  border-bottom: 1px solid var(--apple-black);
+  font-weight: 600;
+}
+
+/* --- CTA Button --- */
+.apple-button {
+  background-color: var(--apple-black);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.apple-button:hover {
+  background-color: #333;
+}
