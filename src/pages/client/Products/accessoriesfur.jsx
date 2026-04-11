@@ -27,24 +27,23 @@ const FurnitureAccessoriesPage = () => {
   }, [filter]);
 
   return (
-    <div className="store-container">
+    <div className="fasso-store-container">
       {/* 1. Page Header */}
-      <header className="shop-header">
-        <div className="header-content">
-           <h1 className="shop-title">
+      <header className="fasso-shop-header">
+        <div className="fasso-header-content">
+           <h1 className="fasso-shop-title">
              {filter === 'All' ? 'Shop Accents' : `Shop ${filter}`}
            </h1>
-       
         </div>
       </header>
 
       {/* 2. Category Navigation */}
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+      <nav className="fasso-local-sub-nav">
+        <div className="fasso-sub-nav-wrapper">
           {categories.map(cat => (
             <button 
               key={cat} 
-              className={filter === cat ? 'nav-item active' : 'nav-item'} 
+              className={filter === cat ? 'fasso-nav-item active' : 'fasso-nav-item'} 
               onClick={() => setFilter(cat)}
             >
               {cat === 'All' ? 'All Accents' : cat}
@@ -54,23 +53,23 @@ const FurnitureAccessoriesPage = () => {
       </nav>
 
       {/* 3. Product Selection Section */}
-      <section className="product-selection">
-        <div className="selection-intro">
+      <section className="fasso-product-selection">
+        <div className="fasso-selection-intro">
           <h2><strong>The finishing touch.</strong> Small details, big impact.</h2>
         </div>
 
-        <div className="horizontal-scroll-grid">
+        <div className="fasso-horizontal-scroll-grid">
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
-              <div key={item.id} className="apple-card">
-                {item.isNew && <span className="new-label">NEW</span>}
+              <div key={item.id} className="fasso-apple-card">
+                {item.isNew && <span className="fasso-new-label">New</span>}
                 
-                <div className="card-top">
-                  <h3 className="card-product-name">{item.name}</h3>
-                  <p className="card-subtitle">{item.tagline || item.brand}</p>
+                <div className="fasso-card-top">
+                  <h3 className="fasso-card-product-name">{item.name}</h3>
+                  <p className="fasso-card-subtitle">{item.tagline || item.brand}</p>
                 </div>
 
-                <div className="card-image-wrapper">
+                <div className="fasso-card-image-wrapper">
                   {/* Accessories look better slightly smaller to emphasize "objects" */}
                   <img 
                     src={item.image} 
@@ -79,24 +78,36 @@ const FurnitureAccessoriesPage = () => {
                   />
                 </div>
 
+                <div className="fasso-card-bottom">
+                  <div className="fasso-price-container">
+                    <p className="fasso-price-tag">
+                      {/* Updated to display Cambodian Riel (KHR) formatting */}
+                      {item.price.toLocaleString()} KHR
+                    </p>
+                  </div>
+                  
+                  {/* NEW: Button Group for Learn More & Buy */}
+                  <div className="fasso-button-group">
+                    <Link 
+                      to={`/furnitureacc/${item.id}`} /* Adjust this route to match your detail page */
+                      className="fasso-learn-more-button"
+                    >
+                      Learn more 
+                    </Link>
+                    <Link 
+                      to={`/buy/furnitureacc`} 
+                      state={{ selectedId: item.id }}
+                      className="fasso-buy-button"
+                    > 
+                      Buy  {'>'}
+                    </Link>
+                  </div>
 
-                  <div className="card-bottom">
-                         <div className="price-container">
-                         <p className="price-tag">
-                                ${item.price.toFixed(2)}
-                                  </p>
-                             </div>
-  
-                             
-                            <Link 
-                              to={`/buy/furnitureacc`} 
-                            className="buy-button">  Buy </Link>
-                          </div>
-
-                              </div>
+                </div>
+              </div>
             ))
           ) : (
-            <div className="no-results">
+            <div className="fasso-no-results">
               <p>No accents found in the {filter} category.</p>
             </div>
           )}

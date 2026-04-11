@@ -1,0 +1,118 @@
+/* Main Container */
+.gene {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Header */
+.gene-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.gene-header h2 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.003em;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.gene-header p {
+  font-size: 19px;
+  color: #86868b;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Form Container */
+.gene-form {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+/* Inputs & Labels */
+.gene-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.gene-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+}
+
+.gene-group input,
+.gene-group textarea {
+  font-family: inherit;
+  font-size: 17px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #d2d2d7;
+  background-color: #ffffff;
+  color: #1d1d1f;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical; /* Allows the user to resize the textarea vertically */
+}
+
+.gene-group input::placeholder,
+.gene-group textarea::placeholder {
+  color: #86868b;
+}
+
+.gene-group input:focus,
+.gene-group textarea:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+/* Button */
+.gene-btn-blue {
+  background-color: #0066cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  padding: 14px 24px;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.gene-btn-blue:hover {
+  background-color: #0077ed;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .gene-header h2 {
+    font-size: 32px;
+  }
+  
+  .gene-header p {
+    font-size: 17px;
+  }
+  
+  .gene-form {
+    padding: 24px;
+  }
+}

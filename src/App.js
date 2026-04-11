@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Layout Components
+// --- LAYOUT COMPONENTS ---
 import MegaMenu from './components/client/MegaMenu';
 
 // --- CORE & UTILITIES ---
 import Home from './pages/client/Home';
 import SearchPage from './pages/client/Search';
-import Cart from './components/client/Cart';
 
 // --- PRODUCTS ---
 import Products from './pages/client/Products/products';
@@ -21,7 +20,7 @@ import Machinery from './pages/client/Products/machinery';
 import Machintools from './pages/client/Products/machinetools';
 import BuyPage from './pages/client/Products/buypage';
 import ProductDetail from './pages/client/Products/productdetail';
-import CategoryPage from './pages/client/Products/categorypage';
+
 
 // --- CAREERS ---
 import CareerOverview from './pages/client/Careers/Career';
@@ -46,6 +45,7 @@ import Contact from './pages/client/Contact/Contact';
 import Inquiry from './pages/client/Contact/inquiry';
 import Quote from './pages/client/Contact/quote';
 import Support from './pages/client/Contact/support';
+import Shipping from './pages/client/Contact/ship';
 
 // --- SERVICES ---
 import Services from './pages/client/Services/Services';
@@ -65,6 +65,16 @@ import CustomerServiceTraining from './pages/client/Services/CustomerServiceTrai
 import Solutions from './pages/client/Solutions/Solution';
 import EducationSolution from './pages/client/Solutions/education';
 import HealthcareSolution from './pages/client/Solutions/healthcare';
+import ManufacturingSolution from './pages/client/Solutions/manufacturing';
+
+// --- CART & PROFILE ---
+import Cart from './components/client/Cart';
+import Orders from './pages/client/oders'; 
+import YourSaves from './pages/client/yoursave'; 
+import SignIn from './pages/client/signin'; 
+import Account from './pages/client/account'; 
+import CreateAccount from './pages/client/createaccount';
+
 
 // Helper: Resets scroll to top on every route change
 const ScrollToTop = () => {
@@ -77,19 +87,20 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      {/* The MegaMenu stays outside the Routes so it appears on every page */}
       <MegaMenu />
+      
       <main className="min-h-screen bg-white">
         <Routes>
           {/* --- CORE & COMMERCE --- */}
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/cart" element={<Cart />} />
           
           {/* --- PRODUCT ROUTES --- */}
           <Route path="/products" element={<Products />} />
           <Route path="/buy/:categoryId" element={<BuyPage />} />
           <Route path="/products/item/:productId" element={<ProductDetail />} />
-          <Route path="/products/:category" element={<CategoryPage />} />
+         
           
           <Route path="/products/electronics/mobile" element={<MobilePhonePage />} />
           <Route path="/products/electronics/laptops" element={<LaptopPage />} />
@@ -125,24 +136,19 @@ function App() {
           <Route path="/contact/inquiry" element={<Inquiry />} />
           <Route path="/contact/quote" element={<Quote />} />
           <Route path="/contact/support" element={<Support />} />
+          <Route path="/contact/ship" element={<Shipping />} />
 
-          {/* --- SERVICES (Aligned with navData) --- */}
+          {/* --- SERVICES --- */}
           <Route path="/services" element={<Services />} />
-          
-          {/* Consulting */}
           <Route path="/services/consulting/strategy" element={<BusinessStrategy />} />
           <Route path="/services/consulting/it" element={<ITConsulting />} />
           <Route path="/services/consulting/financial" element={<FinancialAnalysis />} />
           <Route path="/services/consulting/taxes" element={<Taxes />} />
           <Route path="/services/consulting/logistics" element={<LogisticsServices />} />
-
-          {/* Maintenance */}
           <Route path="/services/maintenance/equipment" element={<EquipmentServicing />} />
           <Route path="/services/maintenance/facility" element={<FacilityManagement />} />
           <Route path="/services/maintenance/repair" element={<SpareParts />} />
           <Route path="/services/maintenance/isp" element={<InternetProvider />} />
-
-          {/* Training */}
           <Route path="/services/training/technical" element={<TechnicalTraining />} />
           <Route path="/services/training/customer-service" element={<CustomerServiceTraining />} />
           
@@ -150,6 +156,17 @@ function App() {
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/education" element={<EducationSolution />} />
           <Route path="/solutions/healthcare" element={<HealthcareSolution />} />
+          <Route path="/solutions/manufacturing" element={<ManufacturingSolution />} />
+
+          {/* --- CART & PROFILE ROUTES --- */}
+          <Route path="/bag" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/saves" element={<YourSaves />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/account" element={<Account />} /> 
+          <Route path="/register" element={<CreateAccount />} />
+
 
           {/* --- 404 FALLBACK --- */}
           <Route path="*" element={<div className="py-40 text-center text-2xl font-semibold">404: Page Not Found</div>} />

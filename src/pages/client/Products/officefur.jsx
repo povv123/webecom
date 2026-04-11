@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // 1. Update the import to your furniture data file
 import { furnitureItems } from '../../../data/Products/officefurnitureData'; 
-import '../../../styles/products/accessories.css'; 
+import '../../../styles/products/officefur.css'; // Updated to reflect the likely new CSS file name
 
 const OfficeFurniturePage = () => {
   const [filter, setFilter] = useState('All');
@@ -27,23 +27,23 @@ const OfficeFurniturePage = () => {
   }, [filter]);
 
   return (
-    <div className="store-container">
+    <div className="ofic-store-container">
       {/* 1. Page Header */}
-      <header className="shop-header">
-        <div className="header-content">
-           <h1 className="shop-title">
-             {filter === 'All' ? 'Shop Furnitures' : `Shop ${filter}`}
+      <header className="ofic-shop-header">
+        <div className="ofic-header-content">
+           <h1 className="ofic-shop-title">
+             {filter === 'All' ? 'Shop Furniture' : `Shop ${filter}`}
            </h1>
         </div>
       </header>
 
       {/* 2. Category Navigation */}
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+      <nav className="ofic-local-sub-nav">
+        <div className="ofic-sub-nav-wrapper">
           {categories.map(cat => (
             <button 
               key={cat} 
-              className={filter === cat ? 'nav-item active' : 'nav-item'} 
+              className={filter === cat ? 'ofic-nav-item active' : 'ofic-nav-item'} 
               onClick={() => setFilter(cat)}
             >
               {cat === 'All' ? 'All Furniture' : cat}
@@ -53,50 +53,65 @@ const OfficeFurniturePage = () => {
       </nav>
 
       {/* 3. Product Selection Section */}
-      <section className="product-selection">
-        <div className="selection-intro">
+      <section className="ofic-product-selection">
+        <div className="ofic-selection-intro">
           <h2><strong>Build your dream office.</strong> Comfort meets productivity.</h2>
         </div>
 
-        <div className="horizontal-scroll-grid">
+        <div className="ofic-horizontal-scroll-grid">
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
-              <div key={item.id} className="apple-card">
-                {item.isNew && <span className="new-label">NEW ARRIVAL</span>}
+              <div key={item.id} className="ofic-apple-card">
+                {item.isNew && <span className="ofic-new-label">New Arrival</span>}
                 
-                <div className="card-top">
-                  <h3 className="card-product-name">{item.name}</h3>
-                  <p className="card-subtitle">{item.tagline || item.material}</p>
+                {/* 1. Title First */}
+                <div className="ofic-card-header">
+                  <h3 className="ofic-card-product-name">{item.name}</h3>
                 </div>
 
-                <div className="card-image-wrapper">
-                  {/* Furniture images usually look better slightly larger */}
+                {/* 2. Picture Second */}
+                <div className="ofic-card-image-wrapper">
                   <img 
                     src={item.image} 
                     alt={item.name} 
                     style={{ maxHeight: '180px', objectFit: 'contain' }} 
                   />
                 </div>
-                    <div className="card-bottom">
-  <div className="price-container">
-    <p className="price-tag">
-      ${item.price.toLocaleString()}
-    </p>
-  </div>
 
-  <Link 
-    to={`/buy/office`} 
-    state={{ selectedId: item.id }} 
-    className="buy-button"
-  >
-    Buy
-  </Link>
-</div>
-                
+                {/* 3. Description Third */}
+                <div className="ofic-card-description">
+                  <p className="ofic-card-subtitle">{item.tagline || item.material}</p>
+                </div>
+
+                {/* 4. Price, Learn More, and Buy Last */}
+                <div className="ofic-card-bottom">
+                  <div className="ofic-price-container">
+                    <p className="ofic-price-tag">
+                      ${item.price.toLocaleString()}
+                    </p>
+                  </div>
+                  
+                  <div className="ofic-button-group">
+                    <Link 
+                      to={`/office/${item.id}`} 
+                      className="ofic-learn-more-button"
+                    >
+                      Learn more 
+                    </Link>
+                    <Link 
+                      to={`/buy/office`} 
+                      state={{ selectedId: item.id }} 
+                      className="ofic-buy-button"
+                    >
+                      Buy {'>'}
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             ))
           ) : (
-            <div className="no-results">
+            <div className="ofic-no-results">
               <p>No furniture items found in this category.</p>
             </div>
           )}

@@ -1,137 +1,141 @@
-/* --- THE CLASSIC BROWN & WHITE THEME --- */
-:root {
-  --warm-ivory: #ffffff;      /* Pure white background */
-  --deep-brown: #3c2f2f;      /* Deep Espresso for text/accents */
-  --soft-tan: #fdfaf7;        /* Subtle warm background for cards */
-  --muted-brown: #8b735b;     /* Muted earth tone for secondary text */
-  --border-sepia: #e8e2db;    /* Soft warm divider */
-}
+/* =========================================
+   Customer Service Training Styles 
+   (Apple Store Aesthetic)
+   ========================================= */
 
-.service-sub-container {
-  background-color: var(--warm-ivory);
-  color: var(--deep-brown);
-  padding-bottom: 100px;
-}
-
-/* --- Hero Section --- */
-.service-hero {
-  max-width: 1200px;
+.cusser {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f; 
+  background-color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 6rem 2rem;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 120px 24px 80px;
+}
+
+/* =========================================
+   1. Hero Section
+   ========================================= */
+.cusser-hero {
   text-align: center;
+  padding-bottom: 5rem;
 }
 
-.service-hero .eyebrow {
-  font-size: 13px;
-  font-weight: 700;
+.cusser-eyebrow {
+  font-size: 0.875rem;
+  color: #0066cc; /* Apple Blue Accent */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted-brown);
-  margin-bottom: 15px;
 }
 
-.service-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: var(--deep-brown);
+.cusser-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em; 
+  margin-bottom: 1.25rem;
+  color: #1d1d1f;
 }
 
-.service-hero h1 span {
-  display: block;
-  color: var(--muted-brown);
+.cusser-hero h1 span {
+  color: #86868b; /* Apple Gray */
+}
+
+.cusser-hero-sub {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: #86868b;
   font-weight: 400;
-  margin-top: 10px;
-}
-
-.hero-sub {
-  font-size: 20px;
-  color: var(--deep-brown);
-  opacity: 0.8;
-  margin-top: 25px;
-  font-style: italic; /* Adds a "classic" touch */
-}
-
-/* --- Program Grid (iPad Store Layout) --- */
-.program-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 24px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
 }
 
-.program-card {
-  background-color: var(--soft-tan);
-  padding: 50px 40px;
+/* =========================================
+   2. Program Grid
+   ========================================= */
+.cusser-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* =========================================
+   3. Cards
+   ========================================= */
+.cusser-card {
+  background: #fbfbfd;
+  padding: 3rem 2.5rem;
   border-radius: 24px;
-  border: 1px solid var(--border-sepia);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0,0,0,0.02);
 }
 
-.program-card:hover {
-  background-color: var(--deep-brown);
-  color: var(--warm-ivory);
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(60, 47, 47, 0.15);
+.cusser-card:hover {
+  transform: scale(1.02); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.program-card h3 {
-  font-size: 26px;
+.cusser-card h3 {
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
-.program-card p {
-  font-size: 16px;
-  color: var(--muted-brown);
-  margin-bottom: 30px;
-  letter-spacing: 0.02em;
+.cusser-card p {
+  color: #86868b;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  flex-grow: 1; /* Pushes the link to the bottom */
 }
 
-/* Ensure paragraph text changes on hover */
-.program-card:hover p {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* --- Standard Link / Button --- */
-.std-link {
-  background: transparent;
-  border: 1px solid var(--deep-brown);
-  color: var(--deep-brown);
-  padding: 10px 24px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
+/* =========================================
+   4. Links
+   ========================================= */
+.cusser-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc; 
+  font-weight: 400;
+  font-size: 1.0625rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
 }
 
-.program-card:hover .std-link {
-  border-color: var(--warm-ivory);
-  color: var(--warm-ivory);
+.cusser-link:hover {
+  color: #004499;
+  text-decoration: underline;
 }
 
-.std-link:hover {
-  background: var(--deep-brown);
-  color: var(--warm-ivory);
-}
-
-.program-card:hover .std-link:hover {
-  background: var(--warm-ivory);
-  color: var(--deep-brown);
-}
-
-/* --- Responsive --- */
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
 @media (max-width: 768px) {
-  .service-hero { padding-top: 80px; }
-  .program-card { padding: 40px 24px; }
+  .cusser {
+    padding: 4rem 1.5rem;
+  }
+
+  .cusser-hero {
+    padding-bottom: 3.5rem;
+  }
+  
+  .cusser-card {
+    padding: 2rem;
+    border-radius: 18px;
+  }
 }

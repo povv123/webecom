@@ -2,14 +2,14 @@
    VARIABLES & GLOBAL HEADER (Desktop Focus)
    ========================================================= */
 :root {
-  --nav-height: 44px;
+  --nav-height: 44px; /* Apple strictly uses 44px for the global nav */
   --apple-bg: rgba(251, 251, 253, 0.8);
   --apple-text: #1d1d1f;
-  --apple-secondary: #6e6e73;
+  --apple-secondary: #86868b;
   --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.apple-header {
+.mega-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,10 +18,12 @@
   background: var(--apple-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px); 
   backdrop-filter: saturate(180%) blur(20px);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Myriad Set Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Apple's exact font stack */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16); /* Subtle bottom border */
 }
 
-.nav-container {
+.mega-nav-container {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
@@ -29,22 +31,22 @@
   display: block;
 }
 
-.desktop-nav-list {
+.mega-desktop-nav-list {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
   height: 100%;
-  padding: 0 22px; 
+  padding: 0 22px; /* Apple uses slightly tighter padding on the edges */
   margin: 0;
   box-sizing: border-box;
 }
 
-.nav-link {
+.mega-nav-link {
   padding: 0 8px;
-  font-size: 12px;
-  line-height: 3.66667; 
+  font-size: 12px; /* Apple desktop links are exactly 12px */
+  line-height: 1; 
   text-decoration: none;
   color: var(--apple-text);
   opacity: 0.8;
@@ -53,42 +55,43 @@
   letter-spacing: -0.01em;
 }
 
-.nav-link:hover { opacity: 1; }
-.logo-link svg { fill: var(--apple-text); height: 44px; display: block; }
+.mega-nav-link:hover { opacity: 1; }
+.mega-logo-link svg { fill: var(--apple-text); height: 14px; display: block; opacity: 0.8; transition: opacity 0.3s var(--ease-apple); }
+.mega-logo-link:hover svg { opacity: 1; }
 
 /* Desktop MegaMenu Panel */
-.megamenu-panel {
+.mega-panel {
   position: absolute;
-  top: var(--nav-height);
+  top: var(--nav-height); /* Drops exactly from the 44px mark */
   left: 0;
   width: 100%;
-  background: #fff;
+  background: #fbfbfd;
   display: grid;
   grid-template-rows: 0fr; 
   transition: grid-template-rows 0.4s var(--ease-apple);
   overflow: hidden;
 }
 
-.megamenu-panel.is-visible { grid-template-rows: 1fr; }
-.megamenu-inner { min-height: 0; }
-.megamenu-content { max-width: 1024px; margin: 0 auto; padding: 40px 22px 84px; display: flex; gap: 84px; }
-.column-heading { font-size: 12px; line-height: 1.33337; color: var(--apple-secondary); font-weight: 400; margin: 0 0 14px 0; }
-.column-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.column-item-link { font-size: 20px; font-weight: 600; color: var(--apple-text); text-decoration: none; transition: color 0.3s var(--ease-apple); }
-.column-item-link:hover { color: #0066cc; }
+.mega-panel.mega-is-visible { grid-template-rows: 1fr; }
+.mega-panel-inner { min-height: 0; }
+.mega-panel-content { max-width: 1024px; margin: 0 auto; padding: 40px 22px 84px; display: flex; gap: 84px; }
+.mega-column-heading { font-size: 15px; color: var(--apple-secondary); font-weight: 400; margin: 0 0 14px 0; }
+.mega-column-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.mega-column-item-link { font-size: 22px; font-weight: 600; color: rgba(15, 15, 15, 0.89); text-decoration: none; transition: color 0.3s var(--ease-apple); }
+.mega-column-item-link:hover { color: #000000; } /* Apple blue on hover for sub-links */
 
-.page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-apple); z-index: 999; }
-.page-overlay.is-active { opacity: 1; pointer-events: auto; }
-.header-spacer { height: var(--nav-height); width: 100%; display: block; }
+.mega-page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-apple); z-index: 999; }
+.mega-page-overlay.mega-is-active { opacity: 1; pointer-events: auto; }
+.mega-header-spacer { height: var(--nav-height); width: 100%; display: block; }
 
 /* --- Navigation Actions (Icons) --- */
-.nav-actions {
+.mega-nav-actions {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-.action-btn {
+.mega-action-btn {
   color: var(--apple-text);
   opacity: 0.8;
   display: flex;
@@ -96,15 +99,13 @@
   transition: opacity 0.2s;
   text-decoration: none;
 }
-
-.action-btn:hover {
-  opacity: 1;
-}
+.mega-action-btn svg { height: 14px; }
+.mega-action-btn:hover { opacity: 1; }
 
 /* --- Hamburger Logic --- */
-.menu-toggle {
-  display: none; /* Hidden on desktop */
-  width: 44px; /* Larger touch target */
+.mega-menu-toggle {
+  display: none; 
+  width: 44px; 
   height: var(--nav-height);
   background: none;
   border: none;
@@ -114,114 +115,104 @@
   padding: 0;
 }
 
-.hamburger-line {
+.mega-hamburger-line {
   position: absolute;
-  left: 13px; /* Center the 18px line inside the 44px button */
+  left: 13px; 
   width: 18px;
-  height: 1.5px;
+  height: 1px; /* Apple lines are extremely thin (1px) */
   background-color: var(--apple-text);
   display: block;
   transition: transform 0.3s var(--ease-apple), opacity 0.2s ease;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
-/* Perfect alignment for the 3 lines */
-.hamburger-line.top { top: 17px; }
-.hamburger-line.mid { top: 21px; }
-.hamburger-line.bottom { top: 25px; }
+/* Perfect alignment for the 3 lines within 44px */
+.mega-hamburger-line.mega-top { top: 18px; }
+.mega-hamburger-line.mega-mid { top: 22px; }
+.mega-hamburger-line.mega-bottom { top: 26px; }
 
-/* Hamburger to X Animation (Force Fix with !important) */
-.menu-toggle.is-active .hamburger-line.top { 
+/* Hamburger to X Animation */
+.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-top { 
   transform: translateY(4px) rotate(45deg) !important; 
 }
-
-.menu-toggle.is-active .hamburger-line.mid { 
+.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-mid { 
   opacity: 0 !important; 
 }
-
-.menu-toggle.is-active .hamburger-line.bottom { 
+.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-bottom { 
   transform: translateY(-4px) rotate(-45deg) !important; 
 }
 
 /* =========================================================
    MOBILE MENU CONTAINER (Hidden on Desktop)
    ========================================================= */
-.nav-list-container {
+.mega-nav-list-container {
   display: none;
 }
 
 /* =========================================================
-   MOBILE MEDIA QUERIES (Sliding Panes)
+   MOBILE MEDIA QUERIES
    ========================================================= */
 @media (max-width: 834px) {
-  .desktop-only { display: none !important; }
+  .mega-desktop-only { display: none !important; }
   
-  /* Bring icons slightly closer on small screens */
-  .nav-actions {
-    gap: 16px;
-  }
-
-  .menu-toggle { 
-    display: block; 
-  } 
+  .mega-nav-actions { gap: 16px; }
+  .mega-menu-toggle { display: block; } 
   
-  .nav-list-container {
+  .mega-nav-list-container {
     display: block; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #fff;
+    background: #fbfbfd;
     padding-top: var(--nav-height);
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s;
+    transition: opacity 0.3s var(--ease-apple), visibility 0.3s;
     overflow: hidden;
     z-index: 10000;
   }
 
-  .nav-open .nav-list-container {
+  .mega-nav-wrapper.mega-nav-open .mega-nav-list-container,
+  .mega-nav-open .mega-nav-list-container {
     visibility: visible;
     opacity: 1;
   }
 
   /* Sliding Panes */
-  .nav-slider-wrapper {
+  .mega-nav-slider-wrapper {
     display: flex;
     width: 200%;
     height: calc(100% - var(--nav-height));
     transition: transform 0.4s var(--ease-apple);
   }
 
-  .submenu-view .nav-slider-wrapper {
+  .mega-submenu-view .mega-nav-slider-wrapper {
     transform: translateX(-50%);
   }
 
-  .pane {
+  .mega-pane {
     width: 50%;
     height: 100%;
-    padding: 30px 40px;
+    padding: 0 40px 40px; /* Removed top padding, let items handle it */
     overflow-y: auto;
   }
 
   /* Mobile Main List */
-  .mobile-nav-list {
+  .mega-mobile-nav-list {
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
   }
 
-  .mobile-nav-item {
-    border-bottom: 1px solid #e5e5ea;
-  }
-
-  .mobile-link, .mobile-link-btn {
+  .mega-mobile-link, .mega-mobile-link-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 26px;
+    font-size: 28px; /* Apple uses massive text on mobile */
     font-weight: 600;
-    padding: 15px 0;
+    padding: 12px 0;
     width: 100%;
     opacity: 1;
     color: var(--apple-text);
@@ -231,59 +222,67 @@
     text-align: left;
     cursor: pointer;
     font-family: inherit;
+    transition: opacity 0.2s ease;
   }
 
-  .chevron {
+  .mega-mobile-link:hover, .mega-mobile-link-btn:hover {
+    opacity: 0.7;
+  }
+
+  .mega-chevron {
     color: var(--apple-secondary);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 400;
   }
 
   /* Mobile Submenu Circular 'X' Back Button */
-  .back-btn {
+  .mega-back-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: #f5f5f7; 
+    width: 32px;
+    height: 32px;
+    background: #e5e5ea; 
     border-radius: 50%;  
     border: none;
     color: var(--apple-text);
     padding: 0;
-    margin-bottom: 24px;
+    margin: 20px 0 24px;
     cursor: pointer;
     transition: background 0.2s;
   }
 
-  .back-btn:hover {
-    background: #e5e5ea; 
-  }
+  .mega-back-btn:hover { background: #d1d1d6; }
 
-  .sub-pane-title {
-    font-size: 29px;
+  .mega-sub-pane-title {
+    font-size: 28px;
     font-weight: 600;
     margin-bottom: 25px;
     color: var(--apple-text);
   }
 
-  .sub-pane-col {
+  .mega-sub-pane-col {
     margin-bottom: 30px;
   }
 
-  .sub-pane-col h3 {
-    font-size: 11px;
+  .mega-sub-pane-col h3 {
+    font-size: 12px;
     color: var(--apple-secondary);
-    text-transform: uppercase;
-    margin: 0 0 10px 0;
+    font-weight: 400;
+    margin: 0 0 12px 0;
   }
 
-  .sub-pane-col a {
+  .mega-sub-pane-col a {
     display: block;
-    font-size: 18px;
-    font-weight: 500;
-    color: rgb(41, 31, 31);
-    padding: 12px 0;
+    font-size: 20px; /* Sub-links are slightly smaller but still large */
+    font-weight: 600;
+    color: var(--apple-text);
+    padding: 8px 0;
     text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  
+  .mega-sub-pane-col a:hover {
+    opacity: 0.7;
   }
 }

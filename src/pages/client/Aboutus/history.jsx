@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../../styles/aboutus/aboutus.css";
+import "../../../styles/aboutus/history.css";
+
+import historyImg from '../../../assets/images/history.jpg';
 
 const History = () => {
   return (
@@ -10,7 +12,7 @@ const History = () => {
       <div className="about-nav">
 
         <NavLink to="/about" className="nav-link">
-          About us
+          About Us
         </NavLink>
 
         <NavLink to="/about/mission" className="nav-link">
@@ -29,7 +31,7 @@ const History = () => {
 
       {/* HERO */}
       <section className="hero-image">
-        <img src="/images/history.jpg" alt="history" />
+       <img src={historyImg} alt="Company History" className="history-image" />
         <h1>Our History</h1>
       </section>
 

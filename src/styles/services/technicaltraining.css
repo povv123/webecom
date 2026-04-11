@@ -1,0 +1,141 @@
+/* =========================================
+   Technical Training Styles 
+   (Apple Store Aesthetic)
+   ========================================= */
+
+.TTT {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f; 
+  background-color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 6rem 2rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   1. Hero Section
+   ========================================= */
+.TTT-hero {
+  text-align: center;
+  padding-bottom: 5rem;
+}
+
+.TTT-eyebrow {
+  font-size: 0.875rem;
+  color: #0066cc; /* Apple Blue Accent */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.TTT-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em; 
+  margin-bottom: 1.25rem;
+  color: #1d1d1f;
+}
+
+.TTT-hero h1 span {
+  color: #86868b; /* Apple Gray */
+}
+
+.TTT-hero-sub {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: #86868b;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* =========================================
+   2. Program Grid
+   ========================================= */
+.TTT-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* =========================================
+   3. Cards
+   ========================================= */
+.TTT-card {
+  background: #fbfbfd;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.TTT-card:hover {
+  transform: scale(1.02); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.TTT-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.TTT-card p {
+  color: #86868b;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  flex-grow: 1; /* Pushes the link to the bottom */
+}
+
+/* =========================================
+   4. Links
+   ========================================= */
+.TTT-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc; 
+  font-weight: 400;
+  font-size: 1.0625rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.TTT-link:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 768px) {
+  .TTT {
+    padding: 4rem 1.5rem;
+  }
+
+  .TTT-hero {
+    padding-bottom: 3.5rem;
+  }
+  
+  .TTT-card {
+    padding: 2rem;
+    border-radius: 18px;
+  }
+}

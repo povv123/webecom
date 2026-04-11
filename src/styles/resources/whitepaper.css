@@ -1,0 +1,200 @@
+/* Main Container */
+.wpaper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.wpaper-header {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.wpaper-header h1 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.003em;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.wpaper-header p {
+  font-size: 19px;
+  color: #86868b;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* List Layout */
+.wpaper-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+/* Individual Rows */
+.wpaper-row {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 30px;
+}
+
+.wpaper-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Content Area (Icon + Text) */
+.wpaper-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1;
+}
+
+.wpaper-icon-container {
+  background-color: #f5f5f7;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wpaper-icon {
+  font-size: 24px;
+}
+
+/* Text Information */
+.wpaper-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wpaper-meta {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wpaper-category {
+  color: #0066cc;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.wpaper-date {
+  color: #86868b;
+  font-weight: 400;
+}
+
+.wpaper-dot {
+  color: #d2d2d7;
+}
+
+.wpaper-title {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #1d1d1f;
+}
+
+.wpaper-desc {
+  font-size: 14px;
+  color: #515154;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Actions Area (Size + Button) */
+.wpaper-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.wpaper-size {
+  font-size: 13px;
+  color: #86868b;
+  font-weight: 500;
+}
+
+.wpaper-btn-download {
+  background-color: #e8f0fe; /* Soft blue background */
+  color: #0066cc;
+  border: none;
+  border-radius: 980px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.wpaper-btn-download:hover {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+.wpaper-download-icon {
+  font-weight: bold;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .wpaper-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .wpaper-actions {
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 74px; /* Aligns with text past the icon */
+  }
+
+  .wpaper-size {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .wpaper-header h1 {
+    font-size: 36px;
+  }
+  
+  .wpaper-actions {
+    padding-left: 0;
+  }
+}

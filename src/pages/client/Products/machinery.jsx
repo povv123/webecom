@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// 1. Updated to import machineryProducts
 import { machineryProducts } from '../../../data/Products/machineryData'; 
-import '../../../styles/products/machinetools.css'; 
+import '../../../styles/products/machine.css'; 
 
 const MachineryPage = () => {
   const [filter, setFilter] = useState('All');
@@ -16,14 +15,15 @@ const MachineryPage = () => {
     p.subCategory === 'machinery' && (filter === 'All' || p.type === filter)
   ) : [];
 
-  // 2. Heavy Machinery specific categories
+  // 2. Heavy Machinery specific categories (Added Electronic Machines)
   const categories = [
     'All', 
     'Excavators', 
     'Wheel Loaders', 
     'Forklifts', 
     'Generators', 
-    'Industrial Lathes'
+    'Industrial Lathes',
+    'Electronic Machines' // Added electronic machines here
   ];
 
   useEffect(() => {
@@ -31,24 +31,23 @@ const MachineryPage = () => {
   }, [filter]);
 
   return (
-    <div className="store-container machinery-theme">
+    <div className="machie-store-container">
       {/* 1. Page Header */}
-      <header className="shop-header">
-        <div className="header-content">
-          <h1 className="shop-title">
+      <header className="machie-shop-header">
+        <div className="machie-header-content">
+          <h1 className="machie-shop-title">
             {filter === 'All' ? 'Shop Machinery' : `Shop ${filter}`}
           </h1>
-        
         </div>
       </header>
 
       {/* 2. Heavy Navigation */}
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+      <nav className="machie-local-sub-nav">
+        <div className="machie-sub-nav-wrapper">
           {categories.map(cat => (
             <button 
               key={cat} 
-              className={filter === cat ? 'nav-item active' : 'nav-item'} 
+              className={filter === cat ? 'machie-nav-item active' : 'machie-nav-item'} 
               onClick={() => setFilter(cat)}
             >
               {cat === 'All' ? 'All Equipment' : cat}
@@ -58,49 +57,64 @@ const MachineryPage = () => {
       </nav>
 
       {/* 3. Machinery Selection Section */}
-      <section className="product-selection">
-        <div className="selection-intro">
-          <h2><strong>Power on demand.</strong> Engineered for industrial scale.</h2>
+      <section className="machie-product-selection">
+        <div className="machie-selection-intro">
+          {/* Updated text to encompass electronic machines */}
+          <h2><strong>Power on demand.</strong> Heavy mechanical and electronic machines engineered for industrial scale.</h2>
         </div>
 
-        <div className="horizontal-scroll-grid">
+        <div className="machie-horizontal-scroll-grid">
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
-              <div key={item.id} className="apple-card">
-                <div className="card-top">
-                  {item.isNew && <span className="new-label">NEW GEN</span>}
-                  <h3 className="card-product-name">{item.name}</h3>
-                  <p className="card-subtitle">{item.tagline || item.brand}</p>
+              <div key={item.id} className="machie-apple-card">
+                
+                <div className="machie-card-top">
+                  {item.isNew && <span className="machie-new-label">New Gen</span>}
+                  <h3 className="machie-card-product-name">{item.name}</h3>
+                  <p className="machie-card-subtitle">{item.tagline || item.brand}</p>
                 </div>
                 
-                <div className="card-image-wrapper">
-                  <img src={item.image} alt={item.name} />
+                <div className="machie-card-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    style={{ maxHeight: '180px', objectFit: 'contain' }}
+                  />
                 </div>
                 
-               <div className="card-bottom">
-  <div className="price-container">
-    <p className="price-tag">${item.price.toLocaleString()}</p>
-    <p className="monthly-tag">
-      Business Lease: ${Math.round(item.price / 60)}/mo.
-    </p>
-  </div>
-  
-  {/* UPDATE: Route to /buy/machinery and pass the item ID for auto-selection */}
-  <Link 
-    to={`/buy/machinery`} 
-    state={{ selectedId: item.id }} 
-    className="buy-button"
-  >
-    Buy
-  </Link>
-</div>
+                <div className="machie-card-bottom">
+                  <div className="machie-price-container">
+                    <p className="machie-price-tag">${item.price.toLocaleString()}</p>
+                    <p className="machie-monthly-tag">
+                      Business Lease: ${Math.round(item.price / 60)}/mo.
+                    </p>
+                  </div>
+                  
+                  {/* NEW: Button Group for Learn More & Buy */}
+                  <div className="machie-button-group">
+                    <Link 
+                      to={`/machinery/${item.id}`} /* Adjust route to match your detail page */
+                      className="machie-learn-more-button"
+                    >
+                      Learn more 
+                    </Link>
+                    <Link 
+                      to={`/buy/machinery`} 
+                      state={{ selectedId: item.id }} 
+                      className="machie-buy-button"
+                    >
+                      Buy  {'>'}
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             ))
           ) : (
-            <div className="no-results" style={{ textAlign: 'center', width: '100%', padding: '50px' }}>
-              <p>No heavy machinery found for "{filter}".</p>
+            <div className="machie-no-results">
+              <p>No machinery found for "{filter}".</p>
               <p style={{ fontSize: '12px', color: '#86868b' }}>
-                Ensure your data file uses <strong>subCategory: "machinery"</strong>
+                Ensure your data file uses <strong>subCategory: "machinery"</strong> and matches the category exact spelling.
               </p>
             </div>
           )}

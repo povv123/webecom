@@ -1,0 +1,257 @@
+/* --- Global & Container --- */
+.machie-store-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7; /* Apple's signature light gray background */
+  color: #1d1d1f;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* --- Header --- */
+.machie-shop-header {
+  background-color: #f5f5f7;
+  padding: 60px 20px 20px;
+  text-align: center;
+}
+
+.machie-shop-title {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.machie-local-sub-nav {
+  position: sticky;
+  top: 0;
+  background-color: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  padding: 15px 20px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.machie-sub-nav-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.machie-sub-nav-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.machie-nav-item {
+  background: transparent;
+  border: none;
+  color: #1d1d1f;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.machie-nav-item:hover {
+  color: #0071e3;
+}
+
+.machie-nav-item.active {
+  background-color: #1d1d1f;
+  color: #ffffff;
+}
+
+/* --- Product Selection Section --- */
+.machie-product-selection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.machie-selection-intro {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.machie-selection-intro h2 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.machie-selection-intro strong {
+  font-weight: 600;
+}
+
+/* --- Horizontal Scroll Grid --- */
+.machie-horizontal-scroll-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 10px 10px 40px 10px; /* Space for shadow */
+  scrollbar-width: thin;
+  scrollbar-color: #d2d2d7 transparent;
+  scroll-snap-type: x mandatory;
+}
+
+.machie-horizontal-scroll-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.machie-horizontal-scroll-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.machie-horizontal-scroll-grid::-webkit-scrollbar-thumb {
+  background-color: #d2d2d7;
+  border-radius: 10px;
+}
+
+/* --- Product Cards --- */
+.machie-apple-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  min-width: 340px;
+  max-width: 340px;
+  flex-shrink: 0;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.machie-apple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.machie-new-label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #bf4800; /* Apple's rust orange */
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.machie-card-top {
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 15px;
+}
+
+.machie-card-product-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.machie-card-subtitle {
+  font-size: 0.95rem;
+  color: #86868b;
+  margin: 0;
+}
+
+.machie-card-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  margin-bottom: 40px;
+}
+
+.machie-card-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.machie-price-container {
+  margin-bottom: 15px;
+}
+
+.machie-price-tag {
+  font-size: 0.95rem;
+  color: #1d1d1f;
+  margin: 0 0 4px 0;
+  font-weight: 400;
+}
+
+.machie-monthly-tag {
+  font-size: 0.8rem;
+  color: #86868b;
+  margin: 0;
+}
+
+/* --- Button Group (Learn More & Buy) --- */
+.machie-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; 
+  margin-top: 5px;
+}
+
+/* Learn more: Solid blue box/pill */
+.machie-learn-more-button {
+  background-color: #0071e3;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.machie-learn-more-button:hover {
+  background-color: #0077ed;
+}
+
+/* Buy: Blue text link */
+.machie-buy-button {
+  background-color: transparent; 
+  color: #0071e3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  padding: 8px 0;
+}
+
+.machie-buy-button:hover {
+  text-decoration: underline;
+  color: #0077ed; 
+}
+
+/* --- Empty State / No Results --- */
+.machie-no-results {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px;
+  color: #86868b;
+  font-size: 1.1rem;
+}

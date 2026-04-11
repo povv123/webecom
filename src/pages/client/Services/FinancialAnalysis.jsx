@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import '../../../styles/services/finaces.css'
 const FinancialAnalysis = () => {
   const programs = [
     { title: "Risk Assessment", area: "Market & Credit Risk" },
@@ -9,7 +8,7 @@ const FinancialAnalysis = () => {
   ];
 
   return (
-    <div className="service-sub-container">
+    <div className="finacc service-sub-container">
       <section className="service-hero">
         <p className="eyebrow">Consulting</p>
         <h1>Financial Analysis. <span>Clarity in every number.</span></h1>
@@ -27,4 +26,5 @@ const FinancialAnalysis = () => {
     </div>
   );
 };
+
 export default FinancialAnalysis;

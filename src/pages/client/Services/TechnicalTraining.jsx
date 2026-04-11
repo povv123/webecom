@@ -1,27 +1,27 @@
 import React from 'react';
 
+import '../../../styles/services/technicaltraining.css'; // Make sure to create this CSS file
 
 const TechnicalTraining = () => {
   const programs = [
-    { title: "Engineering", area: "DevOps & Full Stack" },
-    { title: "Data Science", area: "ML & Predictive Analytics" },
-    { title: "Security", area: "Ethical Hacking & Encryption" }
+    { title: "Law", area: "lawer" },
+    { title: "Hight school", area: "grade 9 to 12" },
+    { title: "English", area: "Special english" }
   ];
 
   return (
-    <div className="service-sub-container">
-      <section className="service-hero">
-        <p className="eyebrow">Training</p>
+    <div className="TTT">
+      <section className="TTT-hero">
         <h1>Technical Training. <span>Elevate your team’s expertise.</span></h1>
-        <p className="hero-sub">Advanced workshops led by industry veterans.</p>
+        <p className="TTT-hero-sub">Advanced workshops led by industry veterans.</p>
       </section>
 
-      <section className="program-grid">
+      <section className="TTT-grid">
         {programs.map((p, i) => (
-          <div key={i} className="program-card">
+          <div key={i} className="TTT-card">
             <h3>{p.title}</h3>
             <p>{p.area}</p>
-            <button className="std-link">Curriculum &gt;</button>
+            <button className="TTT-link">Learn more &gt;</button>
           </div>
         ))}
       </section>

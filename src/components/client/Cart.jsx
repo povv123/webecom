@@ -1,94 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../../styles/cart.css'; 
 
 const Cart = () => {
-  // Mock data - This will eventually come from your Global State/Context
-  const cartItems = [
-    {
-      id: 1,
-      name: "iPhone 15 Pro",
-      spec: "Natural Titanium, 256GB",
-      price: 999,
-      qty: 1,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg"
-    }
-  ];
-
-  const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+  // Using an empty array to force the empty state view
+  const [cartItems] = useState([]); 
 
   return (
-    <div className="cart-page bg-gray-50 pt-32 pb-20 min-h-screen">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="bagfi-container">
+      <div className="bagfi-content bagfi-empty-layout">
         
         {cartItems.length > 0 ? (
-          <>
-            <header className="mb-12">
-              <h1 className="text-4xl font-semibold text-gray-900">Review your bag.</h1>
-              <p className="text-gray-500 mt-2">Free delivery and free returns on all orders.</p>
-            </header>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* List of Items */}
-              <div className="lg:col-span-2 space-y-8">
-                {cartItems.map((item) => (
-                  <div key={item.id} className="flex gap-6 pb-8 border-b border-gray-200">
-                    <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center p-2 shadow-sm">
-                      <img src={item.img} alt={item.name} className="object-contain" />
-                    </div>
-                    
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h2 className="text-xl font-medium">{item.name}</h2>
-                          <p className="text-sm text-gray-500 mt-1">{item.spec}</p>
-                        </div>
-                        <p className="text-lg font-medium">${item.price.toLocaleString()}</p>
-                      </div>
-
-                      <div className="flex justify-between items-center mt-4">
-                        <div className="flex items-center gap-4 text-sm text-blue-600">
-                          <select className="bg-transparent font-medium focus:outline-none">
-                            {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
-                          </select>
-                          <button className="hover:underline">Remove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Order Summary */}
-              <aside className="bg-white p-8 rounded-2xl shadow-sm h-fit sticky top-32">
-                <h3 className="text-lg font-semibold mb-6">Order Summary</h3>
-                <div className="space-y-4 text-gray-600">
-                  <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span>${subtotal.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Shipping</span>
-                    <span className="text-green-600 font-medium">FREE</span>
-                  </div>
-                  <div className="flex justify-between pt-4 border-t border-gray-100 text-xl font-semibold text-gray-900">
-                    <span>Total</span>
-                    <span>${subtotal.toLocaleString()}</span>
-                  </div>
-                </div>
-                
-                <button className="w-full bg-blue-600 text-white py-4 rounded-xl mt-8 font-medium hover:bg-blue-700 transition-colors">
-                  Check Out
-                </button>
-              </aside>
-            </div>
-          </>
+          <div>
+          
+          </div>
         ) : (
-          <div className="text-center py-20">
-            <h1 className="text-3xl font-semibold">Your bag is empty.</h1>
-            <p className="text-gray-500 mt-4 mb-8">Items stay in your bag for 30 days.</p>
-            <Link to="/products" className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700">
-              Continue Shopping
-            </Link>
+          <div className="bagfi-empty-state">
+            <h1 className="bagfi-empty-title">Your Bag is empty.</h1>
+            <p className="bagfi-empty-signin-text">
+              <Link to="/signin" className="bagfi-text-link">Sign in</Link> to see if you have any saved items
+            </p>
+
+            <div className="bagfi-profile-section">
+              <h3 className="bagfi-profile-heading">My Profile</h3>
+              <ul className="bagfi-profile-list">
+                
+                <li className="bagfi-profile-item">
+                  <Link to="/orders" className="bagfi-profile-link">
+                    {/* Box Icon */}
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="bagfi-icon">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    Orders
+                  </Link>
+                </li>
+
+                <li className="bagfi-profile-item">
+                  <Link to="/saves" className="bagfi-profile-link">
+                    {/* Bookmark Icon */}
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="bagfi-icon">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Your Saves
+                  </Link>
+                </li>
+
+                <li className="bagfi-profile-item">
+                  <Link to="/account" className="bagfi-profile-link">
+                    {/* Gear/Settings Icon */}
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="bagfi-icon">
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Account
+                  </Link>
+                </li>
+
+                <li className="bagfi-profile-item">
+                  <Link to="/signin" className="bagfi-profile-link">
+                    {/* User Profile Icon */}
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="bagfi-icon">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Sign in
+                  </Link>
+                </li>
+
+              </ul>
+            </div>
           </div>
         )}
       </div>

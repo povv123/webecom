@@ -31,5 +31,60 @@ export const machineryProducts = [
     tagline: "Superior stability and bucket capacity.",
     image: "https://example.com/loader.png",
     isNew: true
+  },
+  {
+    id: 'elec-01',
+    name: "Commercial Deep Freezer XL",
+    brand: "Samsung",
+    subCategory: "machinery",
+    type: "Electronic Machines",
+    price: 2100,
+    tagline: "Ultra-low temperature storage for bulk preservation.",
+    image: "https://example.com/freezer.png",
+    isNew: true
+  },
+  {
+    id: 'elec-02',
+    name: "Industrial Split AC 5-Ton",
+    brand: "Daikin",
+    subCategory: "machinery",
+    type: "Electronic Machines",
+    price: 3400,
+    tagline: "Rapid cooling for large warehouse and factory floors.",
+    image: "https://example.com/ac.png",
+    isNew: false
+  },
+  {
+    id: 'elec-03',
+    name: "High-Velocity Drum Fan",
+    brand: "Lasko",
+    subCategory: "machinery",
+    type: "Electronic Machines",
+    price: 450,
+    tagline: "Heavy-duty air circulation for demanding environments.",
+    image: "https://example.com/fan.png",
+    isNew: false
+  },
+  {
+    id: 'elec-04',
+    name: "ProHEPA Industrial Air Purifier",
+    brand: "Dyson",
+    subCategory: "machinery",
+    type: "Electronic Machines",
+    price: 1250,
+    tagline: "Advanced filtration for dust and chemical particulate removal.",
+    image: "https://example.com/purifier.png",
+    isNew: true
+  },
+  {
+    id: 'elec-05',
+    name: "Commercial Front-Load Washer",
+    brand: "LG",
+    subCategory: "machinery",
+    type: "Electronic Machines",
+    price: 2800,
+    tagline: "High-capacity, continuous-cycle washing for hospitality.",
+    image: "https://example.com/washing-machine.png",
+    isNew: false
   }
 ];

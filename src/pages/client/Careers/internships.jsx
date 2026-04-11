@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/careers/careers.css';
+import '../../../styles/careers/internship.css';
 
 const Internship = () => {
   const programs = [

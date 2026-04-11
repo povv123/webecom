@@ -1,0 +1,373 @@
+/* =========================================
+   Logistics & Supply Chain Service Styles
+   (Black, Blue, White Theme)
+   ========================================= */
+
+.loogic {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #000000; /* Solid Black */
+  background-color: #ffffff; /* Pure White */
+  overflow-x: hidden;
+}
+
+/* --- Global Section Padding --- */
+.loogic-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+/* =========================================
+   Sticky Local Navigation
+   ========================================= */
+.loogic-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.loogic-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loogic-nav-brand {
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: #000000; /* Black */
+  letter-spacing: -0.01em;
+}
+
+.loogic-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.loogic-nav-links a:not(.loogic-btn-nav) {
+  text-decoration: none;
+  color: #333333; /* Dark Gray */
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.loogic-nav-links a:not(.loogic-btn-nav):hover {
+  color: #0066cc; /* Blue Accent */
+}
+
+.loogic-btn-nav {
+  background: #000000; /* Black */
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px; 
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.loogic-btn-nav:hover {
+  background: #0066cc; /* Blue Accent */
+}
+
+/* =========================================
+   1. Overview (Hero)
+   ========================================= */
+.loogic-hero {
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.loogic-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  color: #0066cc; /* Blue */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.loogic-hero h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  color: #000000; /* Black */
+}
+
+.loogic-hero h1 span {
+  color: #0066cc; /* Blue */
+  font-weight: 800;
+}
+
+.loogic-hero-sub {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: #333333;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Shared Feature Layouts
+   ========================================= */
+.loogic-feature,
+.loogic-feature-alt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.loogic-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0066cc; /* Blue */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.loogic-headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #000000; /* Black */
+}
+
+.loogic-desc {
+  font-size: 1.125rem;
+  color: #333333;
+  line-height: 1.7;
+}
+
+/* Visual Placeholders */
+.loogic-glass-panel {
+  background: #ffffff; /* Pure White */
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.loogic-visual-placeholder {
+  color: #666666;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   4. Success Stories (Cards)
+   ========================================= */
+.loogic-stories {
+  background-color: #ffffff; /* Pure White */
+  border: 1px solid #e5e5e5;
+  border-radius: 32px;
+  margin-bottom: 6rem;
+}
+
+.loogic-stories-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.loogic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 4rem 4rem 4rem;
+}
+
+.loogic-card {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.loogic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+  border-color: #0066cc; /* Blue */
+}
+
+.loogic-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000; /* Black */
+  margin-bottom: 1.5rem;
+}
+
+.loogic-metric {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: #0066cc; /* Blue */
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.loogic-card p:not(.loogic-metric) {
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.loogic-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc; /* Blue */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.loogic-link:hover {
+  color: #000000; /* Black */
+}
+
+.loogic-chevron {
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.loogic-card:hover .loogic-chevron {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   5. Bottom CTA
+   ========================================= */
+.loogic-cta {
+  text-align: center;
+  padding-bottom: 8rem;
+}
+
+.loogic-cta h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #000000; /* Black */
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.loogic-cta p {
+  font-size: 1.25rem;
+  color: #333333;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loogic-btn-primary {
+  background: #000000; /* Black */
+  color: #ffffff;
+  padding: 1.125rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loogic-btn-primary:hover {
+  background: #0066cc; /* Blue */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 102, 204, 0.2);
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 992px) {
+  .loogic-feature,
+  .loogic-feature-alt {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Reorder alt feature on mobile so text is above visual */
+  .loogic-feature-alt .loogic-feature-visual {
+    order: 2;
+  }
+  .loogic-feature-alt .loogic-feature-text {
+    order: 1;
+  }
+
+  .loogic-glass-panel {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .loogic-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .loogic-nav-links {
+    display: none; 
+  }
+
+  .loogic-hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .loogic-glass-panel {
+    height: 250px;
+  }
+  
+  .loogic-stories {
+    border-radius: 0;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .loogic-grid {
+    padding: 0 1rem 3rem 1rem;
+  }
+
+  .loogic-card {
+    padding: 2rem;
+  }
+}

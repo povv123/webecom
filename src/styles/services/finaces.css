@@ -1,0 +1,128 @@
+/* =========================================
+   Financial Analysis Service Styles
+   ========================================= */
+
+.finacc.service-sub-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Hero Section --- */
+.finacc .service-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.finacc .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  color: #0056b3; /* A trustworthy financial blue */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.finacc .service-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.finacc .service-hero h1 span {
+  color: #666666;
+  font-weight: 400;
+  display: block; /* Drops the span to a new line for impact */
+  margin-top: 0.25rem;
+}
+
+.finacc .hero-sub {
+  font-size: 1.25rem;
+  color: #555555;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Program Grid --- */
+.finacc .program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- Program Cards --- */
+.finacc .program-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.finacc .program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+  border-color: #0056b3;
+}
+
+.finacc .program-card h3 {
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.finacc .program-card p {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  flex-grow: 1; /* Pushes the button to the bottom if text lengths vary */
+}
+
+/* --- Call to Action Button --- */
+.finacc .std-link {
+  background: transparent;
+  border: none;
+  color: #0056b3;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.finacc .std-link:hover {
+  color: #003d82;
+}
+
+/* Optional: Slight arrow movement on hover */
+.finacc .program-card:hover .std-link {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .finacc.service-sub-container {
+    padding: 3rem 1.5rem;
+  }
+  
+  .finacc .service-hero {
+    text-align: left;
+  }
+  
+  .finacc .hero-sub {
+    margin: 0;
+  }
+}

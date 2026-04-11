@@ -1,0 +1,176 @@
+/* --- Global Container --- */
+.acc-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fbfbfd; /* Apple's subtle off-white background */
+  color: #1d1d1f;
+  min-height: 80vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.acc-content {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* --- Headers --- */
+.acc-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.acc-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px 0;
+  color: #1d1d1f;
+}
+
+.acc-subtitle {
+  font-size: 1.05rem;
+  color: #86868b;
+  margin: 0;
+}
+
+/* --- Sections & Cards --- */
+.acc-section {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e5e5ea;
+}
+
+.acc-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.acc-section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.acc-edit-btn {
+  background: none;
+  border: none;
+  color: #0071e3;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.acc-edit-btn:hover {
+  text-decoration: underline;
+}
+
+/* --- Information Rows --- */
+.acc-info-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.acc-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.acc-info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.acc-info-row:first-child {
+  padding-top: 0;
+}
+
+.acc-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.acc-value {
+  font-size: 1.05rem;
+  color: #86868b;
+  text-align: right;
+}
+
+/* --- Navigable Rows (Links inside cards) --- */
+.acc-nav-row {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.acc-nav-row:hover {
+  opacity: 0.6;
+}
+
+.acc-arrow-link {
+  color: #d2d2d7;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.acc-status-badge {
+  background-color: #e5e5ea;
+  color: #1d1d1f;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- Footer / Sign Out --- */
+.acc-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.acc-signout-btn {
+  display: inline-block;
+  color: #e30000; /* Apple's red for destructive actions */
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: rgba(227, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.acc-signout-btn:hover {
+  background-color: rgba(227, 0, 0, 0.1);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .acc-section {
+    padding: 20px;
+  }
+  
+  .acc-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .acc-value {
+    text-align: left;
+  }
+  
+  .acc-nav-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}

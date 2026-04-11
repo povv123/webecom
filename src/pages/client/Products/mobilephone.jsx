@@ -4,81 +4,100 @@ import { mobiles } from '../../../data/Products/mobilephoneData';
 import '../../../styles/products/Phone.css'; 
 
 const MobilePhonePage = () => {
+  // Defaulting to 'All' to show every model on first load
   const [filter, setFilter] = useState('All');
 
+  // Filter logic based on the 'brand' property in your data
   const filteredMobiles = mobiles ? mobiles.filter(p => 
     p.subCategory === 'mobile' && (filter === 'All' || p.brand === filter)
   ) : [];
 
-  const brands = ['All Models', 'Apple', 'Samsung', 'Google', 'OnePlus'];
+  const brands = ['All', 'Apple', 'Samsung', 'Google', 'OnePlus'];
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [filter]);
 
   return (
-    <div className="store-container">
-      {/* Secondary Local Nav */}
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+    <div className="phon-page-container">
+      <header className="phon-shop-header">
+        <div className="phon-header-content text-center">
+           <h1 className="phon-shop-title">
+             {filter === 'All' ? 'Shop All Phones' : `Shop ${filter === 'Apple' ? 'iPhone' : filter}`}
+           </h1>
+        </div>
+      </header>
+
+      <nav className="phon-local-sub-nav">
+        <div className="phon-sub-nav-wrapper">
           {brands.map(b => (
             <button 
               key={b} 
-              className={filter === (b === 'All Models' ? 'All' : b) ? 'nav-item active' : 'nav-item'} 
-              onClick={() => setFilter(b === 'All Models' ? 'All' : b)}
+              className={filter === b ? 'phon-nav-item active' : 'phon-nav-item'} 
+              onClick={() => setFilter(b)}
             >
-              {b}
+              {b === 'All' ? 'All Models' : b === 'Apple' ? 'iPhone' : b}
             </button>
           ))}
         </div>
       </nav>
 
-      <header className="shop-header">
-        <div className="header-content text-center">
-          <h1 className="shop-title">
-            {filter === 'All' ? 'All models.' : filter} <span className="text-secondary">Take your pick.</span>
-          </h1>
+      <section className="phon-product-selection">
+        <div className="phon-selection-intro text-center">
+          {/* Brand-specific marketing copy */}
+          {filter === 'Apple' ? (
+            <h2><strong>iPhone.</strong> Forged in titanium.</h2>
+          ) : filter === 'Samsung' ? (
+            <h2><strong>Galaxy.</strong> Epic in every way.</h2>
+          ) : (
+            <h2><strong>Premium Performance.</strong> Find your perfect fit in Cambodia.</h2>
+          )}
         </div>
-      </header>
 
-      <section className="product-selection">
-        <div className="product-grid">
+        <div className="phon-horizontal-scroll-grid">
           {filteredMobiles.map((item) => (
-            <div key={item.id} className="product-card-neo">
-              {/* Product Image */}
-              <div className="card-image-wrapper">
-                <img src={item.image} alt={item.name} />
+            <div key={item.id} className="phon-apple-card">
+              {item.isNew && <span className="phon-new-label">New Arrival</span>}
+              
+              <div className="phon-card-top">
+                <h3 className="phon-card-product-name">{item.name}</h3>
+                <p className="phon-card-subtitle">Official {item.brand} Cambodia Warranty.</p>
               </div>
 
-              {/* Text Content */}
-              <div className="card-body-neo">
-                {item.isNew && <span className="new-label">New</span>}
-                <h3 className="card-product-name">{item.name}</h3>
-                <p className="card-tagline">The power of {item.brand} in your pocket.</p>
-                
-                <div className="price-info">
-                  <p className="price-main">From ${item.price} or ${Math.round(item.price / 12)}/mo.</p>
-                  <p className="price-sub text-xs">for 12 mo.*</p>
+              <div className="phon-card-image-wrapper">
+                <img src={item.image} alt={item.name} className="phon-img" />
+              </div>
+
+              <div className="phon-card-bottom">
+                <div className="phon-price-container">
+                  <p className="phon-price-tag">
+                    From ${item.price.toLocaleString()} or approx. ${Math.round(item.price / 12)}/mo. for 12 mo.*
+                  </p>
                 </div>
-              </div>
-
-              {/* Footer Actions: Pill Button + Buy Link */}
-              <div className="card-footer-neo">
-                <Link to={`/products/item/${item.id}`} className="learn-more-btn">
-                  Learn more
-                </Link>
-                <Link 
-                  to={`/buy/mobile`} 
-                  state={{ selectedId: item.id }} 
-                  className="buy-link-blue"
-                >
-                  Buy {'>'}
-                </Link>
+                
+              
+                <div className="phon-button-group">
+                  <Link 
+                    to={`/products/item/${item.id}`} 
+                    className="phon-learn-more-button"
+                  >
+                    Learn more 
+                  </Link>
+                  <Link 
+                    to={`/buy/mobile`} 
+                    state={{ selectedId: item.id }} 
+                    className="phon-buy-button"
+                  >
+                    Buy {'>'}
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
+      
+   
     </div>
   );
 };

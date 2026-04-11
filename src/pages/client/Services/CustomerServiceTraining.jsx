@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../../../styles/services/customerservicetraining.css'; 
 
 const CustomerServiceTraining = () => {
   const programs = [
@@ -9,22 +10,22 @@ const CustomerServiceTraining = () => {
   ];
 
   return (
-    <div className="service-sub-container">
-      <section className="service-hero">
-        <p className="eyebrow">Training</p>
+    <div className="cusser">
+      <section className="cusser-hero">
         <h1>Customer Service. <span>Master the art of support.</span></h1>
-        <p className="hero-sub">Building lasting relationships with every interaction.</p>
+        <p className="cusser-hero-sub">Building lasting relationships with every interaction.</p>
       </section>
-      <section className="program-grid">
+      <section className="cusser-grid">
         {programs.map((p, i) => (
-          <div key={i} className="program-card">
+          <div key={i} className="cusser-card">
             <h3>{p.title}</h3>
             <p>{p.area}</p>
-            <button className="std-link">Training Modules &gt;</button>
+            <button className="cusser-link">Learn more &gt;</button>
           </div>
         ))}
       </section>
     </div>
   );
 };
+
 export default CustomerServiceTraining;

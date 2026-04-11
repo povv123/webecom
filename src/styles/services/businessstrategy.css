@@ -1,136 +1,337 @@
-/* --- THE CLASSIC THEME (Black & White) --- */
-:root {
-  --classic-bg: #ffffff;
-  --classic-text: #000000;
-  --classic-sub: #86868b;
-  --classic-border: #e5e5e5;
-  --classic-accent: #0066cc; /* Subtle blue for interactive links only */
+/* =========================================
+   Business Strategy Solution Styles
+   ========================================= */
+
+.strat {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-.solutions-detail {
-  background-color: var(--classic-bg);
-  color: var(--classic-text);
-  padding-top: 80px; /* Offset for Navbar */
-}
-
-/* --- Hero Section --- */
-.solutions-hero {
+/* --- Global Section Padding --- */
+.strat-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 24px;
-  text-align: center;
+  padding: 6rem 2rem;
 }
 
-.eyebrow {
-  font-size: 14px;
+/* =========================================
+   Sticky Local Navigation
+   ========================================= */
+.strat-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0;
+}
+
+.strat-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strat-nav-brand {
   font-weight: 700;
+  font-size: 1.125rem;
+  color: #0f172a; /* Deep slate */
+}
+
+.strat-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.strat-nav-links a:not(.strat-btn-nav) {
+  text-decoration: none;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.strat-nav-links a:not(.strat-btn-nav):hover {
+  color: #0f172a;
+}
+
+.strat-btn-nav {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.strat-btn-nav:hover {
+  background: #334155;
+}
+
+/* =========================================
+   1. Overview (Hero)
+   ========================================= */
+.strat-hero {
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.strat-eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: 20px;
-  color: var(--classic-text);
-}
-
-.solutions-hero h1 {
-  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-size: 0.875rem;
+  color: #2563eb; /* Strategy Blue */
   font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
-.solutions-hero h1 span {
-  color: var(--classic-sub);
+.strat-hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
 }
 
-.hero-sub {
-  font-size: 21px;
-  line-height: 1.4;
+.strat-hero h1 span {
+  color: #475569;
+}
+
+.strat-hero-sub {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: #475569;
   max-width: 700px;
   margin: 0 auto;
-  color: var(--classic-sub);
-}
-
-/* --- Feature Grid (Bento Style) --- */
-.solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto 100px;
-  padding: 0 24px;
-}
-
-.solution-card {
-  padding: 48px;
-  background: var(--classic-bg);
-  border: 1px solid var(--classic-border);
-  border-radius: 24px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.solution-card:hover {
-  background: var(--classic-text); /* Flips to Black on hover */
-  color: var(--classic-bg);      /* Text flips to White */
-  border-color: var(--classic-text);
-  transform: translateY(-8px);
-}
-
-.solution-card h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.solution-card p {
-  font-size: 16px;
   line-height: 1.6;
-  opacity: 0.8;
 }
 
-/* --- Case Study Banner --- */
-.case-study-banner {
-  background: var(--classic-text); /* Black Background */
-  color: var(--classic-bg);      /* White Text */
-  margin: 0 24px 80px;
-  padding: 80px 40px;
+/* =========================================
+   Shared Feature Layouts
+   ========================================= */
+.strat-feature,
+.strat-feature-alt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.strat-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.strat-headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.strat-desc {
+  font-size: 1.125rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* Placeholder for 3D/Visual Content */
+.strat-glass-panel {
+  background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+}
+
+.strat-visual-placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   4. Case Studies
+   ========================================= */
+.strat-stories {
+  background-color: #f8fafc;
   border-radius: 32px;
+  margin-bottom: 6rem;
+}
+
+.strat-stories-header {
   text-align: center;
-  max-width: 1200px;
+  margin-bottom: 4rem;
+}
+
+.strat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.strat-card {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.strat-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+}
+
+.strat-metric {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.strat-card p:not(.strat-metric) {
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.strat-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.strat-link:hover {
+  color: #2563eb;
+}
+
+.strat-chevron {
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.strat-card:hover .strat-chevron {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   5. Bottom CTA
+   ========================================= */
+.strat-cta {
+  text-align: center;
+  padding-bottom: 8rem;
+}
+
+.strat-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.strat-cta p {
+  font-size: 1.25rem;
+  color: #475569;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.case-study-banner h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 32px;
-  letter-spacing: -0.02em;
-}
-
-.apple-link {
-  background: none;
-  border: 1px solid var(--classic-bg);
-  color: var(--classic-bg);
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-size: 16px;
+.strat-btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1.125rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: inline-block;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.apple-link:hover {
-  background: var(--classic-bg);
-  color: var(--classic-text);
+.strat-btn-primary:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
 }
 
-/* --- Responsive Adjustments --- */
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 992px) {
+  .strat-feature,
+  .strat-feature-alt {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Reorder alt feature on mobile so text is above visual */
+  .strat-feature-alt .strat-feature-visual {
+    order: 2;
+  }
+  .strat-feature-alt .strat-feature-text {
+    order: 1;
+  }
+
+  .strat-glass-panel {
+    height: 400px;
+  }
+}
+
 @media (max-width: 768px) {
-  .solutions-hero h1 {
-    font-size: 2.5rem;
+  .strat-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .strat-nav-links {
+    display: none; /* Consider adding a hamburger menu here for mobile */
+  }
+
+  .strat-hero {
+    padding-top: 5rem;
+  }
+
+  .strat-glass-panel {
+    height: 300px;
   }
   
-  .solution-card {
-    padding: 32px;
+  .strat-stories {
+    border-radius: 0;
   }
 }

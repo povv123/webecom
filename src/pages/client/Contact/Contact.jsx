@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../../styles/contact/contact.css';
 
 const Contact = () => {
-  const contactMethods = [
+  const supportTopics = [
     {
       id: "inquiry",
       title: "General Inquiry",
@@ -27,40 +28,40 @@ const Contact = () => {
   ];
 
   return (
-    <div className="contact-main-page">
+    <div className="conta">
       {/* Hero Section */}
-      <header className="solutions-hero">
-        <p className="eyebrow">Connect with Eter</p>
-        <h1>How can we <span>help you?</span></h1>
-        <p className="hero-sub">
-          Whether you’re a global enterprise or a growing startup, our experts are ready to assist.
+      <header className="conta-hero">
+        <h1>Need help? Start here.</h1>
+        <p className="conta-sub">
+          Choose a topic below to find solutions, get pricing, or connect with an Eter expert.
         </p>
       </header>
 
       {/* Navigation Grid */}
-      <section className="solutions-grid">
-        {contactMethods.map((method) => (
-          <div key={method.id} className="solution-card">
-            <h3>{method.title}</h3>
-            <p>{method.desc}</p>
-            <Link to={method.path} className="apple-link">
-              {method.label} &gt;
+      <section className="conta-grid">
+        {supportTopics.map((topic) => (
+          <div key={topic.id} className="conta-card">
+            <h3>{topic.title}</h3>
+            <p>{topic.desc}</p>
+            <Link to={topic.path} className="conta-link">
+              {topic.label} <span className="conta-chevron">&gt;</span>
             </Link>
           </div>
         ))}
       </section>
 
-      {/* Global Offices / Additional Info */}
-      <section className="contact-footer-info">
-        <div className="info-block">
-          <h2>Our Headquarters</h2>
-          <p>123 Innovation Drive, Silicon Valley, CA</p>
-          <p>contact@eter-solutions.com</p>
-        </div>
-        <div className="info-block">
-          <h2>Global Reach</h2>
-          <p>Offices in London, Tokyo, and Berlin.</p>
-          <button className="apple-btn-blue">View all locations</button>
+      {/* Additional Info / Footer Blocks */}
+    <section className="conta-footer-info">
+     
+        
+
+        {/* New Shipping Block */}
+        <div className="conta-info-block">
+          <h2>Shipping & Delivery</h2>
+          <p>Fast, reliable delivery across Cambodia.</p>
+          <Link to="/contact/ship" className="conta-link">
+             View shipping options <span className="conta-chevron">&gt;</span>
+          </Link>
         </div>
       </section>
     </div>

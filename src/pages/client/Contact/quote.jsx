@@ -1,20 +1,21 @@
 import React from 'react';
+import '../../../styles/contact/quote.css'; // Adjust path as needed
 
 const Quote = () => {
   return (
-    <div className="form-container">
-      <header className="form-header">
+    <div className="requ">
+      <header className="requ-header">
         <h2>Request a Quote</h2>
         <p>Scale your business with Eter's industrial and office solutions.</p>
       </header>
 
-      <form className="apple-form">
-        <div className="form-row">
-          <div className="input-group">
+      <form className="requ-form">
+        <div className="requ-row">
+          <div className="requ-group">
             <label>Company Name</label>
-            <input type="text" />
+            <input type="text" placeholder="Enter company name" />
           </div>
-          <div className="input-group">
+          <div className="requ-group">
             <label>Industry</label>
             <select>
               <option>Electronics</option>
@@ -24,12 +25,12 @@ const Quote = () => {
           </div>
         </div>
 
-        <div className="input-group">
+        <div className="requ-group">
           <label>Estimated Budget</label>
-          <input type="text" placeholder="e.g. $5,000 - $10,000" />
+          <input type="text" placeholder="e.g. $5,000 - $1,000,000" />
         </div>
 
-        <button type="submit" className="apple-btn-blue">Submit Request</button>
+        <button type="submit" className="requ-btn-blue">Submit Request</button>
       </form>
     </div>
   );

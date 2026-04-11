@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../../styles/resources/resources.css'; 
 
 const Resources = () => {
   const categories = [
@@ -10,19 +11,21 @@ const Resources = () => {
   ];
 
   return (
-    <div className="resources-page">
-      <header className="solutions-hero">
-        <p className="eyebrow">Knowledge Center</p>
-        <h1>Everything you need to <span>move forward.</span></h1>
-        <p className="hero-sub">Explore our library of research, insights, and technical support.</p>
+    <div className="rereso">
+      <header className="rereso-hero">
+        <p className="rereso-eyebrow">Knowledge Center</p>
+        <h1>Everything you need to move forward.</h1>
+        <p className="rereso-sub">Explore our library of research, insights, and technical support.</p>
       </header>
 
-      <section className="solutions-grid">
+      <section className="rereso-grid">
         {categories.map((cat, i) => (
-          <Link to={cat.path} key={i} className="solution-card resource-link">
+          <Link to={cat.path} key={i} className="rereso-card">
             <h3>{cat.title}</h3>
             <p>{cat.desc}</p>
-            <span className="apple-link">Browse {cat.title} &gt;</span>
+            <span className="rereso-link">
+              Browse {cat.title} <span className="rereso-chevron">&gt;</span>
+            </span>
           </Link>
         ))}
       </section>

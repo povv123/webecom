@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// 1. Ensure your data file is renamed or updated accordingly
 import { homeFurniture } from '../../../data/Products/homefurdata'; 
 import '../../../styles/products/homefur.css'; 
 
@@ -12,7 +11,7 @@ const HomeFurniturePage = () => {
     p.subCategory === 'home-furniture' && (filter === 'All' || p.type === filter)
   ) : [];
 
-  // 2. Categories for a complete Home Furniture store
+  // Categories for a complete Home Furniture store
   const categories = [
     'All', 
     'Living Room', 
@@ -27,24 +26,23 @@ const HomeFurniturePage = () => {
   }, [filter]);
 
   return (
-    <div className="store-container">
-      {/* 1. Page Header */}
-      <header className="shop-header">
-        <div className="header-content">
-           <h1 className="shop-title">
+    <div className="fhome-store-container">
+      {/* Page Header */}
+      <header className="fhome-shop-header">
+        <div className="fhome-header-content">
+           <h1 className="fhome-shop-title">
              {filter === 'All' ? 'Shop Furniture' : `Shop ${filter}`}
            </h1>
-       
         </div>
       </header>
 
-      {/* 2. Category Navigation */}
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+      {/* Category Navigation */}
+      <nav className="fhome-local-sub-nav">
+        <div className="fhome-sub-nav-wrapper">
           {categories.map(cat => (
             <button 
               key={cat} 
-              className={filter === cat ? 'nav-item active' : 'nav-item'} 
+              className={filter === cat ? 'fhome-nav-item active' : 'fhome-nav-item'} 
               onClick={() => setFilter(cat)}
             >
               {cat === 'All' ? 'All Furniture' : cat}
@@ -53,24 +51,24 @@ const HomeFurniturePage = () => {
         </div>
       </nav>
 
-      {/* 3. Product Selection Section */}
-      <section className="product-selection">
-        <div className="selection-intro">
+      {/* Product Selection Section */}
+      <section className="fhome-product-selection">
+        <div className="fhome-selection-intro">
           <h2><strong>Make yourself at home.</strong> Beautifully crafted for every room.</h2>
         </div>
 
-        <div className="horizontal-scroll-grid">
+        <div className="fhome-horizontal-scroll-grid">
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
-              <div key={item.id} className="apple-card">
-                {item.isNew && <span className="new-label">NEW COLLECTION</span>}
+              <div key={item.id} className="fhome-apple-card">
+                {item.isNew && <span className="fhome-new-label">New Collection</span>}
                 
-                <div className="card-top">
-                  <h3 className="card-product-name">{item.name}</h3>
-                  <p className="card-subtitle">{item.tagline || item.dimensions}</p>
+                <div className="fhome-card-top">
+                  <h3 className="fhome-card-product-name">{item.name}</h3>
+                  <p className="fhome-card-subtitle">{item.tagline || item.dimensions}</p>
                 </div>
 
-                <div className="card-image-wrapper">
+                <div className="fhome-card-image-wrapper">
                   <img 
                     src={item.image} 
                     alt={item.name} 
@@ -78,29 +76,38 @@ const HomeFurniturePage = () => {
                   />
                 </div>
 
-               <div className="card-bottom">
-  <div className="price-container">
-    <p className="price-tag">
-      ${item.price.toLocaleString()}
-    </p>
-    {item.price > 500 && (
-      <p className="monthly-tag">As low as ${Math.round(item.price / 24)}/mo.</p>
-    )}
-  </div>
-  
-
-  <Link 
-    to={`/buy/home`} 
-    state={{ selectedId: item.id }} 
-    className="buy-button"
-  >
-    Buy
-  </Link>
-</div>
+                <div className="fhome-card-bottom">
+                  <div className="fhome-price-container">
+                    <p className="fhome-price-tag">
+                      ${item.price.toLocaleString()}
+                    </p>
+                    {item.price > 500 && (
+                      <p className="fhome-monthly-tag">As low as ${Math.round(item.price / 24)}/mo.</p>
+                    )}
+                  </div>
+                  
+                  {/* Button Group for Learn More & Buy */}
+                  <div className="fhome-button-group">
+                    <Link 
+                      to={`/home/${item.id}`} /* Adjust this route to match your detail page */
+                      className="fhome-learn-more-button"
+                    >
+                      Learn more 
+                    </Link>
+                    <Link 
+                      to={`/buy/home`} 
+                      state={{ selectedId: item.id }} 
+                      className="fhome-buy-button"
+                    >
+                      Buy {'>'}
+                    </Link>
+                  </div>
+                  
+                </div>
               </div>
             ))
           ) : (
-            <div className="no-results">
+            <div className="fhome-no-results">
               <p>No furniture items found in the {filter} category.</p>
             </div>
           )}

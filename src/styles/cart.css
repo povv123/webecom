@@ -1,0 +1,100 @@
+/* --- Global Cart Container --- */
+.bagfi-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fbfbfd; /* Very subtle off-white matching Apple */
+  color: #1d1d1f;
+  min-height: 80vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.bagfi-content {
+  width: 100%;
+  max-width: 980px; 
+}
+
+/* Ensure the empty state aligns nicely in the center of the page but text remains left-aligned to its own block */
+.bagfi-empty-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.bagfi-empty-state {
+  width: 100%;
+  max-width: 600px; /* Constrains the width so it looks like the screenshot */
+  text-align: left;
+}
+
+/* --- Typography & Header --- */
+.bagfi-empty-title {
+  font-size: 2.5rem; /* ~40px */
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 15px 0;
+  color: #333333; /* Slightly softer than pure black */
+}
+
+.bagfi-empty-signin-text {
+  font-size: 1rem;
+  color: #86868b;
+  margin: 0 0 60px 0;
+  font-weight: 400;
+}
+
+.bagfi-text-link {
+  color: #0071e3;
+  text-decoration: none;
+}
+
+.bagfi-text-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Profile Section --- */
+.bagfi-profile-section {
+  border-top: 1px solid #d2d2d7;
+  padding-top: 40px;
+}
+
+.bagfi-profile-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #86868b; /* Grey out the section title */
+  margin: 0 0 20px 0;
+}
+
+.bagfi-profile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between list items */
+}
+
+.bagfi-profile-item {
+  display: flex;
+  align-items: center;
+}
+
+.bagfi-profile-link {
+  display: flex;
+  align-items: center;
+  color: #333333;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.bagfi-profile-link:hover {
+  color: #0071e3;
+}
+
+.bagfi-icon {
+  margin-right: 15px; /* Space between icon and text */
+  color: #86868b; /* Muted grey for the icons */
+}

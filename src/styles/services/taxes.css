@@ -1,0 +1,372 @@
+/* =========================================
+   Tax Advisory Service Styles (Black, Blue, White)
+   ========================================= */
+
+.tax {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #000000; /* Solid Black */
+  background-color: #ffffff; /* Pure White Background */
+  overflow-x: hidden;
+}
+
+/* --- Global Section Padding --- */
+.tax-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+/* =========================================
+   Sticky Local Navigation
+   ========================================= */
+.tax-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.tax-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tax-nav-brand {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #000000; /* Black */
+  letter-spacing: -0.01em;
+}
+
+.tax-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.tax-nav-links a:not(.tax-btn-nav) {
+  text-decoration: none;
+  color: #333333; /* Dark Gray for readability */
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.tax-nav-links a:not(.tax-btn-nav):hover {
+  color: #0066cc; /* Blue on hover */
+}
+
+.tax-btn-nav {
+  background: #000000; /* Black Button */
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px; 
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.tax-btn-nav:hover {
+  background: #0066cc; /* Blue on hover */
+}
+
+/* =========================================
+   1. Overview (Hero)
+   ========================================= */
+.tax-hero {
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.tax-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  color: #0066cc; /* Blue */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.tax-hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  color: #000000; /* Black */
+}
+
+.tax-hero h1 span {
+  color: #0066cc; /* Blue highlight */
+  font-weight: 800;
+}
+
+.tax-hero-sub {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: #333333;
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Shared Feature Layouts
+   ========================================= */
+.tax-feature,
+.tax-feature-alt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.tax-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0066cc; /* Blue */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tax-headline {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #000000; /* Black */
+}
+
+.tax-desc {
+  font-size: 1.125rem;
+  color: #333333;
+  line-height: 1.7;
+}
+
+/* Visual Placeholders */
+.tax-glass-panel {
+  background: #ffffff; /* Pure White */
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-visual-placeholder {
+  color: #666666;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   4. Key Rates (Cards)
+   ========================================= */
+.tax-stories {
+  background-color: #ffffff; /* Pure White */
+  border-radius: 24px;
+  margin-bottom: 6rem;
+  border: 1px solid #e5e5e5;
+}
+
+.tax-stories-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-top: 4rem; /* Added padding since bg is white */
+}
+
+.tax-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 0 4rem 4rem 4rem; /* Added padding to keep cards inside the border */
+}
+
+.tax-card {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tax-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+  border-color: #0066cc; /* Blue border on hover */
+}
+
+.tax-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000000; /* Black */
+  margin-bottom: 1rem;
+}
+
+.tax-metric {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #0066cc; /* Blue */
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.tax-card p:not(.tax-metric) {
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.tax-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc; /* Blue */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.tax-link:hover {
+  color: #000000; /* Black on hover */
+}
+
+.tax-chevron {
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.tax-card:hover .tax-chevron {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   5. Bottom CTA
+   ========================================= */
+.tax-cta {
+  text-align: center;
+  padding-bottom: 8rem;
+}
+
+.tax-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #000000; /* Black */
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.tax-cta p {
+  font-size: 1.25rem;
+  color: #333333;
+  margin-bottom: 2.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tax-btn-primary {
+  background: #000000; /* Black */
+  color: #ffffff; /* White text */
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tax-btn-primary:hover {
+  background: #0066cc; /* Blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 102, 204, 0.2);
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 992px) {
+  .tax-feature,
+  .tax-feature-alt {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Reorder alt feature on mobile so text is above visual */
+  .tax-feature-alt .tax-feature-visual {
+    order: 2;
+  }
+  .tax-feature-alt .tax-feature-text {
+    order: 1;
+  }
+
+  .tax-glass-panel {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tax-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .tax-nav-links {
+    display: none; 
+  }
+
+  .tax-hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .tax-glass-panel {
+    height: 250px;
+  }
+  
+  .tax-stories {
+    border-radius: 0;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .tax-grid {
+    padding: 0 1rem 3rem 1rem;
+  }
+
+  .tax-card {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,420 @@
+/* Core Layout - Premium Light Mode Aesthetic */
+.soluu {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff; /* Changed to pure white */
+  color: #1d1d1f; /* Apple's primary dark text */
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.soluu-section {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Typography Shared Elements */
+.soluu-section-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: #86868b; /* Apple's secondary text gray */
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.soluu-headline {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1d1d1f;
+}
+
+.soluu-desc {
+  font-size: 21px;
+  color: #515154; /* Medium gray for readable body text */
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 600px;
+}
+
+.soluu-desc-center {
+  font-size: 24px;
+  color: #515154;
+  line-height: 1.4;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 700px;
+}
+
+/* 1. Hero Section */
+.soluu-hero {
+  text-align: center;
+  align-items: center;
+  min-height: 90vh;
+  padding-top: 150px;
+}
+
+.soluu-eyebrow {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 20px;
+}
+
+.soluu-title {
+  font-size: 80px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 30px;
+  color: #1d1d1f;
+}
+
+/* Signature Apple Vision Glowing Gradient - Looks great on white too! */
+.soluu-title span {
+  background: linear-gradient(90deg, #319197, #ff7a18, #af002d);
+  
+  /* WebKit prefixes for Safari/Chrome */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Standard properties for modern browsers */
+  background-clip: text;
+  color: transparent;
+  
+  background-size: 200% auto;
+  animation: soluu-shine 5s linear infinite;
+}
+
+@keyframes soluu-shine {
+  to { background-position: 200% center; }
+}
+
+.soluu-hero-sub {
+  font-size: 24px;
+  color: #515154;
+  max-width: 650px;
+  margin-bottom: 40px;
+}
+
+/* Hero Buttons - Inverted for light mode */
+.soluu-hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.soluu-btn-primary {
+  background-color: #1d1d1f;
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  padding: 14px 28px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.soluu-btn-secondary {
+  background-color: transparent;
+  color: #1d1d1f;
+  border: 1px solid #1d1d1f;
+  border-radius: 980px;
+  padding: 13px 28px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.soluu-btn-primary:hover { 
+  transform: scale(1.02); 
+  background-color: #000000;
+}
+
+.soluu-btn-secondary:hover { 
+  background-color: #1d1d1f; 
+  color: #ffffff; 
+}
+
+/* Feature Sections (Left/Right alternating layouts) */
+.soluu-feature,
+.soluu-feature-alt {
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+.soluu-feature-alt {
+  flex-direction: row-reverse;
+}
+
+.soluu-feature-text {
+  flex: 1;
+}
+
+.soluu-feature-visual {
+  flex: 1.2;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+}
+
+/* Glassmorphism for image placeholders and cards - Adjusted for Light Mode */
+.soluu-glass-panel {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.soluu-visual-placeholder {
+  color: #86868b;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* OS Section */
+.soluu-os {
+  align-items: center;
+  text-align: center;
+}
+
+.soluu-os-content .soluu-desc {
+  margin: 0 auto 60px auto;
+}
+
+.soluu-os-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.soluu-os-card {
+  background: #f5f5f7; /* Apple's classic light gray card background */
+  border-radius: 24px;
+  padding: 40px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soluu-os-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.soluu-os-card h4 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.soluu-os-card p {
+  font-size: 17px;
+  color: #515154;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Technology Grid */
+.soluu-tech-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.soluu-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.soluu-tech-item {
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soluu-tech-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  background: #ffffff; /* Pops out from the slightly dark glass panel on hover */
+}
+
+.soluu-tech-item h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.soluu-tech-item p {
+  font-size: 17px;
+  color: #515154;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Values Section */
+.soluu-values {
+  text-align: center;
+  align-items: center;
+  border-top: 1px solid #d2d2d7; /* Light gray border */
+}
+
+.soluu-values-content {
+  max-width: 800px;
+}
+
+.soluu-values .soluu-desc {
+  margin: 0 auto 40px auto;
+}
+
+/* Inline Links - Updated to Apple Blue */
+.soluu-link {
+  background: none;
+  border: none;
+  color: #0066cc; /* Apple Link Blue */
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  font-family: inherit;
+}
+
+.soluu-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.soluu-chevron {
+  font-size: 14px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .soluu-feature,
+  .soluu-feature-alt {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .soluu-feature-visual {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .soluu-desc {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .soluu-title {
+    font-size: 56px;
+  }
+  
+  .soluu-headline {
+    font-size: 40px;
+  }
+  
+  .soluu-hero-sub,
+  .soluu-desc,
+  .soluu-desc-center {
+    font-size: 19px;
+  }
+  
+  .soluu-os-grid,
+  .soluu-tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- REPLACE THE OLD "FEATURE SECTIONS" BLOCK WITH THIS --- */
+
+/* Sectors Section */
+.soluu-sectors-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.soluu-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+/* Clickable Sector Cards */
+.soluu-sector-card {
+  background: #f5f5f7;
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soluu-sector-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  background: #ffffff; /* Subtle pop to white on hover */
+}
+
+.soluu-sector-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.soluu-sector-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.soluu-sector-card p {
+  font-size: 17px;
+  color: #515154;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 30px;
+  flex-grow: 1; /* Pushes the link to the bottom */
+}
+
+/* Update Media Queries at the bottom of your CSS file for the new grid */
+@media (max-width: 992px) {
+  .soluu-sector-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .soluu-sector-grid {
+    grid-template-columns: 1fr;
+  }
+}

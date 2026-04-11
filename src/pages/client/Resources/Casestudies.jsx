@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../../styles/resources/casestudies.css'; 
 
 const CaseStudies = () => {
   const cases = [
@@ -8,18 +8,20 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="resource-page case-studies">
-      <header className="resource-header">
+    <div className="casca">
+      <header className="casca-header">
         <h1>Real results. <span>Real impact.</span></h1>
       </header>
 
-      <div className="case-grid">
+      <div className="casca-grid">
         {cases.map((c, i) => (
-          <div key={i} className="case-card">
-            <p className="company-name">{c.company}</p>
-            <h2 style={{ color: c.color }}>{c.result}</h2>
-            <p className="metric-text">{c.metric}</p>
-            <button className="apple-btn-outline">View Case Study</button>
+          <div key={i} className="casca-card">
+            <p className="casca-company">{c.company}</p>
+            <h2 className="casca-result" style={{ color: c.color }}>{c.result}</h2>
+            <p className="casca-metric">{c.metric}</p>
+            <button className="casca-btn-outline" style={{ borderColor: c.color, color: c.color }}>
+              View Case Study
+            </button>
           </div>
         ))}
       </div>

@@ -1,14 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../../styles/aboutus/aboutus.css";
+import "../../../styles/aboutus/mission.css";
+
+// Importing ONLY the background image
+import missionImg from '../../../assets/images/mission.jpg';
 
 const Mission = () => {
+  // Just a simple list of words - no images attached!
+  const coreValues = [
+    "Innovation", 
+    "Quality", 
+    "Integrity", 
+    "Sustainability"
+  ];
+
   return (
     <div className="about-container">
 
       {/* NAV */}
       <div className="about-nav">
-        <NavLink to="/about" className="nav-link">About</NavLink>
+        <NavLink to="/about" className="nav-link">About Us</NavLink>
         <NavLink to="/about/mission" className="nav-link">Mission</NavLink>
         <NavLink to="/about/history" className="nav-link">History</NavLink>
         <NavLink to="/about/leadership" className="nav-link">Leadership</NavLink>
@@ -16,7 +27,7 @@ const Mission = () => {
 
       {/* HERO */}
       <section className="hero-image">
-        <img src="/images/mission.jpg" alt="mission" />
+        <img src={missionImg} alt="Company Mission" className="mission-image" />
         <h1>Mission & Vision</h1>
       </section>
 
@@ -48,9 +59,9 @@ const Mission = () => {
         <h3>Our Core Values</h3>
 
         <div className="grid">
-          {["Innovation", "Quality", "Integrity", "Sustainability"].map((item, i) => (
+          {/* Mapping through the text array we created above */}
+          {coreValues.map((item, i) => (
             <div className="value-card" key={i}>
-              <img src={`/images/mission${i + 1}.jpg`} alt={item} />
               <h4>{item}</h4>
             </div>
           ))}

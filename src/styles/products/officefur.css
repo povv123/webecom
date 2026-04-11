@@ -1,0 +1,255 @@
+/* --- Global & Container --- */
+.ofic-store-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7; /* Apple's signature light gray background */
+  color: #1d1d1f;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* --- Header --- */
+.ofic-shop-header {
+  background-color: #f5f5f7;
+  padding: 60px 20px 20px;
+  text-align: center;
+}
+
+.ofic-shop-title {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.ofic-local-sub-nav {
+  position: sticky;
+  top: 0;
+  background-color: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  padding: 15px 20px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.ofic-sub-nav-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.ofic-sub-nav-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.ofic-nav-item {
+  background: transparent;
+  border: none;
+  color: #1d1d1f;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.ofic-nav-item:hover {
+  color: #0071e3;
+}
+
+.ofic-nav-item.active {
+  background-color: #1d1d1f;
+  color: #ffffff;
+}
+
+/* --- Product Selection Section --- */
+.ofic-product-selection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.ofic-selection-intro {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.ofic-selection-intro h2 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ofic-selection-intro strong {
+  font-weight: 600;
+}
+
+/* --- Horizontal Scroll Grid --- */
+.ofic-horizontal-scroll-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 10px 10px 40px 10px; /* Space for shadow */
+  scrollbar-width: thin;
+  scrollbar-color: #d2d2d7 transparent;
+  scroll-snap-type: x mandatory;
+}
+
+.ofic-horizontal-scroll-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.ofic-horizontal-scroll-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ofic-horizontal-scroll-grid::-webkit-scrollbar-thumb {
+  background-color: #d2d2d7;
+  border-radius: 10px;
+}
+
+/* --- Product Cards --- */
+.ofic-apple-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  min-width: 340px;
+  max-width: 340px;
+  flex-shrink: 0;
+  padding: 45px 24px 35px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.ofic-apple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.ofic-new-label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #bf4800; /* Apple's rust orange */
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 1. Title Section (Top) */
+.ofic-card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ofic-card-product-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* 2. Image Section (Middle) */
+.ofic-card-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px; /* Fixed height for consistent furniture sizing */
+  margin-bottom: 20px;
+}
+
+/* 3. Description Section (Below Image) */
+.ofic-card-description {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ofic-card-subtitle {
+  font-size: 0.95rem;
+  color: #86868b;
+  margin: 0;
+}
+
+/* 4. Bottom Section (Price & Buttons) */
+.ofic-card-bottom {
+  margin-top: auto; /* Pushes this section to the bottom of the card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ofic-price-container {
+  margin-bottom: 15px;
+}
+
+.ofic-price-tag {
+  font-size: 1rem;
+  color: #1d1d1f;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* --- Button Group (Learn More & Buy) --- */
+.ofic-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; 
+}
+
+/* Learn more: Solid blue box/pill */
+.ofic-learn-more-button {
+  background-color: #0071e3;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ofic-learn-more-button:hover {
+  background-color: #0077ed;
+}
+
+/* Buy: Blue text link */
+.ofic-buy-button {
+  background-color: transparent; 
+  color: #0071e3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  padding: 8px 0;
+}
+
+.ofic-buy-button:hover {
+  text-decoration: underline;
+  color: #0077ed; 
+}
+
+/* --- Empty State / No Results --- */
+.ofic-no-results {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px;
+  color: #86868b;
+  font-size: 1.1rem;
+}

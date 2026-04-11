@@ -1,212 +1,241 @@
-/* --- DESIGN TOKENS --- */
-:root {
-  --canvas-bg: #f5f5f7;
-  --card-bg: #ffffff;
-  --text-primary: #1d1d1f;
-  --text-secondary: #86868b;
-  --accent-blue: #0071e3;
-  --accent-blue-hover: #0077ed;
-  --label-new: #bf4800;
-  --border-divider: #d2d2d7;
-  /* Premium Easing for Hover Effects */
-  --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* --- MAIN CONTAINER --- */
-.store-container {
-  background-color: var(--canvas-bg);
+/* --- Global & Container --- */
+.toto-store-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7; /* Apple's signature light gray background */
+  color: #1d1d1f;
   min-height: 100vh;
-  padding-bottom: 120px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
 }
 
-/* --- LOCAL SUB NAV --- */
-.local-sub-nav {
-  display: flex;
-  justify-content: center;
-  background: rgba(245, 245, 247, 0.8);
-  backdrop-filter: blur(20px);
+/* --- Header --- */
+.toto-shop-header {
+  background-color: #f5f5f7;
+  padding: 60px 20px 20px;
+  text-align: center;
+}
+
+.toto-shop-title {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.toto-local-sub-nav {
   position: sticky;
   top: 0;
+  background-color: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 100;
-  border-bottom: 1px solid var(--border-divider);
+  padding: 15px 20px;
+  border-bottom: 1px solid #d2d2d7;
 }
 
-.sub-nav-wrapper {
+.toto-sub-nav-wrapper {
   display: flex;
-  gap: 32px;
-  padding: 16px 24px;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar for clean look */
+  scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
-.sub-nav-wrapper::-webkit-scrollbar { display: none; }
+.toto-sub-nav-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
 
-.nav-item {
-  background: none;
+.toto-nav-item {
+  background: transparent;
   border: none;
-  font-size: 12px;
-  color: var(--text-primary);
+  color: #1d1d1f;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.2s;
-  font-weight: 400;
+  transition: all 0.2s ease;
 }
 
-.nav-item:hover { opacity: 0.7; }
-
-.nav-item.active {
-  font-weight: 600;
+.toto-nav-item:hover {
+  color: #0071e3;
 }
 
-/* --- HEADER --- */
-.shop-header {
-  padding: 80px 24px 60px;
+.toto-nav-item.active {
+  background-color: #1d1d1f;
+  color: #ffffff;
 }
 
-.shop-title {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.text-center { text-align: center; }
-
-/* --- PRODUCT GRID --- */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 30px;
-  max-width: 1280px;
+/* --- Product Selection Section --- */
+.toto-product-selection {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 60px 20px;
 }
 
-/* --- PRODUCT CARD (MACBOOK NEO STYLE) --- */
-.product-card-neo {
-  background-color: var(--card-bg);
-  border-radius: 28px;
-  padding: 56px 40px;
+.toto-selection-intro {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.toto-selection-intro h2 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.toto-selection-intro strong {
+  font-weight: 600;
+}
+
+/* --- Horizontal Scroll Grid --- */
+.toto-horizontal-scroll-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 10px 10px 40px 10px; /* Space for shadow */
+  scrollbar-width: thin;
+  scrollbar-color: #d2d2d7 transparent;
+  scroll-snap-type: x mandatory;
+}
+
+.toto-horizontal-scroll-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.toto-horizontal-scroll-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toto-horizontal-scroll-grid::-webkit-scrollbar-thumb {
+  background-color: #d2d2d7;
+  border-radius: 10px;
+}
+
+/* --- Product Cards --- */
+.toto-apple-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  min-width: 340px;
+  max-width: 340px;
+  flex-shrink: 0;
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center Content per Screenshot */
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.toto-apple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.toto-card-top {
   text-align: center;
-  transition: transform 0.6s var(--ease-apple), box-shadow 0.6s var(--ease-apple);
-}
-
-.product-card-neo:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-/* Image Wrapper */
-.card-image-wrapper {
-  height: 220px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 48px;
-}
-
-.card-image-wrapper img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* Card Body Content */
-.new-label {
-  color: var(--label-new);
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.card-product-name {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 12px;
-}
-
-.card-tagline {
-  font-size: 17px;
-  line-height: 1.47;
-  color: var(--text-primary);
   margin-bottom: 24px;
-  max-width: 280px;
+  margin-top: 15px;
 }
 
-/* Pricing Stack */
-.price-info {
+.toto-card-product-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.toto-card-subtitle {
+  font-size: 0.95rem;
+  color: #86868b;
+  margin: 0;
+}
+
+.toto-card-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
   margin-bottom: 40px;
 }
 
-.price-main {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text-primary);
+.toto-card-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.price-sub {
-  color: var(--text-primary);
-  font-weight: 600;
+.toto-price-container {
+  margin-bottom: 15px;
 }
 
-/* --- FOOTER ACTIONS (PILL + LINK) --- */
-.card-footer-neo {
+.toto-price-tag {
+  font-size: 0.95rem;
+  color: #1d1d1f;
+  margin: 0 0 4px 0;
+  font-weight: 400;
+}
+
+.toto-monthly-tag {
+  font-size: 0.75rem;
+  color: #86868b;
+  margin: 0;
+}
+
+/* --- Button Group (Learn More & Buy) --- */
+.toto-button-group {
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-top: auto; /* Push to bottom */
+  justify-content: center;
+  gap: 16px; 
+  margin-top: 5px;
 }
 
-.learn-more-btn {
-  background-color: var(--accent-blue);
+/* Learn more: Solid blue box/pill */
+.toto-learn-more-button {
+  background-color: #0071e3;
   color: #ffffff;
-  padding: 12px 24px;
-  border-radius: 980px; /* Perfect Pill */
-  font-size: 14px;
-  font-weight: 500;
   text-decoration: none;
-  transition: background 0.3s var(--ease-apple);
-}
-
-.learn-more-btn:hover {
-  background-color: var(--accent-blue-hover);
-}
-
-.buy-link-blue {
-  color: var(--accent-blue);
-  font-size: 17px;
-  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
   font-weight: 400;
-  transition: opacity 0.2s;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
-.buy-link-blue:hover {
+.toto-learn-more-button:hover {
+  background-color: #0077ed;
+}
+
+/* Buy: Blue text link */
+.toto-buy-button {
+  background-color: transparent; 
+  color: #0071e3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  padding: 8px 0;
+}
+
+.toto-buy-button:hover {
   text-decoration: underline;
+  color: #0077ed; 
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 834px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-    padding: 0 16px;
-  }
-  
-  .product-card-neo {
-    padding: 48px 24px;
-    min-height: auto;
-  }
-
-  .card-product-name {
-    font-size: 28px;
-  }
+/* --- Empty State / No Results --- */
+.toto-no-results {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px;
+  color: #86868b;
+  font-size: 1.1rem;
 }

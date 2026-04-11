@@ -251,3 +251,16 @@ body {
   .shelf-scroll { gap: 32px; }
   .local-nav-title { font-size: 19px; }
 }
+
+.shelf-icon-wrapper {
+  color: #1d1d1f; /* Default dark gray Apple icon color */
+  transition: color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.shelf-item:hover .shelf-icon-wrapper {
+  color: #0071e3; /* Classic Apple Blue on hover */
+}

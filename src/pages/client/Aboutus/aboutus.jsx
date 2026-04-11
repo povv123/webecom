@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../../styles/aboutus/aboutus.css";
 
+import AboutusImg from '../../../assets/images/Aboutus.jpg';
+
 const AboutUs = () => {
   return (
     <div className="about-container">
@@ -11,7 +13,7 @@ const AboutUs = () => {
       <div className="about-nav">
 
             <NavLink to="/about" className="nav-link" >
-          Hello wwIII
+          About Us
         </NavLink>
 
         <NavLink to="/about/mission" className="nav-link">
@@ -27,7 +29,7 @@ const AboutUs = () => {
 
       {/* HERO */}
       <section className="hero-image">
-        <img src="/images/apple-park.jpg" alt="hero" />
+        <img src={AboutusImg} alt="Company Mission" className="Aboutus-image" />
         <h1>Our Values</h1>
       </section>
 

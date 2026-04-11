@@ -4,6 +4,7 @@ import { laptops } from '../../../data/Products/laptopData';
 import '../../../styles/products/laptop.css'; 
 
 const LaptopPage = () => {
+  // CHANGED: Defaulting to 'All' to show every model on first load
   const [filter, setFilter] = useState('All');
 
   // Filter logic based on the 'brand' property in your data
@@ -11,7 +12,6 @@ const LaptopPage = () => {
     p.subCategory === 'laptop' && (filter === 'All' || p.brand === filter)
   ) : [];
 
-  // Brands updated to match your specific laptopData array
   const brands = ['All', 'Apple', 'Dell', 'HP', 'Lenovo', 'Microsoft', 'Razer', 'ASUS'];
 
   useEffect(() => {
@@ -19,68 +19,80 @@ const LaptopPage = () => {
   }, [filter]);
 
   return (
-    <div className="store-container">
-      <header className="shop-header">
-        <div className="header-content">
-           <h1 className="shop-title">
+    <div className="laptop-page-container">
+      <header className="laptop-shop-header">
+        <div className="laptop-header-content">
+           <h1 className="laptop-shop-title">
              {filter === 'All' ? 'Shop All Laptops' : `Shop ${filter === 'Apple' ? 'Mac' : filter}`}
            </h1>
         </div>
       </header>
 
-      <nav className="local-sub-nav">
-        <div className="sub-nav-wrapper">
+      <nav className="laptop-local-sub-nav">
+        <div className="laptop-sub-nav-wrapper">
           {brands.map(b => (
             <button 
               key={b} 
-              className={filter === b ? 'nav-item active' : 'nav-item'} 
+              className={filter === b ? 'laptop-nav-item active' : 'laptop-nav-item'} 
               onClick={() => setFilter(b)}
             >
-              {b === 'All' ? 'All Models' : b}
+              {b === 'All' ? 'All Models' : b === 'Apple' ? 'Mac' : b}
             </button>
           ))}
         </div>
       </nav>
 
-      <section className="product-selection">
-        <div className="selection-intro">
-          <h2><strong>Powerful Performance.</strong> Find your perfect fit.</h2>
+      <section className="laptop-product-selection">
+        <div className="laptop-selection-intro">
+         
+          {filter === 'Apple' ? (
+            <h2><strong>Mac.</strong> Mind-blowing. Head-turning.</h2>
+          ) : (
+            <h2><strong>Powerful Performance.</strong> Find your perfect fit.</h2>
+          )}
         </div>
 
-        <div className="horizontal-scroll-grid">
+        <div className="laptop-horizontal-scroll-grid">
           {filteredLaptops.map((item) => (
-            <div key={item.id} className="apple-card">
-              {item.isNew && <span className="new-label">NEW</span>}
+            <div key={item.id} className="laptop-apple-card">
+             
+
+              {item.isNew && <span className="laptop-new-label">New</span>}
               
-              <div className="card-top">
-                <h3 className="card-product-name">{item.name}</h3>
-                {/* Uses 'tagline' from your data, just like accessories */}
-                <p className="card-subtitle">{item.tagline}</p>
+              <div className="laptop-card-top">
+                <h3 className="laptop-card-product-name">{item.name}</h3>
+                <p className="laptop-card-subtitle">{item.tagline}</p>
               </div>
 
-              <div className="card-image-wrapper">
-                {/* Laptops look better with a slightly wider max-width than accessories */}
+              <div className="laptop-card-image-wrapper">
                 <img src={item.image} alt={item.name} className="laptop-img" />
               </div>
 
-           
-             
-
-             <div className="card-bottom">
-  <div className="price-container">
-    <p className="price-tag">
-      From ${item.price.toLocaleString()} or ${Math.round(item.price / 12)}/mo.
-    </p>
-  </div>
-  
-  <Link 
-    to={`/buy/laptops`} 
-    state={{ selectedId: item.id }} 
-    className="buy-button"
-  >
-    Buy
-  </Link>
-</div>
+              <div className="laptop-card-bottom">
+                <div className="laptop-price-container">
+                  <p className="laptop-price-tag">
+                    From ${item.price.toLocaleString()} or ${Math.round(item.price / 12)}/mo. for 12 mo.*
+                  </p>
+                </div>
+                
+               
+                <div className="laptop-button-group">
+                  <Link 
+                    to={`/laptops/${item.id}`} 
+                    className="laptop-learn-more-button"
+                  >
+                    Learn more 
+                  </Link>
+                  <Link 
+                    to={`/buy/laptops`} 
+                    state={{ selectedId: item.id }} 
+                    className="laptop-buy-button"
+                  >
+                    Buy {'>'}
+                  </Link>
+                </div>
+                
+              </div>
             </div>
           ))}
         </div>

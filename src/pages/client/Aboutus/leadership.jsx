@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../../styles/aboutus/aboutus.css";
+import "../../../styles/aboutus/leadership.css";
+
+
+import leadershipImg from '../../../assets/images/leadership.jpg';
 
 const Leadership = () => {
   return (
@@ -8,7 +11,7 @@ const Leadership = () => {
 
       {/* NAV */}
       <div className="about-nav">
-        <NavLink to="/about" className="nav-link">About</NavLink>
+        <NavLink to="/about" className="nav-link">About Us</NavLink>
         <NavLink to="/about/mission" className="nav-link">Mission</NavLink>
         <NavLink to="/about/history" className="nav-link">History</NavLink>
         <NavLink to="/about/leadership" className="nav-link">Leadership</NavLink>
@@ -16,7 +19,7 @@ const Leadership = () => {
 
       {/* HERO */}
       <section className="hero-image">
-        <img src="/images/leadership.jpg" alt="leadership" />
+       <img src={leadershipImg} alt="our Leaders" className="leadership-image" />
         <h1>Leadership</h1>
       </section>
 

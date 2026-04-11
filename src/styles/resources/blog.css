@@ -1,0 +1,146 @@
+/* Main Page Container */
+.resource-page.blog {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  background-color: #f5f5f7; /* Apple's classic light gray */
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.resource-header {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #86868b;
+  margin-bottom: 8px;
+}
+
+.resource-header h1 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.003em;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.resource-header h1 span {
+  /* Optional: You can add a subtle gradient or color here if Eter has brand colors */
+  color: #1d1d1f; 
+}
+
+/* Grid Layout */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 60px;
+}
+
+/* Blog Cards */
+.blog-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  overflow: hidden; /* Ensures the image doesn't break the rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Images */
+.blog-img {
+  width: 100%;
+  height: 220px;
+  background-color: #e5e5ea; /* Placeholder color while image loads */
+  overflow: hidden;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-img img {
+  transform: scale(1.03); /* Subtle zoom effect on hover */
+}
+
+/* Text Meta Area */
+.blog-meta {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-cat {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0066cc;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.blog-card h3 {
+  font-size: 21px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.blog-date {
+  font-size: 14px;
+  color: #86868b;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+/* Links */
+.apple-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+
+.apple-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .resource-header h1 {
+    font-size: 32px;
+  }
+  
+  .blog-meta {
+    padding: 24px;
+  }
+}

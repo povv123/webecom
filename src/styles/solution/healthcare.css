@@ -1,0 +1,357 @@
+/* Main Container */
+.healt {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Local Navigation (Sticky) */
+.healt-local-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 100;
+  padding: 12px 20px;
+}
+
+.healt-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.healt-nav-brand {
+  font-size: 21px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.healt-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.healt-nav-links a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #515154;
+  transition: color 0.2s ease;
+}
+
+.healt-nav-links a:hover {
+  color: #1d1d1f;
+}
+
+.healt-btn-nav {
+  background-color: #1d1d1f;
+  color: #ffffff !important; /* Overrides link color */
+  border-radius: 980px;
+  padding: 6px 14px;
+  font-size: 12px !important;
+  font-weight: 400;
+  transition: background-color 0.2s ease;
+}
+
+.healt-btn-nav:hover {
+  background-color: #000000;
+}
+
+/* Sections Shared */
+.healt-section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  scroll-margin-top: 60px; /* Accounts for sticky nav when scrolling */
+}
+
+/* Typography */
+.healt-section-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: #86868b;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.healt-headline {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1d1d1f;
+}
+
+.healt-desc {
+  font-size: 21px;
+  color: #515154;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 600px;
+}
+
+/* Hero Section */
+.healt-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  animation: healt-fade-in 0.8s ease-out;
+}
+
+.healt-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #86868b;
+  margin-bottom: 16px;
+}
+
+.healt-hero h1 {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1d1d1f;
+}
+
+.healt-hero h1 span {
+  background: linear-gradient(90deg, #007a82, #0066cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.healt-hero-sub {
+  font-size: 24px;
+  color: #515154;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Feature Sections (Alternating Layout) */
+.healt-feature,
+.healt-feature-alt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+.healt-feature-alt {
+  flex-direction: row-reverse;
+}
+
+.healt-feature-text {
+  flex: 1;
+}
+
+.healt-feature-visual {
+  flex: 1.2;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+}
+
+.healt-glass-panel {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.healt-visual-placeholder {
+  color: #86868b;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Success Stories */
+.healt-stories {
+  background-color: #f5f5f7;
+  border-radius: 40px;
+  padding: 80px 40px;
+  margin-bottom: 60px;
+}
+
+.healt-stories-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.healt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.healt-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.healt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.healt-card h3 {
+  font-size: 21px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.healt-metric {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #007a82;
+  margin: 0 0 16px 0;
+}
+
+.healt-card p {
+  font-size: 17px;
+  color: #515154;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+
+/* Links & Buttons */
+.healt-link {
+  background: none;
+  border: none;
+  color: #007a82;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  font-family: inherit;
+  align-self: flex-start;
+}
+
+.healt-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.healt-chevron {
+  font-size: 13px;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+/* Bottom CTA */
+.healt-cta {
+  text-align: center;
+  border-top: 1px solid #d2d2d7;
+  padding: 80px 20px;
+}
+
+.healt-cta h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.healt-cta p {
+  font-size: 19px;
+  color: #515154;
+  margin-bottom: 32px;
+}
+
+.healt-btn-primary {
+  display: inline-block;
+  background-color: #1d1d1f;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 980px;
+  padding: 14px 28px;
+  font-size: 17px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.healt-btn-primary:hover {
+  background-color: #000000;
+}
+
+/* Animations */
+@keyframes healt-fade-in {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .healt-feature,
+  .healt-feature-alt {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .healt-feature-visual {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .healt-desc {
+    margin: 0 auto;
+  }
+  
+  .healt-nav-links {
+    display: none; /* In a real app, you'd trigger a mobile hamburger menu here */
+  }
+}
+
+@media (max-width: 768px) {
+  .healt-hero h1 {
+    font-size: 48px;
+  }
+  
+  .healt-headline {
+    font-size: 40px;
+  }
+  
+  .healt-hero-sub, .healt-desc {
+    font-size: 19px;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { allProductsData } from '../../../data/allProductsData'; 
-import '../../../styles/Buypage.css';
+
 
 const BuyPage = () => {
   const { categoryId } = useParams(); 
