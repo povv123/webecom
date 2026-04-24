@@ -1,7 +1,7 @@
 /* --- Global Cart Container --- */
 .bagfi-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #fbfbfd; /* Very subtle off-white matching Apple */
+  background-color: #fbfbfd;
   color: #1d1d1f;
   min-height: 80vh;
   padding: 60px 20px;
@@ -11,10 +11,10 @@
 
 .bagfi-content {
   width: 100%;
-  max-width: 980px; 
+  max-width: 980px;
 }
 
-/* Ensure the empty state aligns nicely in the center of the page but text remains left-aligned to its own block */
+/* Ensure the empty state aligns nicely in the center of the page */
 .bagfi-empty-layout {
   display: flex;
   flex-direction: column;
@@ -24,17 +24,17 @@
 
 .bagfi-empty-state {
   width: 100%;
-  max-width: 600px; /* Constrains the width so it looks like the screenshot */
+  max-width: 600px;
   text-align: left;
 }
 
 /* --- Typography & Header --- */
 .bagfi-empty-title {
-  font-size: 2.5rem; /* ~40px */
+  font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: -0.015em;
   margin: 0 0 15px 0;
-  color: #333333; /* Slightly softer than pure black */
+  color: #333333;
 }
 
 .bagfi-empty-signin-text {
@@ -62,7 +62,7 @@
 .bagfi-profile-heading {
   font-size: 1rem;
   font-weight: 600;
-  color: #86868b; /* Grey out the section title */
+  color: #86868b;
   margin: 0 0 20px 0;
 }
 
@@ -72,7 +72,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Spacing between list items */
+  gap: 20px;
 }
 
 .bagfi-profile-item {
@@ -95,6 +95,170 @@
 }
 
 .bagfi-icon {
-  margin-right: 15px; /* Space between icon and text */
-  color: #86868b; /* Muted grey for the icons */
+  margin-right: 15px;
+  color: #86868b;
+}
+
+
+/* ============================================
+   FILLED STATE — shows when bag has items
+   ============================================ */
+
+.bagfi-filled-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 20px;
+}
+
+/* Page title */
+.bagfi-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #1d1d1f;
+  margin: 0 0 40px 0;
+}
+
+/* --- Item List --- */
+.bagfi-items-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #d2d2d7;
+}
+
+.bagfi-item-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.bagfi-item-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  background-color: #f5f5f7;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.bagfi-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.bagfi-item-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.bagfi-item-tagline {
+  font-size: 0.875rem;
+  color: #86868b;
+}
+
+.bagfi-item-qty {
+  font-size: 0.875rem;
+  color: #86868b;
+  margin-top: 4px;
+}
+
+.bagfi-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.bagfi-item-price {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.bagfi-remove-btn {
+  background: none;
+  border: none;
+  color: #0071e3;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.bagfi-remove-btn:hover {
+  text-decoration: underline;
+}
+
+/* --- Order Summary --- */
+.bagfi-summary {
+  margin-top: 32px;
+  max-width: 400px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bagfi-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #1d1d1f;
+}
+
+.bagfi-summary-total {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding-top: 12px;
+  border-top: 1px solid #d2d2d7;
+}
+
+/* --- Checkout Button --- */
+.bagfi-checkout-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 20px;
+  background-color: #0071e3;
+  color: #fff;
+  text-align: center;
+  border-radius: 980px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.bagfi-checkout-btn:hover {
+  background-color: #0077ed;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .bagfi-empty-title,
+  .bagfi-title {
+    font-size: 1.8rem;
+  }
+
+  .bagfi-item-row {
+    flex-wrap: wrap;
+  }
+
+  .bagfi-item-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bagfi-summary {
+    max-width: 100%;
+  }
 }

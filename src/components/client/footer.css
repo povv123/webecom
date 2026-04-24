@@ -1,0 +1,237 @@
+/* --- Global Footer Container --- */
+.footerser-container {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7;
+  color: #86868b;
+  font-size: 12px;
+  line-height: 1.33337;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 0 20px;
+}
+
+.footerser-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 0 40px;
+}
+
+/* --- Notes & Disclaimers --- */
+.footerser-notes {
+  padding-bottom: 12px;
+}
+
+.footerser-notes p {
+  margin: 0 0 8px 0;
+  color: #86868b;
+}
+
+.footerser-divider {
+  border-bottom: 1px solid #d2d2d7;
+  margin-bottom: 20px;
+}
+
+/* --- Directory Grid (Columns) --- */
+.footerser-directory {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.footerser-column {
+  flex: 1 1 25%;
+  box-sizing: border-box;
+  padding-right: 15px;
+}
+
+/* Desktop overrides for Sections */
+.footerser-section {
+  margin-bottom: 24px;
+}
+
+.footerser-section h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* Hide accordion icons on desktop */
+.footerser-mobile-icon {
+  display: none; 
+}
+
+.footerser-list-wrapper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerser-list-wrapper li {
+  margin-bottom: 8px;
+}
+
+.footerser-list-wrapper a {
+  color: #424245;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerser-list-wrapper a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+/* --- Bottom Legal Bar --- */
+.footerser-bottom {
+  padding-top: 34px;
+  border-top: 1px solid #d2d2d7;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerser-locale {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #d2d2d7;
+  padding-bottom: 8px;
+}
+
+.footerser-locale a {
+  color: #424245;
+  text-decoration: none;
+}
+
+.footerser-locale a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+.footerser-legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footerser-copyright {
+  margin-right: 30px;
+  margin-bottom: 8px;
+}
+
+.footerser-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.footerser-legal-links a {
+  color: #424245;
+  text-decoration: none;
+  border-right: 1px solid #d2d2d7;
+  padding-right: 10px;
+}
+
+.footerser-legal-links a:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.footerser-legal-links a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+/* =========================================
+   --- Responsive Design (Tablet) --- 
+   ========================================= */
+@media only screen and (max-width: 1024px) {
+  .footerser-column {
+    flex: 1 1 50%; /* 2 columns */
+  }
+}
+
+/* =========================================
+   --- Responsive Design (Mobile - Accordion Mode) --- 
+   ========================================= */
+@media only screen and (max-width: 768px) {
+  .footerser-directory {
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  .footerser-column {
+    flex: 1 1 auto;
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .footerser-section {
+    border-bottom: 1px solid #d2d2d7;
+    margin-bottom: 0;
+  }
+
+  /* Make header clickable */
+  .footerser-section h3 {
+    margin: 0;
+    padding: 12px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400; /* Apple thins the font on mobile accordions */
+  }
+
+  .footerser-mobile-icon {
+    display: block;
+    font-weight: 300;
+    font-size: 16px;
+    color: #1d1d1f;
+  }
+
+  /* Hide lists by default on mobile */
+  .footerser-list-wrapper {
+    display: none;
+    padding-bottom: 16px;
+    padding-top: 4px;
+  }
+
+  /* Show list when open */
+  .footerser-section.open .footerser-list-wrapper {
+    display: block;
+  }
+
+  .footerser-list-wrapper li {
+    margin-bottom: 12px;
+  }
+
+  .footerser-list-wrapper a {
+    padding: 4px 0;
+    display: block;
+  }
+
+  /* Bottom Legal Layout */
+  .footerser-legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footerser-locale {
+    border-bottom: none;
+    margin-bottom: 16px;
+  }
+
+  .footerser-legal-links {
+    margin-top: 10px;
+  }
+  
+  .footerser-legal-links a {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 15px;
+    margin-bottom: 8px;
+  }
+}

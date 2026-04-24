@@ -6,16 +6,11 @@ import '../../../styles/products/machine.css';
 const MachineryPage = () => {
   const [filter, setFilter] = useState('All');
 
-  /**
-   * FILTER LOGIC
-   * 1. Targets 'machinery' subCategory.
-   * 2. Matches the industrial type selected via the nav buttons.
-   */
   const filteredItems = machineryProducts ? machineryProducts.filter(p => 
     p.subCategory === 'machinery' && (filter === 'All' || p.type === filter)
   ) : [];
 
-  // 2. Heavy Machinery specific categories (Added Electronic Machines)
+
   const categories = [
     'All', 
     'Excavators', 
@@ -23,7 +18,7 @@ const MachineryPage = () => {
     'Forklifts', 
     'Generators', 
     'Industrial Lathes',
-    'Electronic Machines' // Added electronic machines here
+    'Electronic Machines' 
   ];
 
   useEffect(() => {
@@ -93,7 +88,7 @@ const MachineryPage = () => {
                   {/* NEW: Button Group for Learn More & Buy */}
                   <div className="machie-button-group">
                     <Link 
-                      to={`/machinery/${item.id}`} /* Adjust route to match your detail page */
+                      to={`/product/${item.id}`} 
                       className="machie-learn-more-button"
                     >
                       Learn more 

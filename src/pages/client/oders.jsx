@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import "../../styles/order.css"
 
 const Orders = () => {
   // Mock state: assuming no orders for the empty state UI

@@ -1,215 +1,374 @@
-/* ==========================================================================
-   1. Base Styles & Typography
-   ========================================================================== */
-.about-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
-  background-color: #ffffff;
-  line-height: 1.47059;
-  font-weight: 400;
-  letter-spacing: -0.022em;
-  margin: 0;
-  padding: 0 0 8rem 0; /* Extra padding at the bottom of the page */
+
+:root {
+  /* Color Palette */
+  --abhu-black: #1d1d1f;
+  --abhu-gray: #86868b;
+  --abhu-silver: #d2d2d7;
+  --abhu-blue: #0066cc;
+  --abhu-bg-light: #f5f5f7;
+  --abhu-nav-bg: rgba(255, 255, 255, 0.72);
+  
+  /* Layout Constants */
+  --abhu-max-width: 980px;
+  --abhu-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* ==========================================================================
-   2. Navigation (Apple Style Sticky Nav)
-   ========================================================================== */
-.about-nav {
+/* 1. BASE STYLES */
+.abhu-page-wrapper {
+  font-family: var(--abhu-font);
+  background-color: #fff;
+  color: var(--abhu-black);
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. STICKY NAV */
+.abhu-local-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 52px;
+  background: var(--abhu-nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--abhu-silver);
+  z-index: 1000;
+}
+
+.abhu-nav-content {
+  max-width: var(--abhu-max-width);
+  margin: 0 auto;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+}
+
+.abhu-nav-brand {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+}
+
+.abhu-nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.abhu-nav-links .nav-item {
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--abhu-black);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.abhu-nav-links .nav-item:hover, 
+.abhu-nav-links .nav-item.active {
+  opacity: 1;
+  color: var(--abhu-blue);
+}
+
+/* 3. LARGE FULL-WIDTH HEADER */
+.abhu-hero-full-width-img {
+  position: relative; 
+  width: 100%;
+  height: 65vh; /* Large cinematic height */
+  min-height: 450px;
+  background-color: var(--abhu-black); /* Dark fallback */
+  overflow: hidden;
+  display: flex; 
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  position: sticky;
-  top: 60px; /* Assuming your main global header is 60px tall */
-  z-index: 90;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.nav-link {
-  text-decoration: none;
-  color: #1e1e22;
-  font-size: 0.85rem;
-  font-weight: 400;
-  opacity: 0.8;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover, 
-.nav-link.active {
-  opacity: 1;
-  color: #000000;
-}
-
-/* ==========================================================================
-   3. Hero Section
-   ========================================================================== */
-.hero-image {
-  position: relative;
-  text-align: center;
-  margin-bottom: 6rem;
-  background-color: #000; /* Fallback before image loads */
-}
-
-.hero-image img {
-  width: 100%;
-  height: 65vh;
-  min-height: 400px;
-  object-fit: cover;
-  display: block;
-  opacity: 0.7; /* Darkens the image so the white text pops */
-}
-
-.hero-image h1 {
+.abhu-header-pic {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-size: clamp(3rem, 5vw, 5.5rem); /* Scales dynamically */
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  margin: 0;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* ==========================================================================
-   4. Quote Section
-   ========================================================================== */
-.quote-section {
-  max-width: 900px;
-  margin: 0 auto 5rem auto;
-  text-align: center;
-  padding: 0 2rem;
-}
-
-.quote {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  margin-bottom: 1.5rem;
-  color: #1d1d1f;
-}
-
-.author {
-  font-size: 1.2rem;
-  color: #86868b;
-  font-weight: 500;
-}
-
-/* ==========================================================================
-   5. Description Section
-   ========================================================================== */
-.description {
-  max-width: 800px;
-  margin: 0 auto 6rem auto;
-  text-align: center;
-  padding: 0 2rem;
-}
-
-.description p {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: #1d1d1f;
-  font-weight: 400;
-}
-
-/* ==========================================================================
-   6. Disclosure Sections (Cards)
-   ========================================================================== */
-.disclosure {
-  display: flex;
-  max-width: 1000px;
-  margin: 0 auto 4rem auto;
-  background-color: #fbfbfd;
-  border-radius: 18px;
-  overflow: hidden;
-  align-items: stretch;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.disclosure:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-}
-
-.disclosure .left {
-  flex: 1;
-  min-width: 40%;
-}
-
-.disclosure .left img {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  min-height: 300px;
   object-fit: cover;
-  display: block;
+  z-index: 1; 
+  filter: brightness(0.85); /* Optional dark overlay for text readability */
 }
 
-.disclosure .right {
-  flex: 1.2; /* Gives slightly more room to the text */
-  padding: 4rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+.abhu-hero-text-overlay {
+  position: relative;
+  z-index: 2; 
+  color: #ffffff;
+  font-size: 80px; 
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-.disclosure .right p {
-  font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  color: #1d1d1f;
+/* 4. MAIN CONTENT CONTAINER */
+.abhu-main-container {
+  max-width: var(--abhu-max-width);
+  margin: 0 auto;
+  padding: 0 22px 100px;
 }
 
-.disclosure .right a {
+/* 5. BREADCRUMB */
+.abhu-breadcrumb {
+  padding-top: 40px;
+  font-size: 12px;
+  color: var(--abhu-gray);
+  margin-bottom: 60px;
+}
+
+.abhu-breadcrumb a {
+  color: var(--abhu-gray);
   text-decoration: none;
-  color: #0066cc; /* Standard Apple Blue Link */
-  font-weight: 400;
-  font-size: 1.1rem;
-  display: inline-flex;
-  align-items: center;
-  transition: text-decoration 0.2s ease;
 }
 
-.disclosure .right a:hover {
+.abhu-breadcrumb a:hover {
   text-decoration: underline;
 }
 
-/* ==========================================================================
-   7. Responsive Design (Mobile & Tablet)
-   ========================================================================== */
+/* 6. HERO TEXT SECTION */
+.abhu-hero {
+  margin-bottom: 80px;
+}
+
+.abhu-hero-label {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.abhu-hero-quote {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.08349;
+  letter-spacing: -0.003em;
+  margin-bottom: 15px;
+  max-width: 800px;
+}
+
+.abhu-hero-author {
+  font-size: 21px;
+  color: var(--abhu-gray);
+  display: block;
+  margin-bottom: 40px;
+  font-style: normal;
+}
+
+.abhu-hero-description p {
+  font-size: 21px;
+  line-height: 1.381;
+  font-weight: 400;
+  margin-bottom: 24px;
+  max-width: 750px;
+}
+
+/* 7. DISCLOSURE SECTION */
+.abhu-disclosure {
+  padding: 60px 0;
+  border-top: 1px solid var(--abhu-silver);
+  border-bottom: 1px solid var(--abhu-silver);
+  margin-bottom: 80px;
+}
+
+.abhu-disclosure h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: -0.007em;
+}
+
+.abhu-disclosure p {
+  font-size: 17px;
+  line-height: 1.47059;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.abhu-cta-text {
+  font-size: 17px;
+  color: var(--abhu-blue);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.abhu-cta-text:hover {
+  text-decoration: underline;
+}
+
+/* 8. VALUES GRID SECTION */
+.abhu-values-grid-section {
+  margin-bottom: 100px;
+}
+
+.abhu-grid-intro {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.abhu-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.abhu-value-card {
+  background-color: var(--abhu-bg-light);
+  padding: 32px 24px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+  transition: transform 0.3s ease;
+}
+
+.abhu-value-card:hover {
+  transform: scale(1.02);
+}
+
+.abhu-value-title {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.abhu-text-link {
+  color: var(--abhu-blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.abhu-text-link:hover {
+  text-decoration: underline;
+}
+
+/* 9. REPORTS SECTION */
+.abhu-reports-section {
+  padding-top: 80px;
+  border-top: 1px solid var(--abhu-silver);
+  margin-bottom: 80px;
+}
+
+.abhu-section-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  letter-spacing: -0.007em;
+}
+
+.abhu-reports-top-links {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.abhu-reports-top-links a {
+  font-size: 17px;
+  color: var(--abhu-blue);
+  text-decoration: none;
+}
+
+.abhu-reports-top-links a:hover {
+  text-decoration: underline;
+}
+
+.abhu-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+}
+
+.abhu-report-group {
+  display: block;
+}
+
+.abhu-report-category {
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--abhu-silver);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.abhu-report-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.abhu-report-item {
+  display: block;
+  font-size: 14px;
+  color: var(--abhu-blue);
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.abhu-report-item:hover {
+  text-decoration: underline;
+}
+
+/* 10. ADDITIONAL TOPICS SECTION */
+.abhu-additional-topics {
+  padding-top: 60px;
+  border-top: 1px solid var(--abhu-silver);
+}
+
+.abhu-topics-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  margin-bottom: 40px;
+}
+
+.abhu-topics-flex a {
+  font-size: 17px;
+  color: var(--abhu-blue);
+  text-decoration: none;
+}
+
+.abhu-topics-flex a:hover {
+  text-decoration: underline;
+}
+
+.abhu-footer-note {
+  font-size: 12px;
+  color: var(--abhu-gray);
+  line-height: 1.5;
+}
+
+.abhu-footer-note a {
+  color: var(--abhu-black);
+  text-decoration: underline;
+}
+
+/* 11. RESPONSIVE QUERIES */
+@media (max-width: 1024px) {
+  .abhu-reports-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .about-nav {
-    gap: 1.5rem;
-    padding: 1rem;
-    flex-wrap: wrap;
-    /* Adjust top to match mobile header height if it differs from desktop */
-    top: 60px; 
-  }
-  
-  .description p {
-    font-size: 1.1rem;
-  }
-  
-  .disclosure {
-    flex-direction: column;
-    margin: 0 1.5rem 3rem 1.5rem;
-  }
-  
-  .disclosure .left img {
-    height: 250px;
-    min-height: auto;
-  }
-  
-  .disclosure .right {
-    padding: 2.5rem 2rem;
-  }
+  .abhu-hero-full-width-img { height: 40vh; }
+  .abhu-hero-text-overlay { font-size: 48px; }
+  .abhu-hero-quote { font-size: 32px; }
+  .abhu-reports-grid { grid-template-columns: 1fr; }
+  .abhu-values-grid { grid-template-columns: 1fr; }
+  .abhu-topics-flex { flex-direction: column; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+  .abhu-nav-links { display: none; }
 }

@@ -1,14 +1,21 @@
 /* =========================================================
-   VARIABLES & GLOBAL HEADER (Desktop Focus)
+   VARIABLES & GLOBAL TOKENS
    ========================================================= */
 :root {
-  --nav-height: 44px; /* Apple strictly uses 44px for the global nav */
+  --nav-height: 44px;
   --apple-bg: rgba(251, 251, 253, 0.8);
-  --apple-text: #1d1d1f;
+  --apple-mobile-bg: #fbfbfd;
+  --apple-text: rgba(0, 0, 0, 0.8);
+  --apple-text-hover: rgba(0, 0, 0, 1);
   --apple-secondary: #86868b;
+  --apple-border: rgba(0, 0, 0, 0.16);
   --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-apple-menu: cubic-bezier(0.32, 0.08, 0.24, 1); 
 }
 
+/* =========================================================
+   GLOBAL HEADER BASE
+   ========================================================= */
 .mega-header {
   position: fixed;
   top: 0;
@@ -18,9 +25,8 @@
   background: var(--apple-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px); 
   backdrop-filter: saturate(180%) blur(20px);
-  /* Apple's exact font stack */
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.16); /* Subtle bottom border */
+  border-bottom: 1px solid var(--apple-border); 
 }
 
 .mega-nav-container {
@@ -38,53 +44,32 @@
   align-items: center;
   list-style: none;
   height: 100%;
-  padding: 0 22px; /* Apple uses slightly tighter padding on the edges */
+  padding: 0 22px;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Base Link Styling */
 .mega-nav-link {
   padding: 0 8px;
-  font-size: 12px; /* Apple desktop links are exactly 12px */
+  font-size: 12px; 
   line-height: 1; 
   text-decoration: none;
   color: var(--apple-text);
-  opacity: 0.8;
-  transition: opacity 0.3s var(--ease-apple);
   font-weight: 400;
   letter-spacing: -0.01em;
+  transition: opacity 0.3s var(--ease-apple), color 0.3s var(--ease-apple);
+  cursor: pointer;
 }
 
-.mega-nav-link:hover { opacity: 1; }
-.mega-logo-link svg { fill: var(--apple-text); height: 14px; display: block; opacity: 0.8; transition: opacity 0.3s var(--ease-apple); }
-.mega-logo-link:hover svg { opacity: 1; }
-
-/* Desktop MegaMenu Panel */
-.mega-panel {
-  position: absolute;
-  top: var(--nav-height); /* Drops exactly from the 44px mark */
-  left: 0;
-  width: 100%;
-  background: #fbfbfd;
-  display: grid;
-  grid-template-rows: 0fr; 
-  transition: grid-template-rows 0.4s var(--ease-apple);
-  overflow: hidden;
+.mega-logo-link svg { 
+  fill: var(--apple-text); 
+  height: 14px; 
+  display: block; 
+  transition: opacity 0.3s var(--ease-apple); 
 }
 
-.mega-panel.mega-is-visible { grid-template-rows: 1fr; }
-.mega-panel-inner { min-height: 0; }
-.mega-panel-content { max-width: 1024px; margin: 0 auto; padding: 40px 22px 84px; display: flex; gap: 84px; }
-.mega-column-heading { font-size: 15px; color: var(--apple-secondary); font-weight: 400; margin: 0 0 14px 0; }
-.mega-column-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.mega-column-item-link { font-size: 22px; font-weight: 600; color: rgba(15, 15, 15, 0.89); text-decoration: none; transition: color 0.3s var(--ease-apple); }
-.mega-column-item-link:hover { color: #000000; } /* Apple blue on hover for sub-links */
-
-.mega-page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-apple); z-index: 999; }
-.mega-page-overlay.mega-is-active { opacity: 1; pointer-events: auto; }
-.mega-header-spacer { height: var(--nav-height); width: 100%; display: block; }
-
-/* --- Navigation Actions (Icons) --- */
+/* Action Icons */
 .mega-nav-actions {
   display: flex;
   align-items: center;
@@ -93,71 +78,231 @@
 
 .mega-action-btn {
   color: var(--apple-text);
-  opacity: 0.8;
   display: flex;
   align-items: center;
-  transition: opacity 0.2s;
+  transition: opacity 0.3s var(--ease-apple);
   text-decoration: none;
-}
-.mega-action-btn svg { height: 14px; }
-.mega-action-btn:hover { opacity: 1; }
-
-/* --- Hamburger Logic --- */
-.mega-menu-toggle {
-  display: none; 
-  width: 44px; 
-  height: var(--nav-height);
+  cursor: pointer;
   background: none;
   border: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 10002;
   padding: 0;
+  position: relative; /* REQUIRED for the absolute badge positioning */
 }
 
-.mega-hamburger-line {
-  position: absolute;
-  left: 13px; 
-  width: 18px;
-  height: 1px; /* Apple lines are extremely thin (1px) */
-  background-color: var(--apple-text);
-  display: block;
-  transition: transform 0.3s var(--ease-apple), opacity 0.2s ease;
-  border-radius: 1px;
+.mega-action-btn svg { 
+  height: 16px; 
+  color: currentColor; 
 }
 
-/* Perfect alignment for the 3 lines within 44px */
-.mega-hamburger-line.mega-top { top: 18px; }
-.mega-hamburger-line.mega-mid { top: 22px; }
-.mega-hamburger-line.mega-bottom { top: 26px; }
+/* Apple Sibling-Fade Hover Effect */
+.mega-desktop-nav-list:hover .mega-nav-link,
+.mega-desktop-nav-list:hover .mega-logo-link,
+.mega-desktop-nav-list:hover .mega-action-btn {
+  opacity: 0.4;
+}
 
-/* Hamburger to X Animation */
-.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-top { 
-  transform: translateY(4px) rotate(45deg) !important; 
-}
-.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-mid { 
-  opacity: 0 !important; 
-}
-.mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-bottom { 
-  transform: translateY(-4px) rotate(-45deg) !important; 
+.mega-desktop-nav-list .mega-nav-link:hover,
+.mega-desktop-nav-list .mega-logo-link:hover,
+.mega-desktop-nav-list .mega-action-btn:hover {
+  opacity: 1;
+  color: var(--apple-text-hover);
 }
 
 /* =========================================================
-   MOBILE MENU CONTAINER (Hidden on Desktop)
+   BAG NOTIFICATION BADGE
    ========================================================= */
-.mega-nav-list-container {
-  display: none;
+.mega-bag-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #000000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  z-index: 10;
+  border: 1.5px solid var(--apple-bg); /* Clean cutout effect */
 }
 
 /* =========================================================
-   MOBILE MEDIA QUERIES
+   DESKTOP MEGAMENU PANEL
+   ========================================================= */
+.mega-panel {
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  background: var(--apple-mobile-bg);
+  display: grid;
+  grid-template-rows: 0fr; 
+  transition: grid-template-rows 0.4s var(--ease-apple-menu);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.mega-panel.mega-is-visible { 
+  grid-template-rows: 1fr; 
+}
+
+.mega-panel-inner { 
+  min-height: 0; 
+}
+
+.mega-panel-content { 
+  max-width: 1024px; 
+  margin: 0 auto; 
+  padding: 40px 22px 84px; 
+  display: flex; 
+  gap: 84px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.4s var(--ease-apple-menu);
+  transition-delay: 0s;
+}
+
+.mega-panel.mega-is-visible .mega-panel-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; 
+}
+
+/* -------------------------------------------
+   DESKTOP TYPOGRAPHY & COLUMNS
+   ------------------------------------------- */
+.mega-column-heading { 
+  font-size: 13px; 
+  color: var(--apple-secondary); 
+  font-weight: 400; 
+  margin: 0 0 20px 0;
+}
+
+.mega-column-list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.mega-panel-column:first-child .mega-column-list {
+  gap: 14px; 
+}
+
+.mega-panel-column:first-child .mega-column-item-link { 
+  font-size: 18px; 
+  font-weight: 600; 
+  color: rgba(0, 0, 0, 0.88); 
+  text-decoration: none; 
+  transition: color 0.3s var(--ease-apple); 
+}
+
+.mega-panel-column:not(:first-child) .mega-column-list {
+  gap: 10px; 
+}
+
+.mega-panel-column:not(:first-child) .mega-column-item-link { 
+  font-size: 12px; 
+  font-weight: 600; 
+  color: var(--apple-text); 
+  text-decoration: none; 
+  transition: color 0.3s var(--ease-apple); 
+}
+
+.mega-column-item-link:hover { 
+  color: #000000; 
+} 
+
+/* Desktop Overlay */
+.mega-page-overlay { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.32); 
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity 0.4s var(--ease-apple); 
+  z-index: 999; 
+}
+
+.mega-page-overlay.mega-is-active { 
+  opacity: 1; 
+  pointer-events: auto; 
+}
+
+.mega-header-spacer { 
+  height: var(--nav-height); 
+  width: 100%; 
+  display: block; 
+}
+
+/* =========================================================
+   MOBILE ELEMENTS (Hidden on Desktop)
+   ========================================================= */
+.mega-menu-toggle,
+.mega-nav-list-container {
+  display: none; 
+}
+
+/* =========================================================
+   MOBILE VIEW (max-width: 834px)
    ========================================================= */
 @media (max-width: 834px) {
   .mega-desktop-only { display: none !important; }
   
-  .mega-nav-actions { gap: 16px; }
-  .mega-menu-toggle { display: block; } 
+  .mega-nav-actions { 
+    gap: 18px; 
+    margin-left: auto;
+    justify-content: flex-end;
+  }
   
+  .mega-menu-toggle {
+    display: block; 
+    width: 20px; 
+    height: var(--nav-height);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 10002;
+    padding: 0;
+  }
+
+  .mega-hamburger-line {
+    position: absolute;
+    left: 1px; 
+    width: 18px;
+    height: 1px; 
+    background-color: var(--apple-text);
+    display: block;
+    transition: transform 0.3s var(--ease-apple-menu), opacity 0.2s ease;
+    border-radius: 1px;
+  }
+
+  .mega-hamburger-line.mega-top { top: 18px; }
+  .mega-hamburger-line.mega-mid { top: 22px; }
+  .mega-hamburger-line.mega-bottom { top: 26px; }
+
+  .mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-top { 
+    transform: translateY(4px) rotate(45deg); 
+  }
+  .mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-mid { 
+    opacity: 0; 
+  }
+  .mega-menu-toggle.mega-is-active .mega-hamburger-line.mega-bottom { 
+    transform: translateY(-4px) rotate(-45deg); 
+  }
+
   .mega-nav-list-container {
     display: block; 
     position: fixed;
@@ -165,27 +310,26 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #fbfbfd;
+    height: 100dvh;
+    background: var(--apple-mobile-bg);
     padding-top: var(--nav-height);
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s var(--ease-apple), visibility 0.3s;
+    transition: opacity 0.4s var(--ease-apple-menu), visibility 0.4s;
     overflow: hidden;
     z-index: 10000;
   }
 
-  .mega-nav-wrapper.mega-nav-open .mega-nav-list-container,
   .mega-nav-open .mega-nav-list-container {
     visibility: visible;
     opacity: 1;
   }
 
-  /* Sliding Panes */
   .mega-nav-slider-wrapper {
     display: flex;
     width: 200%;
     height: calc(100% - var(--nav-height));
-    transition: transform 0.4s var(--ease-apple);
+    transition: transform 0.4s var(--ease-apple-menu);
   }
 
   .mega-submenu-view .mega-nav-slider-wrapper {
@@ -195,27 +339,28 @@
   .mega-pane {
     width: 50%;
     height: 100%;
-    padding: 0 40px 40px; /* Removed top padding, let items handle it */
+    padding: 0 40px 100px;
     overflow-y: auto;
+    box-sizing: border-box;
   }
 
-  /* Mobile Main List */
   .mega-mobile-nav-list {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
   }
 
-  .mega-mobile-link, .mega-mobile-link-btn {
+  .mega-mobile-link, 
+  .mega-mobile-link-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 28px; /* Apple uses massive text on mobile */
+    font-size: 20px; 
     font-weight: 600;
     padding: 12px 0;
     width: 100%;
     opacity: 1;
-    color: var(--apple-text);
+    color: var(--apple-text-hover);
     text-decoration: none;
     background: none;
     border: none;
@@ -225,17 +370,18 @@
     transition: opacity 0.2s ease;
   }
 
-  .mega-mobile-link:hover, .mega-mobile-link-btn:hover {
+  .mega-mobile-link:hover, 
+  .mega-mobile-link-btn:hover {
     opacity: 0.7;
   }
 
   .mega-chevron {
     color: var(--apple-secondary);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
+    line-height: 1;
   }
 
-  /* Mobile Submenu Circular 'X' Back Button */
   .mega-back-btn {
     display: flex;
     align-items: center;
@@ -245,20 +391,22 @@
     background: #e5e5ea; 
     border-radius: 50%;  
     border: none;
-    color: var(--apple-text);
+    color: var(--apple-text-hover);
     padding: 0;
     margin: 20px 0 24px;
     cursor: pointer;
     transition: background 0.2s;
   }
 
-  .mega-back-btn:hover { background: #d1d1d6; }
+  .mega-back-btn:hover { 
+    background: #d1d1d6; 
+  }
 
   .mega-sub-pane-title {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 25px;
-    color: var(--apple-text);
+    margin: 0 0 25px 0;
+    color: var(--apple-text-hover);
   }
 
   .mega-sub-pane-col {
@@ -266,7 +414,7 @@
   }
 
   .mega-sub-pane-col h3 {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--apple-secondary);
     font-weight: 400;
     margin: 0 0 12px 0;
@@ -274,9 +422,9 @@
 
   .mega-sub-pane-col a {
     display: block;
-    font-size: 20px; /* Sub-links are slightly smaller but still large */
+    font-size: 17px; 
     font-weight: 600;
-    color: var(--apple-text);
+    color: var(--apple-text-hover);
     padding: 8px 0;
     text-decoration: none;
     transition: opacity 0.2s;

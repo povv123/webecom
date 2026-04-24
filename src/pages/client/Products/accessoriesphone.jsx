@@ -78,7 +78,7 @@ const AccessoriesPage = () => {
                   
                   <div className="Assmomo-button-group">
                     <Link 
-                      to={`/electronics/${item.id}`} 
+                      to={`/product/${item.id}`} 
                       className="Assmomo-learn-more-button"
                     >
                       Learn more 

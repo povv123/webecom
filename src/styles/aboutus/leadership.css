@@ -1,173 +1,326 @@
-/* ==========================================================================
-   Base Styles & Typography
-   ========================================================================== */
-.about-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
-  background-color: #ffffff;
+/* ----------------------------------
+   ETER CAMBODIA - LEADERSHIP PAGE 
+   Style: Apple-Inspired / Clean / Large Full-Width Header 
+------------------------------------- */
+
+:root {
+  /* Color Palette */
+  --leader-black: #1d1d1f;
+  --leader-gray: #86868b;
+  --leader-silver: #d2d2d7;
+  --leader-blue: #0066cc;
+  --leader-bg-light: #f5f5f7;
+  --leader-nav-bg: rgba(255, 255, 255, 0.72);
+  
+  /* Layout Constants */
+  --leader-max-width: 980px;
+  --leader-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 1. BASE STYLES */
+.leader-page-wrapper {
+  font-family: var(--leader-font);
+  background-color: #fff;
+  color: var(--leader-black);
   line-height: 1.47059;
-  font-weight: 400;
   letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
 }
 
-/* ==========================================================================
-   Navigation (Apple Style Sticky Nav)
-   ========================================================================== */
-.about-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+/* 2. STICKY NAV */
+.leader-local-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.nav-link {
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.nav-link:hover, 
-.nav-link.active {
-  opacity: 1;
-}
-
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
-.hero-image {
-  position: relative;
-  text-align: center;
-  margin-bottom: 6rem;
-  background-color: #000; 
-}
-
-.hero-image img {
   width: 100%;
-  height: 65vh;
-  min-height: 400px;
-  object-fit: cover;
-  display: block;
-  opacity: 0.8; 
+  height: 52px;
+  background: var(--leader-nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--leader-silver);
+  z-index: 1000;
 }
 
-.hero-image h1 {
+.leader-nav-content {
+  max-width: var(--leader-max-width);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+}
+
+.leader-nav-brand {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+}
+
+.leader-nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.leader-nav-links .nav-item {
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--leader-black);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.leader-nav-links .nav-item:hover, 
+.leader-nav-links .nav-item.active {
+  opacity: 1;
+  color: var(--leader-blue);
+}
+
+/* 3. LARGE FULL-WIDTH HEADER */
+.leader-hero-full-width-img {
+  position: relative; 
+  width: 100%;
+  height: 65vh; /* Large cinematic height */
+  min-height: 450px;
+  background-color: var(--leader-black); /* Dark fallback */
+  overflow: hidden;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.leader-header-pic {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4.5rem;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  margin: 0;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1; 
+  /* Optional: Add a slight dark overlay to make white text pop more */
+  filter: brightness(0.85);
 }
 
-/* ==========================================================================
-   Quote Section
-   ========================================================================== */
-.quote-section {
-  max-width: 900px;
-  margin: 0 auto 5rem auto;
-  text-align: center;
-  padding: 0 2rem;
-}
-
-.quote {
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.15;
+.leader-hero-text-overlay {
+  position: relative;
+  z-index: 2; 
+  color: #ffffff;
+  font-size: 80px; 
+  font-weight: 700;
   letter-spacing: -0.015em;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-/* ==========================================================================
-   Leadership Grid Section
-   ========================================================================== */
-.leaders {
+/* 4. MAIN CONTENT CONTAINER */
+.leader-main-container {
+  max-width: var(--leader-max-width);
+  margin: 0 auto;
+  padding: 0 22px 100px;
+}
+
+/* 5. BREADCRUMB */
+.leader-breadcrumb {
+  padding-top: 40px;
+  font-size: 12px;
+  color: var(--leader-gray);
+  margin-bottom: 60px;
+}
+
+.leader-breadcrumb a {
+  color: var(--leader-gray);
+  text-decoration: none;
+}
+
+.leader-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* 6. HERO TEXT SECTION */
+.leader-hero {
+  margin-bottom: 100px;
+}
+
+.leader-hero-label {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.leader-hero-quote {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.08349;
+  letter-spacing: -0.003em;
+  margin-bottom: 15px;
+  max-width: 800px;
+}
+
+.leader-hero-author {
+  font-size: 21px;
+  color: var(--leader-gray);
+  display: block;
+  margin-bottom: 40px;
+  font-style: normal;
+}
+
+.leader-hero-description p {
+  font-size: 21px;
+  line-height: 1.381;
+  font-weight: 400;
+  margin-bottom: 24px;
+  max-width: 750px;
+}
+
+/* 7. LEADERS GRID */
+.leader-grid-section {
+  margin-bottom: 100px;
+  padding-top: 60px;
+}
+
+.leader-section-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  letter-spacing: -0.007em;
+}
+
+.leader-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto 6rem auto;
-  padding: 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 50px 30px;
 }
 
 .leader-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers the content in the card */
-  text-align: center;
+  border-top: 1px solid var(--leader-silver);
+  padding-top: 28px;
 }
 
-.leader-card img {
+.leader-profile-img-container {
   width: 100%;
   aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 12px; 
+  margin-bottom: 20px;
+  background-color: var(--leader-bg-light);
+}
+
+.leader-profile-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 18px; /* Matches previous Apple-style corner rounding */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.leader-card:hover img {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.leader-card h3 {
-  font-size: 1.4rem;
+.leader-title {
+  font-size: 19px;
   font-weight: 600;
-  margin: 1.5rem 0 0.4rem 0;
-  letter-spacing: -0.015em;
+  margin-bottom: 4px;
 }
 
-.leader-card p {
-  font-size: 1.1rem;
-  color: #86868b; /* Apple's standard secondary text color */
+.leader-role-text {
+  color: var(--leader-gray);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leader-bio-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: var(--leader-black);
+}
+
+.leader-text-link {
+  color: var(--leader-blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.leader-text-link:hover {
+  text-decoration: underline;
+}
+
+/* 8. CORPORATE GOVERNANCE SECTION */
+.leader-reports-section {
+  padding-top: 80px;
+  border-top: 1px solid var(--leader-silver);
+}
+
+.leader-reports-top-links {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.leader-reports-top-links a {
+  font-size: 17px;
+  color: var(--leader-blue);
+  text-decoration: none;
+}
+
+.leader-reports-top-links a:hover {
+  text-decoration: underline;
+}
+
+.leader-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+}
+
+.leader-report-group {
+  display: block;
+}
+
+.leader-report-category {
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--leader-silver);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.leader-report-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  line-height: 1.4;
-  font-weight: 400;
 }
 
-/* ==========================================================================
-   Responsive Design (Mobile & Tablet)
-   ========================================================================== */
+.leader-report-item {
+  display: block;
+  font-size: 14px;
+  color: var(--leader-blue);
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.leader-report-item:hover {
+  text-decoration: underline;
+}
+
+/* 9. RESPONSIVE QUERIES */
+@media (max-width: 1024px) {
+  .leader-reports-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .about-nav {
-    gap: 1.5rem;
-    padding: 1rem 0.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .hero-image h1 {
-    font-size: 3rem;
-  }
-  
-  .quote {
-    font-size: 1.8rem;
-  }
-  
-  .leaders {
-    gap: 2.5rem;
-    padding: 0 1.5rem;
-  }
-  
-  .leader-card h3 {
-    font-size: 1.25rem;
-  }
-  
-  .leader-card p {
-    font-size: 1rem;
-  }
+  .leader-hero-full-width-img { height: 40vh; }
+  .leader-hero-text-overlay { font-size: 48px; }
+  .leader-hero-quote { font-size: 32px; }
+  .leader-reports-grid { grid-template-columns: 1fr; }
+  .leader-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .leader-grid { grid-template-columns: 1fr; }
+  .leader-nav-links { display: none; }
 }

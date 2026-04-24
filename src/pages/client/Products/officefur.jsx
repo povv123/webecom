@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// 1. Update the import to your furniture data file
 import { furnitureItems } from '../../../data/Products/officefurnitureData'; 
-import '../../../styles/products/officefur.css'; // Updated to reflect the likely new CSS file name
+import '../../../styles/products/officefur.css'; 
 
 const OfficeFurniturePage = () => {
   const [filter, setFilter] = useState('All');
@@ -92,8 +91,9 @@ const OfficeFurniturePage = () => {
                   </div>
                   
                   <div className="ofic-button-group">
+                    {/* UPDATED: Link routes to the universal /product/:id page */}
                     <Link 
-                      to={`/office/${item.id}`} 
+                      to={`/product/${item.id}`} 
                       className="ofic-learn-more-button"
                     >
                       Learn more 

@@ -1,99 +1,97 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+
+// Styling
 import "../../../styles/services/services.css";
+
+// Video Import
+import BurritoVideo from '../../../assets/videos/Cook a burrito.mp4';
 
 const Services = () => {
   return (
-    <div className="servv">
+    <div className="servre servre-dark-mode">
+      
       {/* APPLE STYLE SUB-NAV */}
-      <nav className="sub-nav">
-        <div className="sub-nav-container">
-          <NavLink to="/services" end className="nav-link">Overview</NavLink>
+      <nav className="servre-local-nav">
+        <div className="servre-nav-content">
+          <NavLink to="/services" end className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Overview</NavLink>
           
-          {/* Consulting Category */}
-          <NavLink to="/services/consulting/strategy" className="nav-link">Strategy</NavLink>
-          <NavLink to="/services/consulting/it" className="nav-link">IT</NavLink>
-          <NavLink to="/services/consulting/financial" className="nav-link">Finance</NavLink>
-          <NavLink to="/services/consulting/taxes" className="nav-link">Taxes</NavLink>
-          <NavLink to="/services/consulting/logistics" className="nav-link">Logistics</NavLink>
+          <NavLink to="/services/consulting/strategy" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Strategy</NavLink>
+          <NavLink to="/services/consulting/it" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>IT</NavLink>
+          <NavLink to="/services/consulting/financial" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Finance</NavLink>
+          <NavLink to="/services/consulting/taxes" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Taxes</NavLink>
+          <NavLink to="/services/consulting/logistics" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Logistics</NavLink>
 
-          {/* Maintenance Category */}
-          <NavLink to="/services/maintenance/equipment" className="nav-link">Equipment</NavLink>
-          <NavLink to="/services/maintenance/facility" className="nav-link">Facility</NavLink>
-          <NavLink to="/services/maintenance/repair" className="nav-link">Parts</NavLink>
-          <NavLink to="/services/maintenance/isp" className="nav-link">Internet</NavLink>
+          <NavLink to="/services/maintenance/equipment" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Equipment</NavLink>
+          <NavLink to="/services/maintenance/facility" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Facility</NavLink>
+          <NavLink to="/services/maintenance/repair" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Parts</NavLink>
+          <NavLink to="/services/maintenance/isp" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Internet</NavLink>
 
-          {/* Training Category */}
-          <NavLink to="/services/training/technical" className="nav-link">Technical</NavLink>
-          <NavLink to="/services/training/customer-service" className="nav-link">Customer Care</NavLink>
+          <NavLink to="/services/training/technical" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Technical</NavLink>
+          <NavLink to="/services/training/customer-service" className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Customer Care</NavLink>
         </div>
       </nav>
 
-      {/* HERO SECTION */}
-      <section className="hero-image">
+      {/* HERO SECTION (ENTERTAINMENT STYLE) */}
+      <header className="servre-ent-hero">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="hero-text-container"
+          className="servre-ent-hero-text"
         >
-          <img src="/images/industrial-hero.jpg" alt="Industrial Services" />
-          <h1>Expertise for every <br/> <span className="gradient-text">industrial need.</span></h1>
+          <h2 className="servre-eyebrow">Eter Enterprise</h2>
+          <h1>All your industrial needs.<br/> <span className="servre-gradient-text">In one seamless ecosystem.</span></h1>
+          <p className="servre-hero-subtext">Strategy, Maintenance, and Training. United.</p>
         </motion.div>
+      </header>
+
+      {/* EDGE-TO-EDGE VIDEO SECTION */}
+      <section className="servre-ent-video-wrapper">
+        <div className="servre-video-fade-top"></div>
+        <video 
+          className="servre-ent-video"
+          src={BurritoVideo} 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        />
+        <div className="servre-video-fade-bottom"></div>
       </section>
 
-      {/* DISCLOSURE SECTIONS WITH DIRECT LINKS */}
-      
-      {/* 1. Strategy & Consulting */}
-      <section className="disclosure">
-        <div className="left">
-          <img src="/images/strategy-bg.jpg" alt="Strategy" />
-        </div>
-        <div className="right">
-          <h3>Business Strategy & IT</h3>
-          <p>Blueprints for modern enterprise success through data and analysis.</p>
-          <div className="link-group">
-            <Link to="/services/consulting/strategy">Business Strategy →</Link>
-            <Link to="/services/consulting/it">IT Consulting →</Link>
-            <Link to="/services/consulting/financial">Financial Analysis →</Link>
-            <Link to="/services/consulting/taxes">Taxes →</Link>
-            <Link to="/services/consulting/logistics">Logistics →</Link>
+      {/* SERVICES GRID (LIKE APPLE ONE / ENTERTAINMENT CARDS) */}
+      <main className="servre-ent-grid-container">
+        
+        {/* Card 1 */}
+        <Link to="/services/consulting/strategy" className="servre-ent-card card-strategy">
+          <div className="servre-ent-card-content">
+            <h3>Strategy & IT</h3>
+            <p>Blueprints for modern enterprise success.</p>
+            <span className="servre-ent-link">Explore Consulting &rarr;</span>
           </div>
-        </div>
-      </section>
+        </Link>
 
-      {/* 2. Maintenance & Infrastructure */}
-      <section className="disclosure alt-layout">
-        <div className="left">
-          <img src="/images/maintenance-bg.jpg" alt="Maintenance" />
-        </div>
-        <div className="right">
-          <h3>Equipment & Facility</h3>
-          <p>Zero-downtime solutions for industrial machinery and facility infrastructure.</p>
-          <div className="link-group">
-            <Link to="/services/maintenance/equipment">Equipment Servicing →</Link>
-            <Link to="/services/maintenance/facility">Facility Management →</Link>
-            <Link to="/services/maintenance/repair">Spare Parts →</Link>
-            <Link to="/services/maintenance/isp">Internet Provider →</Link>
+        {/* Card 2 */}
+        <Link to="/services/maintenance/equipment" className="servre-ent-card card-maintenance">
+          <div className="servre-ent-card-content">
+            <h3>Infrastructure</h3>
+            <p>Zero-downtime solutions for your facility.</p>
+            <span className="servre-ent-link">Explore Maintenance &rarr;</span>
           </div>
-        </div>
-      </section>
+        </Link>
 
-      {/* 3. Workforce Training */}
-      <section className="disclosure">
-        <div className="left">
-          <img src="/images/training-bg.jpg" alt="Training" />
-        </div>
-        <div className="right">
-          <h3>Professional Development</h3>
-          <p>Upskill your team with technical mastery and elite customer service.</p>
-          <div className="link-group">
-            <Link to="/services/training/technical">Technical Training →</Link>
-            <Link to="/services/training/customer-service">Customer Service Training →</Link>
+        {/* Card 3 */}
+        <Link to="/services/training/technical" className="servre-ent-card card-training">
+          <div className="servre-ent-card-content">
+            <h3>Workforce</h3>
+            <p>Upskill your team with technical mastery.</p>
+            <span className="servre-ent-link">Explore Training &rarr;</span>
           </div>
-        </div>
-      </section>
+        </Link>
+
+      </main>
     </div>
   );
 };

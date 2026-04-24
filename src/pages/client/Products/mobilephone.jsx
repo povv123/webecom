@@ -77,8 +77,9 @@ const MobilePhonePage = () => {
                 
               
                 <div className="phon-button-group">
+                  {/* UPDATED: Link routes to the universal /product/:id page */}
                   <Link 
-                    to={`/products/item/${item.id}`} 
+                    to={`/product/${item.id}`} 
                     className="phon-learn-more-button"
                   >
                     Learn more 

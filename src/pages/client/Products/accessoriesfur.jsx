@@ -86,13 +86,13 @@ const FurnitureAccessoriesPage = () => {
                     </p>
                   </div>
                   
-                  {/* NEW: Button Group for Learn More & Buy */}
                   <div className="fasso-button-group">
+                    {/* FIXED: Updated class name to fasso-learn-more-button */}
                     <Link 
-                      to={`/furnitureacc/${item.id}`} /* Adjust this route to match your detail page */
+                      to={`/product/${item.id}`} 
                       className="fasso-learn-more-button"
                     >
-                      Learn more 
+                      Learn more
                     </Link>
                     <Link 
                       to={`/buy/furnitureacc`} 

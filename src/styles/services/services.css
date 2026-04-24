@@ -1,249 +1,239 @@
-/* --- Root & Reset --- */
-.servv {
-  background-color: #000000;
-  color: #f5f5f7;
-  /* Apple's system font stack */
-  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+
+
+
+:root {
+  --servre-black: #000000;
+  --servre-dark-gray: #000000;
+  --servre-gray: #86868b;
+  --servre-light-gray: #f5f5f7;
+  --servre-blue: #2997ff;
+  --servre-nav-bg: rgba(0, 0, 0, 0.72);
+  --servre-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.servre.servre-dark-mode {
+  font-family: var(--servre-font);
+  background-color: var(--servre-black);
+  color: var(--servre-light-gray);
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- Apple Style Sub-Nav --- */
-.servv .sub-nav {
+/* 1. DARK STICKY NAV */
+.servre-local-nav {
   position: sticky;
   top: 0;
-  z-index: 999;
+  width: 100%;
   height: 52px;
-  background: rgba(0, 0, 0, 0.72);
-  /* The signature "Glass" effect */
+  background: var(--servre-nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(94, 83, 83, 0.1);
+  z-index: 1000;
+}
+
+.servre-nav-content {
+  max-width: 980px;
+  margin: 0 auto;
+  height: 100%;
   display: flex;
   align-items: center;
-}
-
-.servv .sub-nav-container {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 0 22px;
-  display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  gap: 24px;
+  overflow-x: auto; 
+  scrollbar-width: none; 
 }
 
-.servv .sub-nav-container::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+.servre-nav-content::-webkit-scrollbar {
+  display: none; 
 }
 
-.servv .nav-link {
+.servre-nav-item {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  transition: color 0.3s ease;
+  color: var(--servre-light-gray);
+  opacity: 0.6;
   white-space: nowrap;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
-.servv .nav-link:hover {
-  color: #2997ff;
+.servre-nav-item:hover, 
+.servre-nav-item.active {
+  opacity: 1;
+  color: #ffffff;
 }
 
-.servv .nav-link.active {
-  color: rgba(255, 255, 255, 0.45);
-  pointer-events: none;
+/* 2. HERO SECTION */
+.servre-ent-hero {
+  padding: 120px 20px 60px 20px;
+  text-align: center;
+  background-color: var(--servre-black);
 }
 
-/* --- Hero Section --- */
-.servv .hero-image {
+.servre-eyebrow {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--servre-gray);
+  margin-bottom: 15px;
+  letter-spacing: 0.01em;
+}
+
+.servre-ent-hero h1 {
+  font-size: 80px; 
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+}
+
+.servre-hero-subtext {
+  font-size: 24px;
+  color: var(--servre-gray);
+  font-weight: 500;
+}
+
+.servre-gradient-text {
+  background: linear-gradient(90deg, #ffeeee, #ffeeee, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* 3. EDGE-TO-EDGE VIDEO */
+.servre-ent-video-wrapper {
   position: relative;
   width: 100%;
-  height: 85vh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 60vh;
+  min-height: 500px;
+  background-color: #000;
   overflow: hidden;
+  margin-bottom: 80px;
 }
 
-.servv .hero-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.servre-ent-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-  filter: brightness(0.5); /* Darkens image to make text pop */
+  opacity: 0.8; /* Slightly dimmed for cinematic feel */
 }
 
-.servv .hero-text-container {
+/* Fades the top and bottom of the video into the black background */
+.servre-video-fade-top,
+.servre-video-fade-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 2;
+}
+.servre-video-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+}
+.servre-video-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #000000 0%, transparent 100%);
+}
+
+/* 4. IMMERSIVE SERVICES GRID */
+.servre-ent-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 22px 120px 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.servre-ent-card {
+  position: relative;
+  border-radius: 28px;
+  height: 500px;
+  text-decoration: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  background-color: var(--servre-dark-gray); /* Fallback */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect on cards */
+.servre-ent-card:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Pure CSS Gradients for the cards (No images needed) */
+.card-strategy {
+  background: linear-gradient(145deg, #1a0033 0%, #300066 100%);
+}
+.card-maintenance {
+  background: linear-gradient(145deg, #001a33 0%, #003366 100%);
+}
+.card-training {
+  background: linear-gradient(145deg, #33001a 0%, #660033 100%);
+}
+
+.servre-ent-card-content {
   position: relative;
   z-index: 2;
-  padding: 0 22px;
-  text-align: center;
 }
 
-.servv .hero-text-container h1 {
-  font-size: clamp(48px, 9vw, 84px);
+.servre-ent-card-content h3 {
+  font-size: 32px;
   font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.05;
-  margin: 0;
-}
-
-/* --- THE GRADIENT TEXT FIX --- */
-.servv .gradient-text {
-  background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
-  
-  /* Clipping logic */
-  background-clip: text;
-  -webkit-background-clip: text;
-  
-  /* Text Fill Logic (The Fix) */
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  
-  display: inline-block;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-/* --- Quote Section --- */
-.servv .quote-section {
-  padding: 120px 22px;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.servv .quote {
-  font-size: clamp(26px, 5vw, 44px);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  margin-bottom: 24px;
   color: #ffffff;
-}
-
-.servv .author {
-  font-size: 21px;
-  color: #86868b;
-  font-weight: 400;
-}
-
-/* --- Core Description --- */
-.servv .description {
-  padding: 20px 22px 120px;
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.servv .description p {
-  font-size: 21px;
-  line-height: 1.45;
-  font-weight: 400;
-  color: #86868b; /* Apple's secondary text color */
-}
-
-/* --- Disclosure / Alternating Feature Sections --- */
-.servv .disclosure {
-  display: flex;
-  align-items: center;
-  max-width: 1060px;
-  margin: 0 auto 60px;
-  padding: 80px 22px;
-  gap: 80px;
-}
-
-/* Flips the layout for every other section */
-.servv .disclosure.alt-layout {
-  flex-direction: row-reverse;
-}
-
-.servv .disclosure .left {
-  flex: 1;
-}
-
-.servv .disclosure .left img {
-  width: 100%;
-  height: auto;
-  border-radius: 30px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.servv .disclosure:hover .left img {
-  transform: scale(1.02);
-}
-
-.servv .disclosure .right {
-  flex: 1;
-}
-
-.servv .disclosure h3 {
-  font-size: 44px;
-  font-weight: 600;
-  margin-bottom: 18px;
+  margin: 0 0 10px 0;
   letter-spacing: -0.01em;
+}
+
+.servre-ent-card-content p {
+  font-size: 19px;
+  color: var(--servre-gray);
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+.servre-ent-link {
+  font-size: 17px;
+  font-weight: 600;
   color: #ffffff;
 }
 
-.servv .disclosure p {
-  font-size: 19px;
-  line-height: 1.47;
-  color: #86868b;
-  margin-bottom: 32px;
-}
-
-/* --- Link Buttons --- */
-.servv .link-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.servv .link-group a {
-  color: #2997ff; /* Signature Apple blue */
-  text-decoration: none;
-  font-size: 19px;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  display: inline-flex;
-  align-items: center;
-  transition: opacity 0.2s ease;
-}
-
-.servv .link-group a:hover {
-  text-decoration: underline;
-  opacity: 0.7;
-}
-
-/* --- Mobile Responsiveness --- */
-@media (max-width: 834px) {
-  .servv .disclosure {
-    flex-direction: column !important;
-    text-align: center;
-    gap: 48px;
-    padding: 40px 22px;
+/* 5. RESPONSIVE QUERIES */
+@media (max-width: 1024px) {
+  .servre-ent-hero h1 { font-size: 64px; }
+  .servre-ent-grid-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .servv .link-group {
-    justify-content: center;
+  .card-training {
+    grid-column: span 2; /* Makes the last card span full width on tablet */
+    height: 400px;
   }
+}
+
+@media (max-width: 768px) {
+  .servre-ent-hero { padding: 80px 20px 40px 20px; }
+  .servre-ent-hero h1 { font-size: 48px; }
+  .servre-eyebrow { font-size: 17px; }
+  .servre-hero-subtext { font-size: 19px; }
   
-  .servv .hero-image {
-    height: 70vh;
+  .servre-ent-video-wrapper { height: 40vh; min-height: 300px; }
+
+  .servre-ent-grid-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
-  .servv .disclosure h3 {
-    font-size: 32px;
+  .servre-ent-card, .card-training {
+    grid-column: span 1;
+    height: 400px;
+    padding: 30px;
   }
 }

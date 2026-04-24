@@ -2,6 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../styles/solution/solution.css';
 
+// --- Custom Apple-Style SVG Icons (Monoline, clean, outline only) ---
+const IconHealthcare = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    <path d="M12 8v8"></path>
+    <path d="M8 12h8"></path>
+  </svg>
+);
+
+const IconEducation = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+  </svg>
+);
+
+const IconManufacturing = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+);
+// ----------------------------------------------------------------------
+
 const Solution = () => {
   return (
     <div className="soluu">
@@ -35,7 +59,7 @@ const Solution = () => {
         <div className="soluu-sector-grid">
           {/* Healthcare Link */}
           <Link to="/solutions/healthcare" className="soluu-sector-card">
-            <div className="soluu-sector-icon">⚕️</div>
+            <div className="soluu-sector-icon"><IconHealthcare /></div>
             <h3>Healthcare</h3>
             <p>Revolutionize patient care, medical imaging, and remote surgical training with immersive spatial computing.</p>
             <span className="soluu-link">
@@ -45,7 +69,7 @@ const Solution = () => {
 
           {/* Education Link */}
           <Link to="/solutions/education" className="soluu-sector-card">
-            <div className="soluu-sector-icon">🎓</div>
+            <div className="soluu-sector-icon"><IconEducation /></div>
             <h3>Education</h3>
             <p>Empower the next generation with interactive learning environments and high-speed connected campus infrastructure.</p>
             <span className="soluu-link">
@@ -55,7 +79,7 @@ const Solution = () => {
 
           {/* Manufacturing Link */}
           <Link to="/solutions/manufacturing" className="soluu-sector-card">
-            <div className="soluu-sector-icon">⚙️</div>
+            <div className="soluu-sector-icon"><IconManufacturing /></div>
             <h3>Manufacturing</h3>
             <p>Optimize assembly lines, enhance predictive maintenance, and build 3D prototypes faster in spatial environments.</p>
             <span className="soluu-link">

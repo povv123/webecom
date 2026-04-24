@@ -1,0 +1,286 @@
+/* --- Global Container --- */
+.jpfo-container {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  padding-bottom: 60px;
+}
+
+/* --- Sticky Local Nav --- */
+.jpfo-local-nav {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 100;
+  padding: 12px 20px;
+}
+
+.jpfo-nav-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jpfo-nav-brand {
+  font-size: 21px;
+  font-weight: 600;
+  color: #0c0ce0;
+}
+
+.jpfo-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.jpfo-nav-links a {
+  font-size: 12px;
+  color: #131314;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.jpfo-nav-links a:hover {
+  color: #a5b3bb;
+}
+
+.jpfo-btn-nav {
+  background-color: #4747e4;
+  color: #e0d7d7;
+  padding: 4px 12px;
+  border-radius: 980px;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.jpfo-btn-nav:hover {
+  background-color: #4949be;
+}
+
+/* --- Base Section Styling --- */
+.jpfo-section {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.jpfo-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #86868b;
+  margin-bottom: 12px;
+}
+
+.jpfo-headline {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+}
+
+.jpfo-desc {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1d1d1f;
+  margin: 0;
+}
+
+/* --- 1. Hero Section --- */
+.jpfo-hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+
+.jpfo-eyebrow {
+  font-size: 16px;
+  font-weight: 600;
+  color: #bf4800;
+  margin-bottom: 16px;
+}
+
+.jpfo-hero h1 {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 24px 0;
+  line-height: 1.05;
+}
+
+.jpfo-hero h1 span {
+  color: #86868b;
+}
+
+.jpfo-hero-sub {
+  font-size: 24px;
+  color: #1d1d1f;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* --- 2 & 3. Features (Split Layouts) --- */
+.jpfo-feature, .jpfo-feature-alt {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.jpfo-feature-text {
+  flex: 1;
+}
+
+.jpfo-feature-visual {
+  flex: 1.2;
+  height: 400px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f7;
+}
+
+.jpfo-glass-panel {
+  background: linear-gradient(145deg, #f5f5f7, #e8e8ed);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.jpfo-visual-placeholder {
+  color: #86868b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* --- 4. Values/Stories (Cards Grid) --- */
+.jpfo-stories-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.jpfo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.jpfo-card {
+  background-color: #f5f5f7;
+  border-radius: 20px;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.jpfo-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.jpfo-metric {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #1d1d1f;
+  margin: 0 0 16px 0;
+}
+
+.jpfo-card p:not(.jpfo-metric) {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1d1d1f;
+  flex-grow: 1;
+  margin: 0 0 24px 0;
+}
+
+.jpfo-link {
+  color: #0071e3;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.jpfo-link:hover {
+  text-decoration: underline;
+}
+
+.jpfo-chevron {
+  font-size: 12px;
+  margin-left: 4px;
+  font-family: monospace;
+}
+
+/* --- 5. Bottom CTA --- */
+.jpfo-cta {
+  text-align: center;
+  background-color: #f5f5f7;
+  border-radius: 20px;
+  margin-top: 40px;
+  padding: 80px 20px;
+}
+
+.jpfo-cta h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.jpfo-cta p {
+  font-size: 18px;
+  color: #86868b;
+  margin: 0 0 32px 0;
+}
+
+.jpfo-btn-primary {
+  background-color: #0071e3;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 980px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 400;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.jpfo-btn-primary:hover {
+  background-color: #0077ed;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .jpfo-nav-links {
+    display: none;
+  }
+  
+  .jpfo-hero h1 {
+    font-size: 40px;
+  }
+  
+  .jpfo-hero-sub {
+    font-size: 18px;
+  }
+  
+  .jpfo-feature, .jpfo-feature-alt {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .jpfo-feature-alt {
+    flex-direction: column-reverse;
+  }
+  
+  .jpfo-grid {
+    grid-template-columns: 1fr;
+  }
+}

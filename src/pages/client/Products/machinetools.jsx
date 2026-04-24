@@ -6,7 +6,6 @@ import '../../../styles/products/machinetools.css';
 const Machintools = () => {
   const [filter, setFilter] = useState('All');
 
-  // Logic: Check subCategory AND the active tab filter
   const filteredItems = machineTools ? machineTools.filter(p => 
     p.subCategory === 'precision-tool' && (filter === 'All' || p.type === filter)
   ) : [];
@@ -40,7 +39,7 @@ const Machintools = () => {
       </nav>
 
       <section className="toto-product-selection">
-        {/* Optional: Add a selection intro here if you want consistency with other pages */}
+  
         <div className="toto-selection-intro">
           <h2><strong>Precision Engineering.</strong> Built for performance.</h2>
         </div>
@@ -77,7 +76,7 @@ const Machintools = () => {
                   {/* NEW: Button Group for Learn More & Buy */}
                   <div className="toto-button-group">
                     <Link 
-                      to={`/tools/${item.id}`} /* Adjust this route to match your detail page */
+                      to={`/product/${item.id}`} /* Adjusted route to match universal detail page */
                       className="toto-learn-more-button"
                     >
                       Learn more 

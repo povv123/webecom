@@ -89,7 +89,7 @@ const HomeFurniturePage = () => {
                   {/* Button Group for Learn More & Buy */}
                   <div className="fhome-button-group">
                     <Link 
-                      to={`/home/${item.id}`} /* Adjust this route to match your detail page */
+                      to={`/product/${item.id}`} 
                       className="fhome-learn-more-button"
                     >
                       Learn more 

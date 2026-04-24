@@ -1,0 +1,430 @@
+
+/* Main Container */
+.buiu {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: 18px;
+  font-weight: 500;
+  color: #86868b;
+}
+
+/* 1. Sticky Navigation (If you are using the top nav bar) */
+.buy-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 100;
+  padding: 15px 0;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-name-nav {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1d1d1f;
+}
+
+.apple-btn-small {
+  background: #e8e8ed;
+  color: #1d1d1f;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apple-btn-small:hover {
+  background: #d2d2d7;
+}
+
+/* Header */
+.checkout-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.checkout-header h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Grid Layout */
+.checkout-main-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   Left Column: Forms & Delivery selection
+   ========================================================================== */
+.checkout-section {
+  margin-bottom: 45px;
+}
+
+.checkout-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d2d2d7;
+  letter-spacing: -0.01em;
+}
+
+/* Delivery Cards */
+.delivery-method-grid {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.delivery-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px 20px;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #1d1d1f;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+}
+
+.delivery-card:hover {
+  border-color: #86868b;
+}
+
+.delivery-card.active {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 1px #0071e3;
+}
+
+.delivery-card svg {
+  color: #1d1d1f;
+  transition: color 0.2s ease;
+}
+
+.delivery-card.active svg {
+  color: #0071e3;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.apple-input {
+  padding: 18px 16px;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.2;
+  outline: none;
+  background-color: #ffffff;
+  color: #1d1d1f;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.apple-input::placeholder {
+  color: #86868b;
+}
+
+.apple-input:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: calc(50% - 8px);
+}
+
+/* ==========================================================================
+   Right Column: Order Summary & Payment Options
+   ========================================================================== */
+.summary-card {
+  background-color: #f5f5f7;
+  padding: 35px 30px;
+  border-radius: 18px;
+  position: sticky;
+  top: 30px;
+}
+
+.summary-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+/* Cart Item */
+.summary-item-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.summary-item-img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.summary-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: #86868b;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.item-price {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.apple-divider {
+  border: none;
+  border-top: 1px solid #d2d2d7;
+  margin: 24px 0;
+}
+
+/* Costs */
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #1d1d1f;
+}
+
+.total-row {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* Payment Section Title */
+.payment-title {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.light-text {
+  color: #86868b;
+  font-weight: 400;
+}
+
+/* Payment Blocks Grid */
+.apple-payment-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.payment-block {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.payment-block:hover {
+  border-color: #86868b;
+}
+
+.payment-block.active {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 1px #0071e3;
+  background-color: #ffffff;
+}
+
+.payment-block-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+/* Custom Apple-style Radio Button sizing */
+.payment-block-header input[type="radio"] {
+  margin-top: 2px;
+  accent-color: #0071e3;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.payment-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d1d1f;
+}
+
+.payment-price {
+  font-weight: 400;
+  font-size: 14px;
+  color: #1d1d1f;
+}
+
+/* Indent descriptions to align with text, bypassing the radio button */
+.payment-desc {
+  font-size: 14px;
+  color: #1d1d1f;
+  margin: 0 0 0 34px; 
+  line-height: 1.4;
+}
+
+.payment-subtext {
+  font-size: 12px;
+  color: #86868b;
+  margin: 8px 0 0 34px;
+  line-height: 1.4;
+}
+
+/* Submit Button */
+.apple-btn-primary {
+  background-color: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.apple-btn-primary:hover {
+  background-color: #0077ed;
+}
+
+.place-order-btn {
+  padding: 18px;
+  font-size: 17px;
+  border-radius: 12px; 
+  margin-top: 10px;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #86868b;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Responsive / Mobile Rules
+   ========================================================================== */
+@media (max-width: 900px) {
+  .checkout-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .summary-card {
+    position: static;
+    padding: 25px 20px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .half-width {
+    width: 100%;
+  }
+
+  .checkout-header h1 {
+    font-size: 32px;
+  }
+}

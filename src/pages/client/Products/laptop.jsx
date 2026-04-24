@@ -44,7 +44,7 @@ const LaptopPage = () => {
 
       <section className="laptop-product-selection">
         <div className="laptop-selection-intro">
-         
+          
           {filter === 'Apple' ? (
             <h2><strong>Mac.</strong> Mind-blowing. Head-turning.</h2>
           ) : (
@@ -55,7 +55,7 @@ const LaptopPage = () => {
         <div className="laptop-horizontal-scroll-grid">
           {filteredLaptops.map((item) => (
             <div key={item.id} className="laptop-apple-card">
-             
+              
 
               {item.isNew && <span className="laptop-new-label">New</span>}
               
@@ -75,10 +75,11 @@ const LaptopPage = () => {
                   </p>
                 </div>
                 
-               
+                
                 <div className="laptop-button-group">
+                 
                   <Link 
-                    to={`/laptops/${item.id}`} 
+                    to={`/product/${item.id}`} 
                     className="laptop-learn-more-button"
                   >
                     Learn more 
@@ -90,6 +91,7 @@ const LaptopPage = () => {
                   >
                     Buy {'>'}
                   </Link>
+                  
                 </div>
                 
               </div>

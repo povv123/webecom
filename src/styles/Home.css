@@ -1,105 +1,278 @@
-.home-wrapper {
+/* ==========================================================================
+   Base & Variables
+   ========================================================================== */
+:root {
+  --bg-light: #f5f5f7;
+  --bg-dark: #000000;
+  --text-light: #f5f5f7;
+  --text-dark: #1d1d1f;
+  --text-muted-light: #86868b;
+  --text-muted-dark: #a1a1a6;
+  --primary-color: #0071e3;
+  --primary-hover: #0077ed;
+  --gap-spacing: 12px;
+}
+
+.home {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #ffffff;
-  margin-top: var(--nav-height); /* Match your Apple Nav height */
-}
-
-/* --- Hero Section Shared Styles --- */
-.hero-section {
-  height: 90vh;
-  width: 100%;
+  /* Adds a consistent gap around the whole page */
+  padding: var(--gap-spacing);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  background-color: #f5f5f7;
-  margin-bottom: 12px;
+  gap: var(--gap-spacing);
 }
 
-.hero-title {
-  font-size: 56px;
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+.home h1 {
+  font-size: 2.5rem;
   font-weight: 600;
-  letter-spacing: -0.005em;
-  color: #1d1d1f;
+  letter-spacing: -0.05em;
+  margin: 0 0 0.5rem 0;
 }
 
-.hero-subtitle {
-  font-size: 28px;
+.home h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem 0;
+}
+
+.home p {
+  font-size: 1.1rem;
   font-weight: 400;
-  margin-top: 6px;
-  color: #1d1d1f;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.01em;
 }
 
-.hero-cta {
-  margin-top: 15px;
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.cta {
   display: flex;
-  gap: 20px;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.btn-link {
-  color: #0066cc;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 980px; /* Pill shape */
   text-decoration: none;
-  font-size: 21px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.btn-link:hover { text-decoration: underline; }
-
-.btn-buy {
-  background-color: #0071e3;
-  color: white;
+.btn.small {
   padding: 8px 18px;
-  border-radius: 980px;
-  text-decoration: none;
-  font-size: 17px;
+  font-size: 0.9rem;
 }
 
-/* --- Specific Section Colors --- */
-.main-hero { background-color: #000; color: #fff; }
-.main-hero .hero-title, .main-hero .hero-subtitle { color: #fff; }
-
-.machinery-hero { background-color: #f5f5f7; }
-
-/* Image Positioning */
-.hero-image-box {
-  margin-top: 40px;
-  width: 100%;
-  max-width: 800px;
+/* Primary Button */
+.btn.primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: 1px solid var(--primary-color);
 }
 
-.hero-image-box img {
-  width: 100%;
-  object-fit: contain;
+.btn.primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
-/* --- Bottom 2-Up Grid --- */
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 0 12px 12px;
+/* Outline Button */
+.btn.outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
-.grid-item {
-  height: 580px;
-  background-color: #f5f5f7;
+.btn.outline:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Hero Sections
+   ========================================================================== */
+.hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 50px;
   text-align: center;
+  padding-top: 4rem;
+  min-height: 70vh;
+  overflow: hidden;
 }
 
-.grid-item h3 { font-size: 40px; font-weight: 600; }
-.grid-item p { font-size: 21px; margin-top: 4px; }
+.hero-text {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
 
-/* --- Mobile --- */
-@media (max-width: 734px) {
-  .hero-title { font-size: 32px; }
-  .hero-subtitle { font-size: 19px; }
-  .home-grid { grid-template-columns: 1fr; }
-  .grid-item { height: 500px; }
+.hero-img {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 50vh;
+  object-fit: contain; /* Keeps product images from cropping weirdly */
+  object-position: bottom;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+/* Hero Themes */
+.hero-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.hero-light p {
+  color: var(--text-muted-light);
+}
+
+.hero-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.hero-dark p {
+  color: var(--text-muted-dark);
+}
+
+.hero-dark .btn.outline {
+  color: #2997ff; /* Slightly brighter blue for dark mode */
+  border-color: #2997ff;
+}
+
+.hero-dark .btn.outline:hover {
+  background-color: #2997ff;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Grid Section (Cards)
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile default: 1 column */
+  gap: var(--gap-spacing);
+}
+
+.card {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  padding: 3rem 2rem 0; /* No bottom padding so image can bleed to bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.card h3, 
+.card p, 
+.card .btn {
+  position: relative;
+  z-index: 2; /* Keeps text above the image */
+}
+
+.card p {
+  color: var(--text-muted-light);
+}
+
+.card img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%; /* Fills the bottom 60% of the card */
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+/* Dark Card Theme */
+.card.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.card.dark p {
+  color: var(--text-muted-dark);
+}
+
+/* ==========================================================================
+   Media Queries (Responsive Adjustments)
+   ========================================================================== */
+
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+  .home h1 {
+    font-size: 3.5rem; /* Larger text for desktop */
+  }
+
+  .home p {
+    font-size: 1.3rem;
+  }
+
+  .hero {
+    min-height: 85vh; /* Taller heroes on desktop */
+    padding-top: 5rem;
+  }
+
+  .hero-img {
+    max-height: 65vh;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet+ */
+  }
+
+  .card {
+    min-height: 580px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .home h1 {
+    font-size: 4rem;
+  }
+}
+
+/* Small Mobile devices */
+@media (max-width: 480px) {
+  .cta {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .cta .btn {
+    width: 100%;
+    margin: 0;
+  }
+
+  .card {
+    min-height: 400px;
+  }
 }
