@@ -1,0 +1,351 @@
+/* --- Global & Layout --- */
+.AdminOrder-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* --- Shared Header --- */
+.AdminOrder-header {
+  padding: 40px 5vw 32px 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.AdminOrder-header.detail-mode {
+  align-items: center;
+}
+
+.AdminOrder-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+
+.AdminOrder-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover { background-color: #0077ED; }
+
+.btn-secondary {
+  background-color: #e8e8ed;
+  color: #1d1d1f;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover { background-color: #d1d1d6; }
+
+.btn-back {
+  background: transparent;
+  border: none;
+  color: #0071e3;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.btn-back:hover { color: #0077ED; }
+
+.AdminOrder-header-right {
+  display: flex;
+  gap: 12px;
+}
+
+/* --- VIEW 1: ORDERS LIST --- */
+.AdminOrder-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.AdminOrder-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.AdminOrder-tabs { display: flex; gap: 8px; }
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #515154;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover { background-color: #e8e8ed; }
+.tab-btn.active { background-color: #1d1d1f; color: #fff; font-weight: 600; }
+
+.AdminOrder-search {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #e8e8ed;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.AdminOrder-search input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #1d1d1f;
+  width: 100%;
+  background: transparent;
+}
+
+.AdminOrder-table-container {
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  overflow-x: auto;
+}
+
+.AdminOrder-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.AdminOrder-table th {
+  padding: 16px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #86868b;
+  border-bottom: 1px solid #e8e8ed;
+  background-color: #fafafc;
+}
+
+.AdminOrder-table td {
+  padding: 16px 24px;
+  font-size: 14px;
+  border-bottom: 1px solid #f5f5f7;
+  vertical-align: middle;
+}
+
+.AdminOrder-row { transition: background-color 0.2s; }
+.AdminOrder-row:hover { background-color: #fcfcfd; }
+.AdminOrder-table tr:last-child td { border-bottom: none; }
+
+.fw-600 { font-weight: 600; }
+.text-dark { color: #1d1d1f; }
+.text-muted { color: #86868b; font-size: 13px; margin-top: 4px; display: block; }
+.text-right { text-align: right; }
+.customer-cell, .total-cell { display: flex; flex-direction: column; }
+
+/* Action Button */
+.btn-text {
+  background: transparent;
+  border: none;
+  color: #0071e3;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+.btn-text:hover { color: #0077ED; }
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.fulfillment-delivered { background-color: #e5f9e7; color: #34c759; }
+.fulfillment-processing { background-color: #fff4e5; color: #ff9500; }
+.fulfillment-shipped { background-color: #e5f0ff; color: #0071e3; }
+.fulfillment-unfulfilled { background-color: #f5f5f7; color: #515154; }
+.fulfillment-cancelled { background-color: #fff0f0; color: #ff3b30; }
+
+/* --- VIEW 2: ORDER DETAILS --- */
+.AdminOrder-detail-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+@media (max-width: 900px) {
+  .AdminOrder-detail-layout { grid-template-columns: 1fr; }
+}
+
+.AdminOrder-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.AdminOrder-side-column { position: relative; }
+
+.detail-card {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.detail-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 32px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+/* Info Grids */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.info-grid p {
+  margin: 0;
+  font-size: 15px;
+  color: #1d1d1f;
+  line-height: 1.5;
+}
+
+/* Delivery Banner */
+.delivery-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f0f7ff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid #d6eaff;
+}
+
+.delivery-banner h3 { margin: 0 0 2px 0; font-size: 15px; font-weight: 600; color: #1d1d1f; }
+.delivery-banner p { margin: 0; font-size: 13px; color: #0071e3; }
+
+/* Order Items */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.img-container {
+  width: 56px;
+  height: 56px;
+  background-color: #f5f5f7;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-details { flex: 1; }
+.item-details h3 { margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #1d1d1f; }
+.item-details p { margin: 0; font-size: 13px; color: #86868b; }
+.item-price { font-size: 15px; font-weight: 600; color: #1d1d1f; }
+
+/* Totals Summary */
+.summary-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #f5f5f7;
+  padding-top: 24px;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #515154;
+}
+
+.total-line.grand-total {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 8px;
+}

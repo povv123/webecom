@@ -1,0 +1,266 @@
+/* Careers.css */
+
+.careers-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+/* Header Section */
+.careers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.careers-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.careers-header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Dashboard Summary Cards */
+.careers-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.stat-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: -0.5px;
+}
+
+.text-blue {
+  color: #0d6efd;
+}
+
+/* Header Actions & Search */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 250px;
+}
+
+.search-bar svg {
+  color: #adb5bd;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  width: 100%;
+  color: #212529;
+}
+
+.search-bar input::placeholder {
+  color: #adb5bd;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Table Styling */
+.careers-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.careers-table th,
+.careers-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.careers-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.careers-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Typography Utilities */
+.fw-500 {
+  font-weight: 500;
+}
+
+.text-dark {
+  color: #212529;
+}
+
+.text-muted {
+  color: #6c757d;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}
+
+.date-cell {
+  color: #495057;
+}
+
+/* Cell Specific Layouts */
+.job-title-cell, .job-meta-cell, .applicants-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.location-text {
+  font-size: 0.75rem;
+}
+
+.has-applicants {
+  color: #0d6efd; /* Highlights the number if there are actual applicants to review */
+}
+
+/* Employment Type Badges (Subtle Outline Style) */
+.type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  background-color: #f8f9fa;
+}
+
+.type-internship {
+  border-color: #b7d5ac;
+  color: #3b7b32;
+  background-color: #f0f7ed;
+}
+
+/* Job Status Badges (Pill Style) */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-open {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-closed {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.status-draft {
+  background-color: #e2e3e5;
+  color: #41464b;
+}
+
+/* Actions */
+.actions-cell {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-text.edit {
+  color: #212529;
+}
+
+.btn-text.edit:hover {
+  text-decoration: underline;
+}
+
+.btn-text.view {
+  color: #0d6efd;
+}
+
+.btn-text.view:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.btn-text:disabled {
+  color: #adb5bd;
+  cursor: not-allowed;
+}

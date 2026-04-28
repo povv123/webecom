@@ -1,0 +1,160 @@
+/* ===== SIDEBAR CONTAINER ===== */
+.adminSider {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5e5e7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.adminSider-header {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.adminSider-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+/* ===== NAVIGATION ===== */
+.adminSider-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+/* Group */
+.nav-group {
+  margin-bottom: 20px;
+}
+
+.nav-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8e8e93;
+  padding: 0 20px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Items */
+.nav-group-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NAV ITEM ===== */
+.nav-item-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 2px 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1d1d1f;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.nav-item-link:hover {
+  background: #f5f5f7;
+}
+
+/* Active */
+.nav-item-link.active {
+  background: #0071e3;
+  color: #ffffff;
+}
+
+/* Content */
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icon */
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+/* Active icon color */
+.nav-item-link.active .nav-icon {
+  stroke: #fff;
+}
+
+/* ===== BADGES ===== */
+.nav-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* Badge colors */
+.badge-success {
+  background: #e8f7ec;
+  color: #1d8f3a;
+}
+
+.badge-danger {
+  background: #fdecea;
+  color: #d93025;
+}
+
+/* Active badge override */
+.nav-item-link.active .nav-badge {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+/* ===== FOOTER ===== */
+.adminSider-footer {
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.adminSider-footer button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #f5f5f7;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.adminSider-footer button:hover {
+  background: #e5e5ea;
+}
+
+/* ===== SCROLLBAR (nice touch) ===== */
+.adminSider-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adminSider-nav::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .adminSider {
+    width: 220px;
+  }
+}

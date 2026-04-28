@@ -1,0 +1,196 @@
+/* src/styles/Admin/Aboutus.css */
+
+.db-main-content {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Header Styling */
+.db-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.db-header__eyebrow {
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.db-header__title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0;
+  color: #111;
+}
+
+/* Form Layout */
+.db-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.db-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.db-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panels */
+.db-panel {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.db-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.db-panel-title {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #222;
+}
+
+.db-panel > .db-panel-title {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 0.75rem;
+}
+
+.db-panel-title.no-border {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Inputs & Labels */
+.db-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.db-input,
+.db-textarea {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.db-input:focus,
+.db-textarea:focus {
+  outline: none;
+  border-color: #007aff;
+}
+
+.db-textarea {
+  resize: vertical;
+}
+
+/* Buttons */
+.db-btn-primary {
+  padding: 0.6rem 1.2rem;
+  background-color: #007aff;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.db-btn-primary:hover {
+  background-color: #005bb5;
+}
+
+.db-btn-secondary {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.db-btn-secondary:hover {
+  background-color: #ececec;
+}
+
+.db-btn-text {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.db-btn-text:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.db-text-primary {
+  color: #007aff;
+}
+
+.db-text-danger {
+  color: #ff3b30;
+}
+
+/* List Items */
+.db-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.db-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #fcfcfc;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  color: #333;
+}
+
+.db-list-actions {
+  display: flex;
+  gap: 0.25rem;
+}

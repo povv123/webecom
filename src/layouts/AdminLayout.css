@@ -1,0 +1,113 @@
+/* AdminLayout.css */
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7f6; /* Matches the dashboard background */
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Mobile Overlay */
+.admin-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px); /* Apple-style frosted glass blur */
+  z-index: 20;
+}
+
+/* Sidebar Wrapper (Mobile-First Setup) */
+.admin-sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  transform: translateX(-100%); /* Hidden off-screen by default */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-sidebar-wrapper.open {
+  transform: translateX(0); /* Slides in when opened */
+}
+
+/* Main Content Wrapper */
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Mobile Header Container */
+.admin-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.admin-mobile-header span {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: -0.5px;
+}
+
+/* Mobile Hamburger Button */
+.admin-mobile-header button {
+  background: transparent;
+  border: none;
+  color: #495057;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.admin-mobile-header button:hover {
+  background-color: #f1f3f5;
+}
+
+.admin-mobile-header svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Scrollable Outlet Area */
+.admin-content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.admin-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop Breakpoint (1024px and up) */
+@media (min-width: 1024px) {
+  .admin-sidebar-wrapper {
+    position: static; /* Removes fixed positioning */
+    transform: translateX(0); /* Always visible */
+  }
+
+  .admin-mobile-header {
+    display: none; /* Hides the hamburger menu bar entirely */
+  }
+
+  .admin-content-area {
+    padding: 32px; /* Extra breathing room on larger screens */
+  }
+}

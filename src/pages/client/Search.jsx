@@ -35,7 +35,7 @@ const SearchPage = () => {
 
         <header className="search-header">
           <div className="search-input-group">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"></span>
             <input
               type="text"
               placeholder="Search "

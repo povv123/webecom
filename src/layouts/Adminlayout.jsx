@@ -1,43 +1,45 @@
-import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-// Import your admin components (you can build these next)
-// import Sidebar from '../components/admin/Sidebar';
-// import Navbar from '../components/admin/Navbar';
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import AdminSidebar from '../components/admin/AdminSidebar';
+import './AdminLayout.css'; 
 
 const AdminLayout = () => {
-  const { isAuthenticated } = useAuth();
-
-
-  if (!isAuthenticated) {
-    return <Navigate to="/signin" replace />;
-  }
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans">
-      
-      {/* 1. Sidebar (Fixed on the left) */}
-      <aside className="w-64 bg-gray-900 text-white h-full hidden md:block">
-        <div className="p-4 text-2xl font-bold border-b border-gray-800">Eter Admin</div>
-        <nav className="p-4">
-          <p className="text-gray-400 text-sm mb-4">Sidebar navigation goes here...</p>
-        </nav>
+    <div className="admin-layout">
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="admin-overlay"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar Component */}
+      <aside className={`admin-sidebar-wrapper ${isSidebarOpen ? 'open' : ''}`}>
+        <AdminSidebar closeSidebar={() => setIsSidebarOpen(false)} />
       </aside>
 
-      <div className="flex-1 flex flex-col overflow-hidden">
-        
-        <header className="h-16 bg-white shadow-sm flex items-center px-6 justify-between">
-          <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
-          <button className="text-sm bg-gray-200 px-4 py-2 rounded">Logout</button>
+      {/* Main Content Area */}
+      <div className="admin-main">
+        {/* Mobile Header (Hidden on Desktop) */}
+        <header className="admin-mobile-header">
+          <span>Admin Panel</span>
+          <button onClick={() => setIsSidebarOpen(true)}>
+            {/* Minimalist Hamburger Icon */}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </header>
 
-      
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
-          <div className="bg-white rounded-lg shadow-sm p-6 min-h-full">
-             <Outlet /> 
+        {/* Scrollable Page Content */}
+        <main className="admin-content-area">
+          <div className="admin-content-container">
+            <Outlet />
           </div>
         </main>
-
       </div>
     </div>
   );

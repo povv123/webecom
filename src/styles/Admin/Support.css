@@ -1,0 +1,279 @@
+/* Support.css */
+
+.support-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+/* Header Section */
+.support-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.support-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.support-header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Quick Stats Dashboard */
+.support-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.stat-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: -0.5px;
+}
+
+.text-danger { color: #dc3545; }
+.text-warning { color: #b7791f; }
+.text-success { color: #0f5132; }
+
+/* Header Actions & Search */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 280px;
+}
+
+.search-bar svg { color: #adb5bd; }
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  width: 100%;
+  color: #212529;
+}
+
+.search-bar input::placeholder { color: #adb5bd; }
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Table Styling */
+.support-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.support-table th,
+.support-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.support-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.support-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Typography Utilities */
+.fw-500 { font-weight: 500; }
+.text-dark { color: #212529; }
+.text-muted { color: #6c757d; font-size: 0.8rem; }
+.date-cell { color: #495057; }
+
+/* Cell Layouts */
+.ticket-info-cell {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.ticket-subject {
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.ticket-id {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 600;
+  color: #adb5bd;
+}
+
+.customer-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Priority Badges */
+.priority-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.prio-high {
+  background-color: #ffe5e5;
+  color: #d9534f;
+}
+
+.prio-medium {
+  background-color: #fff3cd;
+  color: #b7791f;
+}
+
+.prio-low {
+  background-color: #f1f3f5;
+  color: #6c757d;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-open {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.status-in-progress {
+  background-color: #fef08a;
+  color: #854d0e;
+}
+
+.status-resolved {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-closed {
+  background-color: #e2e3e5;
+  color: #41464b;
+}
+
+/* Actions */
+.actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary-small {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary-small:hover {
+  background-color: #333333;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-text:hover {
+  color: #212529;
+  text-decoration: underline;
+}

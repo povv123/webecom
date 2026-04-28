@@ -82,12 +82,30 @@ import SignIn from './pages/client/signin';
 import Account from './pages/client/account'; 
 import CreateAccount from './pages/client/createaccount';
 
+// --- ADMIN PAGES ---
+// Aliased imports to avoid conflict with client-side components
+import AdminDashboard from './pages/admin/Dashboard'; 
+import AdminProducts from './pages/admin/Products';   
+import AdminOrders from './pages/admin/Orders';       
+import AdminInventory from './pages/admin/Inventory';
+import AdminCustomers from './pages/admin/Customers';     
+import AdminServices from './pages/admin/Services';
+import AdminSolutions from './pages/admin/Solutions';
+import AdminResources from './pages/admin/Resorces'; 
+import AdminCareers from './pages/admin/Careers';
+import AdminSupport from './pages/admin/Support';
+import AdminAboutUs from './pages/admin/Aboutus';
+import AdminContact from './pages/admin/Contact';
+
+// --- PRINTABLE PAGES ---
+import Invoice from './pages/admin/Invoice'; // Ensure this path matches where you saved Invoice.jsx
+
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 };
-
 
 const YourSavesPage = () => {
   const { savedItems, removeFromSaves } = useSave();
@@ -102,7 +120,14 @@ function App() {
           <ScrollToTop />
 
           <Routes>
+            {/* =========================================
+                STANDALONE PRINT ROUTES (No Layouts)
+            ========================================= */}
+            <Route path="/invoice/:id" element={<Invoice />} />
 
+            {/* =========================================
+                CLIENT ROUTES
+            ========================================= */}
             <Route element={<ClientLayout />}>
               {/* --- CORE & COMMERCE --- */}
               <Route path="/" element={<Home />} />
@@ -183,8 +208,27 @@ function App() {
               <Route path="*" element={<div className="py-40 text-center text-2xl font-semibold">404: Page Not Found</div>} />
             </Route>
 
+            {/* =========================================
+                ADMIN ROUTES
+            ========================================= */}
+
             <Route path="/admin" element={<AdminLayout />}>
-              {/* <Route index element={<AdminDashboard />} /> */}
+              <Route index element={<AdminDashboard />} />
+              <Route path="products" element={<AdminProducts />} />
+              <Route path="inventory" element={<AdminInventory />} />
+              <Route path="orders" element={<AdminOrders />} />
+              
+              <Route path="services" element={<AdminServices />} />
+              <Route path="solutions" element={<AdminSolutions />} />
+              <Route path="resources" element={<AdminResources />} />
+              
+              {/* Added new admin routes here */}
+              <Route path="about" element={<AdminAboutUs />} />
+              <Route path="contact" element={<AdminContact />} />
+              
+              <Route path="Customers" element={<AdminCustomers />} />
+              <Route path="careers" element={<AdminCareers />} />
+              <Route path="support" element={<AdminSupport />} />
             </Route>
 
           </Routes>

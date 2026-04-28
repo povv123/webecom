@@ -1,0 +1,242 @@
+
+.services-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+/* Header Section */
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.services-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.services-header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Header Actions & Search */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 250px;
+}
+
+.search-bar svg {
+  color: #adb5bd;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  width: 100%;
+  color: #212529;
+}
+
+.search-bar input::placeholder {
+  color: #adb5bd;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Table Styling */
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.services-table th,
+.services-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.services-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.services-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Typography Utilities */
+.fw-500 {
+  font-weight: 500;
+  color: #212529;
+}
+
+.text-dark {
+  color: #495057;
+}
+
+.text-muted {
+  color: #6c757d;
+  font-size: 0.8rem;
+  display: block;
+}
+
+/* Cell Specific Layouts */
+.service-info-cell {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px; 
+}
+
+.description-text {
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.base-price-text {
+  color: #212529;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+}
+
+.category-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.subcategory-text {
+  font-size: 0.75rem;
+}
+
+/* Top-Level Category Badges */
+.category-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.cat-consulting {
+  border-color: #b8daff;
+  color: #004085;
+  background-color: #cce5ff;
+}
+
+.cat-maintenance {
+  border-color: #ffeeba;
+  color: #856404;
+  background-color: #fff3cd;
+}
+
+.cat-training {
+  border-color: #c3e6cb;
+  color: #155724;
+  background-color: #d4edda;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-active {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-paused {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-draft {
+  background-color: #e2e3e5;
+  color: #41464b;
+}
+
+/* Actions */
+.actions-cell {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-text.edit {
+  color: #0d6efd;
+}
+
+.btn-text.edit:hover {
+  text-decoration: underline;
+}
+
+.btn-text.delete {
+  color: #dc3545;
+}
+
+.btn-text.delete:hover {
+  text-decoration: underline;
+}

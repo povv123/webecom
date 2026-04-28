@@ -1,0 +1,259 @@
+/* --- Screen Layout & Background --- */
+.Inventoriee-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #333333;
+}
+
+/* --- Action Bar (Hidden during print) --- */
+.Inventoriee-action-bar {
+  max-width: 800px;
+  margin: 0 auto 24px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Inventoriee-btn-back {
+  background: transparent;
+  border: none;
+  color: #0071e3;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+.Inventoriee-btn-back:hover { color: #0077ED; }
+
+.Inventoriee-btn-print {
+  background-color: #1d1d1f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.Inventoriee-btn-print:hover { background-color: #333336; }
+
+/* --- The Document Canvas --- */
+.Inventoriee-document {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 60px 80px; 
+  border-radius: 2px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box; /* Prevents padding from causing cutoff */
+}
+
+/* --- Logo Box Header --- */
+.Inventoriee-header-box {
+  margin-bottom: 60px;
+}
+
+.Inventoriee-logo-accent {
+  background-color: #EBEAE5; 
+  width: 180px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.Inventoriee-logo-accent h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #333;
+}
+
+.Inventoriee-logo-accent p {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
+}
+
+/* --- Details Row (Issued To / Meta) --- */
+.Inventoriee-details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.Inventoriee-issued-to h4 {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.Inventoriee-issued-to p { margin: 0; color: #444; }
+
+/* --- ALIGNMENT FIX FOR META DATA --- */
+.Inventoriee-meta-data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta-line {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.meta-label {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+  margin-right: 16px;
+  text-align: right;
+}
+
+.meta-value {
+  width: 100px; /* Keeps the values perfectly stacked */
+  text-align: right;
+  color: #444;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+
+/* --- Table --- */
+.Inventoriee-minimal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.Inventoriee-minimal-table th {
+  background-color: #EBEAE5;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.Inventoriee-minimal-table td {
+  padding: 20px 16px;
+  font-size: 13px;
+  color: #444;
+}
+
+.col-desc { width: 45%; text-align: left; }
+.col-price { width: 25%; }
+.col-qty { width: 10%; }
+.col-total { width: 20%; }
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* --- ALIGNMENT FIX FOR TOTALS --- */
+.Inventoriee-totals-section {
+  display: flex;
+  justify-content: flex-end; /* Pushes the entire inner box to the right */
+  margin-top: 16px;
+}
+
+.Inventoriee-totals-inner {
+  width: 320px; /* Forces 'SUBTOTAL' to start close to the amounts */
+}
+
+.totals-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.subtotal-line {
+  margin-bottom: 4px;
+}
+
+.subtotal-line .totals-label, 
+.grand-total-box .totals-label {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.tax-line {
+  justify-content: flex-end;
+  gap: 32px; /* Space between 'Tax' and the percentage */
+  padding-top: 0;
+  color: #555;
+}
+
+.grand-total-box {
+  background-color: #EBEAE5;
+  padding: 12px 16px;
+  margin-top: 8px;
+}
+
+/* --- Signatures --- */
+.Inventoriee-signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.signature-block {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+/* =========================================
+   PRINT MEDIA STYLES 
+========================================= */
+@media print {
+  @page {
+    margin: 1cm; /* Prevents browser headers/footers from cutting content */
+  }
+
+  .no-print, .Inventoriee-action-bar { display: none !important; }
+  
+  .Inventoriee-wrapper { 
+    background-color: transparent !important; 
+    padding: 0 !important; 
+  }
+  
+  .Inventoriee-document { 
+    box-shadow: none !important; 
+    padding: 20px !important; 
+    max-width: 100% !important; 
+    width: 100% !important; 
+    box-sizing: border-box !important;
+  }
+
+  * { 
+    -webkit-print-color-adjust: exact !important; 
+    print-color-adjust: exact !important; 
+  }
+
+  /* Prevent blocks from slicing across pages */
+  .Inventoriee-minimal-table tr, 
+  .Inventoriee-totals-section, 
+  .Inventoriee-signatures {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
