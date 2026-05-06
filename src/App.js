@@ -67,12 +67,14 @@ import SpareParts from './pages/client/Services/SpareParts';
 import InternetProvider from './pages/client/Services/InternetProvider';
 import TechnicalTraining from './pages/client/Services/TechnicalTraining';
 import CustomerServiceTraining from './pages/client/Services/CustomerServiceTraining';
+import Bookservice from './pages/client/Services/Bookservice';
 
 // --- SOLUTIONS ---
 import Solutions from './pages/client/Solutions/Solution';
 import EducationSolution from './pages/client/Solutions/education';
 import HealthcareSolution from './pages/client/Solutions/healthcare';
 import ManufacturingSolution from './pages/client/Solutions/manufacturing';
+import Bookasolution from './pages/client/Solutions/Bookasolution';
 
 // --- CART & PROFILE ---
 import Cart from './components/client/Cart';
@@ -83,7 +85,6 @@ import Account from './pages/client/account';
 import CreateAccount from './pages/client/createaccount';
 
 // --- ADMIN PAGES ---
-// Aliased imports to avoid conflict with client-side components
 import AdminDashboard from './pages/admin/Dashboard'; 
 import AdminProducts from './pages/admin/Products';   
 import AdminOrders from './pages/admin/Orders';       
@@ -98,7 +99,7 @@ import AdminAboutUs from './pages/admin/Aboutus';
 import AdminContact from './pages/admin/Contact';
 
 // --- PRINTABLE PAGES ---
-import Invoice from './pages/admin/Invoice'; // Ensure this path matches where you saved Invoice.jsx
+import Invoice from './pages/admin/Invoice'; 
 
 
 const ScrollToTop = () => {
@@ -189,12 +190,15 @@ function App() {
               <Route path="/services/maintenance/isp" element={<InternetProvider />} />
               <Route path="/services/training/technical" element={<TechnicalTraining />} />
               <Route path="/services/training/customer-service" element={<CustomerServiceTraining />} />
+              <Route path="/services/Bookservice" element={<Bookservice />} />
+              
 
               {/* --- SOLUTIONS --- */}
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/education" element={<EducationSolution />} />
               <Route path="/solutions/healthcare" element={<HealthcareSolution />} />
               <Route path="/solutions/manufacturing" element={<ManufacturingSolution />} />
+              <Route path="/solutions/Bookasolution" element={<Bookasolution />} />
 
               {/* --- CART & PROFILE ROUTES --- */}
               <Route path="/bag" element={<Cart />} />
@@ -211,7 +215,6 @@ function App() {
             {/* =========================================
                 ADMIN ROUTES
             ========================================= */}
-
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="products" element={<AdminProducts />} />
@@ -222,7 +225,6 @@ function App() {
               <Route path="solutions" element={<AdminSolutions />} />
               <Route path="resources" element={<AdminResources />} />
               
-              {/* Added new admin routes here */}
               <Route path="about" element={<AdminAboutUs />} />
               <Route path="contact" element={<AdminContact />} />
               

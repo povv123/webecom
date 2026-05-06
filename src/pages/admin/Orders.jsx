@@ -3,53 +3,57 @@ import '../../styles/Admin/Order.css';
 
 export default function Order() {
   const [activeTab, setActiveTab] = useState('All');
-  
-  // State to track which order is currently being viewed. 
-  // If null, show the list. If it has an order object, show the details.
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // Expanded Mock Data containing both list info and deep details
+  // Updated mock data with new delivery methods and provincial details
   const [orders] = useState([
     { 
       id: 'ORD-8402',
       date: 'April 28, 2026',
       status: 'Unfulfilled',
-      deliveryMethod: 'Shipping',
-      customer: { firstName: 'Michael', lastName: 'Chang', email: 'm.chang@example.com', phone: '+1 (555) 987-6543' },
-      shippingAddress: { street: '456 Tech Blvd', apt: 'Apt 2B', city: 'San Francisco', state: 'CA', zip: '94105' },
+      deliveryMethod: 'PP Delivery', // Updated to PP Delivery
+      customer: { firstName: 'Michael', lastName: 'Chang', email: 'm.chang@example.com', phone: '+855 12 345 678' },
+      shippingAddress: { street: 'St. 271, Sangkat Toul Tompoung', apt: 'House 12B', city: 'Phnom Penh', state: 'PP', zip: '12000' },
       product: { name: 'MacBook Pro 16"', tagline: 'M3 Max chip.', price: 3299.00, image: 'https://via.placeholder.com/80x80?text=MacBook' },
       payment: { method: 'Finance', details: 'Paid over time.', financeDetails: '$137.45/mo. for 24 mo.' },
-      summary: { subtotal: 3299.00, shipping: 0.00, total: 3299.00 }
+      summary: { subtotal: 3299.00, shipping: 5.00, total: 3304.00 }
     },
     { 
       id: 'ORD-8401',
       date: 'April 28, 2026',
       status: 'Processing',
-      deliveryMethod: 'Shipping',
-      customer: { firstName: 'Sarah', lastName: 'Jenkins', email: 'sarah.j@example.com', phone: '+1 (555) 123-4567' },
-      shippingAddress: { street: '123 Apple Park Way', apt: 'Suite 400', city: 'Cupertino', state: 'CA', zip: '95014' },
+      deliveryMethod: 'Provinces', // Updated to Provinces
+      customer: { firstName: 'Sarah', lastName: 'Jenkins', email: 'sarah.j@example.com', phone: '+855 98 765 432' },
+      shippingAddress: { street: 'National Road 6', apt: 'Near Phsar Leu', city: 'Siem Reap', state: 'SR', zip: '17000' },
+      provincialDetails: { busCompany: 'Virak Buntham', dropOffStation: 'Siem Reap Main Branch' }, // Added Provincial Details
       product: { name: 'Galaxy S24 Ultra', tagline: 'Galaxy AI is here.', price: 1299.00, image: 'https://via.placeholder.com/80x80?text=S24+Ultra' },
       payment: { method: 'Credit Card', details: 'Paid securely with standard payment method.', financeDetails: '' },
-      summary: { subtotal: 1299.00, shipping: 0.00, total: 1299.00 }
+      summary: { subtotal: 1299.00, shipping: 2.50, total: 1301.50 }
     },
     { 
       id: 'ORD-8400',
       date: 'April 27, 2026',
       status: 'Unfulfilled',
-      deliveryMethod: 'Pick up from Store',
-      customer: { firstName: 'Emma', lastName: 'Watson', email: 'emma.w@example.com', phone: '+1 (555) 222-3333' },
-      shippingAddress: null, // No shipping address for pickup
+      deliveryMethod: 'Store Pickup', // Updated to match new naming
+      customer: { firstName: 'Emma', lastName: 'Watson', email: 'emma.w@example.com', phone: '+855 77 111 222' },
+      shippingAddress: null, 
       product: { name: 'AirPods Pro', tagline: 'Magic runs in the family.', price: 249.00, image: 'https://via.placeholder.com/80x80?text=AirPods' },
       payment: { method: 'Credit Card', details: 'Paid securely with standard payment method.', financeDetails: '' },
       summary: { subtotal: 249.00, shipping: 0.00, total: 249.00 }
     }
   ]);
 
-  // --- LOGIC: Filter orders based on the active tab ---
   const filteredOrders = orders.filter(order => {
     if (activeTab === 'All') return true;
     return order.status === activeTab;
   });
+
+  const handlePrintInvoice = () => {
+    if (selectedOrder) {
+      localStorage.setItem('printInvoiceData', JSON.stringify(selectedOrder));
+      window.open(`/invoice/${selectedOrder.id}`, '_blank');
+    }
+  };
 
   // --- VIEW 1: ORDERS LIST ---
   if (!selectedOrder) {
@@ -61,7 +65,6 @@ export default function Order() {
             <h1 className="AdminOrder-title">Orders</h1>
           </div>
           <div className="AdminOrder-header-actions">
-            <button className="btn-secondary">Export CSV</button>
           </div>
         </header>
 
@@ -103,7 +106,7 @@ export default function Order() {
               <tbody>
                 {filteredOrders.length === 0 ? (
                   <tr>
-                    <td colSpan="7" style={{ textAlign: 'center', padding: '32px', color: '#86868b' }}>
+                    <td colSpan="7" className="AdminOrder-empty-message">
                       No orders found for this status.
                     </td>
                   </tr>
@@ -162,7 +165,7 @@ export default function Order() {
       
       <header className="AdminOrder-header detail-mode">
         <div className="AdminOrder-header-left">
-          {/* Back Button */}
+          
           <button className="btn-back" onClick={() => setSelectedOrder(null)}>
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -170,7 +173,7 @@ export default function Order() {
             Back to Orders
           </button>
           
-          <div className="title-row" style={{ marginTop: '16px' }}>
+          <div className="title-row title-row-spaced">
             <h1 className="AdminOrder-title">Order {selectedOrder.id}</h1>
             <span className={`status-badge fulfillment-${selectedOrder.status.toLowerCase()}`}>
               {selectedOrder.status}
@@ -179,16 +182,14 @@ export default function Order() {
           <p className="text-muted">Placed on {selectedOrder.date}</p>
         </div>
         <div className="AdminOrder-header-right">
-          {/* --- NEW: Changed to an anchor link pointing to your invoice route --- */}
-          <a 
-            href={`/invoice/${selectedOrder.id}`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-secondary"
-            style={{ textDecoration: 'none', display: 'inline-block', color: '#1d1d1f' }}
+          
+          <button 
+            onClick={handlePrintInvoice}
+            className="btn-secondary AdminOrder-invoice-link"
           >
             Print Invoice
-          </a>
+          </button>
+
           <button className="btn-primary">Fulfill Order</button>
         </div>
       </header>
@@ -224,12 +225,17 @@ export default function Order() {
               </svg>
               <div>
                 <h3>{selectedOrder.deliveryMethod}</h3>
-                <p>{selectedOrder.deliveryMethod === 'Shipping' ? 'Standard Delivery' : 'In-Store Pickup'}</p>
+                <p>
+                  {selectedOrder.deliveryMethod === 'PP Delivery' && 'Local Phnom Penh Delivery'}
+                  {selectedOrder.deliveryMethod === 'Provinces' && 'Inter-Provincial Shipping'}
+                  {selectedOrder.deliveryMethod === 'Store Pickup' && 'In-Store Pickup'}
+                </p>
               </div>
             </div>
 
-            {selectedOrder.deliveryMethod === 'Shipping' && selectedOrder.shippingAddress && (
-              <div className="info-grid address-grid" style={{ marginTop: '24px' }}>
+            {/* Dynamic rendering based on shipping type */}
+            {(selectedOrder.deliveryMethod === 'PP Delivery' || selectedOrder.deliveryMethod === 'Provinces') && selectedOrder.shippingAddress && (
+              <div className="info-grid address-grid address-grid-spaced">
                 <div>
                   <span className="label">Shipping Address</span>
                   <p>
@@ -238,6 +244,17 @@ export default function Order() {
                     {selectedOrder.shippingAddress.city}, {selectedOrder.shippingAddress.state} {selectedOrder.shippingAddress.zip}
                   </p>
                 </div>
+                
+                {/* Specific field for provincial shipping details */}
+                {selectedOrder.deliveryMethod === 'Provinces' && selectedOrder.provincialDetails && (
+                  <div>
+                    <span className="label">Provincial Shipping Details</span>
+                    <p>
+                      <strong>Bus/Courier:</strong> {selectedOrder.provincialDetails.busCompany}<br/>
+                      <strong>Drop-off:</strong> {selectedOrder.provincialDetails.dropOffStation}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -249,7 +266,7 @@ export default function Order() {
                 <span className="label">Method selected</span>
                 <p className="fw-600">{selectedOrder.payment.method}</p>
               </div>
-              <div style={{ gridColumn: 'span 2' }}>
+              <div className="info-grid-span-2">
                 <span className="label">Terms</span>
                 <p>
                   {selectedOrder.payment.method === 'Credit Card' 

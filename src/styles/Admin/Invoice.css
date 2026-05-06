@@ -1,259 +1,205 @@
-/* --- Screen Layout & Background --- */
-.Inventoriee-wrapper {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  background-color: #f5f5f7;
-  min-height: 100vh;
-  padding: 40px 20px;
-  color: #333333;
-}
-
-/* --- Action Bar (Hidden during print) --- */
-.Inventoriee-action-bar {
-  max-width: 800px;
-  margin: 0 auto 24px auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.Inventoriee-btn-back {
-  background: transparent;
-  border: none;
-  color: #0071e3;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-}
-.Inventoriee-btn-back:hover { color: #0077ED; }
-
-.Inventoriee-btn-print {
-  background-color: #1d1d1f;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.Inventoriee-btn-print:hover { background-color: #333336; }
-
-/* --- The Document Canvas --- */
-.Inventoriee-document {
+/* --- Base Container --- */
+.invoice-container {
+  font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #ffffff;
-  padding: 60px 80px; 
-  border-radius: 2px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-  box-sizing: border-box; /* Prevents padding from causing cutoff */
+  padding: 60px;
+  color: #333333;
+  background: #ffffff;
 }
 
-/* --- Logo Box Header --- */
-.Inventoriee-header-box {
-  margin-bottom: 60px;
-}
-
-.Inventoriee-logo-accent {
-  background-color: #EBEAE5; 
+/* --- Logo Box --- */
+.invoice-logo {
+  background-color: #e8e6e1;
   width: 180px;
   padding: 30px 20px;
   text-align: center;
+  margin-bottom: 100px;
 }
 
-.Inventoriee-logo-accent h2 {
-  margin: 0 0 4px 0;
+.invoice-logo h2 {
+  margin: 0;
   font-size: 20px;
-  font-weight: 600;
   letter-spacing: 4px;
+  font-weight: 500;
   color: #333;
 }
 
-.Inventoriee-logo-accent p {
-  margin: 0;
+.invoice-logo p {
+  margin: 5px 0 0 0;
   font-size: 12px;
   font-style: italic;
   color: #555;
 }
 
-/* --- Details Row (Issued To / Meta) --- */
-.Inventoriee-details-row {
+/* --- Header / Info Section --- */
+.invoice-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-.Inventoriee-issued-to h4 {
-  margin: 0 0 12px 0;
-  font-size: 13px;
+.issued-to p, 
+.issued-to h3 {
+  margin: 0;
+  color: #444;
+}
+
+.issued-to .label {
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  font-size: 12px;
   color: #333;
 }
 
-.Inventoriee-issued-to p { margin: 0; color: #444; }
-
-/* --- ALIGNMENT FIX FOR META DATA --- */
-.Inventoriee-meta-data {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.issued-to h3 {
+  font-weight: 500;
+  font-size: 13px;
 }
 
-.meta-line {
+/* --- Right Side Meta Data --- */
+.invoice-meta {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .meta-label {
   font-weight: 700;
-  letter-spacing: 1px;
-  color: #333;
-  margin-right: 16px;
-  text-align: right;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .meta-value {
-  width: 100px; /* Keeps the values perfectly stacked */
+  min-width: 90px;
   text-align: right;
   color: #444;
 }
 
-.fw-bold {
-  font-weight: 700 !important;
-  color: #111 !important;
-}
-
-/* --- Table --- */
-.Inventoriee-minimal-table {
+/* --- Main Table --- */
+.invoice-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
+  font-size: 13px;
 }
 
-.Inventoriee-minimal-table th {
-  background-color: #EBEAE5;
-  padding: 12px 16px;
-  font-size: 12px;
+.invoice-table thead {
+  background-color: #e8e6e1;
+}
+
+.invoice-table th {
+  padding: 12px 15px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  text-align: center;
   color: #333;
 }
 
-.Inventoriee-minimal-table td {
-  padding: 20px 16px;
-  font-size: 13px;
+.invoice-table th.desc {
+  text-align: left;
+}
+
+.invoice-table td {
+  padding: 20px 15px;
+  text-align: center;
+  border: none;
   color: #444;
 }
 
-.col-desc { width: 45%; text-align: left; }
-.col-price { width: 25%; }
-.col-qty { width: 10%; }
-.col-total { width: 20%; }
-
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-
-/* --- ALIGNMENT FIX FOR TOTALS --- */
-.Inventoriee-totals-section {
-  display: flex;
-  justify-content: flex-end; /* Pushes the entire inner box to the right */
-  margin-top: 16px;
+.invoice-table td.desc {
+  text-align: left;
 }
 
-.Inventoriee-totals-inner {
-  width: 320px; /* Forces 'SUBTOTAL' to start close to the amounts */
+.desc strong {
+  font-weight: 500;
+  color: #333;
 }
 
-.totals-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 16px;
+.desc-tagline {
+  font-size: 12px;
+  color: #777;
+}
+
+/* --- Summary Section --- */
+.invoice-summary {
+  width: 320px;
+  margin-left: auto;
   font-size: 13px;
 }
 
-.subtotal-line {
-  margin-bottom: 4px;
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
 }
 
-.subtotal-line .totals-label, 
-.grand-total-box .totals-label {
+.summary-label {
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.summary-value {
+  color: #444;
+  font-weight: 500;
+}
+
+.summary-row.total-row {
+  background-color: #e8e6e1;
+  padding: 15px 15px;
+  margin-top: 10px;
+}
+
+.total-row .summary-label,
+.total-row .summary-value {
   color: #333;
-}
-
-.tax-line {
-  justify-content: flex-end;
-  gap: 32px; /* Space between 'Tax' and the percentage */
-  padding-top: 0;
-  color: #555;
-}
-
-.grand-total-box {
-  background-color: #EBEAE5;
-  padding: 12px 16px;
-  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 /* --- Signatures --- */
-.Inventoriee-signatures {
+.invoice-signatures {
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
-.signature-block {
-  font-size: 12px;
+.sig-box {
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-size: 11px;
   color: #333;
 }
 
-/* =========================================
-   PRINT MEDIA STYLES 
-========================================= */
+/* --- Critical Print Optimizations --- */
 @media print {
-  @page {
-    margin: 1cm; /* Prevents browser headers/footers from cutting content */
+  body { 
+    background: white; 
   }
-
-  .no-print, .Inventoriee-action-bar { display: none !important; }
-  
-  .Inventoriee-wrapper { 
-    background-color: transparent !important; 
-    padding: 0 !important; 
+  .invoice-container { 
+    margin: 0; 
+    padding: 20px; 
+    max-width: 100%; 
   }
   
-  .Inventoriee-document { 
-    box-shadow: none !important; 
-    padding: 20px !important; 
-    max-width: 100% !important; 
-    width: 100% !important; 
-    box-sizing: border-box !important;
-  }
-
-  * { 
-    -webkit-print-color-adjust: exact !important; 
-    print-color-adjust: exact !important; 
-  }
-
-  /* Prevent blocks from slicing across pages */
-  .Inventoriee-minimal-table tr, 
-  .Inventoriee-totals-section, 
-  .Inventoriee-signatures {
-    page-break-inside: avoid;
-    break-inside: avoid;
+  /* Forces the browser to print the beige background boxes */
+  .invoice-logo, 
+  .invoice-table thead, 
+  .total-row {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/solution/healthcare.css'; // Adjust path as needed
+import '../../../styles/solution/healthcare.css'; 
 
 const Healthcare = () => {
   return (
@@ -14,7 +14,7 @@ const Healthcare = () => {
             <a href="#hospital-care">Hospital Care</a>
             <a href="#home-care">Home Care</a>
             <a href="#success-stories">Success Stories</a>
-            <Link to="/contact/inquiry" className="healt-btn-nav">Contact us</Link>
+            <Link to="/Solutions/Bookasolution" className="healt-btn-nav">Book a Solution</Link>
           </div>
         </div>
       </nav>

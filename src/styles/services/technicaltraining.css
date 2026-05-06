@@ -1,120 +1,171 @@
 /* =========================================
-   Technical Training Styles 
-   (Apple Store Aesthetic)
+   Apple Aesthetic - Technical Training
    ========================================= */
 
-.TTT {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f; 
+/* Global Reset for this component */
+.TTT-container {
+  font-family: "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
-  overflow-x: hidden;
+  color: #1d1d1f;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 6rem 2rem;
-  max-width: 980px;
-  margin: 0 auto;
 }
 
-/* =========================================
-   1. Hero Section
-   ========================================= */
+/* 1. Local Navigation (Sticky + Blur) */
+.TTT-localnav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px); /* Apple Blur Effect */
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+}
+
+.TTT-localnav-content {
+  max-width: 980px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TTT-localnav-title a {
+  font-size: 21px;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: none;
+  letter-spacing: -0.011em;
+}
+
+.TTT-localnav-button {
+  font-size: 12px;
+  line-height: 1.33337;
+  font-weight: 400;
+  padding: 4px 11px;
+  background-color: #0071e3;
+  color: #fff;
+  border-radius: 980px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.TTT-localnav-button:hover {
+  background-color: #0077ed;
+}
+
+/* 2. Layout Structure */
+.TTT-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px 120px;
+}
+
+/* 3. Hero Section */
 .TTT-hero {
   text-align: center;
-  padding-bottom: 5rem;
+  padding: 80px 0 100px;
 }
 
 .TTT-eyebrow {
-  font-size: 0.875rem;
-  color: #0066cc; /* Apple Blue Accent */
+  font-size: 21px;
   font-weight: 600;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
+  letter-spacing: .011em;
+  margin-bottom: 15px;
+  color: #1d1d1f;
 }
 
 .TTT-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 600;
+  font-size: clamp(48px, 8vw, 80px);
   line-height: 1.05;
-  letter-spacing: -0.04em; 
-  margin-bottom: 1.25rem;
-  color: #1d1d1f;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 auto 30px;
+  max-width: 900px;
 }
 
 .TTT-hero h1 span {
-  color: #86868b; /* Apple Gray */
+  display: block;
+  color: #86868b; /* The classic Apple gray sub-header */
 }
 
 .TTT-hero-sub {
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
-  color: #86868b;
+  font-size: 24px;
+  line-height: 1.33341;
   font-weight: 400;
-  max-width: 600px;
+  letter-spacing: .009em;
+  color: #1d1d1f;
+  max-width: 800px;
   margin: 0 auto;
-  line-height: 1.5;
-  letter-spacing: 0.01em;
 }
 
-/* =========================================
-   2. Program Grid
-   ========================================= */
+/* 4. Program Grid */
 .TTT-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-/* =========================================
-   3. Cards
-   ========================================= */
+/* 5. Cards */
 .TTT-card {
-  background: #fbfbfd;
-  padding: 3rem 2.5rem;
-  border-radius: 24px;
+  background: #f5f5f7;
+  padding: 40px;
+  border-radius: 28px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0,0,0,0.02);
+  justify-content: space-between;
+  text-align: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
 }
 
 .TTT-card:hover {
-  transform: scale(1.02); 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background-color: #fbfbfd;
+  transform: translateY(-8px);
 }
 
-.TTT-card h3 {
-  font-size: 1.5rem;
+.TTT-card-info h3 {
+  font-size: 24px;
   font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  letter-spacing: 0.007em;
 }
 
-.TTT-card p {
-  color: #86868b;
-  line-height: 1.5;
-  margin-bottom: 2rem;
+.TTT-card-info p {
+  font-size: 17px;
+  line-height: 1.47059;
   font-weight: 400;
-  font-size: 1.0625rem;
-  flex-grow: 1; /* Pushes the link to the bottom */
+  letter-spacing: -0.022em;
+  color: #1d1d1f;
+  margin-bottom: 30px;
 }
 
-/* =========================================
-   4. Links
-   ========================================= */
+/* 6. Action Link Style */
 .TTT-link {
+  color: #0066cc;
   background: none;
   border: none;
-  padding: 0;
-  color: #0066cc; 
+  font-size: 17px;
   font-weight: 400;
-  font-size: 1.0625rem;
   cursor: pointer;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   transition: color 0.2s ease;
+}
+
+.TTT-link::after {
+  content: '›';
+  font-size: 20px;
+  margin-left: 6px;
+  position: relative;
+  top: -1px;
+  transition: transform 0.3s ease;
 }
 
 .TTT-link:hover {
@@ -122,20 +173,114 @@
   text-decoration: underline;
 }
 
+.TTT-link:hover::after {
+  transform: translateX(4px);
+}
+
 /* =========================================
-   Responsive Adjustments
+   7. Advanced Responsive Breakpoints
    ========================================= */
-@media (max-width: 768px) {
-  .TTT {
-    padding: 4rem 1.5rem;
+
+/* --- 💻 Large Desktop & Computer (Default) --- */
+/* (Already handled by the main styles above) */
+
+
+/* --- 📑 iPad Pro & Small Laptops (1024px) --- */
+@media (max-width: 1024px) {
+  .TTT-content {
+    max-width: 800px;
+  }
+  
+  .TTT-hero h1 {
+    font-size: 64px;
+  }
+  
+  .TTT-grid {
+    gap: 15px;
+  }
+}
+
+
+/* --- 📱 iPad & Tablets (834px - 768px) --- */
+@media (max-width: 834px) {
+  .TTT-content {
+    padding: 0 30px 80px;
   }
 
   .TTT-hero {
-    padding-bottom: 3.5rem;
+    padding: 60px 0 80px;
   }
-  
+
+  .TTT-hero h1 {
+    font-size: 56px;
+  }
+
+  /* Switch to 2 columns for tablets */
+  .TTT-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .TTT-card {
-    padding: 2rem;
-    border-radius: 18px;
+    padding: 32px;
+  }
+}
+
+
+/* --- 📱 Mobile / iPhone (734px and below) --- */
+@media (max-width: 734px) {
+  .TTT-localnav-content {
+    padding: 0 15px;
+  }
+
+  .TTT-localnav-title a {
+    font-size: 19px;
+  }
+
+  .TTT-hero {
+    padding: 40px 0 60px;
+    text-align: left; /* Apple often aligns hero text left on mobile */
+  }
+
+  .TTT-eyebrow {
+    font-size: 17px;
+  }
+
+  .TTT-hero h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .TTT-hero h1 span {
+    display: inline; /* Keep text together on smaller screens if needed */
+    color: #86868b;
+  }
+
+  .TTT-hero-sub {
+    font-size: 19px;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* Stack cards in a single column */
+  .TTT-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .TTT-card {
+    padding: 24px;
+    border-radius: 18px; /* Slightly tighter corners for mobile */
+  }
+
+  .TTT-card-info h3 {
+    font-size: 20px;
+  }
+}
+
+/* --- 📱 Small Mobile (375px and below) --- */
+@media (max-width: 375px) {
+  .TTT-hero h1 {
+    font-size: 32px;
   }
 }

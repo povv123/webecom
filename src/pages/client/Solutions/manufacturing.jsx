@@ -14,7 +14,7 @@ const Manufacturing = () => {
             <a href="#assembly-line">Assembly Line</a>
             <a href="#prototyping">Prototyping</a>
             <a href="#success-stories">Success Stories</a>
-            <Link to="/contact/inquiry" className="manuu-btn-nav">Contact us</Link>
+            <Link to="/Solutions/Bookasolution" className="manuu-btn-nav">Book a Solution</Link>
           </div>
         </div>
       </nav>

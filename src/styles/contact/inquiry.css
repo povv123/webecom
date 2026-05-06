@@ -1,118 +1,139 @@
-/* Main Container */
+/* Container Background */
 .gene {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
-  background-color: #f5f5f7;
-  min-height: 100vh;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  color: #1d1d1f; /* Apple's signature near-black */
+  background-color: #ffffff;
 }
 
-/* Header */
+/* Header Styles */
 .gene-header {
   text-align: center;
-  max-width: 600px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .gene-header h2 {
   font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.003em;
-  margin-top: 0;
   margin-bottom: 12px;
 }
 
 .gene-header p {
   font-size: 19px;
-  color: #86868b;
+  line-height: 1.4211;
   font-weight: 400;
-  margin: 0;
+  color: #86868b; /* Muted gray for subtext */
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-/* Form Container */
+/* Form Layout */
 .gene-form {
-  background-color: #ffffff;
-  border-radius: 18px;
-  padding: 40px;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-/* Inputs & Labels */
+.gene-row {
+  display: flex;
+  gap: 20px;
+}
+
 .gene-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  flex: 1;
 }
 
+/* Labels */
 .gene-group label {
   font-size: 14px;
   font-weight: 600;
-  color: #1d1d1f;
   margin-bottom: 8px;
-}
-
-.gene-group input,
-.gene-group textarea {
-  font-family: inherit;
-  font-size: 17px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid #d2d2d7;
-  background-color: #ffffff;
+  margin-left: 2px;
   color: #1d1d1f;
+}
+
+/* Inputs, Selects, and Textarea */
+.gene-group input,
+.gene-group select,
+.gene-group textarea {
+  background-color: #f5f5f7; /* Light gray background */
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 16px;
+  color: #1d1d1f;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  resize: vertical; /* Allows the user to resize the textarea vertically */
 }
 
-.gene-group input::placeholder,
-.gene-group textarea::placeholder {
-  color: #86868b;
+/* Dropdown styling */
+.gene-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
 }
 
+/* Focus States */
 .gene-group input:focus,
+.gene-group select:focus,
 .gene-group textarea:focus {
-  border-color: #0066cc;
-  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+  border-color: #0071e3; /* Apple Blue */
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
 }
 
-/* Button */
+/* Placeholder color */
+::placeholder {
+  color: #a1a1a6;
+}
+
+/* Button Styling */
 .gene-btn-blue {
-  background-color: #0066cc;
+  align-self: center;
+  background-color: #0071e3; /* Apple Blue */
   color: #ffffff;
-  border: none;
-  border-radius: 980px;
-  padding: 14px 24px;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 980px; /* Fully rounded pill shape */
+  border: none;
   cursor: pointer;
-  width: 100%;
-  margin-top: 10px;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+  min-width: 160px;
 }
 
 .gene-btn-blue:hover {
   background-color: #0077ed;
+  transform: scale(1.02);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
+.gene-btn-blue:active {
+  background-color: #0062c3;
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 734px) {
+  .gene-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
   .gene-header h2 {
     font-size: 32px;
   }
   
-  .gene-header p {
-    font-size: 17px;
-  }
-  
-  .gene-form {
-    padding: 24px;
+  .gene {
+    margin: 20px auto;
+    padding: 20px;
   }
 }

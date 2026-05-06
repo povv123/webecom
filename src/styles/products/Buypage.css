@@ -1,15 +1,15 @@
-
-/* Main Container */
-.buiu {
-  max-width: 1100px;
+/* ==========================================================================
+   Main Container & Typography
+   ========================================================================== */
+.buyonemre {
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 60px 20px 80px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #1d1d1f;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Loading State */
 .loading-container {
   display: flex;
   justify-content: center;
@@ -20,61 +20,9 @@
   color: #86868b;
 }
 
-/* 1. Sticky Navigation (If you are using the top nav bar) */
-.buy-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid #d2d2d7;
-  z-index: 100;
-  padding: 15px 0;
-}
-
-.nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.product-name-nav {
-  font-size: 21px;
-  font-weight: 600;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-price {
-  font-size: 14px;
-  font-weight: 400;
-  color: #1d1d1f;
-}
-
-.apple-btn-small {
-  background: #e8e8ed;
-  color: #1d1d1f;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 980px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.apple-btn-small:hover {
-  background: #d2d2d7;
-}
-
-/* Header */
+/* ==========================================================================
+   Header
+   ========================================================================== */
 .checkout-header {
   text-align: center;
   margin-bottom: 50px;
@@ -87,31 +35,34 @@
   margin: 0;
 }
 
-/* Grid Layout */
+/* ==========================================================================
+   Grid Layout
+   ========================================================================== */
 .checkout-main-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   gap: 60px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 /* ==========================================================================
-   Left Column: Forms & Delivery selection
+   Left Column: Sections & Forms
    ========================================================================== */
 .checkout-section {
-  margin-bottom: 45px;
+  margin-bottom: 40px;
 }
 
 .checkout-section h2 {
   font-size: 24px;
   font-weight: 600;
+  margin-top: 0;
   margin-bottom: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
   border-bottom: 1px solid #d2d2d7;
   letter-spacing: -0.01em;
 }
 
-/* Delivery Cards */
+/* Delivery Cards Grid */
 .delivery-method-grid {
   display: flex;
   gap: 16px;
@@ -124,8 +75,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 30px 20px;
+  gap: 10px;
+  padding: 24px 16px;
   border: 1px solid #d2d2d7;
   border-radius: 12px;
   background: #ffffff;
@@ -156,18 +107,14 @@
 }
 
 /* Inputs */
-.input-group {
-  margin-bottom: 16px;
-}
-
 .input-row {
   display: flex;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.apple-input {
-  padding: 18px 16px;
+.eter-input {
+  padding: 16px 18px;
   border: 1px solid #d2d2d7;
   border-radius: 12px;
   font-size: 17px;
@@ -176,16 +123,22 @@
   background-color: #ffffff;
   color: #1d1d1f;
   box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
 }
 
-.apple-input::placeholder {
-  color: #86868b;
+/* Add bottom margin to full-width inputs that sit outside rows */
+.eter-input.full-width {
+  margin-bottom: 16px;
 }
 
-.apple-input:focus {
-  border-color: #0071e3;
-  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2);
+.eter-input::placeholder {
+  color: #a7a3a3;
+}
+
+.eter-input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .full-width {
@@ -197,11 +150,11 @@
 }
 
 /* ==========================================================================
-   Right Column: Order Summary & Payment Options
+   Right Column: Order Summary
    ========================================================================== */
 .summary-card {
   background-color: #f5f5f7;
-  padding: 35px 30px;
+  padding: 32px 30px;
   border-radius: 18px;
   position: sticky;
   top: 30px;
@@ -215,11 +168,11 @@
   letter-spacing: -0.01em;
 }
 
-/* Cart Item */
+/* Cart Item Row */
 .summary-item-row {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
@@ -228,8 +181,9 @@
   height: 65px;
   object-fit: contain;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 5px;
+  border: 1px solid #d2d2d7;
 }
 
 .summary-item-details {
@@ -255,7 +209,7 @@
   font-size: 16px;
 }
 
-.apple-divider {
+.eter-divider {
   border: none;
   border-top: 1px solid #d2d2d7;
   margin: 24px 0;
@@ -277,35 +231,32 @@
   letter-spacing: -0.01em;
 }
 
-/* Payment Section Title */
+/* ==========================================================================
+   Payment Options (No Radio Buttons)
+   ========================================================================== */
 .payment-title {
   font-size: 19px;
   font-weight: 600;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  margin-top: 10px;
   letter-spacing: -0.01em;
 }
 
-.light-text {
-  color: #86868b;
-  font-weight: 400;
-}
-
-/* Payment Blocks Grid */
-.apple-payment-grid {
+.eter-payment-grid {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 30px;
 }
 
 .payment-block {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   border: 1px solid #d2d2d7;
   border-radius: 12px;
-  padding: 20px;
-  cursor: pointer;
   background: #ffffff;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
@@ -316,29 +267,15 @@
 .payment-block.active {
   border-color: #0071e3;
   box-shadow: 0 0 0 1px #0071e3;
-  background-color: #ffffff;
+  background-color: #f2f7fd; /* Very subtle blue tint */
 }
 
-.payment-block-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 6px;
-}
-
-/* Custom Apple-style Radio Button sizing */
-.payment-block-header input[type="radio"] {
-  margin-top: 2px;
-  accent-color: #0071e3;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
+/* Flex layout to push price to the right */
 .payment-info {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .payment-name {
@@ -349,60 +286,94 @@
 
 .payment-price {
   font-weight: 400;
-  font-size: 14px;
-  color: #1d1d1f;
-}
-
-/* Indent descriptions to align with text, bypassing the radio button */
-.payment-desc {
-  font-size: 14px;
-  color: #1d1d1f;
-  margin: 0 0 0 34px; 
-  line-height: 1.4;
-}
-
-.payment-subtext {
-  font-size: 12px;
+  font-size: 15px;
   color: #86868b;
-  margin: 8px 0 0 34px;
-  line-height: 1.4;
 }
 
-/* Submit Button */
-.apple-btn-primary {
-  background-color: #0071e3;
+.payment-block.active .payment-name {
+  color: #0071e3;
+}
+
+
+/* Shared Base Button Style */
+.eter-btn-black,
+.eter-btn-blue {
   color: #ffffff;
   border: none;
   border-radius: 12px;
-  padding: 16px;
+  padding: 18px 20px;
   font-size: 17px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
   font-family: inherit;
-  font-weight: 400;
 }
 
-.apple-btn-primary:hover {
-  background-color: #0077ed;
+
+.eter-btn-black {
+  background-color: #000000;
+}
+
+.eter-btn-black:hover {
+  background-color: #333333; 
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); 
+}
+
+.eter-btn-black:active {
+  background-color: #1a1a1a; 
+  transform: scale(0.98);
+}
+
+
+.eter-btn-blue {
+  background-color: #0071e3; 
+}
+
+.eter-btn-blue:hover {
+  background-color: #0077ed; 
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3); 
+}
+
+.eter-btn-blue:active {
+  background-color: #005bb5; 
+  transform: scale(0.98);
+}
+
+
+.full-width {
+  width: 100%;
 }
 
 .place-order-btn {
-  padding: 18px;
-  font-size: 17px;
-  border-radius: 12px; 
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
-.terms-text {
-  font-size: 12px;
-  color: #86868b;
-  text-align: center;
-  margin-top: 20px;
-  line-height: 1.5;
+/* Hover State - Brighter blue with a soft glow */
+.eter-btn-primary:hover {
+  background-color: #0077ed; 
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3); 
+}
+
+/* Click/Active State - Darker blue with push-down effect */
+.eter-btn-primary:active {
+  background-color: #005bb5; 
+  transform: scale(0.98);
+}
+
+/* Helper Classes used on the button */
+.full-width {
+  width: 100%;
+}
+
+.place-order-btn {
+  margin-top: 14px;
 }
 
 /* ==========================================================================
-   Responsive / Mobile Rules
+   Responsive / Mobile Layout
    ========================================================================== */
 @media (max-width: 900px) {
   .checkout-main-grid {
@@ -426,5 +397,15 @@
 
   .checkout-header h1 {
     font-size: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .delivery-method-grid {
+    flex-direction: column;
+  }
+  
+  .buyonemre {
+    padding: 40px 15px 60px;
   }
 }

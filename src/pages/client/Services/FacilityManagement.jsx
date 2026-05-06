@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/services/facilitymanagement.css'; // Ensure this path is correct
+import '../../../styles/services/facilitymanagement.css'; 
 
 const FacilityManagement = () => {
   return (
@@ -14,7 +14,7 @@ const FacilityManagement = () => {
             <a href="#smart-office">Smart Office</a>
             <a href="#security">Security</a>
             <a href="#services">Core Services</a>
-            <Link to="/contact/inquiry" className="facil-btn-nav">Contact Us</Link>
+            <Link to="/Services/Bookservice" className="facil-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const FacilityManagement = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="facil-section facil-cta">
-        <h2>Ready to upgrade your workspace?</h2>
-        <p>Connect with our facility managers to design a custom management plan for your commercial properties.</p>
-        <Link to="/contact/inquiry" className="facil-btn-primary">Get in touch</Link>
-      </section>
+      
     </div>
   );
 };

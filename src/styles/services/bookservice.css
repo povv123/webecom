@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bs-green-50: #e8f5ee;
+  --bs-green-100: #ffffff;
+  --bs-green-500: #000000;
+  --bs-green-700: #000000;
+  --bs-green-900: #18181b;
+
+  --bs-blue-50: #e6f1fb;
+  --bs-blue-500: #000000;
+  --bs-blue-700: #000000;
+
+  --bs-amber-50: #bfb4f0;
+  --bs-amber-500: #557acc;
+  --bs-amber-700: #1d56ac;
+
+  --bs-gray-50: #f6f5f2;
+  --bs-gray-100: #eeede9;
+  --bs-gray-200: #d8d6d0;
+  --bs-gray-400: #252222;
+  --bs-gray-700: #250f0f;
+  --bs-gray-900: #1c1b18;
+
+  --bs-radius-sm: 6px;
+  --bs-radius-md: 10px;
+  --bs-radius-lg: 14px;
+  --bs-radius-xl: 20px;
+
+  --bs-font: 'DM Sans', sans-serif;
+  --bs-mono: 'DM Mono', monospace;
+
+  --bs-shadow-card: 0 1px 3px rgba(0,0,0,0.07), 0 0 0 0.5px rgba(0,0,0,0.07);
+  --bs-shadow-hover: 0 4px 12px rgba(34, 36, 155, 0.452), 0 0 0 0.5px rgba(15, 49, 145, 0.1);
+}
+
+
+.bs-wrap {
+  font-family: var(--bs-font);
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3.5rem 3rem 4rem;
+  color: var(--bs-gray-900);
+  background: var(--bs-gray-50);
+  min-height: 100vh;
+}
+
+
+.bs-anim-in {
+  animation: bsFadeUp 0.22s ease both;
+}
+
+@keyframes bsFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.bs-progress {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2.75rem;
+  position: relative;
+}
+
+.bs-step-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+}
+
+.bs-step-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bs-gray-200);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bs-gray-400);
+  transition: all 0.22s ease;
+  z-index: 1;
+}
+
+.bs-step-dot.active {
+  background: var(--bs-green-500);
+  border-color: var(--bs-green-500);
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(23, 139, 85, 0.15);
+}
+
+.bs-step-dot.done {
+  background: var(--bs-green-50);
+  border-color: var(--bs-green-100);
+  color: var(--bs-green-700);
+}
+
+.bs-step-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--bs-gray-400);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.bs-step-label.active {
+  color: var(--bs-green-700);
+  font-weight: 500;
+}
+
+.bs-step-line {
+  position: absolute;
+  top: 19px;
+  left: calc(50% + 22px);
+  right: calc(-50% + 22px);
+  height: 1px;
+  background: var(--bs-gray-200);
+  transition: background 0.22s;
+}
+
+.bs-step-line.done {
+  background: var(--bs-green-100);
+}
+
+
+.bs-card {
+  background: #fff;
+  border-radius: var(--bs-radius-lg);
+  box-shadow: var(--bs-shadow-card);
+  padding: 2rem 2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   SECTION LABEL
+   ============================================================ */
+
+.bs-section-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--bs-gray-400);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   CATEGORY GRID
+   Desktop : 3 columns, large tiles
+   Tablet  : 3 columns, medium tiles
+   Mobile  : 1 column
+   ============================================================ */
+
+.bs-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.bs-cat-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1.4rem 1.2rem;
+  border-radius: var(--bs-radius-md);
+  border: 1.5px solid var(--bs-gray-100);
+  background: var(--bs-gray-50);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+  font-family: var(--bs-font);
+}
+
+.bs-cat-btn:hover {
+  box-shadow: var(--bs-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.bs-cat-btn.selected {
+  border-color: var(--bs-green-100);
+  background: var(--bs-green-50);
+}
+
+.bs-cat-btn.selected.bs-cat-maintenance {
+  border-color: #b5d4f4;
+  background: var(--bs-blue-50);
+}
+
+.bs-cat-btn.selected.bs-cat-training {
+  border-color: #f5c47a;
+  background: var(--bs-amber-50);
+}
+
+.bs-cat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--bs-radius-sm);
+  background: var(--bs-green-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-green-700);
+  transition: background 0.18s;
+}
+
+.bs-cat-consulting .bs-cat-icon { background: var(--bs-green-50);  color: var(--bs-green-700); }
+.bs-cat-maintenance .bs-cat-icon { background: var(--bs-blue-50);  color: var(--bs-blue-700);  }
+.bs-cat-training    .bs-cat-icon { background: var(--bs-amber-50); color: var(--bs-amber-700); }
+
+.bs-cat-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bs-gray-900);
+}
+
+.bs-cat-count {
+  font-size: 12px;
+  color: var(--bs-gray-400);
+}
+
+/* ============================================================
+   BADGE
+   ============================================================ */
+
+.bs-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.bs-badge-consulting  { background: var(--bs-green-50);  color: var(--bs-green-700);  border: 1px solid var(--bs-green-100); }
+.bs-badge-maintenance { background: var(--bs-blue-50);   color: var(--bs-blue-700);   border: 1px solid #b5d4f4; }
+.bs-badge-training    { background: var(--bs-amber-50);  color: var(--bs-amber-700);  border: 1px solid #f5c47a; }
+
+/* ============================================================
+   SUB-SERVICE LIST
+   ============================================================ */
+
+.bs-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bs-sub-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--bs-radius-md);
+  border: 1.5px solid var(--bs-gray-100);
+  background: var(--bs-gray-50);
+  cursor: pointer;
+  font-family: var(--bs-font);
+  transition: all 0.16s ease;
+}
+
+.bs-sub-item:hover {
+  border-color: var(--bs-gray-200);
+  background: #fff;
+}
+
+.bs-sub-item.selected {
+  border-color: var(--bs-green-100);
+  background: var(--bs-green-50);
+}
+
+.bs-sub-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bs-gray-200);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.16s;
+  background: #fff;
+}
+
+.bs-sub-radio.on {
+  border-color: var(--bs-green-500);
+  background: var(--bs-green-500);
+  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 6px var(--bs-green-500);
+}
+
+.bs-sub-text {
+  font-size: 14px;
+  color: var(--bs-gray-700);
+}
+
+/* ============================================================
+   FORM GRID
+   Desktop : 2 columns
+   Mobile  : 1 column (via breakpoint)
+   ============================================================ */
+
+.bs-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.bs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bs-field-full {
+  grid-column: 1 / -1;
+}
+
+.bs-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bs-gray-400);
+  letter-spacing: 0.02em;
+}
+
+.bs-req {
+  color: #e05c5c;
+  font-weight: 500;
+}
+
+.bs-input {
+  font-family: var(--bs-font);
+  font-size: 14px;
+  color: var(--bs-gray-900);
+  background: var(--bs-gray-50);
+  border: 1.5px solid var(--bs-gray-100);
+  border-radius: var(--bs-radius-sm);
+  padding: 0.65rem 0.9rem;
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+  appearance: none;
+}
+
+.bs-input:hover  { border-color: var(--bs-gray-200); }
+
+.bs-input:focus {
+  border-color: var(--bs-green-500);
+  box-shadow: 0 0 0 3px rgba(23, 139, 85, 0.12);
+  background: #fff;
+}
+
+.bs-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SUMMARY
+   ============================================================ */
+
+.bs-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.bs-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--bs-gray-100);
+  gap: 16px;
+}
+
+.bs-summary-row:last-child { border-bottom: none; }
+
+.bs-summary-key {
+  font-size: 13px;
+  color: var(--bs-gray-400);
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.bs-summary-val {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bs-gray-900);
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.bs-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.bs-btn {
+  font-family: var(--bs-font);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--bs-radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+}
+
+.bs-btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--bs-gray-200);
+  color: var(--bs-gray-700);
+}
+
+.bs-btn-ghost:hover {
+  background: var(--bs-gray-100);
+  border-color: var(--bs-gray-200);
+}
+
+.bs-btn-primary {
+  background: var(--bs-green-500);
+  border: 1.5px solid var(--bs-green-500);
+  color: #fff;
+}
+
+.bs-btn-primary:hover:not(:disabled) {
+  background: var(--bs-green-700);
+  border-color: var(--bs-green-700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 139, 85, 0.25);
+}
+
+.bs-btn-primary:active:not(:disabled) { transform: translateY(0); }
+
+.bs-btn-primary:disabled {
+  background: var(--bs-green-100);
+  border-color: var(--bs-green-100);
+  color: var(--bs-green-900);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bs-btn-reset { margin-top: 1.75rem; }
+
+/* ============================================================
+   SUCCESS CARD
+   ============================================================ */
+
+.bs-success-card {
+  background: #fff;
+  border-radius: var(--bs-radius-xl);
+  box-shadow: var(--bs-shadow-card);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: bsFadeUp 0.3s ease both;
+}
+
+.bs-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--bs-green-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-green-700);
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--bs-green-100);
+}
+
+.bs-success-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--bs-gray-900);
+  margin-bottom: 0.6rem;
+}
+
+.bs-success-sub {
+  font-size: 14px;
+  color: var(--bs-gray-400);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 1.75rem;
+}
+
+.bs-ref-box {
+  background: var(--bs-gray-50);
+  border: 1px solid var(--bs-gray-100);
+  border-radius: var(--bs-radius-md);
+  padding: 0.7rem 1.5rem;
+  font-size: 14px;
+  color: var(--bs-gray-400);
+  font-family: var(--bs-mono);
+}
+
+.bs-ref-box strong {
+  color: var(--bs-gray-900);
+  font-weight: 500;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET  (≤ 768px)
+   Tighten spacing, shrink type, keep 3-col category grid
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .bs-wrap {
+    max-width: 100%;
+    padding: 2rem 1.75rem 2.5rem;
+  }
+
+  .bs-progress {
+    margin-bottom: 2rem;
+  }
+
+  .bs-step-dot {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .bs-step-line {
+    top: 16px;
+    left: calc(50% + 19px);
+    right: calc(-50% + 19px);
+  }
+
+  .bs-step-label {
+    font-size: 11px;
+  }
+
+  .bs-card {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .bs-cat-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .bs-cat-btn {
+    padding: 1.1rem 0.9rem;
+    gap: 8px;
+  }
+
+  .bs-cat-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bs-cat-name  { font-size: 13px; }
+  .bs-cat-count { font-size: 11px; }
+
+  .bs-sub-item {
+    padding: 0.75rem 0.9rem;
+    gap: 12px;
+  }
+
+  .bs-sub-text { font-size: 13px; }
+
+  .bs-input {
+    font-size: 13px;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .bs-label { font-size: 12px; }
+
+  .bs-btn {
+    font-size: 13px;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .bs-success-card {
+    padding: 2.25rem 1.75rem;
+  }
+
+  .bs-success-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bs-success-title { font-size: 20px; }
+  .bs-success-sub   { font-size: 13px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE  (≤ 520px)
+   Single-column layout throughout, hide step labels
+   ============================================================ */
+
+@media (max-width: 520px) {
+  .bs-wrap {
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .bs-progress {
+    margin-bottom: 1.5rem;
+  }
+
+  .bs-step-dot {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .bs-step-line {
+    top: 14px;
+    left: calc(50% + 17px);
+    right: calc(-50% + 17px);
+  }
+
+  .bs-step-label { display: none; }
+
+  .bs-card {
+    padding: 1.1rem 1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .bs-cat-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .bs-cat-btn {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 0.85rem 1rem;
+  }
+
+  .bs-cat-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .bs-cat-name  { font-size: 13px; }
+  .bs-cat-count { font-size: 11px; }
+
+  .bs-form-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .bs-field-full { grid-column: 1; }
+
+  .bs-sub-item {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .bs-btn-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .bs-btn {
+    font-size: 13px;
+    padding: 0.65rem 1rem;
+    text-align: center;
+  }
+
+  .bs-summary-key { font-size: 12px; }
+  .bs-summary-val { font-size: 13px; }
+
+  .bs-success-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .bs-success-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .bs-success-title { font-size: 18px; }
+  .bs-success-sub   { font-size: 13px; }
+
+  .bs-ref-box {
+    font-size: 12px;
+    padding: 0.55rem 1rem;
+  }
+}

@@ -26,27 +26,25 @@ const Icon = ({ name }) => {
 };
 
 const AdminSidebar = ({ closeSidebar }) => {
- 
-  
   const menuGroups = [
     {
       title: 'OVERVIEW',
       items: [
         { name: 'Home', path: '/admin', icon: 'grid' },
-        { name: 'Orders', path: '/admin/orders', icon: 'clock', badge: { count: 42, type: 'danger' } },
+        { name: 'Orders', path: '/admin/orders', icon: 'clock' },
       ]
     },
     {
       title: 'CATALOG',
       items: [
-        { name: 'Products', path: '/admin/products', icon: 'box', badge: { count: 9, type: 'success' } },
-        { name: 'Inventory', path: '/admin/inventory', icon: 'shield', badge: { count: 12, type: 'danger' } },
+        { name: 'Products', path: '/admin/products', icon: 'box' },
+        { name: 'Inventory', path: '/admin/inventory', icon: 'shield' },
       ]
     },
     {
       title: 'CONTENT',
       items: [
-        { name: 'Services', path: '/admin/services', icon: 'layout', badge: { count: 12, type: 'success' } },
+        { name: 'Services', path: '/admin/services', icon: 'layout' },
         { name: 'Solutions', path: '/admin/solutions', icon: 'check' },
         { name: 'Resources', path: '/admin/resources', icon: 'chart' },
         { name: 'About Us', path: '/admin/about', icon: 'info' },
@@ -56,9 +54,9 @@ const AdminSidebar = ({ closeSidebar }) => {
     {
       title: 'PEOPLE',
       items: [
-        { name: 'Customers', path: '/admin/customers', icon: 'user', badge: { count: 318, type: 'success' } },
+        { name: 'Customers', path: '/admin/customers', icon: 'user' },
         { name: 'Careers', path: '/admin/careers', icon: 'briefcase' },
-        { name: 'Support', path: '/admin/support', icon: 'edit', badge: { count: 7, type: 'danger' } },
+        { name: 'Support', path: '/admin/support', icon: 'edit' },
       ]
     }
   ];
@@ -69,7 +67,6 @@ const AdminSidebar = ({ closeSidebar }) => {
         <h1> Servial Admin</h1>
       </div>
 
-      {/* Navigation Links */}
       <nav className="adminSider-nav">
         {menuGroups.map((group, groupIndex) => (
           <div key={groupIndex} className="nav-group">
@@ -82,19 +79,12 @@ const AdminSidebar = ({ closeSidebar }) => {
                   to={item.path}
                   onClick={closeSidebar}
                   end={item.path === '/admin'}
-                  // Ensure active state styling works reliably with React Router
                   className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
                 >
                   <div className="nav-item-content">
                     <Icon name={item.icon} />
                     <span>{item.name}</span>
                   </div>
-                  
-                  {item.badge && (
-                    <span className={`nav-badge badge-${item.badge.type}`}>
-                      {item.badge.count}
-                    </span>
-                  )}
                 </NavLink>
               ))}
             </div>
@@ -102,7 +92,6 @@ const AdminSidebar = ({ closeSidebar }) => {
         ))}
       </nav>
 
-      {/* Admin Profile / Logout */}
       <div className="adminSider-footer">
         <button>Sign Out</button>
       </div>

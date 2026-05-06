@@ -17,7 +17,7 @@ export const homeFurniture = [
     brand: "SleepCo",
     subCategory: "home-furniture",
     type: "Bedroom",
-    price: 1200,
+    price: 220,
     tagline: "Performance velvet with a gold-finished frame.",
     image: "https://images.unsplash.com/photo-1505693419148-ad3b17446127?q=80&w=1000&auto=format&fit=crop",
     isNew: false,

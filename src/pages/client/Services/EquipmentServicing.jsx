@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/services/equipmentservicing.css'; // Make sure to create this CSS file
+import '../../../styles/services/equipmentservicing.css'; 
 
 const EquipmentServicing = () => {
   return (
@@ -14,7 +14,7 @@ const EquipmentServicing = () => {
             <a href="#preventive">Preventive Care</a>
             <a href="#emergency">Emergency Response</a>
             <a href="#capabilities">Capabilities</a>
-            <Link to="/contact/inquiry" className="equii-btn-nav">Contact Dispatch</Link>
+            <Link to="/Services/Bookservice" className="equii-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const EquipmentServicing = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="equii-section equii-cta">
-        <h2>Need immediate servicing?</h2>
-        <p>Speak with our technical dispatch team to set up a maintenance contract or request emergency repairs.</p>
-        <Link to="/contact/inquiry" className="equii-btn-primary">Get in touch</Link>
-      </section>
+      
     </div>
   );
 };

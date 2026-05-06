@@ -14,7 +14,7 @@ const LogisticsServices = () => {
             <a href="#supply-chain">Supply Chain</a>
             <a href="#fleet-management">Fleet Management</a>
             <a href="#success-stories">Success Stories</a>
-            <Link to="/contact/inquiry" className="loogic-btn-nav">Contact us</Link>
+            <Link to="/Services/Bookservice" className="loogic-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const LogisticsServices = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="loogic-section loogic-cta">
-        <h2>Ready to streamline your logistics?</h2>
-        <p>Speak with our supply chain experts to build a resilient, efficient logistics network tailored to your business.</p>
-        <Link to="/contact/inquiry" className="loogic-btn-primary">Get in touch</Link>
-      </section>
+     
     </div>
   );
 };

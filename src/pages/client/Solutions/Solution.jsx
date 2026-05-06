@@ -41,8 +41,8 @@ const Solution = () => {
           Work, collaborate, and create in ways never before possible.
         </p>
         <div className="soluu-hero-actions">
-          <button className="soluu-btn-primary">Book a demo</button>
-          <button className="soluu-btn-secondary">Buy</button>
+          <button className="soluu-btn-primary">Book a Service</button>
+      
         </div>
       </section>
 

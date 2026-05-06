@@ -28,14 +28,14 @@ export default function CreateProduct() {
   };
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0]; // Grab only the first file
+    const file = e.target.files[0]; 
     if (!file) return;
 
-    // Create a local object URL to display the image
+   
     const newImageUrl = URL.createObjectURL(file);
     setImage(newImageUrl);
 
-    // Clear the input value so the same file can be selected again if needed
+
     e.target.value = '';
   };
 

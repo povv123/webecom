@@ -14,7 +14,7 @@ const SpareParts = () => {
             <a href="#inventory">Genuine Inventory</a>
             <a href="#shipping">Rapid Shipping</a>
             <a href="#reliability">Reliability</a>
-            <Link to="/contact/inquiry" className="spae-btn-nav">Order Parts</Link>
+            <Link to="/Services/Bookservice" className="spae-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const SpareParts = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="spae-section spae-cta">
-        <h2>Need a specific component?</h2>
-        <p>Connect with our parts specialists to locate exact hardware matches or set up recurring inventory supply.</p>
-        <Link to="/contact/inquiry" className="spae-btn-primary">Request a Part</Link>
-      </section>
+      
     </div>
   );
 };

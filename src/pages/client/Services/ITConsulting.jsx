@@ -12,7 +12,27 @@ const ITConsulting = () => {
 
   return (
     <div className="ITT">
-      {/* HERO SECTION */}
+
+  {/* LEARN MORE / CTA SECTION */}
+      <section className="learn-more-section">
+        <motion.div 
+          className="learn-more-card"
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="learn-more-content">
+            <span className="card-eyebrow">Next Steps</span>
+            <h2>Get a deeper look.</h2>
+            <p>Connect with our experts to explore custom integrations and scaling strategies.</p>
+            <div className="cta-group">
+              <Link to="/Services/Bookservice" className="apple-button">Book a Service</Link>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       <section className="service-hero">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,25 +74,7 @@ const ITConsulting = () => {
         ))}
       </section>
 
-      {/* LEARN MORE / CTA SECTION */}
-      <section className="learn-more-section">
-        <motion.div 
-          className="learn-more-card"
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="learn-more-content">
-            <span className="card-eyebrow">Next Steps</span>
-            <h2>Get a deeper look.</h2>
-            <p>Connect with our experts to explore custom integrations and scaling strategies.</p>
-            <div className="cta-group">
-              <Link to="/contact" className="apple-button">Get Started</Link>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+    
     </div>
   );
 };

@@ -151,10 +151,46 @@
   background: #d2d2d7;
   border-radius: 10px;
 }
+/* ===== BASE STYLES (Mobile First) ===== */
+.adminSider {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hide off-screen by default on mobile */
+  width: 250px;
+  height: 100vh;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+.adminSider.open {
+  left: 0; /* Slide in when open state is active */
+}
+
+/* ===== BREAKPOINTS ===== */
+
+/* Tablet & Desktop (769px and up) */
+@media (min-width: 769px) {
   .adminSider {
-    width: 220px;
+    position: static; /* No longer overlay, sits in document flow */
+    left: 0;
+    width: 260px;
+    box-shadow: none;
+    border-right: 1px solid #eee;
+  }
+  
+  /* Hide a potential "close" button on desktop if you have one */
+  .mobile-overlay {
+    display: none;
+  }
+}
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+  .adminSider {
+    width: 85%; /* Slightly narrower for very small phones */
   }
 }

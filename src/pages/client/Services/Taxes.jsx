@@ -14,7 +14,7 @@ const Tax = () => {
             <a href="#corporate-tax">Corporate Tax</a>
             <a href="#salary-tax">Tax on Salary</a>
             <a href="#compliance">Key Rates</a>
-            <Link to="/contact/inquiry" className="tax-btn-nav">Contact us</Link>
+            <Link to="/Services/Bookservice" className="tax-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const Tax = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="tax-section tax-cta">
-        <h2>Need expert tax guidance?</h2>
-        <p>Speak with our certified tax agents to build a tailored, compliant tax strategy for your Cambodian operations.</p>
-        <Link to="/contact/inquiry" className="tax-btn-primary">Get in touch</Link>
-      </section>
+     
     </div>
   );
 };

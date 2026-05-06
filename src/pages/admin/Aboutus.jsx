@@ -37,7 +37,6 @@ export default function AdminAboutUs() {
     }
   };
 
-  // Fixes the warning by using setValuesList to remove an item
   const handleDeleteValue = (id) => {
     if (window.confirm("Are you sure you want to delete this value?")) {
       setValuesList(valuesList.filter(val => val.id !== id));
@@ -46,7 +45,8 @@ export default function AdminAboutUs() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    // Here you would normally dispatch an action or make an API call to save the data
+
+
     alert('About Us content saved successfully!');
     console.log('Saved Data:', formData, valuesList);
   };

@@ -1,135 +1,627 @@
-/* Main Container */
-.educa {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
-  background-color: #f5f5f7; /* Classic light gray background */
-  min-height: 100vh;
-  padding: 80px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* =============================================
+   education.css — Eter Education Solution Page
+   Class namespace: educasolution
+   Aesthetic: Apple-inspired · Clean, Minimal, High-Contrast
+   ============================================= */
+
+/* ── CSS Variables ── */
+:root {
+  /* Apple Color Palette */
+  --edu-accent: #0066cc; /* Apple Link/Button Blue */
+  --edu-accent-hover: #0077ed;
+  --edu-bg-primary: #ffffff;
+  --edu-bg-secondary: #f5f5f7; /* Classic Apple Light Gray */
+  --edu-bg-dark: #000000;
+  --edu-bg-dark-secondary: #1d1d1f;
+  
+  --edu-text-primary: #1d1d1f; /* Standard Apple Dark Text */
+  --edu-text-secondary: #86868b; /* Standard Apple Gray Text */
+  --edu-text-light: #f5f5f7;
+  --edu-text-white: #ffffff;
+
+  /* Borders & Glass */
+  --edu-border: rgba(0, 0, 0, 0.08);
+  --edu-glass-bg: rgba(255, 255, 255, 0.72);
+  --edu-glass-border: rgba(0, 0, 0, 0.05);
+  --edu-nav-glass: rgba(255, 255, 255, 0.8);
+  
+  /* Shadows & Radii */
+  --edu-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  --edu-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --edu-radius: 18px; /* Slightly rounder for the Apple look */
+  --edu-radius-sm: 8px;
+  
+  /* Typography - Apple System Stack */
+  --edu-font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --edu-font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --edu-transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother easing */
+}
+
+/* ── Reset & Base ── */
+.educasolution *,
+.educasolution *::before,
+.educasolution *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Hero Section */
-.educa-hero {
-  text-align: center;
-  max-width: 800px;
-  margin-bottom: 80px;
+.educasolution {
+  font-family: var(--edu-font-body);
+  background-color: var(--edu-bg-primary);
+  color: var(--edu-text-primary);
+  line-height: 1.47059;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.educa-eyebrow {
-  font-size: 14px;
+/* ── Sticky Nav ── */
+.educasolution-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--edu-nav-glass);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--edu-border);
+  padding: 0 2rem;
+}
+
+.educasolution-nav-container {
+  max-width: 1000px; /* Apple often uses slightly narrower max-widths for text/nav */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px; /* Thinner nav standard on Apple sites */
+  gap: 1.5rem;
+}
+
+.educasolution-nav-brand {
+  font-family: var(--edu-font-display);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #86868b;
-  margin-bottom: 16px;
-}
-
-.educa-hero h1 {
-  font-size: 56px;
-  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--edu-text-primary);
+  white-space: nowrap;
   letter-spacing: -0.015em;
-  line-height: 1.05;
-  margin-top: 0;
-  margin-bottom: 24px;
-  color: #1d1d1f;
 }
 
-.educa-hero h1 span {
-  color: #0066cc; /* Signature Blue for emphasis */
+.educasolution-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.educa-hero-sub {
-  font-size: 21px;
-  color: #515154;
-  line-height: 1.5;
+.educasolution-nav-links a {
+  text-decoration: none;
+  color: var(--edu-text-primary);
+  font-size: 0.75rem;
   font-weight: 400;
-  max-width: 600px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  transition: color var(--edu-transition), background var(--edu-transition);
+}
+
+.educasolution-nav-links a:hover {
+  color: var(--edu-accent);
+  background: var(--edu-bg-secondary);
+}
+
+.educasolution-btn-nav {
+  display: inline-block;
+  background: var(--edu-text-primary);
+  color: var(--edu-text-white) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 999px !important;
+  text-decoration: none;
+  transition: background var(--edu-transition), opacity var(--edu-transition);
+  margin-left: 0.5rem;
+}
+
+.educasolution-btn-nav:hover {
+  background: var(--edu-text-primary) !important;
+  opacity: 0.85;
+}
+
+/* ── Sections Base ── */
+.educasolution-section {
+  padding: 100px 2rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Grid Layout */
-.educa-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  width: 100%;
-  max-width: 1100px;
+/* ── Hero Section ── */
+.educasolution-hero {
+  text-align: center;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
 }
 
-/* Education Cards */
-.educa-card {
-  background-color: #ffffff;
-  border-radius: 24px;
-  padding: 40px 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.educasolution-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--edu-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.educasolution-hero h1 {
+  font-family: var(--edu-font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--edu-text-primary);
+  letter-spacing: -0.04em; /* Tight tracking for large Apple headers */
+  margin-bottom: 1rem;
+}
+
+.educasolution-hero h1 span {
+  color: var(--edu-accent);
+  /* Removed italics for a cleaner modern tech look */
+}
+
+.educasolution-hero-sub {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-size: 1.3rem;
+  color: var(--edu-text-secondary);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+/* Hero Stats */
+.educasolution-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.educasolution-stat {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  align-items: center;
+  background: var(--edu-bg-secondary);
+  border-radius: var(--edu-radius);
+  padding: 1.5rem 2.5rem;
+  min-width: 180px;
+  transition: transform var(--edu-transition);
 }
 
-.educa-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+.educasolution-stat:hover {
+  transform: scale(1.02);
 }
 
-.educa-card h3 {
-  font-size: 24px;
+.educasolution-stat-number {
+  font-family: var(--edu-font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--edu-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.educasolution-stat-label {
+  font-size: 0.85rem;
+  color: var(--edu-text-secondary);
+  margin-top: 0.25rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ── Context Band (Dark Mode Section) ── */
+.educasolution-context-band {
+  background: var(--edu-bg-dark);
+  color: var(--edu-text-light);
+  padding: 100px 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background text replaced with minimal structural gradient */
+.educasolution-context-band::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.educasolution-context-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.educasolution-context-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--edu-text-secondary);
+  margin-bottom: 1rem;
   font-weight: 600;
-  color: #1d1d1f;
-  margin-top: 0;
-  margin-bottom: 16px;
 }
 
-.educa-card p {
-  font-size: 17px;
-  color: #515154;
+.educasolution-context-body {
+  font-size: 1.5rem;
+  color: var(--edu-text-light);
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* ── Feature Sections ── */
+.educasolution-feature,
+.educasolution-feature-alt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.educasolution-feature-alt {
+  direction: rtl;
+}
+
+.educasolution-feature-alt > * {
+  direction: ltr;
+}
+
+.educasolution-section-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--edu-text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.educasolution-headline {
+  font-family: var(--edu-font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--edu-text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.educasolution-desc {
+  font-size: 1.1rem;
+  color: var(--edu-text-secondary);
   line-height: 1.5;
-  margin-top: 0;
-  margin-bottom: 30px;
-  flex-grow: 1;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
-/* Interactive Links */
-.educa-btn-link {
+.educasolution-feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.educasolution-feature-list li {
+  font-size: 0.95rem;
+  color: var(--edu-text-primary);
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  background: var(--edu-bg-secondary);
+  border-radius: var(--edu-radius-sm);
+  transition: background var(--edu-transition);
+}
+
+.educasolution-feature-list li:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Glass Panel Visuals - Flattened to match minimal hardware look */
+.educasolution-glass-panel {
+  background: var(--edu-bg-secondary);
+  border-radius: var(--edu-radius);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--edu-transition);
+}
+
+.educasolution-visual-placeholder {
+  font-family: var(--edu-font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--edu-text-secondary);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ── Success Stories ── */
+.educasolution-stories {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.educasolution-stories-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.educasolution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.educasolution-card {
+  background: var(--edu-bg-primary);
+  border-radius: var(--edu-radius);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--edu-shadow-card);
+  transition: transform var(--edu-transition), box-shadow var(--edu-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--edu-border);
+}
+
+.educasolution-card::before {
+  display: none; /* Removed the gold top border */
+}
+
+.educasolution-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--edu-shadow);
+}
+
+.educasolution-card-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--edu-text-secondary);
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+.educasolution-card h3 {
+  font-family: var(--edu-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--edu-text-primary);
+  line-height: 1.2;
+}
+
+.educasolution-metric {
+  font-family: var(--edu-font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--edu-text-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0.5rem 0;
+}
+
+.educasolution-card p:not(.educasolution-metric) {
+  font-size: 0.95rem;
+  color: var(--edu-text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.educasolution-link {
   background: none;
   border: none;
-  color: #0066cc;
-  font-size: 17px;
-  font-weight: 400;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
+  font-family: var(--edu-font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--edu-accent);
   padding: 0;
-  transition: opacity 0.2s ease;
-  font-family: inherit;
-  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: opacity var(--edu-transition);
+  margin-top: 1rem;
 }
 
-.educa-btn-link:hover {
-  text-decoration: underline;
+.educasolution-link:hover {
+  opacity: 0.7;
 }
 
-.educa-chevron {
-  font-size: 13px;
-  margin-left: 6px;
+.educasolution-chevron {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* ── Partners Band ── */
+.educasolution-partners {
+  background: var(--edu-bg-secondary);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.educasolution-partners-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--edu-text-secondary);
+  margin-bottom: 2rem;
   font-weight: 600;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .educa {
-    padding: 60px 20px;
+.educasolution-partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.educasolution-partners-logos span {
+  font-family: var(--edu-font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--edu-text-secondary);
+  opacity: 0.7;
+  letter-spacing: -0.02em;
+  transition: opacity var(--edu-transition), color var(--edu-transition);
+}
+
+.educasolution-partners-logos span:hover {
+  opacity: 1;
+  color: var(--edu-text-primary);
+}
+
+/* ── CTA Section ── */
+.educasolution-cta {
+  text-align: center;
+  padding: 120px 2rem;
+  position: relative;
+  background: var(--edu-bg-secondary);
+}
+
+.educasolution-cta h2 {
+  font-family: var(--edu-font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--edu-text-primary);
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.educasolution-cta p {
+  font-size: 1.2rem;
+  color: var(--edu-text-secondary);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.educasolution-btn-primary {
+  display: inline-block;
+  background: var(--edu-accent);
+  color: var(--edu-text-white);
+  font-family: var(--edu-font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity var(--edu-transition), transform var(--edu-transition);
+  letter-spacing: -0.01em;
+}
+
+.educasolution-btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .educasolution-feature,
+  .educasolution-feature-alt {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    direction: ltr;
   }
-  
-  .educa-hero h1 {
-    font-size: 40px;
+
+  .educasolution-feature-alt > * {
+    direction: ltr;
   }
-  
-  .educa-hero-sub {
-    font-size: 19px;
+
+  .educasolution-glass-panel {
+    min-height: 280px;
+  }
+
+  .educasolution-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .educasolution-section {
+    padding: 60px 1.5rem;
+  }
+
+  .educasolution-hero {
+    padding-top: 100px;
+  }
+
+  .educasolution-hero-stats {
+    gap: 1rem;
+  }
+
+  .educasolution-stat {
+    min-width: calc(50% - 0.5rem);
+    padding: 1.25rem;
+  }
+
+  .educasolution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .educasolution-nav-links a:not(.educasolution-btn-nav) {
+    display: none;
+  }
+
+  .educasolution-partners-logos {
+    gap: 1.5rem;
+  }
+
+  .educasolution-context-band {
+    padding: 60px 1.5rem;
+  }
+
+  .educasolution-cta {
+    padding: 80px 1.5rem;
+  }
+}
+
+/* ── Scroll Animations ── */
+@media (prefers-reduced-motion: no-preference) {
+  .educasolution-card,
+  .educasolution-stat,
+  .educasolution-glass-panel {
+    animation: educaFadeUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .educasolution-card:nth-child(2) { animation-delay: 0.1s; }
+  .educasolution-card:nth-child(3) { animation-delay: 0.2s; }
+  .educasolution-stat:nth-child(2) { animation-delay: 0.08s; }
+  .educasolution-stat:nth-child(3) { animation-delay: 0.16s; }
+
+  @keyframes educaFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

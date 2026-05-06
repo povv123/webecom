@@ -1,3 +1,5 @@
+import macbookImg from '../../assets/images/Applemac12.jpg';
+
 export const laptops = [
   {
     id: 'macbook-air-m3',
@@ -7,7 +9,7 @@ export const laptops = [
     origin: 'USA',
     price: 1099,
     tagline: 'Strikingly thin. Fast M3 chip.',
-    image: '/assets/images/uuufvty.png',
+    image: macbookImg,
     isNew: true
   },
   {
@@ -75,5 +77,61 @@ export const laptops = [
     tagline: 'New Zen. Thinner. Lighter.',
     image: 'https://dlcdnwebimgs.asus.com/gain/3D7A47B2-C4B2-4E5C-B23B-92D9F9162D1C',
     isNew: true
+  },
+  // --- 5 New Entries Added Below ---
+  {
+    id: 'acer-swift-x',
+    name: 'Acer Swift X 14',
+    brand: 'Acer',
+    subCategory: 'laptop',
+    origin: 'Taiwan',
+    price: 1049,
+    tagline: 'Empower your creativity.',
+    image: null,
+    isNew: false
+  },
+  {
+    id: 'alienware-m18',
+    name: 'Alienware m18',
+    brand: 'Dell',
+    subCategory: 'laptop',
+    origin: 'USA',
+    price: 2199,
+    tagline: 'Ultimate desktop-class performance.',
+    image: null,
+    isNew: true
+  },
+  {
+    id: 'msi-stealth-16',
+    name: 'MSI Stealth 16',
+    brand: 'MSI',
+    subCategory: 'laptop',
+    origin: 'Taiwan',
+    price: 1899,
+    tagline: 'Sharp, slim, and stylish.',
+    image: null,
+    isNew: false
+  },
+  {
+    id: 'samsung-galaxy-book4',
+    name: 'Galaxy Book4 Pro',
+    brand: 'Samsung',
+    subCategory: 'laptop',
+    origin: 'Korea',
+    price: 1449,
+    tagline: 'The PC your world has been waiting for.',
+    image: null,
+    isNew: true
+  },
+  {
+    id: 'lg-gram-17',
+    name: 'LG gram 17',
+    brand: 'LG',
+    subCategory: 'laptop',
+    origin: 'Korea',
+    price: 1599,
+    tagline: 'Ultra-lightweight, powerhouse.',
+    image: null,
+    isNew: false
   }
 ];

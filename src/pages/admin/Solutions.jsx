@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import '../../styles/Admin/Solutions.css'; // Ensure this CSS file is created
+import '../../styles/Admin/Solutions.css'; 
 
 const Solutions = () => {
-  // Mock data representing industry-specific bundled solutions
+
+  
   const [solutions] = useState([
     {
       id: 'SOL-001',

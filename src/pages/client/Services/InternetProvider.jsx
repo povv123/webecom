@@ -14,7 +14,7 @@ const InternetProvider = () => {
             <a href="#fiber">Fiber Optic</a>
             <a href="#enterprise">Enterprise Solutions</a>
             <a href="#reliability">Reliability</a>
-            <Link to="/contact/inquiry" className="interrr-btn-nav">Check Coverage</Link>
+            <Link to="/Services/Bookservice" className="interrr-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,6 @@ const InternetProvider = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="interrr-section interrr-cta">
-        <h2>Ready for a better connection?</h2>
-        <p>Contact our network specialists to check fiber availability or request a custom enterprise quote.</p>
-        <Link to="/contact/inquiry" className="interrr-btn-primary">Get Connected</Link>
-      </section>
     </div>
   );
 };

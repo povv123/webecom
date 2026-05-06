@@ -14,7 +14,7 @@ const BusinessStrategy = () => {
             <a href="#corporate-strategy">Corporate Strategy</a>
             <a href="#market-expansion">Market Expansion</a>
             <a href="#case-studies">Case Studies</a>
-            <Link to="/contact/inquiry" className="strat-btn-nav">Contact us</Link>
+            <Link to="/Services/Bookservice" className="strat-btn-nav">Book a Service</Link>
           </div>
         </div>
       </nav>
@@ -79,12 +79,7 @@ const BusinessStrategy = () => {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <section className="strat-section strat-cta">
-        <h2>Ready to scale your enterprise?</h2>
-        <p>Speak with our strategy consultants to build a tailored roadmap for your organization's future.</p>
-        <Link to="/contact/inquiry" className="strat-btn-primary">Get in touch</Link>
-      </section>
+ 
     </div>
   );
 };
