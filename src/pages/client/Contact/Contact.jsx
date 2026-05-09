@@ -50,19 +50,10 @@ const Contact = () => {
         ))}
       </section>
 
-      {/* Additional Info / Footer Blocks */}
+    
     <section className="conta-footer-info">
      
-        
 
-        {/* New Shipping Block */}
-        <div className="conta-info-block">
-          <h2>Shipping & Delivery</h2>
-          <p>Fast, reliable delivery across Cambodia.</p>
-          <Link to="/contact/ship" className="conta-link">
-             View shipping options <span className="conta-chevron">&gt;</span>
-          </Link>
-        </div>
       </section>
     </div>
   );

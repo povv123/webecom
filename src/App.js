@@ -47,12 +47,16 @@ import Whitepapers from './pages/client/Resources/whitepapers';
 import Blog from './pages/client/Resources/blog';
 import FAQs from './pages/client/Resources/FAQs';
 
-// --- CONTACT ---
+// --- CONTACT HUB (Updated with New Files) ---
 import Contact from './pages/client/Contact/Contact';
 import Inquiry from './pages/client/Contact/inquiry';
 import Quote from './pages/client/Contact/quote';
 import Support from './pages/client/Contact/support';
 import Shipping from './pages/client/Contact/ship';
+import Track from './pages/client/Contact/Track';
+import AccManage from './pages/client/Contact/accmanage';
+import ReturnFund from './pages/client/Contact/returnfund';
+import Technical from './pages/client/Contact/technical';
 
 // --- SERVICES ---
 import Services from './pages/client/Services/Services';
@@ -121,24 +125,18 @@ function App() {
           <ScrollToTop />
 
           <Routes>
-            {/* =========================================
-                STANDALONE PRINT ROUTES (No Layouts)
-            ========================================= */}
+            {/* STANDALONE PRINT ROUTES */}
             <Route path="/invoice/:id" element={<Invoice />} />
 
-            {/* =========================================
-                CLIENT ROUTES
-            ========================================= */}
+            {/* CLIENT ROUTES */}
             <Route element={<ClientLayout />}>
-              {/* --- CORE & COMMERCE --- */}
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<SearchPage />} />
 
-              {/* --- PRODUCT ROUTES --- */}
+              {/* PRODUCTS */}
               <Route path="/products" element={<Products />} />
               <Route path="/buy/:categoryId" element={<BuyPage />} />
               <Route path="/product/:id" element={<ProductDetail />} />
-
               <Route path="/products/electronics/mobile" element={<MobilePhonePage />} />
               <Route path="/products/electronics/laptops" element={<LaptopPage />} />
               <Route path="/products/electronics/accessories" element={<AccessoriesPhone />} />
@@ -148,36 +146,39 @@ function App() {
               <Route path="/products/industrial/machinery" element={<Machinery />} />
               <Route path="/products/industrial/machinetools" element={<Machintools />} />
 
-              {/* --- CAREERS --- */}
+              {/* CAREERS */}
               <Route path="/careers" element={<CareerOverview />} />
               <Route path="/careers/openings" element={<JobOpenings />} />
               <Route path="/careers/internships" element={<Internships />} />
               <Route path="/careers/apply" element={<Aplyjoo />} />
-              <Route path="/careers/Aplyjoo" element={<Internform />} /> 
               <Route path="/careers/jobform" element={<Jobform />} /> 
-              <Route path="/careers/Internform" element={<Internform />} /> 
+              <Route path="/careers/internform" element={<Internform />} /> 
 
-              {/* --- ABOUT --- */}
+              {/* ABOUT */}
               <Route path="/about" element={<AboutUs />} />
               <Route path="/about/history" element={<History />} />
               <Route path="/about/leadership" element={<Leadership />} />
               <Route path="/about/mission" element={<Mission />} />
 
-              {/* --- RESOURCES --- */}
+              {/* RESOURCES */}
               <Route path="/resources" element={<Resources />} />
               <Route path="/resources/case-studies" element={<CaseStudies />} />
               <Route path="/resources/whitepapers" element={<Whitepapers />} />
               <Route path="/resources/blog" element={<Blog />} />
               <Route path="/resources/faqs" element={<FAQs />} />
 
-              {/* --- CONTACT --- */}
+              {/* CONTACT & SUPPORT (Comprehensive Routes) */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/contact/inquiry" element={<Inquiry />} />
               <Route path="/contact/quote" element={<Quote />} />
               <Route path="/contact/support" element={<Support />} />
               <Route path="/contact/ship" element={<Shipping />} />
+              <Route path="/contact/track" element={<Track />} />
+              <Route path="/contact/account-management" element={<AccManage />} />
+              <Route path="/contact/returns" element={<ReturnFund />} />
+              <Route path="/contact/technical-help" element={<Technical />} />
 
-              {/* --- SERVICES --- */}
+              {/* SERVICES */}
               <Route path="/services" element={<Services />} />
               <Route path="/services/consulting/strategy" element={<BusinessStrategy />} />
               <Route path="/services/consulting/it" element={<ITConsulting />} />
@@ -190,17 +191,16 @@ function App() {
               <Route path="/services/maintenance/isp" element={<InternetProvider />} />
               <Route path="/services/training/technical" element={<TechnicalTraining />} />
               <Route path="/services/training/customer-service" element={<CustomerServiceTraining />} />
-              <Route path="/services/Bookservice" element={<Bookservice />} />
+              <Route path="/services/bookservice" element={<Bookservice />} />
               
-
-              {/* --- SOLUTIONS --- */}
+              {/* SOLUTIONS */}
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/education" element={<EducationSolution />} />
               <Route path="/solutions/healthcare" element={<HealthcareSolution />} />
               <Route path="/solutions/manufacturing" element={<ManufacturingSolution />} />
-              <Route path="/solutions/Bookasolution" element={<Bookasolution />} />
+              <Route path="/solutions/bookasolution" element={<Bookasolution />} />
 
-              {/* --- CART & PROFILE ROUTES --- */}
+              {/* CART & PROFILE */}
               <Route path="/bag" element={<Cart />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
@@ -212,23 +212,18 @@ function App() {
               <Route path="*" element={<div className="py-40 text-center text-2xl font-semibold">404: Page Not Found</div>} />
             </Route>
 
-            {/* =========================================
-                ADMIN ROUTES
-            ========================================= */}
+            {/* ADMIN ROUTES */}
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="products" element={<AdminProducts />} />
               <Route path="inventory" element={<AdminInventory />} />
               <Route path="orders" element={<AdminOrders />} />
-              
               <Route path="services" element={<AdminServices />} />
               <Route path="solutions" element={<AdminSolutions />} />
               <Route path="resources" element={<AdminResources />} />
-              
               <Route path="about" element={<AdminAboutUs />} />
               <Route path="contact" element={<AdminContact />} />
-              
-              <Route path="Customers" element={<AdminCustomers />} />
+              <Route path="customers" element={<AdminCustomers />} />
               <Route path="careers" element={<AdminCareers />} />
               <Route path="support" element={<AdminSupport />} />
             </Route>

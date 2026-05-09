@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../styles/resources/resources.css';
 
-
 const blogPosts = [
   {
     id: 1,
@@ -208,6 +207,16 @@ const CATEGORY_ICONS = {
   "Strategy": GlobeIcon,
 };
 
+const SECTIONS = [
+  { id: "overview",     label: "Overview",     path: "/resources" },
+  { id: "blog",         label: "Blogs",        path: "/resources/blog" },
+  { id: "case-studies", label: "Case Studies", path: "/resources/case-studies" },
+  { id: "whitepapers",  label: "Whitepapers",  path: "/resources/whitepapers" },
+  { id: "faqs",         label: "FAQs",         path: "/resources/faqs" },
+];
+
+const CATEGORIES = ["All", "AI & Innovation", "Security", "Productivity", "IT & Cloud", "Strategy"];
+
 // ── SUB-COMPONENTS ───────────────────────────────────────────────
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -284,20 +293,20 @@ function ContactSection() {
               <div className="res-form-grid">
                 <div className="res-field">
                   <label htmlFor="cf-name">Full name</label>
-                  <input id="cf-name" name="name" type="text" placeholder="Jane Smith" value={form.name} onChange={handleChange} required />
+                  <input id="cf-name" name="name" type="text" placeholder="Sok Heng" value={form.name} onChange={handleChange} required />
                 </div>
                 <div className="res-field">
                   <label htmlFor="cf-email">Work email</label>
-                  <input id="cf-email" name="email" type="email" placeholder="jane@company.com" value={form.email} onChange={handleChange} required />
+                  <input id="cf-email" name="email" type="email" placeholder="name@gmail.com" value={form.email} onChange={handleChange} required />
                 </div>
               </div>
               <div className="res-field">
                 <label htmlFor="cf-company">Company</label>
-                <input id="cf-company" name="company" type="text" placeholder="Acme Corporation" value={form.company} onChange={handleChange} />
+                <input id="cf-company" name="company" type="text" placeholder="Servial Services" value={form.company} onChange={handleChange} />
               </div>
               <div className="res-field">
                 <label htmlFor="cf-message">How can we help?</label>
-                <textarea id="cf-message" name="message" rows={4} placeholder="Tell us about your organization..." value={form.message} onChange={handleChange} required />
+                <textarea id="cf-message" name="message" rows={4} placeholder="Tell us about your ..." value={form.message} onChange={handleChange} required />
               </div>
               <button type="submit" className="res-btn-submit">Submit</button>
             </form>
@@ -307,17 +316,6 @@ function ContactSection() {
     </section>
   );
 }
-
-// ── CONSTANTS & LAYOUT ARRAYS ─────────────────────────────────────
-const SECTIONS = [
-  { id: "overview",       label: "Overview" },
-  { id: "blog",           label: "Blogs" },
-  { id: "case-studies",   label: "Case Studies" },
-  { id: "whitepapers",    label: "Whitepapers" },
-  { id: "faqs",           label: "FAQs" },
-];
-
-const CATEGORIES = ["All", "AI & Innovation", "Security", "Productivity", "IT & Cloud", "Strategy"];
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────
 const ResourcesPage = () => {
@@ -355,20 +353,20 @@ const ResourcesPage = () => {
           <span className="res-nav-brand">Eter Resources</span>
           <div className="res-nav-links">
             {SECTIONS.map(s => (
-              <a
+              <Link
                 key={s.id}
-                href={`#${s.id}`}
+                to={s.path}
                 className={activeSection === s.id ? "active" : ""}
               >
                 {s.label}
-              </a>
+              </Link>
             ))}
-            <Link to="/Services/Bookservice" className="res-btn-nav">Book a Service</Link>
+            <Link to="/Contact/inquiry" className="res-btn-nav">Contact Us</Link>
           </div>
         </div>
       </nav>
 
-      {/* 1. Overview (Hero) */}
+      {/* 1. Overview / Hero Section */}
       <section id="overview" className="res-section res-hero">
         <p className="res-eyebrow">Knowledge Ecosystem</p>
         <h1>Intelligence for the <br /><span>modern enterprise.</span></h1>
@@ -403,7 +401,7 @@ const ResourcesPage = () => {
             </div>
           </div>
 
-          {/* Filter Pill List — now with icons */}
+          {/* Filter Pill List */}
           <div className="res-filter-pill-box" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
             {CATEGORIES.map(c => {
               const Icon = CATEGORY_ICONS[c];
@@ -422,7 +420,7 @@ const ResourcesPage = () => {
           </div>
         </div>
 
-        {/* Featured Card — now shows category icon */}
+        {/* Featured Card */}
         <div className="res-feature-visual res-glass-panel">
           {filteredPosts.length > 0 ? (() => {
             const featured = filteredPosts[0];
@@ -435,9 +433,13 @@ const ResourcesPage = () => {
                 </span>
                 <h3 style={{ margin: '0.5rem 0' }}>{featured.title}</h3>
                 <p style={{ fontSize: '13px', opacity: 0.8 }} className="res-desc">{featured.desc}</p>
-                <button className="res-link" style={{ background: 'none', border: 'none', marginTop: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <Link
+                  to="/resources/blog"
+                  className="res-link"
+                  style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '4px' }}
+                >
                   Read full brief <ChevronIcon />
-                </button>
+                </Link>
               </div>
             );
           })() : (
@@ -460,7 +462,9 @@ const ResourcesPage = () => {
                     {p.readTime}
                   </p>
                   <p>{p.desc}</p>
-                  <button className="res-link">Read Article <span className="res-chevron"><ChevronIcon /></span></button>
+                  <Link to="/resources/blog" className="res-link">
+                    Read Article <span className="res-chevron"><ChevronIcon /></span>
+                  </Link>
                 </div>
               );
             })}
@@ -482,7 +486,9 @@ const ResourcesPage = () => {
               <p className="res-metric">{cs.results[0].split(' ')[0]}</p>
               <p><strong>{cs.title}</strong></p>
               <p style={{ marginTop: '8px' }}>{cs.desc}</p>
-              <button className="res-link">Analyze metrics <span className="res-chevron"><ChevronIcon /></span></button>
+              <Link to="/resources/casestudies" className="res-link">
+                Analyze metrics <span className="res-chevron"><ChevronIcon /></span>
+              </Link>
             </div>
           ))}
         </div>
@@ -510,9 +516,13 @@ const ResourcesPage = () => {
               <h3>{wp.title}</h3>
               <p className="res-metric" style={{ fontSize: '16px' }}>{wp.pages} Pages</p>
               <p>{wp.desc}</p>
-              <button className="res-link" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Link
+                to="/resources/whitepapers"
+                className="res-link"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
                 <DownloadIcon /> Download PDF Documentation
-              </button>
+              </Link>
             </div>
           ))}
         </div>

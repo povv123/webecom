@@ -4,7 +4,6 @@ const BagContext = createContext();
 
 export function BagProvider({ children }) {
 
-  // ✅ Load from localStorage on first render
   const [bagItems, setBagItems] = useState(() => {
     try {
       const stored = localStorage.getItem('bagItems');
@@ -14,7 +13,7 @@ export function BagProvider({ children }) {
     }
   });
 
-  // ✅ Save to localStorage every time bagItems changes
+
   useEffect(() => {
     localStorage.setItem('bagItems', JSON.stringify(bagItems));
   }, [bagItems]);

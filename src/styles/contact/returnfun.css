@@ -1,0 +1,173 @@
+.Reurnfunnd-container {
+    padding: 80px 20px;
+    background-color: #f5f5f7;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: #1d1d1f;
+}
+
+.Reurnfunnd-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.Reurnfunnd-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 60px;
+}
+
+.Reurnfunnd-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.Reurnfunnd-header h1 {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px 0;
+}
+
+.Reurnfunnd-header p {
+    color: #86868b;
+    font-size: 19px;
+}
+
+.Reurnfunnd-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.Reurnfunnd-input-group input, 
+.Reurnfunnd-input-group select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    font-size: 17px;
+    background: #ffffff;
+    color: #1d1d1f;
+    box-sizing: border-box;
+}
+
+.Reurnfunnd-input-group input:focus {
+    border-color: #0071e3;
+    outline: none;
+}
+
+.Reurnfunnd-btn-primary {
+    background-color: #0071e3;
+    color: #ffffff;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.Reurnfunnd-btn-primary:hover {
+    background-color: #0077ed;
+}
+
+.Reurnfunnd-order-summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #f5f5f7;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.Reurnfunnd-btn-link {
+    background: none;
+    border: none;
+    color: #0071e3;
+    cursor: pointer;
+}
+
+.Reurnfunnd-item-card {
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.Reurnfunnd-item-name { font-weight: 600; }
+.Reurnfunnd-item-price { color: #86868b; margin-left: auto; }
+
+.Reurnfunnd-success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.Reurnfunnd-success-icon {
+    width: 60px;
+    height: 60px;
+    background: #34c759;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.Reurnfunnd-success-icon svg { width: 30px; height: 30px; }
+
+.Reurnfunnd-btn-outline {
+    background: none;
+    border: 1px solid #d2d2d7;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Policy Section */
+.Reurnfunnd-policy-section {
+    padding-top: 40px;
+    border-top: 1px solid #d2d2d7;
+}
+
+.Reurnfunnd-policy-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.Reurnfunnd-policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.Reurnfunnd-policy-card {
+    text-align: center;
+}
+
+.Reurnfunnd-icon-svg {
+    width: 32px;
+    height: 32px;
+    color: #1d1d1f;
+    margin-bottom: 15px;
+}
+
+.Reurnfunnd-policy-card h4 {
+    font-size: 19px;
+    margin: 0 0 8px 0;
+}
+
+.Reurnfunnd-policy-card p {
+    color: #86868b;
+    font-size: 15px;
+    line-height: 1.4;
+}

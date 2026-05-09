@@ -11,8 +11,9 @@ export const navData = [
     path: "/about",
     columns: [
       {
-        heading: "Our Company",
+       
         links: [
+          { name: "Explore All Aboutus", path: "/about" },
           { name: "Mission & Vision", path: "/about/mission" },
           { name: "Leadership", path: "/about/leadership" },
           { name: "History", path: "/about/history" }
@@ -25,9 +26,10 @@ export const navData = [
     id: "products",
     path: "/products",
     columns: [
+      
       {
-        heading: "Electronics",
         links: [
+          { name: "Explore All Products", path: "/products" },
           { name: "Mobile Phones", path: "/products/electronics/mobile" },
           { name: "Laptops", path: "/products/electronics/laptops" },
           { name: "Accessories", path: "/products/electronics/accessories" }
@@ -55,8 +57,9 @@ export const navData = [
     path: "/services",
     columns: [
       {
-        heading: "Consulting",
+       
         links: [
+          { name: "Explore All Services", path: "/services" },
           { name: "Business Strategy", path: "/services/consulting/strategy" },
           { name: "IT Consulting", path: "/services/consulting/it" },
           { name: "Financial Analysis", path: "/services/consulting/financial" },
@@ -88,8 +91,9 @@ export const navData = [
     path: "/solutions",
     columns: [
       {
-        heading: "Industries",
+       
         links: [
+          { name: "Explore All Solutions", path: "/solutions" },
           { name: "Healthcare", path: "/solutions/healthcare" },
           { name: "Education", path: "/solutions/education" },
           { name: "Manufacturing", path: "/solutions/manufacturing" }
@@ -103,8 +107,9 @@ export const navData = [
     path: "/resources",
     columns: [
       {
-        heading: "Knowledge Base",
+       
         links: [
+           { name: "Explore All Resources", path: "/resources" },
           { name: "Blog", path: "/resources/blog" },
           { name: "Case Studies", path: "/resources/case-studies" },
           { name: "Whitepapers", path: "/resources/whitepapers" },
@@ -119,8 +124,8 @@ export const navData = [
     path: "/careers",
     columns: [
       {
-        heading: "Join Us",
         links: [
+          { name: "Explore All Careers", path: "/careers" },
           { name: "Job Openings", path: "/careers/openings" },
           { name: "Internships", path: "/careers/internships" }
         ]
@@ -133,8 +138,8 @@ export const navData = [
     path: "/contact",
     columns: [
       {
-        heading: "Connect",
         links: [
+           { name: "Explore All Contacts", path: "/contact" },
           { name: "Request a Quote", path: "/contact/quote" },
           { name: "Inquiry Form", path: "/contact/inquiry" },
           { name: "Support Center", path: "/contact/support" }

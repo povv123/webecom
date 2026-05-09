@@ -1,0 +1,195 @@
+.track-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9fb;
+}
+
+.track-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.track-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.track-header h1 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.track-header p {
+    color: #666;
+}
+
+/* Form Styles */
+.track-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.btn-track {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-track:hover {
+    opacity: 0.85;
+}
+
+/* Stepper/Results Styles */
+.order-info-brief {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: #0066cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 0;
+}
+
+.stepper-item:first-child::before {
+    content: none;
+}
+
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    color: white;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.stepper-item.active .step-counter {
+    background-color: #000;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: #27ae60;
+}
+
+.stepper-item.completed::before {
+    border-color: #27ae60;
+}
+
+.step-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.step-date {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.shipping-details {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.shipping-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.shipping-details p {
+    margin: 0;
+    color: #555;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .stepper-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    .stepper-item::before {
+        display: none;
+    }
+    .stepper-item {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}

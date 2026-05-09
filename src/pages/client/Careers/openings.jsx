@@ -47,7 +47,7 @@ const Opening = () => {
               
               {/* 2. Replaced the <button> with a <Link> */}
               <Link 
-                to="/careers/Jobform" 
+                to="/careers/apply" 
                 state={{ selectedPosition: job.title }} 
                 className="apple-btn-outline"
                 style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}

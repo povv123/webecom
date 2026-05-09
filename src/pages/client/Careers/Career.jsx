@@ -22,8 +22,7 @@ const Careers = () => {
 
       {/* 1. Hero Section */}
       <section className="carr-section carr-hero">
-        <p className="carr-eyebrow">Life at Eter</p>
-        <h1>Join us. <br/><span>Build the future.</span></h1>
+               <h1>Join us. <br/><span>Build the future.</span></h1>
         <p className="carr-hero-sub">
           Discover a place where your best work can happen. We are looking for passionate people to help us build the next generation of tools.
         </p>

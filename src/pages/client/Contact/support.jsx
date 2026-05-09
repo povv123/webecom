@@ -8,25 +8,36 @@ const Support = () => {
       id: "orders",
       title: "Track an Order",
       desc: "Check the status of your recent Eter purchases and shipments.",
-      linkText: "View Order Status"
+      linkText: "View Order Status",
+      path: "/contact/track" // Updated to match App.js
     },
     {
       id: "returns",
       title: "Returns & Refunds",
       desc: "Learn about our return policies and start a return process.",
-      linkText: "Start a Return"
+      linkText: "Start a Return",
+      path: "/contact/returns" // Updated to match App.js
     },
     {
       id: "account",
       title: "Account Management",
       desc: "Update your profile, payment methods, and security settings.",
-      linkText: "Manage Account"
+      linkText: "Manage Account",
+      path: "/account" // Updated to match App.js
     },
     {
       id: "tech",
       title: "Technical Issues",
       desc: "Troubleshoot platform errors, integrations, or API problems.",
-      linkText: "Get Technical Help"
+      linkText: "Get Technical Help",
+      path: "/contact/technical-help" 
+    },
+    {
+      id: "shipping",
+      title: "Shipping & Delivery",
+      desc: "Fast, reliable delivery across Cambodia.",
+      linkText: "View shipping options",
+      path: "/contact/ship" 
     }
   ];
 
@@ -50,29 +61,11 @@ const Support = () => {
           <div key={category.id} className="supp-card">
             <h3>{category.title}</h3>
             <p>{category.desc}</p>
-            <Link to={`/support/${category.id}`} className="supp-link">
+            <Link to={category.path} className="supp-link">
               {category.linkText} <span className="supp-chevron">&gt;</span>
             </Link>
           </div>
         ))}
-      </section>
-
-      {/* Connect with an Expert Section */}
-      <section className="supp-contact-section">
-        <h2>Still need help?</h2>
-        <p>Our e-commerce specialists are available 24/7 to assist you.</p>
-        <div className="supp-contact-options">
-          <div className="supp-contact-box">
-            <h4>Live Chat</h4>
-            <p>Average wait: 2 mins</p>
-            <button className="supp-btn-blue">Start Chat</button>
-          </div>
-          <div className="supp-contact-box">
-            <h4>Call Us</h4>
-            <p>1-800-ETER-HELP</p>
-            <button className="supp-btn-outline">See Hours</button>
-          </div>
-        </div>
       </section>
     </div>
   );
