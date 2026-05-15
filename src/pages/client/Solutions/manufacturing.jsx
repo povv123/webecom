@@ -8,7 +8,7 @@ const Manufacturing = () => {
       {/* Sticky Local Navigation */}
       <nav className="manuu-local-nav">
         <div className="manuu-nav-container">
-          <span className="manuu-nav-brand">Eter Manufacturing</span>
+         
           <div className="manuu-nav-links">
             <a href="#overview">Overview</a>
             <a href="#assembly-line">Assembly Line</a>
@@ -21,7 +21,7 @@ const Manufacturing = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="manuu-section manuu-hero">
-        <p className="manuu-eyebrow">Eter for Manufacturing</p>
+     
         <h1>Building the future <br/><span>of industry.</span></h1>
         <p className="manuu-hero-sub">
           Modernize your factory floor, streamline supply chains, and accelerate R&D with spatial computing and real-time IoT integration.

@@ -2,17 +2,16 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// Styling
+
 import "../../../styles/services/services.css";
 
-// Video Import
 import BurritoVideo from '../../../assets/videos/Cook a burrito.mp4';
 
 const Services = () => {
   return (
     <div className="servre servre-dark-mode">
       
-      {/* APPLE STYLE SUB-NAV */}
+  
       <nav className="servre-local-nav">
         <div className="servre-nav-content">
           <NavLink to="/services" end className={({ isActive }) => isActive ? "servre-nav-item active" : "servre-nav-item"}>Overview</NavLink>
@@ -33,7 +32,7 @@ const Services = () => {
         </div>
       </nav>
 
-      {/* HERO SECTION (ENTERTAINMENT STYLE) */}
+    
       <header className="servre-ent-hero">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -41,13 +40,13 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           className="servre-ent-hero-text"
         >
-          <h2 className="servre-eyebrow">Eter Enterprise</h2>
+         
           <h1>All your industrial needs.<br/> <span className="servre-gradient-text">In one seamless ecosystem.</span></h1>
           <p className="servre-hero-subtext">Strategy, Maintenance, and Training. United.</p>
         </motion.div>
       </header>
 
-      {/* EDGE-TO-EDGE VIDEO SECTION */}
+ 
       <section className="servre-ent-video-wrapper">
         <div className="servre-video-fade-top"></div>
         <video 
@@ -61,7 +60,6 @@ const Services = () => {
         <div className="servre-video-fade-bottom"></div>
       </section>
 
-      {/* SERVICES GRID (LIKE APPLE ONE / ENTERTAINMENT CARDS) */}
       <main className="servre-ent-grid-container">
         
         {/* Card 1 */}

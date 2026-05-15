@@ -23,7 +23,7 @@ const ITConsulting = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="learn-more-content">
-            <span className="card-eyebrow">Next Steps</span>
+        
             <h2>Get a deeper look.</h2>
             <p>Connect with our experts to explore custom integrations and scaling strategies.</p>
             <div className="cta-group">

@@ -1,149 +1,438 @@
-/* ─── Base & Typography ──────────────────────────────────────────────────── */
+/* ==========================================================
+   src/styles/Admin/Conact.css
+   Contact Admin — matches ResourcesAdmin header (black/white)
+   colorful data layer
+   ========================================================== */
 
-.db-main-content {
-  /* Classic Apple light gray background */
-  background-color: #f5f5f7; 
-  min-height: 100vh;
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  /* Apple's native font stack */
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1d1d1f;
-  box-sizing: border-box;
+/* ── Tokens ─────────────────────────────────────────────── */
+.contactAdmin {
+  --font: -apple-system, "SF Pro Display", "SF Pro Text",
+          "Helvetica Neue", Helvetica, sans-serif;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Monochrome (header / sidebar / chrome) */
+  --black:      #000000;
+  --white:      #ffffff;
+  --gray-50:    #fafafa;
+  --gray-100:   #f5f5f5;
+  --gray-200:   #ebebeb;
+  --gray-300:   #d4d4d4;
+  --gray-400:   #a3a3a3;
+  --gray-500:   #737373;
+  --gray-600:   #525252;
+  --gray-700:   #404040;
+  --gray-800:   #262626;
+  --gray-900:   #171717;
+
+  --border:     rgba(0,0,0,0.09);
+  --border-md:  rgba(0,0,0,0.13);
+  --border-dark:rgba(0,0,0,0.28);
+
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  22px;
+  --radius-full:9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
+
+  /* Data colors */
+  --blue:        #0066cc;
+  --blue-light:  #e8f0fb;
+  --blue-mid:    #b3d1f7;
+  --blue-text:   #004499;
+
+  --green:       #16a34a;
+  --green-light: #dcfce7;
+  --green-mid:   #86efac;
+  --green-text:  #14532d;
+
+  --amber:       #d97706;
+  --amber-light: #fef3c7;
+  --amber-mid:   #fcd34d;
+  --amber-text:  #92400e;
+
+  --orange:      #ea580c;
+  --orange-light:#ffedd5;
+  --orange-mid:  #fdba74;
+  --orange-text: #9a3412;
+
+  --red:         #dc2626;
+  --red-light:   #fee2e2;
+  --red-mid:     #fca5a5;
+  --red-text:    #991b1b;
+
+  --purple:      #9333ea;
+  --purple-light:#f3e8ff;
+  --purple-mid:  #d8b4fe;
+  --purple-text: #6b21a8;
+
+  --teal:        #0891b2;
+  --teal-light:  #e0f2fe;
+  --teal-text:   #075985;
+
+  --indigo:      #4f46e5;
+  --indigo-light:#ede9fe;
+  --indigo-text: #3730a3;
 }
 
-/* ─── Header ─────────────────────────────────────────────────────────────── */
-
-.db-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 40px;
+/* ── Scoped reset ───────────────────────────────────────── */
+.contactAdmin,
+.contactAdmin * {
+  box-sizing:              border-box;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin:  0;
+  padding: 0;
 }
 
-.db-header__eyebrow {
-  color: #86868b;
-  font-size: 12px;
-  font-weight: 600;
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes ca-fade-up {
+  from { transform: translateY(6px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+@keyframes ca-scale-in {
+  from { transform: scale(0.97); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SHELL
+═══════════════════════════════════════════════════════════ */
+.contactAdmin {
+  font-family: var(--font);
+  display:     flex;
+  min-height:  100vh;
+  background:  var(--gray-100);
+  color:       var(--black);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR — black & white, same pattern as ResourcesAdmin
+═══════════════════════════════════════════════════════════ */
+.contactAdmin-sidebar {
+  width:           220px;
+  flex-shrink:     0;
+  background:      var(--white);
+  border-right:    1px solid var(--border);
+  display:         flex;
+  flex-direction:  column;
+  position:        sticky;
+  top:             0;
+  height:          100vh;
+  overflow-y:      auto;
+  scrollbar-width: none;
+}
+.contactAdmin-sidebar::-webkit-scrollbar { display: none; }
+
+/* Logo — matches .ra-brand */
+.contactAdmin-logo {
+  display:       flex;
+  align-items:   center;
+  padding:       16px 20px;
+  border-bottom: 1px solid var(--border);
+  min-height:    56px;
+}
+
+.contactAdmin-logo h2 {
+  font-size:      14px;
+  font-weight:    700;
+  letter-spacing: .06em;
+  color:          var(--black);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 8px 0;
 }
 
-.db-header__title {
-  font-size: 40px;
-  line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  margin: 0;
-  color: #1d1d1f;
-}
-
-/* ─── Panels (Cards) ─────────────────────────────────────────────────────── */
-
-.db-panel {
-  background-color: #ffffff;
-  /* Soft, large radius */
-  border-radius: 18px; 
-  padding: 32px;
-  margin-bottom: 24px;
-  /* Deep, subtle shadow instead of a hard border */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  border: none;
-}
-
-.db-panel-header {
-  margin-bottom: 24px;
-}
-
-.db-panel-title {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 8px 0;
-  color: #1d1d1f;
-}
-
-.db-panel-title:not(.no-border) {
-  padding-bottom: 16px;
-  border-bottom: 1px solid #d2d2d7;
-}
-
-/* ─── Forms & Inputs ─────────────────────────────────────────────────────── */
-
-.db-form {
-  display: flex;
+/* Nav buttons — matches .ra-tab pattern */
+.contactAdmin-menu {
+  padding:        10px 10px;
+  display:        flex;
   flex-direction: column;
+  gap:            2px;
+  flex:           1;
 }
 
-.db-form-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.contactAdmin-menu button {
+  font-family:    var(--font);
+  font-size:      14px;
+  font-weight:    400;
+  color:          var(--gray-500);
+  background:     none;
+  border:         none;
+  border-radius:  var(--radius-sm);
+  padding:        9px 14px;
+  text-align:     left;
+  cursor:         pointer;
+  letter-spacing: -0.1px;
+  transition:     background .12s var(--ease), color .12s;
+  width:          100%;
 }
 
-.db-form-group {
-  display: flex;
-  flex-direction: column;
+.contactAdmin-menu button:hover {
+  background: var(--gray-100);
+  color:      var(--black);
 }
 
-.db-label {
-  font-size: 14px;
+.contactAdmin-menu button.active {
+  background:  var(--black);
+  color:       var(--white);
   font-weight: 500;
-  color: #1d1d1f;
-  margin-bottom: 8px;
 }
 
-.db-input,
-.db-textarea {
-  width: 100%;
-  /* Gray input that turns white on focus */
-  background-color: #f5f5f7;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  padding: 14px 16px;
-  font-family: inherit;
-  font-size: 17px;
-  color: #1d1d1f;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
+/* ═══════════════════════════════════════════════════════════
+   MAIN
+═══════════════════════════════════════════════════════════ */
+.contactAdmin-main {
+  flex:    1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap:     24px;
 }
 
-.db-input:focus,
-.db-textarea:focus {
-  outline: none;
-  background-color: #ffffff;
-  border-color: #0071e3;
-  /* Signature Apple blue focus ring */
-  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2); 
+/* ── Top bar — matches .ra-brand + .ra-tabs zone ─────────── */
+.contactAdmin-top {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             16px;
+  flex-wrap:       wrap;
+  padding:         18px 28px 16px;
+  background:      var(--white);
+  border-bottom:   1px solid var(--border);
 }
 
-.db-textarea {
-  resize: vertical;
-  min-height: 100px;
+.contactAdmin-top h1 {
+  font-size:      18px;
+  font-weight:    600;
+  letter-spacing: -0.4px;
+  color:          var(--black);
+  line-height:    1.2;
 }
 
-/* ─── Buttons ────────────────────────────────────────────────────────────── */
-
-.db-btn-primary {
-  /* Apple Blue */
-  background-color: #0071e3; 
-  color: #ffffff;
-  border: none;
-  /* Pill shape */
-  border-radius: 980px; 
-  padding: 12px 24px;
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+.contactAdmin-top p {
+  font-size:  13px;
+  color:      var(--gray-400);
+  margin-top: 3px;
 }
 
-.db-btn-primary:hover {
-  background-color: #0077ed;
+/* Search — matches .ra-search-wrap */
+.contactAdmin-search {
+  font-family:   var(--font);
+  font-size:     14px;
+  color:         var(--black);
+  background:    var(--white);
+  border:        1px solid var(--border-md);
+  border-radius: var(--radius-full);
+  padding:       9px 16px;
+  outline:       none;
+  width:         240px;
+  transition:    border-color .15s, box-shadow .15s;
+}
+.contactAdmin-search:focus {
+  border-color: var(--black);
+  box-shadow:   0 0 0 3px rgba(0,0,0,.08);
+}
+.contactAdmin-search::placeholder { color: var(--gray-300); }
+
+/* ── Page body ──────────────────────────────────────────── */
+.contactAdmin-main > *:not(.contactAdmin-top) {
+  padding-left:  28px;
+  padding-right: 28px;
 }
 
-.db-btn-primary:active {
-  transform: scale(0.98);
+/* ═══════════════════════════════════════════════════════════
+   STAT CARDS — colorful top accent, matches .ra-stat-card
+═══════════════════════════════════════════════════════════ */
+.contactAdmin-cards {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   16px;
+  animation:             ca-fade-up .28s var(--ease) both;
+}
+
+.adminCard {
+  background:    var(--white);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding:       20px 22px;
+  display:       flex;
+  flex-direction: column;
+  gap:           10px;
+  cursor:        default;
+  transition:    border-color .15s, box-shadow .2s var(--ease), transform .2s var(--ease);
+}
+
+.adminCard:hover {
+  border-color: var(--border-dark);
+  box-shadow:   var(--shadow-md);
+  transform:    translateY(-2px);
+}
+
+/* Colored top accent line per card */
+.adminCard:nth-child(1) { border-top: 3px solid var(--blue);   }
+.adminCard:nth-child(2) { border-top: 3px solid var(--amber);  }
+.adminCard:nth-child(3) { border-top: 3px solid var(--green);  }
+.adminCard:nth-child(4) { border-top: 3px solid var(--red);    }
+
+.adminCard h3 {
+  font-size:      11.5px;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color:          var(--gray-400);
+}
+
+.adminCard span {
+  font-size:            30px;
+  font-weight:          700;
+  letter-spacing:       -1px;
+  color:                var(--black);
+  font-variant-numeric: tabular-nums;
+  line-height:          1;
+}
+
+/* Card icon tints per position */
+.adminCard:nth-child(1) span { color: var(--blue-text);   }
+.adminCard:nth-child(2) span { color: var(--amber-text);  }
+.adminCard:nth-child(3) span { color: var(--green-text);  }
+.adminCard:nth-child(4) span { color: var(--red-text);    }
+
+/* ═══════════════════════════════════════════════════════════
+   TABLE SECTION — matches .ra-table-wrap
+═══════════════════════════════════════════════════════════ */
+.contactAdmin-tableWrap {
+  background:    var(--white);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow:      hidden;
+  animation:     ca-fade-up .32s var(--ease) .08s both;
+  margin-bottom: 28px;
+}
+
+/* Table header bar — matches .ra-brand style */
+.tableHeader {
+  display:       flex;
+  align-items:   center;
+  justify-content: space-between;
+  padding:       14px 20px;
+  border-bottom: 1px solid var(--border);
+  background:    var(--gray-50);
+}
+
+.tableHeader h2 {
+  font-size:      14px;
+  font-weight:    600;
+  letter-spacing: -0.2px;
+  color:          var(--black);
+}
+
+/* Table — matches .ra-table */
+.contactAdmin-table {
+  width:           100%;
+  border-collapse: collapse;
+  font-size:       14px;
+  font-family:     var(--font);
+}
+
+.contactAdmin-table thead tr {
+  background: var(--gray-50);
+}
+
+.contactAdmin-table th {
+  padding:        11px 16px;
+  text-align:     left;
+  font-size:      11.5px;
+  font-weight:    600;
+  color:          var(--gray-400);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  border-bottom:  1px solid var(--border);
+  white-space:    nowrap;
+}
+
+.contactAdmin-table td {
+  padding:       12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color:          var(--black);
+}
+
+.contactAdmin-table tbody tr:last-child td { border-bottom: none; }
+
+.contactAdmin-table tbody tr {
+  transition: background .1s;
+}
+.contactAdmin-table tbody tr:hover { background: var(--gray-50); }
+
+/* Colored left accent per row type */
+.contactAdmin-table tbody tr:has(.status.pending) td:first-child   { border-left: 3px solid var(--amber);  }
+.contactAdmin-table tbody tr:has(.status.open) td:first-child       { border-left: 3px solid var(--blue);   }
+.contactAdmin-table tbody tr:has(.status.completed) td:first-child  { border-left: 3px solid var(--green);  }
+.contactAdmin-table tbody tr:has(.status.refunded) td:first-child   { border-left: 3px solid var(--purple); }
+
+/* ─── Status badges ─── */
+.status {
+  display:        inline-flex;
+  align-items:    center;
+  font-size:      11.5px;
+  font-weight:    600;
+  padding:        3px 10px;
+  border-radius:  var(--radius-full);
+  letter-spacing: .02em;
+  white-space:    nowrap;
+}
+
+.status.pending   { background: var(--amber-light);  color: var(--amber-text);  border: 1px solid var(--amber-mid);  }
+.status.open      { background: var(--blue-light);   color: var(--blue-text);   border: 1px solid var(--blue-mid);   }
+.status.completed { background: var(--green-light);  color: var(--green-text);  border: 1px solid var(--green-mid);  }
+.status.refunded  { background: var(--purple-light); color: var(--purple-text); border: 1px solid var(--purple-mid); }
+.status.closed    { background: var(--gray-100);     color: var(--gray-600);    border: 1px solid var(--border-md);  }
+.status.urgent    { background: var(--red-light);    color: var(--red-text);    border: 1px solid var(--red-mid);    }
+
+/* ─── View button ─── */
+.viewBtn {
+  font-family:    var(--font);
+  font-size:      13px;
+  font-weight:    500;
+  padding:        5px 14px;
+  border:         1px solid var(--border-md);
+  border-radius:  var(--radius-full);
+  background:     var(--white);
+  color:          var(--black);
+  cursor:         pointer;
+  letter-spacing: -0.1px;
+  transition:     background .14s var(--ease), transform .12s;
+}
+.viewBtn:hover  { background: var(--gray-100); }
+.viewBtn:active { transform: scale(.96); }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .contactAdmin-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .contactAdmin-sidebar { display: none; }
+  .contactAdmin-main > *:not(.contactAdmin-top) { padding-left: 16px; padding-right: 16px; }
+  .contactAdmin-top { padding: 14px 16px; }
+}
+
+@media (max-width: 600px) {
+  .contactAdmin-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .adminCard { padding: 16px; border-radius: var(--radius-md); }
+  .adminCard span { font-size: 26px; }
+  .contactAdmin-search { width: 100%; }
+
+  .contactAdmin-table th:nth-child(4),
+  .contactAdmin-table td:nth-child(4),
+  .contactAdmin-table th:nth-child(6),
+  .contactAdmin-table td:nth-child(6) { display: none; }
+}
+
+@media (max-width: 420px) {
+  .contactAdmin-table th:nth-child(3),
+  .contactAdmin-table td:nth-child(3) { display: none; }
 }

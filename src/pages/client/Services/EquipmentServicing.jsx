@@ -5,7 +5,7 @@ import '../../../styles/services/equipmentservicing.css';
 const EquipmentServicing = () => {
   return (
     <div className="equii">
-      {/* Sticky Local Navigation */}
+     
       <nav className="equii-local-nav">
         <div className="equii-nav-container">
           <span className="equii-nav-brand">Eter Technical Services</span>
@@ -19,9 +19,8 @@ const EquipmentServicing = () => {
         </div>
       </nav>
 
-      {/* 1. Overview (Hero) */}
       <section id="overview" className="equii-section equii-hero">
-        <p className="equii-eyebrow">Maintenance & Repair</p>
+       
         <h1>Equipment Servicing. <br/><span>Peak performance nationwide.</span></h1>
         <p className="equii-hero-sub">
           Minimizing downtime with expert technical care for manufacturing, logistics, and commercial infrastructure across Cambodia.

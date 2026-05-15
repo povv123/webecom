@@ -21,14 +21,13 @@ const SpareParts = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="spae-section spae-hero">
-        <p className="spae-eyebrow">Hardware Maintenance</p>
         <h1>Spare Parts. <br/><span>The right fit, every time.</span></h1>
         <p className="spae-hero-sub">
           Original OEM parts to keep your systems authentic, compliant, and operational across manufacturing and commercial sectors.
         </p>
       </section>
 
-      {/* 2. Genuine Inventory */}
+
       <section id="inventory" className="spae-section spae-feature">
         <div className="spae-feature-text">
           <h3 className="spae-section-title">Genuine Components</h3>
@@ -56,7 +55,7 @@ const SpareParts = () => {
         </div>
       </section>
 
-      {/* 4. Reliability & Scale (Cards) */}
+      
       <section id="reliability" className="spae-section spae-stories">
         <div className="spae-stories-header">
           <h3 className="spae-section-title">Scale & Support</h3>

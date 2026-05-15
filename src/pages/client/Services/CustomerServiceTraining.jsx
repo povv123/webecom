@@ -11,7 +11,7 @@ const CustomerServiceTraining = () => {
 
   return (
     <div className="TTT-container">
-      {/* Local Nav: Sticky blurred header */}
+  
       <nav className="TTT-localnav">
         <div className="TTT-localnav-content">
           <div className="TTT-localnav-title">
@@ -26,9 +26,8 @@ const CustomerServiceTraining = () => {
       </nav>
 
       <main className="TTT-content">
-        {/* Hero Section: Centered, Bold Typography */}
+        
         <section className="TTT-hero">
-          <p className="TTT-eyebrow">People at the center</p>
           <h1>Empower your frontline. <span>Customer Service Training.</span></h1>
           <p className="TTT-hero-sub">
             Practical programs designed to build confident, empathetic service

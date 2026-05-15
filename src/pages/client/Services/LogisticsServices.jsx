@@ -19,9 +19,8 @@ const LogisticsServices = () => {
         </div>
       </nav>
 
-      {/* 1. Overview (Hero) */}
       <section id="overview" className="loogic-section loogic-hero">
-        <p className="loogic-eyebrow">Eter for Supply Chain</p>
+       
         <h1>Seamless delivery. <br/><span>Global reach.</span></h1>
         <p className="loogic-hero-sub">
           Optimizing your supply chain with real-time tracking, intelligent routing, and automated inventory management.

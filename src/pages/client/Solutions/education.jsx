@@ -21,7 +21,7 @@ const Education = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="educasolution-section educasolution-hero">
-        <p className="educasolution-eyebrow">Eter for Education · Cambodia</p>
+      
         <h1>Shaping the next <br /><span>generation of learners.</span></h1>
         <p className="educasolution-hero-sub">
           Empowering Cambodian students and teachers with immersive spatial learning, real-time collaboration tools, and cutting-edge EdTech designed for every classroom — from Phnom Penh to the provinces.

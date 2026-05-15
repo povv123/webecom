@@ -7,9 +7,7 @@ import "../../../styles/aboutus/history.css";
 // Assets
 import HistoryHero from '../../../assets/images/history.jpg';
 
-/**
- * Reusable component for the History Milestones
- */
+
 const HistoryMilestoneCard = ({ year, title, description, image }) => (
   <article className="history-card">
     <div className="history-milestone-img-container">
@@ -24,9 +22,6 @@ const HistoryMilestoneCard = ({ year, title, description, image }) => (
   </article>
 );
 
-/**
- * Reusable component for Historical Archives
- */
 const ArchiveGroup = ({ category, reports }) => (
   <div className="history-report-group">
     <h4 className="history-report-category">{category}</h4>
@@ -55,7 +50,7 @@ const History = () => {
       {/* 1. STICKY LOCAL NAVIGATION */}
       <nav className="history-local-nav">
         <div className="history-nav-content">
-          <span className="history-nav-brand">Eter Cambodia</span>
+          <span className="history-nav-brand">Our History</span>
           <div className="history-nav-links">
             <NavLink to="/about" end className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
               About Us

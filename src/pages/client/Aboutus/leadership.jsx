@@ -51,7 +51,7 @@ const Leadership = () => {
       {/* 1. STICKY LOCAL NAVIGATION */}
       <nav className="leader-local-nav">
         <div className="leader-nav-content">
-          <span className="leader-nav-brand">Eter Cambodia</span>
+          <span className="leader-nav-brand">Our Teams</span>
           <div className="leader-nav-links">
             <NavLink to="/about" end className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
               About Us

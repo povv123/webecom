@@ -29,9 +29,8 @@ const IconManufacturing = () => (
 const Solution = () => {
   return (
     <div className="soluu">
-      {/* 1. Hero Section */}
+
       <section className="soluu-section soluu-hero">
-        <h2 className="soluu-eyebrow">Eter Vision</h2>
         <h1 className="soluu-title">
           The era of spatial <br />
           <span>computing is here.</span>
@@ -41,8 +40,6 @@ const Solution = () => {
           Work, collaborate, and create in ways never before possible.
         </p>
         <div className="soluu-hero-actions">
-          <button className="soluu-btn-primary">Book a Service</button>
-      
         </div>
       </section>
 

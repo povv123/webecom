@@ -21,7 +21,7 @@ const Healthcare = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="healt-section healt-hero">
-        <p className="healt-eyebrow">Eter for Healthcare</p>
+     
         <h1>A new dimension of <br/><span>patient care.</span></h1>
         <p className="healt-hero-sub">
           Transforming Cambodia’s medical infrastructure with advanced spatial computing, secure data, and limitless connectivity.

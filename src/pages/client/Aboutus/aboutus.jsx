@@ -41,7 +41,7 @@ const AboutUs = () => {
   
       <nav className="abhu-local-nav">
         <div className="abhu-nav-content">
-          <span className="abhu-nav-brand">About Eter</span>
+          <span className="abhu-nav-brand">About Us</span>
           <div className="abhu-nav-links">
             <NavLink 
               to="/about" 

@@ -19,9 +19,9 @@ const FacilityManagement = () => {
         </div>
       </nav>
 
-      {/* 1. Overview (Hero) */}
+  
       <section id="overview" className="facil-section facil-hero">
-        <p className="facil-eyebrow">Space Management</p>
+      
         <h1>Facility Management. <br/><span>Your environment, optimized.</span></h1>
         <p className="facil-hero-sub">
           Seamlessly managing the spaces where you work. From IoT energy control in Phnom Penh high-rises to comprehensive security across regional commercial hubs.

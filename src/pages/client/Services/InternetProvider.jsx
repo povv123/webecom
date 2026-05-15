@@ -21,7 +21,6 @@ const InternetProvider = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="interrr-section interrr-hero">
-        <p className="interrr-eyebrow">Connectivity</p>
         <h1>Internet Services. <br/><span>Connect at the speed of thought.</span></h1>
         <p className="interrr-hero-sub">
           Stable, ultra-high-bandwidth fiber solutions designed for modern Cambodian enterprises, ensuring seamless operations nationwide.

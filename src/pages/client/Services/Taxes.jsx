@@ -19,9 +19,8 @@ const Tax = () => {
         </div>
       </nav>
 
-      {/* 1. Overview (Hero) */}
+  
       <section id="overview" className="tax-section tax-hero">
-        <p className="tax-eyebrow">Eter for Business</p>
         <h1>Navigating Cambodia's <br/><span>Tax Landscape.</span></h1>
         <p className="tax-hero-sub">
           Expert guidance on Corporate Tax, Tax on Salary, and VAT to keep your business compliant and optimized under the GDT self-assessment regime.

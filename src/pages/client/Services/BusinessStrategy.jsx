@@ -8,7 +8,7 @@ const BusinessStrategy = () => {
       {/* Sticky Local Navigation */}
       <nav className="strat-local-nav">
         <div className="strat-nav-container">
-          <span className="strat-nav-brand">Eter Strategy</span>
+          <span className="strat-nav-brand"> Business Strategy</span>
           <div className="strat-nav-links">
             <a href="#overview">Overview</a>
             <a href="#corporate-strategy">Corporate Strategy</a>
@@ -21,7 +21,7 @@ const BusinessStrategy = () => {
 
       {/* 1. Overview (Hero) */}
       <section id="overview" className="strat-section strat-hero">
-        <p className="strat-eyebrow">Eter for Business</p>
+      
         <h1>A new dimension of <br/><span>enterprise growth.</span></h1>
         <p className="strat-hero-sub">
           Transforming corporate operations with data-driven insights, scalable frameworks, and intelligent forecasting tools.

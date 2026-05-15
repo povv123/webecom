@@ -45,7 +45,7 @@ const FinancialAnalysis = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Financial Analysis Services
+        
         </motion.p>
 
         <motion.h1

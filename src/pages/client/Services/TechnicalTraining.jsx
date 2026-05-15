@@ -28,7 +28,6 @@ const TechnicalTraining = () => {
       <main className="TTT-content">
         {/* Hero Section: Centered, Bold Typography */}
         <section className="TTT-hero">
-          <p className="TTT-eyebrow">Innovation everywhere</p>
           <h1>Elevate your team’s expertise. <span>Technical Training.</span></h1>
           <p className="TTT-hero-sub">
             Advanced workshops led by industry veterans to move your partners, 

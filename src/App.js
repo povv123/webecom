@@ -47,7 +47,7 @@ import Whitepapers from './pages/client/Resources/whitepapers';
 import Blog from './pages/client/Resources/blog';
 import FAQs from './pages/client/Resources/FAQs';
 
-// --- CONTACT HUB (Updated with New Files) ---
+// --- CONTACT HUB ---
 import Contact from './pages/client/Contact/Contact';
 import Inquiry from './pages/client/Contact/inquiry';
 import Quote from './pages/client/Contact/quote';
@@ -101,6 +101,8 @@ import AdminCareers from './pages/admin/Careers';
 import AdminSupport from './pages/admin/Support';
 import AdminAboutUs from './pages/admin/Aboutus';
 import AdminContact from './pages/admin/Contact';
+// New Admin Contact Sub-page
+import InquiriesAdmin from './pages/admin/Contact/inquiries'; 
 
 // --- PRINTABLE PAGES ---
 import Invoice from './pages/admin/Invoice'; 
@@ -167,7 +169,7 @@ function App() {
               <Route path="/resources/blog" element={<Blog />} />
               <Route path="/resources/faqs" element={<FAQs />} />
 
-              {/* CONTACT & SUPPORT (Comprehensive Routes) */}
+              {/* CONTACT & SUPPORT */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/contact/inquiry" element={<Inquiry />} />
               <Route path="/contact/quote" element={<Quote />} />
@@ -223,6 +225,10 @@ function App() {
               <Route path="resources" element={<AdminResources />} />
               <Route path="about" element={<AdminAboutUs />} />
               <Route path="contact" element={<AdminContact />} />
+              
+              {/* Added: Inquiries specific route under Admin Contact */}
+              <Route path="contact/inquiries" element={<InquiriesAdmin />} />
+              
               <Route path="customers" element={<AdminCustomers />} />
               <Route path="careers" element={<AdminCareers />} />
               <Route path="support" element={<AdminSupport />} />

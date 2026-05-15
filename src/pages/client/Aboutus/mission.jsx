@@ -49,7 +49,7 @@ const OurMission = () => {
       {/* 1. STICKY LOCAL NAVIGATION */}
       <nav className="mission-local-nav">
         <div className="mission-nav-content">
-          <span className="mission-nav-brand">Eter Store</span>
+          <span className="mission-nav-brand">Our Mission</span>
           <div className="mission-nav-links">
             <NavLink 
               to="/about" 
