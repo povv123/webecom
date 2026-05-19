@@ -1,0 +1,424 @@
+/* ── technicalAdmin.css ──────────────────────────────────── */
+
+/* Root */
+.tec-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f7f8fa;
+  font-family: inherit;
+}
+
+/* Body */
+.tec-body {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Top bar ───────────────────────────────────────────────── */
+.tec-top-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tec-top-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0 0 4px;
+}
+
+.tec-top-sub {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Search */
+.tec-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tec-search-icon {
+  position: absolute;
+  left: 10px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.tec-search {
+  padding: 8px 12px 8px 34px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #1a1d23;
+  background: #fff;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.18s;
+}
+
+.tec-search:focus {
+  border-color: #6366f1;
+}
+
+.tec-search::placeholder {
+  color: #b0b7c3;
+}
+
+/* ── Stat cards ────────────────────────────────────────────── */
+.tec-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .tec-cards { grid-template-columns: 1fr; }
+}
+
+.tec-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.tec-card-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.tec-card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-red    { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green  { background: #10b981; }
+
+.tec-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ── Table wrapper ─────────────────────────────────────────── */
+.tec-table-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tec-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tec-table-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1d23;
+  margin: 0;
+}
+
+.tec-result-count {
+  font-size: 12.5px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* Table */
+.tec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tec-th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 16px;
+  background: #fafafa;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: nowrap;
+}
+
+.tec-td {
+  padding: 13px 16px;
+  font-size: 13.5px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.tec-row-even { background: #fff; }
+.tec-row-odd  { background: #fafafa; }
+
+.tec-row-even:hover,
+.tec-row-odd:hover {
+  background: #f0f1ff;
+  transition: background 0.15s;
+}
+
+/* Columns */
+.tec-col-id {
+  font-family: "Courier New", monospace;
+  font-size: 12.5px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.tec-col-muted {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Sender cell */
+.tec-sender-name {
+  display: block;
+  font-weight: 600;
+  color: #1a1d23;
+  font-size: 13.5px;
+}
+
+.tec-sender-email {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* Topic tag */
+.tec-topic-tag {
+  display: inline-block;
+  background: #f0f1ff;
+  color: #6366f1;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Badges */
+.tec-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.tec-severity {
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Empty state */
+.tec-empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* View button */
+.tec-view-btn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.tec-view-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+  background: #f0f1ff;
+}
+
+/* ── Modal ─────────────────────────────────────────────────── */
+.tec-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: tec-fade-in 0.18s ease;
+}
+
+@keyframes tec-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.tec-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 540px;
+  max-width: calc(100vw - 40px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: tec-slide-up 0.2s ease;
+  overflow: hidden;
+}
+
+@keyframes tec-slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.tec-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tec-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0;
+}
+
+.tec-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #9ca3af;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.15s;
+}
+
+.tec-close-btn:hover { color: #374151; }
+
+.tec-modal-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tec-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.tec-modal-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #f7f8fa;
+  border-radius: 8px;
+}
+
+.tec-modal-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px;
+}
+
+.tec-modal-value {
+  font-size: 13.5px;
+  color: #1a1d23;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.tec-modal-value:last-child { margin-bottom: 0; }
+
+.tec-modal-ref {
+  font-family: "Courier New", monospace;
+  font-size: 12.5px;
+  color: #6366f1;
+}
+
+.tec-modal-message {
+  font-size: 13.5px;
+  color: #374151;
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tec-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 22px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.tec-btn-secondary {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.tec-btn-secondary:hover { border-color: #9ca3af; }
+
+.tec-btn-primary {
+  background: #6366f1;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tec-btn-primary:hover { background: #4f52d9; }

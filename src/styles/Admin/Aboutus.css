@@ -1,196 +1,385 @@
-/* src/styles/Admin/Aboutus.css */
+/* ── Root ── */
+.au-root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  background: #F4F6FB;
+  min-height: 100vh;
+  color: #1A1D2E;
+}
 
-.db-main-content {
-  padding: 2rem;
-  max-width: 1000px;
+/* ── Body ── */
+.au-body {
+  max-width: 1100px;
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 36px 32px;
 }
 
-/* Header Styling */
-.db-header {
+/* ── Top bar ── */
+.au-top-bar {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-
-.db-header__eyebrow {
-  color: #666;
-  font-size: 0.875rem;
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.db-header__title {
-  font-size: 1.75rem;
-  font-weight: bold;
+.au-top-title {
+  font-size: 26px;
+  font-weight: 700;
   margin: 0;
-  color: #111;
+}
+.au-top-sub {
+  font-size: 14px;
+  color: #7A82A0;
+  margin-top: 4px;
 }
 
-/* Form Layout */
-.db-form {
+/* ── Tab switcher ── */
+.au-tab-bar {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: #fff;
+  border: 1px solid #E5E9F2;
+  border-radius: 12px;
+  padding: 6px;
+  width: fit-content;
 }
-
-.db-form-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.db-form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Panels */
-.db-panel {
-  background-color: #fff;
-  padding: 1.5rem;
+.au-tab {
+  padding: 8px 20px;
   border-radius: 8px;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-
-.db-panel-header {
+  border: none;
+  background: transparent;
+  color: #5B6480;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eaeaea;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 6px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+.au-tab.active {
+  background: #EEF1FB;
+  color: #2F54EB;
+}
+.au-tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #F5A623;
+  display: inline-block;
 }
 
-.db-panel-title {
-  font-size: 1.25rem;
+/* ── Save toolbar ── */
+.au-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #E5E9F2;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.au-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.au-toolbar-title {
+  font-size: 16px;
+  font-weight: 700;
   margin: 0;
-  color: #222;
+  color: #1A1D2E;
+}
+.au-toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+.au-unsaved-chip {
+  font-size: 12px;
+  background: #FFF3CD;
+  color: #856404;
+  border: 1px solid #FFE69C;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-weight: 600;
+}
+.au-unsaved-chip.lg {
+  font-size: 13px;
+  padding: 6px 14px;
 }
 
-.db-panel > .db-panel-title {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #eaeaea;
-  padding-bottom: 0.75rem;
-}
-
-.db-panel-title.no-border {
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-/* Inputs & Labels */
-.db-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #333;
-  font-size: 0.95rem;
-}
-
-.db-input,
-.db-textarea {
-  width: 100%;
-  padding: 0.65rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.db-input:focus,
-.db-textarea:focus {
-  outline: none;
-  border-color: #007aff;
-}
-
-.db-textarea {
-  resize: vertical;
-}
-
-/* Buttons */
-.db-btn-primary {
-  padding: 0.6rem 1.2rem;
-  background-color: #007aff;
-  color: white;
-  border-radius: 6px;
+/* ── Buttons ── */
+.au-btn-primary {
+  padding: 9px 20px;
+  border-radius: 9px;
   border: none;
+  background: #2F54EB;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
+  box-shadow: 0 2px 8px rgba(47,84,235,.25);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
+.au-btn-primary:hover:not(:disabled) { opacity: 0.85; }
+.au-btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.db-btn-primary:hover {
-  background-color: #005bb5;
-}
-
-.db-btn-secondary {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.875rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+.au-btn-ghost {
+  padding: 9px 20px;
+  border-radius: 9px;
+  border: 1.5px solid #DDE2F0;
+  background: #fff;
+  color: #5B6480;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  color: #333;
-  transition: background 0.2s;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
+.au-btn-ghost:hover:not(:disabled) { background: #F8F9FD; }
+.au-btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.db-btn-secondary:hover {
-  background-color: #ececec;
-}
-
-.db-btn-text {
-  border: none;
-  background: none;
+.au-btn-danger {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #FECACA;
+  background: #FEF2F2;
+  color: #DC2626;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
-.db-btn-text:hover {
-  background-color: rgba(0,0,0,0.05);
+.au-btn-sm-blue {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #DDE2F0;
+  background: #fff;
+  color: #2F54EB;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+.au-btn-sm-blue:hover { background: #EEF1FB; }
+
+/* ── Section card ── */
+.au-section-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #EEF1FB;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.au-section-head {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7A82A0;
+  margin: 0 0 18px 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #F0F3FA;
 }
 
-.db-text-primary {
-  color: #007aff;
+/* ── Grid ── */
+.au-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-.db-text-danger {
-  color: #ff3b30;
-}
-
-/* List Items */
-.db-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ── Fields ── */
+.au-field-wrap {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.au-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #5B6480;
+  letter-spacing: 0.03em;
+}
+.au-input {
+  width: 100%;
+  padding: 9px 13px;
+  border-radius: 9px;
+  border: 1.5px solid #DDE2F0;
+  font-size: 14px;
+  color: #1A1D2E;
+  background: #FAFBFE;
+  outline: none;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.15s, background 0.15s;
+}
+.au-input:focus {
+  border-color: #2F54EB;
+  background: #fff;
+}
+.au-textarea {
+  width: 100%;
+  padding: 9px 13px;
+  border-radius: 9px;
+  border: 1.5px solid #DDE2F0;
+  font-size: 14px;
+  color: #1A1D2E;
+  background: #FAFBFE;
+  outline: none;
+  resize: vertical;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.15s, background 0.15s;
+}
+.au-textarea:focus {
+  border-color: #2F54EB;
+  background: #fff;
 }
 
-.db-list-item {
+/* ── List editor ── */
+.au-tag-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.au-tag-item {
+  display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: #fcfcfc;
-  border: 1px solid #eaeaea;
-  border-radius: 6px;
-  color: #333;
+  gap: 8px;
+}
+.au-tag-input {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #DDE2F0;
+  font-size: 13px;
+  color: #1A1D2E;
+  background: #FAFBFE;
+  outline: none;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+.au-tag-del {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1.5px solid #FECACA;
+  background: #FEF2F2;
+  color: #DC2626;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.au-add-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.au-add-input {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #DDE2F0;
+  font-size: 13px;
+  color: #1A1D2E;
+  background: #fff;
+  outline: none;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
-.db-list-actions {
+/* ── Group card ── */
+.au-group-card {
+  background: #F8F9FD;
+  border-radius: 10px;
+  border: 1px solid #EEF1FB;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.au-group-header {
   display: flex;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.au-group-cat-input {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #DDE2F0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1D2E;
+  background: #fff;
+  outline: none;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+/* ── Milestone / exec card ── */
+.au-milestone-card {
+  background: #F8F9FD;
+  border-radius: 10px;
+  border: 1px solid #EEF1FB;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.au-milestone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.au-year-badge {
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: #EEF1FB;
+  color: #2F54EB;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ── Toast ── */
+.au-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  min-width: 260px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+.au-toast.success {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #15803D;
+}
+.au-toast.warning {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+}
+.au-toast-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 14px;
+  opacity: 0.6;
+  padding: 2px 4px;
 }

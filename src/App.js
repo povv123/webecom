@@ -101,12 +101,17 @@ import AdminCareers from './pages/admin/Careers';
 import AdminSupport from './pages/admin/Support';
 import AdminAboutUs from './pages/admin/Aboutus';
 import AdminContact from './pages/admin/Contact';
-// New Admin Contact Sub-page
-import InquiriesAdmin from './pages/admin/Contact/inquiries'; 
+
+// --- ADMIN CONTACT SUB-PAGES ---
+import InquiriesAdmin from './pages/admin/Contact/inquiries';
+import QuotesAdmin from './pages/admin/Contact/QuotesAdmin';
+import TechnicalAdmin from './pages/admin/Contact/TechnicalAdmin';
+import ShippingAdmin from './pages/admin/Contact/ShippingAdmin';
+import ReturnsAdmin from './pages/admin/Contact/ReturnsAdmin';
 
 // --- PRINTABLE PAGES ---
 import Invoice from './pages/admin/Invoice'; 
-
+import Candidates from './pages/admin/Careers/Candidates'; 
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -225,12 +230,15 @@ function App() {
               <Route path="resources" element={<AdminResources />} />
               <Route path="about" element={<AdminAboutUs />} />
               <Route path="contact" element={<AdminContact />} />
-              
-              {/* Added: Inquiries specific route under Admin Contact */}
               <Route path="contact/inquiries" element={<InquiriesAdmin />} />
-              
+              <Route path="contact/quotes" element={<QuotesAdmin />} />
+              <Route path="contact/technical" element={<TechnicalAdmin />} />
+              <Route path="contact/returns" element={<ReturnsAdmin />} />
+              <Route path="contact/shipping" element={<ShippingAdmin />} />
               <Route path="customers" element={<AdminCustomers />} />
               <Route path="careers" element={<AdminCareers />} />
+            
+              <Route path="careers/candidates" element={<Candidates />} /> 
               <Route path="support" element={<AdminSupport />} />
             </Route>
 

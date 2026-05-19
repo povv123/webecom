@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Print page: any paper size, margin = the white border on paper ── */
+@page {
+  size: auto;
+  margin: 18mm 20mm;
+}
+
+/* ════════════════════════════
+    SCREEN CHROME
+════════════════════════════ */
+.cvp-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 28px 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.cvp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: color .15s;
+}
+.cvp-back:hover { color: #000; }
+
+.cvp-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: opacity .15s, transform .1s;
+}
+.cvp-print-btn:hover  { opacity: .82; }
+.cvp-print-btn:active { transform: scale(.97); }
+
+/* ════════════════════════════
+    PAPER STACK
+════════════════════════════ */
+.cvp-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 0 24px 64px;
+}
+
+/* ── The paper sheet ──
+    On screen: visible black border + subtle shadow = physical paper feel
+    On print:  border + shadow removed; @page margin = the breathing space
+── */
+.cvp-paper {
+  width: 100%;
+  max-width: 860px;
+  min-height: 1120px;
+  background: #fff;
+  color: #000;
+  /* Crisp black paper border on screen */
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  box-shadow:
+    4px 4px 0 0 #000,          /* hard offset shadow = classic paper stack look */
+    0 8px 32px rgba(0,0,0,.08);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  box-sizing: border-box;
+}
+.cvp-paper:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+/* ════════════════════════════
+    HEADER BAND
+════════════════════════════ */
+.cvp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 36px 40px 28px;
+  border-bottom: 2px solid #000;
+}
+
+.cvp-header-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.cvp-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.cvp-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 3px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.cvp-role {
+  font-size: 13px;
+  color: #444;
+  margin: 0 0 4px;
+  font-weight: 400;
+}
+.cvp-cid {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #888;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.cvp-header-right {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.cvp-status-box {
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* ════════════════════════════
+    BODY: sidebar + main
+════════════════════════════ */
+.cvp-body {
+  display: flex;
+  flex: 1;
+}
+
+/* ── Sidebar ── */
+.cvp-sidebar {
+  width: 236px;
+  flex-shrink: 0;
+  border-right: 1.5px solid #000;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.cvp-sb-section { margin-bottom: 0; }
+
+.cvp-sb-rule {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 20px 0;
+}
+
+.cvp-sb-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.cvp-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 9px;
+  color: #333;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+.cvp-info svg { flex-shrink: 0; margin-top: 1px; color: #555; }
+
+.cvp-kv { margin-bottom: 10px; }
+.cvp-k {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: #888;
+  margin-bottom: 2px;
+}
+.cvp-v {
+  display: block;
+  font-size: 12px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* ── Main content ── */
+.cvp-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 36px 28px;
+  box-sizing: border-box;
+  min-width: 0;
+  background: #fff;
+}
+
+.cvp-section { margin-bottom: 28px; }
+
+.cvp-section-head {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #000;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #000;
+}
+
+.cvp-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cvp-skill {
+  background: #fff;
+  border: 1px solid #000;
+  color: #000;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.cvp-note {
+  border: 1px solid #000;
+  border-left: 3px solid #000;
+  border-radius: 0 4px 4px 0;
+  padding: 14px 18px;
+  background: #fff;
+}
+.cvp-note-text {
+  font-size: 13px;
+  line-height: 1.75;
+  color: #222;
+  margin: 0;
+}
+
+.cvp-main-spacer { flex: 1; }
+
+.cvp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid #000;
+  font-size: 9.5px;
+  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.cvp-empty {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  padding: 80px 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ════════════════════════════════════════════════
+    PRINT
+    • Hides: screen chrome, admin panel, sidebar nav,
+      hamburger menus, topbars — any common admin shell
+      selector is covered.
+    • Paper becomes full-width, borderless (the @page
+      margin provides the clean white breathing space).
+    • All content is black on white — no ink waste.
+════════════════════════════════════════════════ */
+@media print {
+
+  /* ── Hide this page's screen-only UI ── */
+  .no-print { display: none !important; }
+
+  /* ── Hide common admin shell elements ──
+      Covers: sidebars, top nav bars, hamburger triggers,
+      breadcrumbs, footers — whatever the parent layout renders.
+      Add your app's specific class names here if needed.        */
+  nav,
+  header:not(.cvp-header),
+  aside:not(.cvp-sidebar),
+  [class*="sidebar"]:not(.cvp-sidebar),
+  [class*="Sidebar"]:not(.cvp-sidebar),
+  [class*="navbar"]:not(.cvp-header),
+  [class*="Navbar"]:not(.cvp-header),
+  [class*="topbar"],
+  [class*="Topbar"],
+  [class*="top-bar"]:not(.cvp-top-bar),
+  [class*="header"]:not(.cvp-header):not([class*="cvp"]),
+  [class*="hamburger"],
+  [class*="Hamburger"],
+  [class*="menu-toggle"],
+  [class*="MenuToggle"],
+  [class*="drawer"],
+  [class*="Drawer"],
+  [class*="admin-panel"],
+  [class*="AdminPanel"],
+  [class*="admin-nav"],
+  [class*="AdminNav"],
+  [class*="breadcrumb"],
+  [class*="Breadcrumb"],
+  [role="navigation"],
+  [role="banner"],
+  [aria-label="navigation"],
+  [aria-label="sidebar"],
+  [aria-label="menu"] {
+    display: none !important;
+  }
+
+  /* ── Page layout ── */
+  html, body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cvp-stack {
+    display: block !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Paper: full width, no border/shadow (margin IS the border) */
+  .cvp-paper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .cvp-paper:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* Restore internal structural borders (they were on the element, not box-shadow) */
+  .cvp-header   { border-bottom: 1.5px solid #000 !important; }
+  .cvp-sidebar  { border-right: 1.5px solid #000 !important; }
+  .cvp-sb-rule  { border-top: 1px solid #000 !important; }
+  .cvp-section-head { border-bottom: 1px solid #000 !important; }
+  .cvp-note     { border: 1px solid #000 !important; border-left: 3px solid #000 !important; }
+  .cvp-footer   { border-top: 1px solid #000 !important; }
+  .cvp-status-box { border: 1.5px solid #000 !important; }
+
+  /* No color adjustment needed — everything is already black/white */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Prevent orphaned sections */
+  .cvp-section      { page-break-inside: avoid; break-inside: avoid; }
+  .cvp-sb-section   { page-break-inside: avoid; break-inside: avoid; }
+  .cvp-header       { page-break-inside: avoid; break-inside: avoid; }
+}
+
+/* ── Narrow screen ── */
+@media (max-width: 680px) {
+  .cvp-paper { flex-direction: column; min-height: unset; }
+  .cvp-header { padding: 24px 20px 20px; }
+  .cvp-sidebar { width: 100% !important; border-right: none !important; border-bottom: 1.5px solid #000; padding: 24px 20px !important; }
+  .cvp-main { padding: 24px 20px; }
+  .cvp-stack { padding: 0 8px 48px; }
+}

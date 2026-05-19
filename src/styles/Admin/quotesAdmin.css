@@ -1,0 +1,419 @@
+/* ── quotesAdmin.css ─────────────────────────────────────── */
+
+/* Root */
+.quo-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f7f8fa;
+  font-family: inherit;
+}
+
+/* Body */
+.quo-body {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Top bar ───────────────────────────────────────────────── */
+.quo-top-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.quo-top-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0 0 4px;
+}
+
+.quo-top-sub {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Search */
+.quo-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.quo-search-icon {
+  position: absolute;
+  left: 10px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.quo-search {
+  padding: 8px 12px 8px 34px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #1a1d23;
+  background: #fff;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.18s;
+}
+
+.quo-search:focus {
+  border-color: #6366f1;
+}
+
+.quo-search::placeholder {
+  color: #b0b7c3;
+}
+
+/* ── Stat cards ────────────────────────────────────────────── */
+.quo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .quo-cards { grid-template-columns: 1fr; }
+}
+
+.quo-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.quo-card-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.quo-card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-blue   { background: #6366f1; }
+.dot-yellow { background: #f59e0b; }
+.dot-green  { background: #10b981; }
+
+.quo-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ── Table wrapper ─────────────────────────────────────────── */
+.quo-table-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.quo-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.quo-table-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1d23;
+  margin: 0;
+}
+
+.quo-result-count {
+  font-size: 12.5px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* Table */
+.quo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.quo-th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 16px;
+  background: #fafafa;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: nowrap;
+}
+
+.quo-td {
+  padding: 13px 16px;
+  font-size: 13.5px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.quo-row-even { background: #fff; }
+.quo-row-odd  { background: #fafafa; }
+
+.quo-row-even:hover,
+.quo-row-odd:hover {
+  background: #f0f1ff;
+  transition: background 0.15s;
+}
+
+/* Columns */
+.quo-col-id {
+  font-family: "Courier New", monospace;
+  font-size: 12.5px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.quo-col-muted {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Sender cell */
+.quo-sender-name {
+  display: block;
+  font-weight: 600;
+  color: #1a1d23;
+  font-size: 13.5px;
+}
+
+.quo-sender-email {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* Topic tag */
+.quo-topic-tag {
+  display: inline-block;
+  background: #f0f1ff;
+  color: #6366f1;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Badge */
+.quo-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* Empty state */
+.quo-empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* View button */
+.quo-view-btn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.quo-view-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+  background: #f0f1ff;
+}
+
+/* ── Modal ─────────────────────────────────────────────────── */
+.quo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: quo-fade-in 0.18s ease;
+}
+
+@keyframes quo-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.quo-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 520px;
+  max-width: calc(100vw - 40px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: quo-slide-up 0.2s ease;
+  overflow: hidden;
+}
+
+@keyframes quo-slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.quo-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.quo-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1d23;
+  margin: 0;
+}
+
+.quo-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #9ca3af;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.15s;
+}
+
+.quo-close-btn:hover { color: #374151; }
+
+.quo-modal-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quo-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.quo-modal-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #f7f8fa;
+  border-radius: 8px;
+}
+
+.quo-modal-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px;
+}
+
+.quo-modal-value {
+  font-size: 13.5px;
+  color: #1a1d23;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.quo-modal-value:last-child { margin-bottom: 0; }
+
+.quo-modal-ref {
+  font-family: "Courier New", monospace;
+  font-size: 12.5px;
+  color: #6366f1;
+}
+
+.quo-modal-message {
+  font-size: 13.5px;
+  color: #374151;
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.quo-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 22px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.quo-btn-secondary {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.quo-btn-secondary:hover { border-color: #9ca3af; }
+
+.quo-btn-primary {
+  background: #6366f1;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.quo-btn-primary:hover { background: #4f52d9; }
