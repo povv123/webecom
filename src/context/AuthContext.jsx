@@ -1,34 +1,58 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import * as authApi from '../API/auth';
+import { getToken } from '../API/client';
 
-// 1. Create the Context
 const AuthContext = createContext();
 
-// 2. Create the Provider Component
 export const AuthProvider = ({ children }) => {
-  // For now, we set this to false so the door starts "locked"
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fake login function (you will connect this to your backend later)
-  const login = (email, password) => {
-    if (email === 'admin@eter.com' && password === 'admin123') {
-      setIsAuthenticated(true);
-      return true;
+  useEffect(() => {
+    if (!getToken()) {
+      setIsLoading(false);
+      return;
     }
-    return false;
+    authApi
+      .fetchCurrentUser()
+      .then((current) => {
+        setUser(current);
+        setIsAuthenticated(true);
+      })
+      .catch(() => {
+        authApi.logout();
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const login = async (email, password) => {
+    const loggedInUser = await authApi.login(email, password);
+    setUser(loggedInUser);
+    setIsAuthenticated(true);
+    return loggedInUser;
+  };
+
+  const register = async (email, password) => {
+    const newUser = await authApi.register(email, password);
+    setUser(newUser);
+    setIsAuthenticated(true);
+    return newUser;
   };
 
   const logout = () => {
+    authApi.logout();
+    setUser(null);
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// 3. Custom Hook to easily use this context anywhere
 export const useAuth = () => {
   return useContext(AuthContext);
 };

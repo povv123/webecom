@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { machineTools } from '../../../data/Products/machineToolData'; 
-import '../../../styles/products/machinetools.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/machinetools.css';
 
 const Machintools = () => {
   const [filter, setFilter] = useState('All');
+  const [machineTools, setMachineTools] = useState([]);
 
-  const filteredItems = machineTools ? machineTools.filter(p => 
+  useEffect(() => {
+    getProductsBySubCategory('precision-tool').then(setMachineTools).catch(() => setMachineTools([]));
+  }, []);
+
+  const filteredItems = machineTools ? machineTools.filter(p =>
     p.subCategory === 'precision-tool' && (filter === 'All' || p.type === filter)
   ) : [];
 

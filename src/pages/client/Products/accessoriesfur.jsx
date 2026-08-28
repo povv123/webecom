@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// 1. Update the import to your new accessories-focused data file
-import { furnitureAccessories } from '../../../data/Products/furnitureAccessoriesData'; 
-import '../../../styles/products/furnitureAccessories.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/furnitureAccessories.css';
 
 const FurnitureAccessoriesPage = () => {
   const [filter, setFilter] = useState('All');
+  const [furnitureAccessories, setFurnitureAccessories] = useState([]);
+
+  useEffect(() => {
+    getProductsBySubCategory('furnishing-accessory').then(setFurnitureAccessories).catch(() => setFurnitureAccessories([]));
+  }, []);
 
   // Filter based on 'furnishing-accessory' subCategory and 'type'
-  const filteredItems = furnitureAccessories ? furnitureAccessories.filter(p => 
+  const filteredItems = furnitureAccessories ? furnitureAccessories.filter(p =>
     p.subCategory === 'furnishing-accessory' && (filter === 'All' || p.type === filter)
   ) : [];
 

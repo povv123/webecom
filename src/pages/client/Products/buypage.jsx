@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { allProductsData } from '../../../data/allProductsData';
+import { getAllProductsGrouped } from '../../../API/products';
 import { useBag } from '../../../context/BagContext';
 import '../../../styles/products/Buypage.css';
 
@@ -26,12 +26,18 @@ const BuyPage = () => {
   const location = useLocation();
   const { addToBag } = useBag();
 
+  const [productsData, setProductsData] = useState({});
+
+  useEffect(() => {
+    getAllProductsGrouped().then(setProductsData).catch(() => setProductsData({}));
+  }, []);
+
   const categoryProducts = useMemo(() => {
     if (!categoryId) return [];
     const formattedCategory = categoryId.toLowerCase().replace(/\s+/g, '');
     const categoryMap = { mobile: 'mobile', mobilephones: 'mobile', laptops: 'laptops', machinery: 'machinery', machinetools: 'tools', tools: 'tools', home: 'home', office: 'office', electronics: 'electronics', accessories: 'electronics', furnitureacc: 'furnitureacc' };
-    return allProductsData[categoryMap[formattedCategory] || formattedCategory] || allProductsData['laptops'] || [];
-  }, [categoryId]);
+    return productsData[categoryMap[formattedCategory] || formattedCategory] || productsData['laptops'] || [];
+  }, [categoryId, productsData]);
 
   const [cartItem, setCartItem] = useState(null);
   const [deliveryMethod, setDeliveryMethod] = useState('phnom-penh');

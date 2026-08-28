@@ -23,8 +23,9 @@ import BuyPage from './pages/client/Products/buypage';
 import ProductDetail from './pages/client/Products/productdetail';
 
 // --- CONTEXT ---
+import { AuthProvider } from './context/AuthContext';
 import { BagProvider } from './context/BagContext';
-import { SaveProvider, useSave } from './context/SaveContext'; 
+import { SaveProvider, useSave } from './context/SaveContext';
 
 // --- CAREERS ---
 import CareerOverview from './pages/client/Careers/Career';
@@ -126,8 +127,9 @@ const YourSavesPage = () => {
 
 function App() {
   return (
+    <AuthProvider>
     <BagProvider>
-      <SaveProvider> 
+      <SaveProvider>
         <Router>
           <ScrollToTop />
 
@@ -244,8 +246,9 @@ function App() {
 
           </Routes>
         </Router>
-      </SaveProvider> 
+      </SaveProvider>
     </BagProvider>
+    </AuthProvider>
   );
 }
 

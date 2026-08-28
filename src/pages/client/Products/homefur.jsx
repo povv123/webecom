@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { homeFurniture } from '../../../data/Products/homefurdata'; 
-import '../../../styles/products/homefur.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/homefur.css';
 
 const HomeFurniturePage = () => {
   const [filter, setFilter] = useState('All');
+  const [homeFurniture, setHomeFurniture] = useState([]);
+
+  useEffect(() => {
+    getProductsBySubCategory('home-furniture').then(setHomeFurniture).catch(() => setHomeFurniture([]));
+  }, []);
 
   // Filter based on 'home-furniture' subCategory and the 'type' field
-  const filteredItems = homeFurniture ? homeFurniture.filter(p => 
+  const filteredItems = homeFurniture ? homeFurniture.filter(p =>
     p.subCategory === 'home-furniture' && (filter === 'All' || p.type === filter)
   ) : [];
 

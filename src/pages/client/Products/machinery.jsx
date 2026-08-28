@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { machineryProducts } from '../../../data/Products/machineryData'; 
-import '../../../styles/products/machine.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/machine.css';
 
 const MachineryPage = () => {
   const [filter, setFilter] = useState('All');
+  const [machineryProducts, setMachineryProducts] = useState([]);
 
-  const filteredItems = machineryProducts ? machineryProducts.filter(p => 
+  useEffect(() => {
+    getProductsBySubCategory('machinery').then(setMachineryProducts).catch(() => setMachineryProducts([]));
+  }, []);
+
+  const filteredItems = machineryProducts ? machineryProducts.filter(p =>
     p.subCategory === 'machinery' && (filter === 'All' || p.type === filter)
   ) : [];
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { allProductsData } from '../../../data/allProductsData'; 
-import '../../../styles/products/ProductDetail.css'; 
-
-const allProducts = Object.values(allProductsData).flat().filter(Boolean);
+import { getProductBySlug, listProducts } from '../../../API/products';
+import '../../../styles/products/ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -12,21 +10,29 @@ const ProductDetail = () => {
   const [sortOrder, setSortOrder] = useState('Default');
 
   useEffect(() => {
+    let cancelled = false;
 
+    getProductBySlug(id)
+      .then(async (currentProduct) => {
+        if (cancelled) return;
+        setProduct(currentProduct);
 
-    const currentProduct = allProducts.find(p => p.id.toString() === id);
-    setProduct(currentProduct);
+        if (currentProduct) {
+          const related = await listProducts({ subCategory: currentProduct.subCategory });
+          if (cancelled) return;
+          setComparedProducts(related.filter(p => p.id !== currentProduct.id).slice(0, 4));
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setProduct(null);
+      });
 
-   
-    if (currentProduct) {
-      const related = allProducts.filter(
-        p => p.subCategory === currentProduct.subCategory && p.id !== currentProduct.id
-      );
-      setComparedProducts(related.slice(0, 4));
-    }
-    
     // Reset scroll position on load
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    return () => {
+      cancelled = true;
+    };
   }, [id]);
 
   if (!product) {

@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { mobiles } from '../../../data/Products/mobilephoneData'; 
-import { laptops } from '../../../data/Products/laptopData';
-import { machineryProducts } from '../../../data/Products/machineryData';
-import { homeFurniture } from '../../../data/Products/homefurdata';
-import '../../../styles/products/Productsss.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/Productsss.css';
 
 // --- Custom Apple-Style SVG Icons ---
 const IconMobile = () => (
@@ -70,6 +67,18 @@ const IconMachinery = () => (
 );
 
 const Products = () => {
+  const [mobiles, setMobiles] = useState([]);
+  const [laptops, setLaptops] = useState([]);
+  const [machineryProducts, setMachineryProducts] = useState([]);
+  const [homeFurniture, setHomeFurniture] = useState([]);
+
+  useEffect(() => {
+    getProductsBySubCategory('mobile').then(setMobiles).catch(() => setMobiles([]));
+    getProductsBySubCategory('laptop').then(setLaptops).catch(() => setLaptops([]));
+    getProductsBySubCategory('machinery').then(setMachineryProducts).catch(() => setMachineryProducts([]));
+    getProductsBySubCategory('home-furniture').then(setHomeFurniture).catch(() => setHomeFurniture([]));
+  }, []);
+
   const shelfItems = [
     { name: "Mobile Phones", icon: <IconMobile />, path: "/products/electronics/mobile" },
     { name: "Laptops", icon: <IconLaptop />, path: "/products/electronics/laptops" },

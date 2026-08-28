@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { accessories } from '../../../data/Products/electronicaccessoriesData'; 
-import '../../../styles/products/accessories.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/accessories.css';
 
 const AccessoriesPage = () => {
   const [filter, setFilter] = useState('All');
+  const [accessories, setAccessories] = useState([]);
 
-  const filteredItems = accessories ? accessories.filter(p => 
+  useEffect(() => {
+    getProductsBySubCategory('accessory').then(setAccessories).catch(() => setAccessories([]));
+  }, []);
+
+  const filteredItems = accessories ? accessories.filter(p =>
     p.subCategory === 'accessory' && (filter === 'All' || p.type === filter)
   ) : [];
 

@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { laptops } from '../../../data/Products/laptopData'; 
-import '../../../styles/products/laptop.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/laptop.css';
 
 const LaptopPage = () => {
   // CHANGED: Defaulting to 'All' to show every model on first load
   const [filter, setFilter] = useState('All');
+  const [laptops, setLaptops] = useState([]);
+
+  useEffect(() => {
+    getProductsBySubCategory('laptop').then(setLaptops).catch(() => setLaptops([]));
+  }, []);
 
   // Filter logic based on the 'brand' property in your data
-  const filteredLaptops = laptops ? laptops.filter(p => 
+  const filteredLaptops = laptops ? laptops.filter(p =>
     p.subCategory === 'laptop' && (filter === 'All' || p.brand === filter)
   ) : [];
 

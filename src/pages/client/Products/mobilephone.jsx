@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { mobiles } from '../../../data/Products/mobilephoneData'; 
-import '../../../styles/products/Phone.css'; 
+import { getProductsBySubCategory } from '../../../API/products';
+import '../../../styles/products/Phone.css';
 
 const MobilePhonePage = () => {
   // Defaulting to 'All' to show every model on first load
   const [filter, setFilter] = useState('All');
+  const [mobiles, setMobiles] = useState([]);
+
+  useEffect(() => {
+    getProductsBySubCategory('mobile').then(setMobiles).catch(() => setMobiles([]));
+  }, []);
 
   // Filter logic based on the 'brand' property in your data
-  const filteredMobiles = mobiles ? mobiles.filter(p => 
+  const filteredMobiles = mobiles ? mobiles.filter(p =>
     p.subCategory === 'mobile' && (filter === 'All' || p.brand === filter)
   ) : [];
 
