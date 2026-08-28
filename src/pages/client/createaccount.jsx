@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../../styles/createaccount.css'; 
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import '../../styles/createaccount.css';
 
 const CreateAccount = () => {
+  const { register } = useAuth();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,15 +18,39 @@ const CreateAccount = () => {
     phoneCode: '+1', // Added phone code to state
     phone: ''
   });
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log("Creating account for:", formData.email, "Phone:", formData.phoneCode + formData.phone);
+    setError('');
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords don't match.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await register({
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: `${formData.phoneCode} ${formData.phone}`,
+        birthday: formData.dob,
+        country: formData.country,
+      });
+      navigate('/account', { replace: true });
+    } catch (err) {
+      setError(err.message || 'Unable to create your account.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -247,8 +275,10 @@ const CreateAccount = () => {
             <p className="creeacc-help-text">Make sure you enter a phone number you can always access.</p>
           </div>
 
-          <button type="submit" className="creeacc-submit-btn">
-            Continue
+          {error && <p className="creeacc-help-text" style={{ color: '#ff3b30' }}>{error}</p>}
+
+          <button type="submit" className="creeacc-submit-btn" disabled={submitting}>
+            {submitting ? 'Creating Account…' : 'Continue'}
           </button>
         </form>
 

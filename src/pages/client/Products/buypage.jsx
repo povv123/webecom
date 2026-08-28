@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { getAllProductsGrouped } from '../../../API/products';
+import { placeOrder } from '../../../API/orders';
 import { useBag } from '../../../context/BagContext';
+import { useAuth } from '../../../context/AuthContext';
 import '../../../styles/products/Buypage.css';
 
 // --- Custom SVG Icons ---
@@ -24,7 +26,9 @@ const IconPickup = () => (
 const BuyPage = () => {
   const { categoryId } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const { addToBag } = useBag();
+  const { isAuthenticated } = useAuth();
 
   const [productsData, setProductsData] = useState({});
 
@@ -72,11 +76,30 @@ const BuyPage = () => {
     return { total: cartItem.price, monthlyFinance24: (cartItem.price / 24).toFixed(2) };
   }, [cartItem]);
 
+  const [placingOrder, setPlacingOrder] = useState(false);
+  const [orderError, setOrderError] = useState('');
+
   const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handlePlaceOrder = (e) => { 
-    e.preventDefault(); 
-    const actionText = paymentMethod === 'finance' ? 'Financing process started' : 'Order placed';
-    alert(`${actionText} for ${formData.firstName}!`); 
+
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault();
+    if (!cartItem) return;
+
+    if (!isAuthenticated) {
+      navigate('/signin', { state: { from: location } });
+      return;
+    }
+
+    setOrderError('');
+    setPlacingOrder(true);
+    try {
+      await placeOrder([{ productId: cartItem._id, quantity: 1 }]);
+      navigate('/orders');
+    } catch (err) {
+      setOrderError(err.message || 'Unable to place your order.');
+    } finally {
+      setPlacingOrder(false);
+    }
   };
 
   const handleAddToBag = () => {
@@ -195,9 +218,11 @@ const BuyPage = () => {
 
             </div>
 
+            {orderError && <p style={{ color: '#ff3b30', fontSize: '13px', margin: '0 0 12px' }}>{orderError}</p>}
+
             {/* DYNAMIC BUTTON TEXT based on paymentMethod (BLACK BUTTON) */}
-            <button type="button" className="eter-btn-black full-width place-order-btn" onClick={handlePlaceOrder}>
-              {paymentMethod === 'finance' ? 'Financing' : 'Checkout'}
+            <button type="button" className="eter-btn-black full-width place-order-btn" onClick={handlePlaceOrder} disabled={placingOrder}>
+              {placingOrder ? 'Placing Order…' : paymentMethod === 'finance' ? 'Financing' : 'Checkout'}
             </button>
             
             {/* ADD TO BAG (BLUE BUTTON) */}

@@ -8,6 +8,10 @@ export function getOrder(id) {
   return request(`/orders/${id}`, { auth: true });
 }
 
-export function placeOrder() {
-  return request("/orders", { method: "POST", auth: true });
+export function placeOrder(items) {
+  return request("/orders", {
+    method: "POST",
+    body: items ? { items } : undefined,
+    auth: true,
+  });
 }

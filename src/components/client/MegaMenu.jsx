@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { navData } from '../../data/navData';
 import { useBag } from '../../context/BagContext';
+import { useAuth } from '../../context/AuthContext';
 import './MegaMenu.css';
 
 const MegaMenu = () => {
   const { totalCount } = useBag();
+  const { isAuthenticated } = useAuth();
 
   const [activeId, setActiveId] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -180,6 +182,27 @@ const MegaMenu = () => {
                       x2="16.65"
                       y2="16.65"
                     ></line>
+                  </svg>
+                </a>
+
+                {/* Account */}
+                <a
+                  href={isAuthenticated ? '/account' : '/signin'}
+                  className="mega-action-btn"
+                  aria-label={isAuthenticated ? 'Account' : 'Sign In'}
+                >
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                   </svg>
                 </a>
 

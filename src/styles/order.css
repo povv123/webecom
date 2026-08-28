@@ -74,6 +74,87 @@
   transform: scale(0.98);
 }
 
+/* Order List */
+.ord-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ord-card {
+  border: 1px solid #d2d2d7;
+  border-radius: 18px;
+  padding: 24px 28px;
+}
+
+.ord-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e8e8ed;
+}
+
+.ord-card-date {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 2px;
+}
+
+.ord-card-id {
+  font-size: 13px;
+  color: #86868b;
+  margin: 0;
+}
+
+.ord-status {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 4px 12px;
+  border-radius: 980px;
+  background: #f5f5f7;
+  color: #6e6e73;
+}
+
+.ord-status-paid, .ord-status-shipped { background: #e8f6ec; color: #1c8a3c; }
+.ord-status-cancelled { background: #fff2f1; color: #ff3b30; }
+
+.ord-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ord-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.ord-item-qty {
+  color: #86868b;
+  font-size: 13px;
+}
+
+.ord-item-price {
+  font-variant-numeric: tabular-nums;
+}
+
+.ord-card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8ed;
+  font-size: 15px;
+}
+
+.ord-card-total {
+  font-weight: 600;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .ord-container {

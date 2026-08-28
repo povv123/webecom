@@ -398,6 +398,10 @@
 }
 
 .acc-signout {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 500;
   color: var(--danger);

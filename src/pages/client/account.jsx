@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "../../styles/account.css";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -230,13 +232,25 @@ function PasswordRow({ onSave }) {
   const [showNew, setShowNew] = useState(false);
   const [error,   setError]   = useState("");
 
+  const [saving, setSaving] = useState(false);
+
   const reset = () => { setCurrent(""); setNext(""); setConfirm(""); setError(""); setEditing(false); };
 
-  const save = () => {
+  const save = async () => {
     if (!current)         { setError("Enter your current password."); return; }
     if (next.length < 8)  { setError("New password must be at least 8 characters."); return; }
     if (next !== confirm)  { setError("Passwords don't match."); return; }
-    onSave(); reset();
+
+    setSaving(true);
+    setError("");
+    try {
+      await onSave(current, next);
+      reset();
+    } catch (err) {
+      setError(err.message || "Unable to update password.");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -285,8 +299,8 @@ function PasswordRow({ onSave }) {
       <div className="acc-row-right">
         {editing ? (
           <div className="acc-btns">
-            <button className="acc-btn-x"    onClick={reset}><Ico.Close /></button>
-            <button className="acc-btn-done" onClick={save}><Ico.Check /> Save</button>
+            <button className="acc-btn-x"    onClick={reset} disabled={saving}><Ico.Close /></button>
+            <button className="acc-btn-done" onClick={save} disabled={saving}><Ico.Check /> {saving ? 'Saving…' : 'Save'}</button>
           </div>
         ) : (
           <button className="acc-btn-edit" onClick={() => setEditing(true)}>Edit</button>
@@ -436,31 +450,19 @@ function AddAddressRow({ onAdd, onCancel }) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function Account() {
-  // Personal
-  const [profile, setProfile] = useState({
-    firstName: "John",
-    lastName:  "Doe",
-    email:     "j.doe@icloud.com",
-    phone:     "+855 12 345 678",
-    birthday:  "1990-01-15",
-    country:   "Cambodia",
-  });
+  const { user, updateProfile, changePassword, logout } = useAuth();
+  const navigate = useNavigate();
 
-  // Cards
-  const [cards, setCards] = useState([
-    { id: "c1", type: "Visa",       last4: "4242", name: "John Doe", expMonth: "09", expYear: "2027" },
-    { id: "c2", type: "Mastercard", last4: "1234", name: "John Doe", expMonth: "03", expYear: "2026" },
-  ]);
+  // Personal, cards, addresses, and 2FA all live on the User document -
+  // this component reads them straight from context instead of keeping a
+  // local copy, so a successful save always reflects the server's state.
+  const profile = user;
+  const cards = user.paymentMethods || [];
+  const addresses = user.addresses || [];
+  const twoFA = user.twoFactorEnabled;
+
   const [addingCard, setAddingCard] = useState(false);
-
-  // Addresses
-  const [addresses, setAddresses] = useState([
-    { id: "a1", label: "Home", street: "St. 240, BKK1", city: "Phnom Penh", zip: "12302", country: "Cambodia" },
-  ]);
   const [addingAddr, setAddingAddr] = useState(false);
-
-  // Security
-  const [twoFA, setTwoFA] = useState(true);
 
   // Toast
   const [toast, setToast] = useState({ show: false, msg: "" });
@@ -470,11 +472,29 @@ export default function Account() {
   }, []);
 
   const setField = useCallback((field, val) => {
-    setProfile(p => ({ ...p, [field]: val }));
-    notify("Changes saved");
-  }, [notify]);
+    updateProfile({ [field]: val })
+      .then(() => notify("Changes saved"))
+      .catch(err => notify(err.message || "Couldn't save changes"));
+  }, [updateProfile, notify]);
 
-  const fullName = `${profile.firstName} ${profile.lastName}`.trim();
+  const savePaymentMethods = (next, successMsg) => {
+    updateProfile({ paymentMethods: next })
+      .then(() => notify(successMsg))
+      .catch(err => notify(err.message || "Couldn't save changes"));
+  };
+
+  const saveAddresses = (next, successMsg) => {
+    updateProfile({ addresses: next })
+      .then(() => notify(successMsg))
+      .catch(err => notify(err.message || "Couldn't save changes"));
+  };
+
+  const handleSignOut = () => {
+    logout();
+    navigate("/signin", { replace: true });
+  };
+
+  const fullName = `${profile.firstName} ${profile.lastName}`.trim() || profile.email;
   const initials = getInitials(fullName);
 
   return (
@@ -500,13 +520,15 @@ export default function Account() {
           <div className="acc-card">
             <EditField label="First name"     value={profile.firstName} onSave={v => setField("firstName", v)} />
             <EditField label="Last name"      value={profile.lastName}  onSave={v => setField("lastName", v)} />
-            <EditField label="Email address"  value={profile.email}
-              hint="This will be your new Account ID."
-              onSave={v => setField("email", v)}
-              inputEl={({ draft, setDraft }) => (
-                <input className="acc-input" type="email" value={draft} autoFocus
-                  onChange={e => setDraft(e.target.value)} />
-              )} />
+            <div className="acc-row">
+              <div className="acc-row-left">
+                <span className="acc-lbl">Email address</span>
+                <span className="acc-val">{profile.email}</span>
+              </div>
+              <div className="acc-row-right">
+                <span className="acc-hint">Your Account ID</span>
+              </div>
+            </div>
             <EditField label="Phone number"   value={profile.phone}
               hint="Make sure you enter a phone number you can always access."
               onSave={v => setField("phone", v)}
@@ -544,12 +566,12 @@ export default function Account() {
           <div className="acc-card">
             {cards.map(c => (
               <CardRow key={c.id} card={c}
-                onUpdate={d => { setCards(p => p.map(x => x.id === d.id ? d : x)); notify("Card updated"); }}
-                onRemove={id => { setCards(p => p.filter(x => x.id !== id)); notify("Card removed"); }} />
+                onUpdate={d => savePaymentMethods(cards.map(x => x.id === d.id ? d : x), "Card updated")}
+                onRemove={id => savePaymentMethods(cards.filter(x => x.id !== id), "Card removed")} />
             ))}
             {addingCard && (
               <AddCardRow
-                onAdd={card => { setCards(p => [...p, card]); setAddingCard(false); notify("Card added"); }}
+                onAdd={card => { savePaymentMethods([...cards, card], "Card added"); setAddingCard(false); }}
                 onCancel={() => setAddingCard(false)} />
             )}
             {cards.length === 0 && !addingCard && (
@@ -571,12 +593,12 @@ export default function Account() {
           <div className="acc-card">
             {addresses.map(a => (
               <AddressRow key={a.id} addr={a}
-                onUpdate={d => { setAddresses(p => p.map(x => x.id === d.id ? d : x)); notify("Address updated"); }}
-                onRemove={id => { setAddresses(p => p.filter(x => x.id !== id)); notify("Address removed"); }} />
+                onUpdate={d => saveAddresses(addresses.map(x => x.id === d.id ? d : x), "Address updated")}
+                onRemove={id => saveAddresses(addresses.filter(x => x.id !== id), "Address removed")} />
             ))}
             {addingAddr && (
               <AddAddressRow
-                onAdd={addr => { setAddresses(p => [...p, addr]); setAddingAddr(false); notify("Address added"); }}
+                onAdd={addr => { saveAddresses([...addresses, addr], "Address added"); setAddingAddr(false); }}
                 onCancel={() => setAddingAddr(false)} />
             )}
             {addresses.length === 0 && !addingAddr && (
@@ -591,15 +613,21 @@ export default function Account() {
             <h2 className="acc-section-title">Sign-In &amp; Security</h2>
           </div>
           <div className="acc-card">
-            <PasswordRow onSave={() => notify("Password updated")} />
+            <PasswordRow onSave={(current, next) =>
+              changePassword(current, next).then(() => notify("Password updated"))
+            } />
             <TwoFARow enabled={twoFA}
-              onToggle={() => { setTwoFA(p => !p); notify(twoFA ? "2FA disabled" : "2FA enabled"); }} />
+              onToggle={() => {
+                updateProfile({ twoFactorEnabled: !twoFA })
+                  .then(() => notify(twoFA ? "2FA disabled" : "2FA enabled"))
+                  .catch(err => notify(err.message || "Couldn't update 2FA"));
+              }} />
           </div>
         </section>
 
         {/* ── Footer ── */}
         <footer className="acc-footer">
-          <a href="/signin" className="acc-signout">Sign Out</a>
+          <button type="button" onClick={handleSignOut} className="acc-signout">Sign Out</button>
           <p className="acc-footer-note">
             By using this account you agree to our{" "}
             <a href="/terms">Terms of Service</a> and{" "}

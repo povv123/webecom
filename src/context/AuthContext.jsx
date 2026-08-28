@@ -33,8 +33,8 @@ export const AuthProvider = ({ children }) => {
     return loggedInUser;
   };
 
-  const register = async (email, password) => {
-    const newUser = await authApi.register(email, password);
+  const register = async (profile) => {
+    const newUser = await authApi.register(profile);
     setUser(newUser);
     setIsAuthenticated(true);
     return newUser;
@@ -46,8 +46,20 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const updateProfile = async (updates) => {
+    const updated = await authApi.updateProfile(updates);
+    setUser(updated);
+    return updated;
+  };
+
+  const changePassword = (currentPassword, newPassword) => {
+    return authApi.changePassword(currentPassword, newPassword);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, isLoading, login, register, logout, updateProfile, changePassword }}
+    >
       {children}
     </AuthContext.Provider>
   );

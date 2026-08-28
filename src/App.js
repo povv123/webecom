@@ -26,6 +26,7 @@ import ProductDetail from './pages/client/Products/productdetail';
 import { AuthProvider } from './context/AuthContext';
 import { BagProvider } from './context/BagContext';
 import { SaveProvider, useSave } from './context/SaveContext';
+import RequireAuth from './components/client/RequireAuth';
 
 // --- CAREERS ---
 import CareerOverview from './pages/client/Careers/Career';
@@ -212,10 +213,10 @@ function App() {
               {/* CART & PROFILE */}
               <Route path="/bag" element={<Cart />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/saves" element={<YourSavesPage />} /> 
+              <Route path="/orders" element={<RequireAuth><Orders /></RequireAuth>} />
+              <Route path="/saves" element={<YourSavesPage />} />
               <Route path="/signin" element={<SignIn />} />
-              <Route path="/account" element={<Account />} /> 
+              <Route path="/account" element={<RequireAuth><Account /></RequireAuth>} />
               <Route path="/register" element={<CreateAccount />} />
 
               <Route path="*" element={<div className="py-40 text-center text-2xl font-semibold">404: Page Not Found</div>} />
