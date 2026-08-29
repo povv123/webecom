@@ -1,4 +1,5 @@
 /* AdminLayout.css */
+@import '../styles/Admin/admin-motion.css';
 
 .admin-layout {
   display: flex;
@@ -18,6 +19,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px); /* Apple-style frosted glass blur */
   z-index: 20;
+  animation: admin-fade-in 0.25s ease both;
 }
 
 /* Sidebar Wrapper (Mobile-First Setup) */
@@ -77,6 +79,11 @@
 
 .admin-mobile-header button:hover {
   background-color: #f1f3f5;
+  transform: scale(1.05);
+}
+
+.admin-mobile-header button:active {
+  transform: scale(0.92);
 }
 
 .admin-mobile-header svg {

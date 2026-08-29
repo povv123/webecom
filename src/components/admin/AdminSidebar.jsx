@@ -1,6 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import '../../styles/Admin/AdminSidebar.css';
+
+const groupContainerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } }
+};
+
+const groupVariants = {
+  hidden: { opacity: 0, x: -16 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }
+};
 
 const Icon = ({ name }) => {
   const icons = {
@@ -67,11 +78,16 @@ const AdminSidebar = ({ closeSidebar }) => {
         <h1> Servial Admin</h1>
       </div>
 
-      <nav className="adminSider-nav">
+      <motion.nav
+        className="adminSider-nav"
+        variants={groupContainerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {menuGroups.map((group, groupIndex) => (
-          <div key={groupIndex} className="nav-group">
+          <motion.div key={groupIndex} className="nav-group" variants={groupVariants}>
             <span className="nav-group-title">{group.title}</span>
-            
+
             <div className="nav-group-items">
               {group.items.map((item) => (
                 <NavLink
@@ -81,16 +97,27 @@ const AdminSidebar = ({ closeSidebar }) => {
                   end={item.path === '/admin'}
                   className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
                 >
-                  <div className="nav-item-content">
-                    <Icon name={item.icon} />
-                    <span>{item.name}</span>
-                  </div>
+                  {({ isActive }) => (
+                    <>
+                      {isActive && (
+                        <motion.span
+                          layoutId="admin-nav-active-pill"
+                          className="nav-active-pill"
+                          transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                        />
+                      )}
+                      <div className="nav-item-content">
+                        <Icon name={item.icon} />
+                        <span>{item.name}</span>
+                      </div>
+                    </>
+                  )}
                 </NavLink>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </nav>
+      </motion.nav>
 
       <div className="adminSider-footer">
         <button>Sign Out</button>

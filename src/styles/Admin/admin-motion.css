@@ -1,0 +1,150 @@
+/* ============================================================
+   Admin Motion System
+   One shared animation/polish layer, loaded once by AdminLayout
+   so every /admin page (cards, buttons, badges, tables) picks up
+   consistent entrance motion + hover feedback automatically.
+   ============================================================ */
+
+:root {
+  --admin-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+ * Naming convention across /admin pages is "<prefix>-card", "<prefix>-item",
+ * "<prefix>badge" for the real components, but the SAME substrings also show
+ * up inside compound sub-part class names, e.g. "AdminHome-card-title",
+ * "ra-case-card__header", "nav-group-items". The :not() clauses below keep
+ * the substring selectors from also matching those inner text/BEM/plural
+ * elements, so only the actual card/item/badge containers get animated.
+ */
+
+@keyframes admin-fade-in-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes admin-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes admin-pop-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Entrance motion for cards, table rows & list items on every page ---- */
+[class*="-card"]:not([class*="-card-"]):not([class*="card__"]):not([class*="-cards"]) {
+  animation: admin-fade-in-up 0.5s var(--admin-ease) both;
+}
+
+[class*="-item"]:not([class*="-item-"]):not([class*="item__"]):not([class*="-items"]) {
+  animation: admin-fade-in 0.45s ease both;
+}
+
+tbody tr {
+  animation: admin-fade-in 0.35s ease both;
+}
+
+[class*="badge"]:not([class*="badges"]) {
+  animation: admin-pop-in 0.3s var(--admin-ease) both;
+}
+
+/* ---- Hover lift for cards ---- */
+[class*="-card"]:not([class*="-card-"]):not([class*="card__"]):not([class*="-cards"]) {
+  transition: box-shadow 0.25s ease, transform 0.25s var(--admin-ease) !important;
+}
+
+[class*="-card"]:not([class*="-card-"]):not([class*="card__"]):not([class*="-cards"]):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
+}
+
+/* ---- Table row hover ---- */
+tbody tr {
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+tbody tr:hover {
+  transform: translateX(2px);
+}
+
+/* ---- Buttons & links styled as buttons ---- */
+button[class*="btn"],
+a[class*="btn"] {
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+
+button[class*="btn"]:hover,
+a[class*="btn"]:hover {
+  transform: translateY(-1px);
+}
+
+button[class*="btn"]:active,
+a[class*="btn"]:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* ---- Badges get a little life on hover ---- */
+[class*="badge"]:not([class*="badges"]) {
+  transition: transform 0.15s ease !important;
+}
+
+[class*="badge"]:not([class*="badges"]):hover {
+  transform: scale(1.06);
+}
+
+/* ---- Inputs: soft focus glow instead of harsh browser outline ---- */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+}
+
+[class*="-search"]:focus-within {
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+}
+
+/* ---- Smooth scrolling within the admin content area ---- */
+.admin-content-area {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #d2d2d7 transparent;
+}
+
+.admin-content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-content-area::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 10px;
+}
+
+.admin-content-area::-webkit-scrollbar-thumb:hover {
+  background: #b8b8bd;
+}
+
+/* ---- Respect reduced-motion preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  [class*="-card"],
+  [class*="-item"],
+  tbody tr,
+  [class*="badge"] {
+    animation: none !important;
+  }
+
+  [class*="-card"]:hover,
+  tbody tr:hover,
+  button[class*="btn"]:hover,
+  a[class*="btn"]:hover {
+    transform: none !important;
+  }
+}

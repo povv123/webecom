@@ -1,6 +1,17 @@
 
 import '../../styles/Admin/dashboard.css';
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } }
+};
 
 export default function AdminHome() {
   // --- Mock Data ---
@@ -27,7 +38,12 @@ export default function AdminHome() {
     <div className="AdminHome-wrapper">
       
       {/* Top Header */}
-      <header className="AdminHome-header">
+      <motion.header
+        className="AdminHome-header"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div>
           <p className="AdminHome-eyebrow">Overview</p>
           <h1 className="AdminHome-title">Welcome Admin</h1>
@@ -35,14 +51,25 @@ export default function AdminHome() {
         <div className="AdminHome-header-actions">
           <button className="AdminHome-btn-secondary">Download Report</button>
         </div>
-      </header>
+      </motion.header>
 
       <div className="AdminHome-content">
-        
+
         {/* KPI Grid */}
-        <div className="AdminHome-kpi-grid">
+        <motion.div
+          className="AdminHome-kpi-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+        >
           {kpiData.map((kpi, index) => (
-            <div key={index} className="AdminHome-card AdminHome-kpi-card">
+            <motion.div
+              key={index}
+              className="AdminHome-card AdminHome-kpi-card"
+              variants={fadeUpItem}
+              whileHover={{ y: -6, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+            >
               <div className="AdminHome-kpi-header">
                 <div className="AdminHome-kpi-icon" style={{ backgroundColor: `${kpi.color}15`, color: kpi.color }}>
                   <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -53,9 +80,9 @@ export default function AdminHome() {
               </div>
               <p className="AdminHome-kpi-value">{kpi.value}</p>
               <p className="AdminHome-kpi-trend">{kpi.trend}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Main Dashboard Layout */}
         <div className="AdminHome-dashboard-grid">
@@ -68,9 +95,9 @@ export default function AdminHome() {
                 <button className="AdminHome-btn-text">View All</button>
               </div>
               
-              <div className="AdminHome-list">
+              <motion.div className="AdminHome-list" variants={staggerContainer} initial="hidden" animate="show">
                 {recentContacts.map(contact => (
-                  <div key={contact.id} className="AdminHome-list-item">
+                  <motion.div key={contact.id} className="AdminHome-list-item" variants={fadeUpItem}>
                     <div className="AdminHome-contact-info">
                       <h4 className="AdminHome-item-title">{contact.name}</h4>
                       <p className="AdminHome-item-subtitle">{contact.subject}</p>
@@ -81,24 +108,24 @@ export default function AdminHome() {
                         {contact.status}
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Right Column: Stock Alerts & Services */}
           <div className="AdminHome-column">
-            
+
             {/* Stock Alerts Widget */}
             <div className="AdminHome-card" style={{ marginBottom: '24px' }}>
               <div className="AdminHome-card-header-row">
                 <h2 className="AdminHome-card-title">Inventory Alerts</h2>
                 <button className="AdminHome-btn-text">Manage Stock</button>
               </div>
-              <div className="AdminHome-list">
+              <motion.div className="AdminHome-list" variants={staggerContainer} initial="hidden" animate="show">
                 {stockAlerts.map(alert => (
-                  <div key={alert.id} className="AdminHome-list-item">
+                  <motion.div key={alert.id} className="AdminHome-list-item" variants={fadeUpItem}>
                     <div>
                       <h4 className="AdminHome-item-title">{alert.item}</h4>
                       <p className="AdminHome-item-subtitle">Only {alert.remaining} left in stock</p>
@@ -106,13 +133,19 @@ export default function AdminHome() {
                     <span className={`AdminHome-badge ${alert.status === 'Critical' ? 'badge-red' : 'badge-orange'}`}>
                       {alert.status}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             {/* Quick Service Summary */}
-            <div className="AdminHome-card AdminHome-service-promo">
+            <motion.div
+              className="AdminHome-card AdminHome-service-promo"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, boxShadow: '0 16px 32px rgba(0,113,227,0.25)' }}
+            >
               <div className="AdminHome-service-text">
                 <h2 className="AdminHome-card-title" style={{ color: '#fff' }}>Service Department</h2>
                 <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px', margin: '8px 0 16px 0' }}>
@@ -120,7 +153,7 @@ export default function AdminHome() {
                 </p>
                 <button className="AdminHome-btn-primary-inverse">Review Services</button>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
