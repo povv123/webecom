@@ -61,28 +61,28 @@ function toProduct(raw) {
   };
 }
 
-// Local (webpack-bundled) image imports have no stable path outside the
-// React build, so those two entries seed with image: null, same as the
-// products in the source files that already ship without an image.
+// Product photos below live in public/images/products (served statically by
+// the CRA frontend) rather than as webpack-bundled imports, since this file
+// runs under Node during seeding and can't resolve build-time asset paths.
 const laptops = [
-  { id: "macbook-air-m3", name: "MacBook Air 13”", brand: "Apple", subCategory: "laptop", origin: "USA", price: 1099, tagline: "Strikingly thin. Fast M3 chip.", image: null, isNew: true },
+  { id: "macbook-air-m3", name: "MacBook Air 13”", brand: "Apple", subCategory: "laptop", origin: "USA", price: 1099, tagline: "Strikingly thin. Fast M3 chip.", image: "/images/products/macbook-air-m3.jpg", isNew: true },
   { id: "dell-xps-13", name: "Dell XPS 13", brand: "Dell", subCategory: "laptop", origin: "USA", price: 999, tagline: "Iconic design. InfinityEdge display.", image: "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-13-9340/media-gallery/silver/laptop-xps-13-9340-t-sl-gallery-1.psd?fmt=pjpg&pscan=auto&scl=1&wid=3491&hei=2077&qlt=100,1&resMode=sharp2&size=3491,2077&chrss=full", isNew: true },
   { id: "hp-spectre-x360", name: "HP Spectre x360", brand: "HP", subCategory: "laptop", origin: "USA", price: 1399, tagline: "Crafted to be exceptional.", image: "https://images.hp.com/is/image/HPNextGen/spectre-x360-14-fa0000-cto-1?wid=600", isNew: false },
   { id: "lenovo-yoga-9i", name: "Yoga 9i Gen 8", brand: "Lenovo", subCategory: "laptop", origin: "China", price: 1249, tagline: "Pure style. Pure power.", image: "https://p1-ofp.static.pub/medias/bWFya2V0aW5nL2Jsb2IvaW1hZ2UvY29tcHV0ZXJzL2xhcHRvcHMveW9nYS85aS1nZW4tOC0xNC1pbmNoLzEucG5n/lenovo-yoga-9i-gen-8-14-inch.png", isNew: false },
   { id: "surface-laptop-5", name: "Surface Laptop 5", brand: "Microsoft", subCategory: "laptop", origin: "USA", price: 899, tagline: "Blazing speed. Sophisticated style.", image: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageMedia/RE57GZl?ver=80ef", isNew: false },
   { id: "razer-blade-16", name: "Razer Blade 16", brand: "Razer", subCategory: "laptop", origin: "Singapore", price: 2999, tagline: "More power. More pixels.", image: "https://assets2.razerzone.com/images/pnx.assets/0a0280425e4c84964648757041775e7a/razer-blade-16-2024-laptop-500x500.png", isNew: true },
   { id: "asus-zenbook-14", name: "Zenbook 14 OLED", brand: "ASUS", subCategory: "laptop", origin: "Taiwan", price: 799, tagline: "New Zen. Thinner. Lighter.", image: "https://dlcdnwebimgs.asus.com/gain/3D7A47B2-C4B2-4E5C-B23B-92D9F9162D1C", isNew: true },
-  { id: "acer-swift-x", name: "Acer Swift X 14", brand: "Acer", subCategory: "laptop", origin: "Taiwan", price: 1049, tagline: "Empower your creativity.", image: null, isNew: false },
-  { id: "alienware-m18", name: "Alienware m18", brand: "Dell", subCategory: "laptop", origin: "USA", price: 2199, tagline: "Ultimate desktop-class performance.", image: null, isNew: true },
-  { id: "msi-stealth-16", name: "MSI Stealth 16", brand: "MSI", subCategory: "laptop", origin: "Taiwan", price: 1899, tagline: "Sharp, slim, and stylish.", image: null, isNew: false },
-  { id: "samsung-galaxy-book4", name: "Galaxy Book4 Pro", brand: "Samsung", subCategory: "laptop", origin: "Korea", price: 1449, tagline: "The PC your world has been waiting for.", image: null, isNew: true },
-  { id: "lg-gram-17", name: "LG gram 17", brand: "LG", subCategory: "laptop", origin: "Korea", price: 1599, tagline: "Ultra-lightweight, powerhouse.", image: null, isNew: false },
+  { id: "acer-swift-x", name: "Acer Swift X 14", brand: "Acer", subCategory: "laptop", origin: "Taiwan", price: 1049, tagline: "Empower your creativity.", image: "/images/products/acer-swift-x.jpg", isNew: false },
+  { id: "alienware-m18", name: "Alienware m18", brand: "Dell", subCategory: "laptop", origin: "USA", price: 2199, tagline: "Ultimate desktop-class performance.", image: "/images/products/alienware-m18.jpg", isNew: true },
+  { id: "msi-stealth-16", name: "MSI Stealth 16", brand: "MSI", subCategory: "laptop", origin: "Taiwan", price: 1899, tagline: "Sharp, slim, and stylish.", image: "/images/products/msi-stealth-16.jpg", isNew: false },
+  { id: "samsung-galaxy-book4", name: "Galaxy Book4 Pro", brand: "Samsung", subCategory: "laptop", origin: "Korea", price: 1449, tagline: "The PC your world has been waiting for.", image: "/images/products/samsung-galaxy-book4.jpg", isNew: true },
+  { id: "lg-gram-17", name: "LG gram 17", brand: "LG", subCategory: "laptop", origin: "Korea", price: 1599, tagline: "Ultra-lightweight, powerhouse.", image: "/images/products/lg-gram-17.jpg", isNew: false },
 ];
 
 const mobiles = [
-  { id: "m1", name: "iPhone 15 Pro", brand: "Apple", subCategory: "mobile", series: "Pro Series", price: 999, tagline: "Titanium. So strong. So light. So Pro.", image: null, isNew: true },
-  { id: "m2", name: "iPhone 19 Pro max ultra", brand: "Apple", subCategory: "mobile", series: "Pro Series", price: 2779, tagline: "Titanium. So strong. So light. So Pro.", image: null, isNew: true },
-  { id: "m3", name: "Galaxy S24 Ultra", brand: "Samsung", subCategory: "mobile", series: "S Series", price: 1299, tagline: "Galaxy AI is here.", image: null, isNew: true },
+  { id: "m1", name: "iPhone 15 Pro", brand: "Apple", subCategory: "mobile", series: "Pro Series", price: 999, tagline: "Titanium. So strong. So light. So Pro.", image: "/images/products/iphone-15-pro.jpg", isNew: true },
+  { id: "m2", name: "iPhone 19 Pro max ultra", brand: "Apple", subCategory: "mobile", series: "Pro Series", price: 2779, tagline: "Titanium. So strong. So light. So Pro.", image: "/images/products/iphone-pro-max-ultra.jpg", isNew: true },
+  { id: "m3", name: "Galaxy S24 Ultra", brand: "Samsung", subCategory: "mobile", series: "S Series", price: 1299, tagline: "Galaxy AI is here.", image: "/images/products/galaxy-s24-ultra.jpg", isNew: true },
 ];
 
 const accessories = [

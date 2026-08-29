@@ -101,6 +101,46 @@
 }
 
 /* ==========================================================================
+   Scroll Reveal (Apple-style fade/rise-in-on-scroll)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-img {
+  transform: translateY(60px) scale(0.94);
+  transition-duration: 1.1s;
+  transition-delay: 0.12s;
+}
+
+.reveal-img.in-view {
+  transform: none;
+}
+
+/* Stagger the grid cards slightly so pairs don't pop in at the exact same instant */
+.grid .card:nth-child(2n) {
+  transition-delay: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-img {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
    Hero Sections
    ========================================================================== */
 .hero {
@@ -130,6 +170,15 @@
   object-position: bottom;
   z-index: 1;
   flex-grow: 1;
+}
+
+/* Wide banner-style hero image (e.g. a full-bleed product shot rather than a tall cutout) */
+.hero-img-wide {
+  max-width: 1400px;
+  height: auto;
+  max-height: none;
+  flex-grow: 0;
+  object-position: center;
 }
 
 /* Hero Themes */
@@ -208,6 +257,14 @@
 
 .card:hover img {
   transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.card img.mono {
+  filter: grayscale(1) contrast(1.05);
+}
+
+.card:hover img.mono {
+  filter: grayscale(0.4) contrast(1.05);
 }
 
 /* Dark Card Theme */
