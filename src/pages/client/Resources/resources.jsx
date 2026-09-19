@@ -368,11 +368,19 @@ const ResourcesPage = () => {
 
       {/* 1. Overview / Hero Section */}
       <section id="overview" className="res-section res-hero">
-        <p className="res-eyebrow">Knowledge Ecosystem</p>
-        <h1>Intelligence for the <br /><span>modern enterprise.</span></h1>
-        <p className="res-hero-sub">
-          Expert analysis, research-backed strategy playbooks, and structural documentation built to scale operational growth.
-        </p>
+        <div className="res-hero-bg" aria-hidden="true">
+          <span className="res-blob res-blob-blue" />
+          <span className="res-blob res-blob-purple" />
+          <span className="res-blob res-blob-teal" />
+          <span className="res-blob res-blob-orange" />
+        </div>
+        <div className="res-hero-content">
+          <p className="res-eyebrow">Knowledge Ecosystem</p>
+          <h1>Intelligence for the <br /><span>modern enterprise.</span></h1>
+          <p className="res-hero-sub">
+            Expert analysis, research-backed strategy playbooks, and structural documentation built to scale operational growth.
+          </p>
+        </div>
       </section>
 
       {/* 2. Blog Insights Section */}

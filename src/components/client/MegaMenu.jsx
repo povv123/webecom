@@ -87,6 +87,14 @@ const MegaMenu = () => {
           <nav className="mega-nav-container">
             <ul className="mega-nav-list mega-desktop-nav-list">
 
+              {/* Logo / Brand */}
+              <li className="mega-nav-item mega-logo-item">
+                <a href="/" className="mega-logo-link" aria-label="O-Region Home">
+                  <img src="/logo.svg" alt="" className="mega-logo-img" />
+                  <span className="mega-logo-text">O-Region</span>
+                </a>
+              </li>
+
               {/* Desktop Links */}
               {mainNav.map((item) => (
                 <li

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="O-Region logo">
+  <defs>
+    <linearGradient id="oregion-ring" x1="15%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%" stop-color="#fcfdfe" />
+      <stop offset="30%" stop-color="#d6dade" />
+      <stop offset="55%" stop-color="#8b9095" />
+      <stop offset="78%" stop-color="#44474c" />
+      <stop offset="100%" stop-color="#151619" />
+    </linearGradient>
+    <linearGradient id="oregion-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="76" fill="none" stroke="url(#oregion-ring)" stroke-width="40" />
+  <path
+    d="M25.2,86.8 A76,76 0 0,1 138,34.2"
+    fill="none"
+    stroke="url(#oregion-shine)"
+    stroke-width="9"
+    stroke-linecap="round"
+  />
+</svg>
