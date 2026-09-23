@@ -3,6 +3,8 @@ import { navData } from '../../data/navData';
 import { useBag } from '../../context/BagContext';
 import { useAuth } from '../../context/AuthContext';
 import './MegaMenu.css';
+import logo from '../../assets/images/logo/img_fe8b62c2h.png';
+
 
 const MegaMenu = () => {
   const { totalCount } = useBag();
@@ -90,7 +92,7 @@ const MegaMenu = () => {
               {/* Logo / Brand */}
               <li className="mega-nav-item mega-logo-item">
                 <a href="/" className="mega-logo-link" aria-label="O-Region Home">
-                  <img src="/logo.svg" alt="" className="mega-logo-img" />
+                  <img src={logo} alt="" className="mega-logo-img" />
                   <span className="mega-logo-text">O-Region</span>
                 </a>
               </li>

@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
 // Styling - Ensure this path points to the CSS file we just updated
-import "../../../styles/aboutus/leadership.css"; 
+import "../../../styles/aboutus/leadership.css";
 
 // Assets
-import LeadershipHero from '../../../assets/images/leadership.jpg';
+import CeoPhoto from '../../../assets/images/Leaderships/photo_2026-06-19_14-23-15.jpg';
+import CooPhoto from '../../../assets/images/Leaderships/photo_2026-03-23_21-56-28.jpg';
+import CfoPhoto from '../../../assets/images/Leaderships/photo_2026-03-23_21-56-28.jpg';
 
 
 const LeaderProfileCard = ({ name, title, description, image }) => (
@@ -29,8 +31,8 @@ const GovernanceGroup = ({ category, reports }) => (
     <ul className="leader-report-list">
       {reports.map((report) => (
         <li key={report}>
-          <a 
-            href="#!" 
+          <a
+            href="#!"
             className="leader-report-item"
             onClick={(e) => e.preventDefault()}
           >
@@ -47,7 +49,7 @@ const Leadership = () => {
 
   return (
     <div className="leader-page-wrapper">
-      
+
       {/* 1. STICKY LOCAL NAVIGATION */}
       <nav className="leader-local-nav">
         <div className="leader-nav-content">
@@ -69,20 +71,25 @@ const Leadership = () => {
         </div>
       </nav>
 
-      {/* 2. FULL WIDTH HERO WITH OVERLAY */}
+      {/* 2. FULL WIDTH HERO — three-leader photo collage */}
       <header className="leader-hero-full-width-img">
-        <img src={LeadershipHero} alt="Eter Leadership Campus" className="leader-header-pic" />
+        <div className="leader-hero-photo-grid">
+          <img src={CeoPhoto} alt="Pheakdey, Chief Executive Officer" className="leader-header-pic" />
+          <img src={CooPhoto} alt="Sopheak, Chief Operating Officer" className="leader-header-pic" />
+          <img src={CfoPhoto} alt="Vannak, Chief Financial Officer" className="leader-header-pic" />
+        </div>
+        <div className="leader-hero-scrim" />
         <h1 className="leader-hero-text-overlay">Our Values</h1>
       </header>
 
       <main className="leader-main-container">
-        
+
         {/* 3. BREADCRUMB */}
         <nav className="leader-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/">Eter Hub</Link> 
-          <span aria-hidden="true"> &nbsp; &gt; &nbsp; </span> 
+          <Link to="/">Eter Hub</Link>
+          <span aria-hidden="true"> &nbsp; &gt; &nbsp; </span>
           <Link to="/about">About Eter</Link>
-          <span aria-hidden="true"> &nbsp; &gt; &nbsp; </span> 
+          <span aria-hidden="true"> &nbsp; &gt; &nbsp; </span>
           <span style={{ color: '#1d1d1f' }}><strong>Leadership & Values</strong></span>
         </nav>
 
@@ -93,10 +100,10 @@ const Leadership = () => {
             “Leadership is about vision, responsibility, and inspiring people to achieve more.”
           </h2>
           <cite className="leader-hero-author">— Eter Executive Board</cite>
-          
+
           <div className="leader-hero-description">
             <p>
-              We believe that business can be a force for good. Eter’s leadership team is dedicated to building a digital ecosystem in Cambodia that values integrity, transparency, and relentless innovation. 
+              We believe that business can be a force for good. Eter’s leadership team is dedicated to building a digital ecosystem in Cambodia that values integrity, transparency, and relentless innovation.
             </p>
             <p>
               By combining regional expertise with global standards, we ensure that every decision we make empowers our customers, communities, and the Khmer tech ecosystem.
@@ -108,23 +115,23 @@ const Leadership = () => {
         <section className="leader-grid-section">
           <h2 className="leader-section-title">Executive Officers</h2>
           <div className="leader-grid">
-            <LeaderProfileCard 
-              name="Pheakdey" 
-              title="Chief Executive Officer" 
+            <LeaderProfileCard
+              name="Pheakdey"
+              title="Chief Executive Officer"
               description="Leads company strategy and long-term innovation for the Eter ecosystem."
-              image="/images/ceo.jpg"
+              image={CeoPhoto}
             />
-            <LeaderProfileCard 
-              name="Sopheak" 
-              title="Chief Operating Officer" 
+            <LeaderProfileCard
+              name="Sopheak"
+              title="Chief Operating Officer"
               description="Oversees regional operations, retail execution, and logistics efficiency."
-              image="/images/coo.jpg"
+              image={CooPhoto}
             />
-            <LeaderProfileCard 
-              name="Vannak" 
-              title="Chief Financial Officer" 
+            <LeaderProfileCard
+              name="Vannak"
+              title="Chief Financial Officer"
               description="Manages financial growth, sustainability, and investor relations."
-              image="/images/cfo.jpg"
+              image={CfoPhoto}
             />
           </div>
         </section>
@@ -139,37 +146,37 @@ const Leadership = () => {
           </div>
 
           <div className="leader-reports-grid">
-            <GovernanceGroup 
-              category="Board of Directors" 
+            <GovernanceGroup
+              category="Board of Directors"
               reports={[
-                "Board Committees", 
-                "Director Biographies", 
+                "Board Committees",
+                "Director Biographies",
                 "Contact the Board"
-              ]} 
+              ]}
             />
-            <GovernanceGroup 
-              category="Policies" 
+            <GovernanceGroup
+              category="Policies"
               reports={[
-                "Human Rights Policy", 
+                "Human Rights Policy",
                 "Anti-Corruption Policy",
                 "Conflict Minerals Statement"
-              ]} 
+              ]}
             />
-            <GovernanceGroup 
-              category="Regulatory" 
+            <GovernanceGroup
+              category="Regulatory"
               reports={[
-                "SEC Filings", 
+                "SEC Filings",
                 "Tax Transparency Report",
                 "Quarterly Results"
-              ]} 
+              ]}
             />
-            <GovernanceGroup 
-              category="Digital Trust" 
+            <GovernanceGroup
+              category="Digital Trust"
               reports={[
-                "Cybersecurity Governance", 
+                "Cybersecurity Governance",
                 "AI Ethics Framework",
                 "Privacy Standards"
-              ]} 
+              ]}
             />
           </div>
         </section>

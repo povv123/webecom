@@ -76,7 +76,7 @@
   color: var(--leader-blue);
 }
 
-/* 3. LARGE FULL-WIDTH HEADER */
+/* 3. LARGE FULL-WIDTH HEADER — three-leader photo collage */
 .leader-hero-full-width-img {
   position: relative; 
   width: 100%;
@@ -89,21 +89,44 @@
   align-items: center;
 }
 
-.leader-header-pic {
+.leader-hero-photo-grid {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.leader-header-pic {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1; 
+  object-position: center 20%; /* keeps faces in frame */
+  display: block;
   /* Optional: Add a slight dark overlay to make white text pop more */
   filter: brightness(0.85);
 }
 
+/* Dark gradient scrim so the overlay title stays readable over any photo */
+.leader-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
 .leader-hero-text-overlay {
   position: relative;
-  z-index: 2; 
+  z-index: 3; 
   color: #ffffff;
   font-size: 80px; 
   font-weight: 700;
@@ -321,6 +344,9 @@
 }
 
 @media (max-width: 480px) {
+  /* Collage gets tight on phones — show just the first photo full-width instead of squeezing three thin strips */
+  .leader-hero-photo-grid { grid-template-columns: 1fr; }
+  .leader-hero-photo-grid .leader-header-pic:nth-child(n + 2) { display: none; }
   .leader-grid { grid-template-columns: 1fr; }
   .leader-nav-links { display: none; }
 }

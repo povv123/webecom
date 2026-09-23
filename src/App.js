@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 // --- LAYOUT COMPONENTS ---
 import ClientLayout from './layouts/ClientLayout';
-import AdminLayout from './layouts/AdminLayout'; 
+import AdminLayout from './layouts/Adminlayout'; 
 
 // --- CORE & UTILITIES ---
 import Home from './pages/client/Home';
