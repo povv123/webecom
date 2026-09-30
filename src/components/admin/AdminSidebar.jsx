@@ -39,21 +39,18 @@ const Icon = ({ name }) => {
 const AdminSidebar = ({ closeSidebar }) => {
   const menuGroups = [
     {
-      title: 'OVERVIEW',
       items: [
         { name: 'Home', path: '/admin', icon: 'grid' },
         { name: 'Orders', path: '/admin/orders', icon: 'clock' },
       ]
     },
     {
-      title: 'CATALOG',
       items: [
         { name: 'Products', path: '/admin/products', icon: 'box' },
         { name: 'Inventory', path: '/admin/inventory', icon: 'shield' },
       ]
     },
     {
-      title: 'CONTENT',
       items: [
         { name: 'Services', path: '/admin/services', icon: 'layout' },
         { name: 'Solutions', path: '/admin/solutions', icon: 'check' },
@@ -63,7 +60,6 @@ const AdminSidebar = ({ closeSidebar }) => {
       ]
     },
     {
-      title: 'PEOPLE',
       items: [
         { name: 'Customers', path: '/admin/customers', icon: 'user' },
         { name: 'Careers', path: '/admin/careers', icon: 'briefcase' },
@@ -86,8 +82,6 @@ const AdminSidebar = ({ closeSidebar }) => {
       >
         {menuGroups.map((group, groupIndex) => (
           <motion.div key={groupIndex} className="nav-group" variants={groupVariants}>
-            <span className="nav-group-title">{group.title}</span>
-
             <div className="nav-group-items">
               {group.items.map((item) => (
                 <NavLink

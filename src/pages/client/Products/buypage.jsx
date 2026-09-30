@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate, Link } from 'react-router-dom';
 import { getAllProductsGrouped } from '../../../API/products';
 import { placeOrder } from '../../../API/orders';
 import { useBag } from '../../../context/BagContext';
@@ -27,8 +27,9 @@ const BuyPage = () => {
   const { categoryId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const { addToBag } = useBag();
-  const { isAuthenticated } = useAuth();
+  const { addToBag, bagItems, clearBag } = useBag();
+  const { isAuthenticated, user } = useAuth();
+  const isBagCheckout = categoryId === 'bag'; // /buy/bag = check out the whole bag
 
   const [productsData, setProductsData] = useState({});
 
@@ -37,11 +38,11 @@ const BuyPage = () => {
   }, []);
 
   const categoryProducts = useMemo(() => {
-    if (!categoryId) return [];
-    const formattedCategory = categoryId.toLowerCase().replace(/\s+/g, '');
-    const categoryMap = { mobile: 'mobile', mobilephones: 'mobile', laptops: 'laptops', machinery: 'machinery', machinetools: 'tools', tools: 'tools', home: 'home', office: 'office', electronics: 'electronics', accessories: 'electronics', furnitureacc: 'furnitureacc' };
-    return productsData[categoryMap[formattedCategory] || formattedCategory] || productsData['laptops'] || [];
-  }, [categoryId, productsData]);
+    if (!categoryId || isBagCheckout) return [];
+    const key = categoryId.toLowerCase().replace(/\s+/g, '');
+    const aliases = { mobilephones: 'mobile', machinetools: 'tools', accessories: 'electronics' };
+    return productsData[aliases[key] || key] || [];
+  }, [categoryId, productsData, isBagCheckout]);
 
   const [cartItem, setCartItem] = useState(null);
   const [deliveryMethod, setDeliveryMethod] = useState('phnom-penh');
@@ -71,10 +72,28 @@ const BuyPage = () => {
     }
   }, [categoryProducts, location.state]);
 
+  // Everything being bought: the whole bag, or the single selected product.
+  const lineItems = useMemo(() => {
+    if (isBagCheckout) return bagItems;
+    return cartItem ? [{ ...cartItem, quantity: 1 }] : [];
+  }, [isBagCheckout, bagItems, cartItem]);
+
   const { total, monthlyFinance24 } = useMemo(() => {
-    if (!cartItem) return { total: 0, monthlyFinance24: '0.00' };
-    return { total: cartItem.price, monthlyFinance24: (cartItem.price / 24).toFixed(2) };
-  }, [cartItem]);
+    const sum = lineItems.reduce((acc, i) => acc + i.price * i.quantity, 0);
+    return { total: sum, monthlyFinance24: (sum / 24).toFixed(2) };
+  }, [lineItems]);
+
+  // Pre-fill contact details for signed-in customers
+  useEffect(() => {
+    if (!user) return;
+    setFormData((f) => ({
+      ...f,
+      email: f.email || user.email || '',
+      firstName: f.firstName || user.firstName || '',
+      lastName: f.lastName || user.lastName || '',
+      phone: f.phone || user.phone || '',
+    }));
+  }, [user]);
 
   const [placingOrder, setPlacingOrder] = useState(false);
   const [orderError, setOrderError] = useState('');
@@ -83,18 +102,48 @@ const BuyPage = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
-    if (!cartItem) return;
+    if (lineItems.length === 0) return;
 
     if (!isAuthenticated) {
       navigate('/signin', { state: { from: location } });
       return;
     }
 
+    const isPP = deliveryMethod === 'phnom-penh';
+    const isProvince = deliveryMethod === 'provinces';
+
+    const details = {
+      customer: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      },
+      deliveryMethod: isPP ? 'PP Delivery' : isProvince ? 'Provinces' : 'Store Pickup',
+      shippingAddress: deliveryMethod === 'pickup' ? null : {
+        street: isPP ? formData.addressLine : formData.note,
+        apt: isPP ? formData.commune : '',
+        city: isPP ? formData.district : formData.district,
+        state: isPP ? 'PP' : formData.province,
+        zip: '',
+      },
+      provincialDetails: isProvince
+        ? { busCompany: formData.courier, dropOffStation: formData.note }
+        : null,
+      paymentMethod: paymentMethod === 'finance' ? 'Finance' : 'Credit Card',
+      financeDetails: paymentMethod === 'finance' ? `$${monthlyFinance24}/mo. for 24 mo.` : '',
+      note: formData.note,
+    };
+
     setOrderError('');
     setPlacingOrder(true);
     try {
-      await placeOrder([{ productId: cartItem._id, quantity: 1 }]);
-      navigate('/orders');
+      await placeOrder(
+        lineItems.map((i) => ({ productId: i._id, quantity: i.quantity })),
+        details
+      );
+      if (isBagCheckout) clearBag();
+      navigate('/orders', { state: { justPlaced: true } });
     } catch (err) {
       setOrderError(err.message || 'Unable to place your order.');
     } finally {
@@ -109,7 +158,21 @@ const BuyPage = () => {
     setTimeout(() => setAddedToBag(false), 2000);
   };
 
-  if (!cartItem) return <div className="loading-container"><p>Loading your checkout...</p></div>;
+  if (isBagCheckout && bagItems.length === 0) {
+    return (
+      <div className="loading-container">
+        <p>Your bag is empty.</p>
+        <Link to="/products">Continue shopping</Link>
+      </div>
+    );
+  }
+  if (!isBagCheckout && !cartItem) {
+    return (
+      <div className="loading-container">
+        <p>{Object.keys(productsData).length ? 'We couldn\'t find that product.' : 'Loading your checkout...'}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="buyonemre">
@@ -133,7 +196,7 @@ const BuyPage = () => {
             </div>
           </section>
 
-          <form onSubmit={handlePlaceOrder}>
+          <form id="checkout-form" onSubmit={handlePlaceOrder}>
             {/* Contact Information - Always Visible */}
             <section className="checkout-section">
               <h2>Contact Information</h2>
@@ -179,15 +242,17 @@ const BuyPage = () => {
         <div className="checkout-summary-column">
           <div className="summary-card">
             <h2>Your Order</h2>
-            <div className="summary-item-row">
-              <img src={cartItem.image} alt={cartItem.name} className="summary-item-img" />
-              <div className="summary-item-details">
-                <span className="item-name">{cartItem.name}</span>
-                <span className="item-desc">{cartItem.tagline}</span>
+            {lineItems.map((item) => (
+              <div className="summary-item-row" key={item.id}>
+                <img src={item.image} alt={item.name} className="summary-item-img" />
+                <div className="summary-item-details">
+                  <span className="item-name">{item.name}{item.quantity > 1 ? ` × ${item.quantity}` : ''}</span>
+                  <span className="item-desc">{item.tagline}</span>
+                </div>
+                <span className="item-price">${(item.price * item.quantity).toLocaleString()}</span>
               </div>
-              <span className="item-price">${cartItem.price.toLocaleString()}</span>
-            </div>
-            
+            ))}
+
             <hr className="eter-divider" />
             <div className="cost-row"><span>Total</span><span>${total.toLocaleString()}</span></div>
             
@@ -221,14 +286,16 @@ const BuyPage = () => {
             {orderError && <p style={{ color: '#ff3b30', fontSize: '13px', margin: '0 0 12px' }}>{orderError}</p>}
 
             {/* DYNAMIC BUTTON TEXT based on paymentMethod (BLACK BUTTON) */}
-            <button type="button" className="eter-btn-black full-width place-order-btn" onClick={handlePlaceOrder} disabled={placingOrder}>
+            <button type="submit" form="checkout-form" className="eter-btn-black full-width place-order-btn" disabled={placingOrder}>
               {placingOrder ? 'Placing Order…' : paymentMethod === 'finance' ? 'Financing' : 'Checkout'}
             </button>
             
             {/* ADD TO BAG (BLUE BUTTON) */}
-            <button type="button" className="eter-btn-blue full-width place-order-btn" onClick={handleAddToBag}>
-              {addedToBag ? '✓ Added' : 'Add to Bag'}
-            </button>
+            {!isBagCheckout && (
+              <button type="button" className="eter-btn-blue full-width place-order-btn" onClick={handleAddToBag}>
+                {addedToBag ? '✓ Added' : 'Add to Bag'}
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,56 +1,82 @@
-import { request } from "./client";
+import { request, assetUrl } from "./client";
 
-// Maps a product's subCategorySlug back to the key it lived under in the old
-// src/data/allProductsData.jsx, so pages written against that shape keep working.
-const LEGACY_SUBCATEGORY_KEY = {
-  mobile: "mobile",
-  laptop: "laptops",
-  accessory: "electronics",
-  furniture: "office",
-  "home-furniture": "home",
-  "furnishing-accessory": "furnitureacc",
-  "precision-tool": "tools",
-  machinery: "machinery",
-};
 
-export function normalizeProduct(doc) {
-  if (!doc) return doc;
-  const { slug, subCategorySlug, categorySlug, isNewArrival, attributes, __v, ...rest } = doc;
+export function normalizeProduct(p) {
+  if (!p) return null;
+  const attrs = p.attributes || {};
   return {
-    ...rest,
-    ...attributes,
-    id: slug,
-    subCategory: subCategorySlug,
-    isNew: isNewArrival,
+    ...attrs,
+    ...p,
+    id: p.slug, // stable, URL-friendly id used by routes and bag/saves
+    subCategory: p.subCategorySlug,
+    category: p.categorySlug,
+    isNew: !!p.isNewArrival,
+    image: assetUrl(p.image),
   };
 }
 
-export async function listProducts(filters = {}) {
-  const query = new URLSearchParams(
-    Object.fromEntries(Object.entries(filters).filter(([, v]) => v !== undefined && v !== null))
-  ).toString();
-  const docs = await request(`/products${query ? `?${query}` : ""}`);
-  return docs.map(normalizeProduct);
+// GET /products  -> plain array of normalised products
+let cache = null;
+let cacheTime = 0;
+const CACHE_MS = 30 * 1000;
+
+export async function listProducts({ force = false } = {}) {
+  if (!force && cache && Date.now() - cacheTime < CACHE_MS) return cache;
+  const res = await request("/products", { auth: false });
+  const list = Array.isArray(res) ? res : res?.data || [];
+  cache = list.map(normalizeProduct);
+  cacheTime = Date.now();
+  return cache;
+}
+
+export function clearProductCache() {
+  cache = null;
+}
+
+export async function getProductsBySubCategory(subCategorySlug) {
+  const products = await listProducts();
+  return products.filter((p) => p.subCategory === subCategorySlug);
 }
 
 export async function getProductBySlug(slug) {
-  const doc = await request(`/products/${slug}`);
-  return normalizeProduct(doc);
+  const products = await listProducts();
+  return products.find((p) => p.slug === slug) || null;
 }
 
-export function getProductsBySubCategory(subCategorySlug) {
-  return listProducts({ subCategory: subCategorySlug });
+export async function getProductsByIds(ids) {
+  const set = new Set(ids.map(String));
+  const products = await listProducts();
+  return products.filter((p) => set.has(String(p._id)));
 }
 
-export function getProductsByCategory(categorySlug) {
-  return listProducts({ category: categorySlug });
+// Grouped by the buy-route keys used by /buy/:categoryId
+export const BUY_ROUTE_BY_SUBCATEGORY = {
+  mobile: "mobile",
+  laptop: "laptops",
+  accessory: "electronics",
+  "furnishing-accessory": "furnitureacc",
+  furniture: "office",
+  "home-furniture": "home",
+  machinery: "machinery",
+  "precision-tool": "tools",
+};
+
+export function getBuyRoute(subCategory) {
+  return BUY_ROUTE_BY_SUBCATEGORY[subCategory] || subCategory;
 }
 
 export async function getAllProductsGrouped() {
-  const docs = await listProducts();
-  return docs.reduce((grouped, product) => {
-    const key = LEGACY_SUBCATEGORY_KEY[product.subCategory] || product.subCategory;
-    (grouped[key] ||= []).push(product);
-    return grouped;
+  const products = await listProducts();
+  return products.reduce((groups, product) => {
+    const key = getBuyRoute(product.subCategory) || "uncategorized";
+    (groups[key] = groups[key] || []).push(product);
+    return groups;
   }, {});
+}
+
+// POST /products (multipart/form-data with an image file) - admin only
+export async function createProduct(formData) {
+  const res = await request("/products", { method: "POST", body: formData, auth: true });
+  clearProductCache();
+  return res;
 }

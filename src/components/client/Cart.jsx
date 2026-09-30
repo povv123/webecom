@@ -6,7 +6,7 @@ import { useBag } from '../../context/BagContext';
 
 const Cart = () => {
 
-  const { bagItems, removeFromBag, totalCount, totalPrice } = useBag();
+  const { bagItems, removeFromBag, updateQuantity, totalCount, totalPrice } = useBag();
 
   return (
     <div className="bagfi-container">
@@ -27,7 +27,11 @@ const Cart = () => {
                     {item.tagline && (
                       <span className="bagfi-item-tagline">{item.tagline}</span>
                     )}
-                    <span className="bagfi-item-qty">Qty: {item.quantity}</span>
+                    <div className="bagfi-qty-control">
+                      <button type="button" aria-label="Decrease quantity" onClick={() => updateQuantity(item.id, item.quantity - 1)}>−</button>
+                      <span className="bagfi-item-qty">{item.quantity}</span>
+                      <button type="button" aria-label="Increase quantity" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                    </div>
                   </div>
 
                   <div className="bagfi-item-right">
@@ -59,7 +63,7 @@ const Cart = () => {
                 <span>Total</span>
                 <span>${totalPrice.toLocaleString()}</span>
               </div>
-              <Link to="/buy/laptops" className="bagfi-checkout-btn">
+              <Link to="/buy/bag" className="bagfi-checkout-btn">
                 Checkout
               </Link>
             </div>

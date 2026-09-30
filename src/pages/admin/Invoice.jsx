@@ -78,15 +78,17 @@ const Invoice = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="desc">
-              <strong>{order.product.name}</strong><br/>
-              <span className="desc-tagline">{order.product.tagline}</span>
-            </td>
-            <td>${order.product.price.toFixed(2)}</td>
-            <td>1</td>
-            <td>${order.summary.total.toFixed(2)}</td>
-          </tr>
+          {(order.items || []).map((item, idx) => (
+            <tr key={idx}>
+              <td className="desc">
+                <strong>{item.name}</strong>
+                {item.tagline && <><br/><span className="desc-tagline">{item.tagline}</span></>}
+              </td>
+              <td>${item.price.toFixed(2)}</td>
+              <td>{item.quantity}</td>
+              <td>${(item.price * item.quantity).toFixed(2)}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 

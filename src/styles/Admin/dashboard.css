@@ -1,39 +1,14 @@
 /* --- Global & Layout --- */
 .AdminHome-wrapper {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  background-color: #fcfcfc;
+  background-color: #f5f6f8;
   min-height: 100vh;
 }
 
-.AdminHome-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 32px;
-  border-bottom: 1px solid #e8e8ed;
-  background-color: #fff;
-}
-
-.AdminHome-eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  color: #86868b;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 4px 0;
-}
-
-.AdminHome-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1d1d1f;
-  margin: 0;
-}
-
 .AdminHome-content {
-  padding: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 20px 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* --- Buttons --- */
@@ -73,7 +48,7 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -81,28 +56,29 @@
 .AdminHome-kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-bottom: 32px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .AdminHome-card {
   background-color: #fff;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e8e8ed;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .AdminHome-kpi-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .AdminHome-kpi-icon {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,12 +87,12 @@
 .AdminHome-kpi-title {
   font-size: 14px;
   font-weight: 600;
-  color: #86868b;
+  color: #6e6e73;
   margin: 0;
 }
 
 .AdminHome-kpi-value {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: #1d1d1f;
   margin: 0 0 4px 0;
@@ -132,7 +108,7 @@
 .AdminHome-dashboard-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
+  gap: 14px;
 }
 
 @media (max-width: 900px) {
@@ -145,11 +121,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .AdminHome-card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #1d1d1f;
   margin: 0;
@@ -165,8 +141,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid #f5f5f7;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f2;
 }
 
 .AdminHome-list-item:last-child {
@@ -178,14 +154,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+  gap: 4px;
 }
 
 .AdminHome-item-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #1d1d1f;
-  margin: 0 0 4px 0;
+  margin: 0 0 3px 0;
 }
 
 .AdminHome-item-subtitle {
@@ -202,7 +178,7 @@
 /* --- Badges --- */
 .AdminHome-badge {
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getProductBySlug, listProducts } from '../../../API/products';
+import { getProductBySlug, listProducts, getBuyRoute } from '../../../API/products';
 import '../../../styles/products/ProductDetail.css';
 
 const ProductDetail = () => {
@@ -18,7 +18,8 @@ const ProductDetail = () => {
         setProduct(currentProduct);
 
         if (currentProduct) {
-          const related = await listProducts({ subCategory: currentProduct.subCategory });
+          const all = await listProducts();
+          const related = all.filter(p => p.subCategory === currentProduct.subCategory);
           if (cancelled) return;
           setComparedProducts(related.filter(p => p.id !== currentProduct.id).slice(0, 4));
         }
@@ -49,19 +50,6 @@ const ProductDetail = () => {
   const sortOptions = ['Default', 'Price: Low to High', 'Price: High to Low'];
 
 
-  const getBuyRoute = (subCategory) => {
-    switch (subCategory) {
-      case 'mobile': return 'mobile';
-      case 'laptop': return 'laptops';
-      case 'accessory': return 'electronics'; 
-      case 'furnishing-accessory': return 'furnitureacc';
-      case 'furniture': return 'office'; 
-      case 'home-furniture': return 'home';
-      case 'machinery': return 'machinery';
-      case 'precision-tool': return 'tools';
-      default: return subCategory; 
-    }
-  };
 
   return (
     <div className="prdss-layout">
