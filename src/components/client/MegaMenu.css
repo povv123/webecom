@@ -132,37 +132,68 @@ a {
 }
 
 /* =========================================================
-   LOGO
+   LOGO (Apple-style)
 ========================================================= */
 
 .mega-logo-link {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 8px;
+  height: 44px;               /* Apple nav item height */
+  padding: 0 4px;
 
   text-decoration: none;
   color: var(--apple-text);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mega-logo-img {
-  height: 40px;
-  width: 40px;
+  height: 22px;
+  width: 22px;
   display: block;
+  flex-shrink: 0;
 
-  transition:
-    opacity 0.3s var(--ease-apple),
-    transform 0.25s ease;
+  object-fit: contain;        /* use "cover" if the video should fill the square */
+  border-radius: 5px;         /* use 50% for a round mark */
+  pointer-events: none;       /* clicks go to the link, not the video */
+
+  opacity: 0.88;
+  transition: opacity 0.3s var(--ease-apple);
 }
 
 .mega-logo-text {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.022em;
+  line-height: 1;
   white-space: nowrap;
+
+  opacity: 0.88;
+  transition: opacity 0.3s var(--ease-apple);
 }
 
-.mega-logo-link:hover .mega-logo-img {
-  transform: scale(1.05);
+/* Apple fades the logo on hover, no scaling */
+.mega-logo-link:hover .mega-logo-img,
+.mega-logo-link:hover .mega-logo-text {
+  opacity: 1;
+}
+
+.mega-logo-link:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Mobile: slightly smaller */
+@media (max-width: 834px) {
+  .mega-logo-img {
+    height: 20px;
+    width: 20px;
+  }
+
+  .mega-logo-text {
+    font-size: 16px;
+  }
 }
 
 /* =========================================================

@@ -3,8 +3,7 @@ import { navData } from '../../data/navData';
 import { useBag } from '../../context/BagContext';
 import { useAuth } from '../../context/AuthContext';
 import './MegaMenu.css';
-import logo from '../../assets/images/logo/img_fe8b62c2h.png';
-
+import logo from '../../assets/videos/IMG_5409.MP4';
 
 const MegaMenu = () => {
   const { totalCount } = useBag();
@@ -18,7 +17,7 @@ const MegaMenu = () => {
   const [language, setLanguage] = useState(() => {
     return localStorage.getItem('appLanguage') || 'en';
   });
-  
+
   const [showLangMenu, setShowLangMenu] = useState(false);
 
   // LANGUAGE PERSISTENCE: Save language selection to localStorage whenever it changes
@@ -92,7 +91,14 @@ const MegaMenu = () => {
               {/* Logo / Brand */}
               <li className="mega-nav-item mega-logo-item">
                 <a href="/" className="mega-logo-link" aria-label="O-Region Home">
-                  <img src={logo} alt="" className="mega-logo-img" />
+                  <video
+                    src={logo}
+                    className="mega-logo-img"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
                   <span className="mega-logo-text">O-Region</span>
                 </a>
               </li>
@@ -272,7 +278,7 @@ const MegaMenu = () => {
               <div className="mega-panel-content">
                 {activeItemDesktop?.columns.map((col, idx) => (
                   <div key={idx} className="mega-panel-column">
-                    
+
                     {col.heading && (
                       <h3 className="mega-column-heading">
                         {col.heading[language]}
@@ -349,7 +355,7 @@ const MegaMenu = () => {
               <div className="mega-sub-pane-content">
                 {activeItemMobile?.columns.map((col, idx) => (
                   <div key={idx} className="mega-sub-pane-col">
-                    
+
                     {col.heading && <h3>{col.heading[language]}</h3>}
 
                     {col.links.map((link, lIdx) => (
